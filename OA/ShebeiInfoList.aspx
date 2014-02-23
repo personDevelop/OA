@@ -62,8 +62,8 @@
 
             $("#treeGrid").jqxDataTable(
             {
-                width: "100%",
-                height:"500",
+                width: "80%",
+                height: "410px",
                 source: dataAdapter,
                 sortable: true,
                 pageable: true,
@@ -80,8 +80,8 @@
 
                    {
                        text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
-                       dataField: null, cellsRenderer: function (row, column, value) {
-                           return "<a href='ShebeiInfoEdit.aspx?ID=" + row + "'>修改</a> <a onclick='return deleteShebeiInfo();'   href='#'>删除</a>";
+                       dataField: null, cellsRenderer: function (row, column, value,data) {
+                           return "<a href='ShebeiInfoEdit.aspx?ID=" + data.ID + "'>修改</a> <a onclick='return deleteShebeiInfo();'   href='#'>删除</a>";
                        }
                    }
                 ]
@@ -89,20 +89,7 @@
 
         });
 
-        function AddChild() {
-            var url = "ShebeiInfoEdit.aspx";
-
-            var selection = $("#treeGrid").jqxDataTable('getSelection');
-            if (selection.length == 1) {
-                var rowData = selection[0];
-                url += "?ParentId=" + rowData.ID + "&ParentName=" + rowData.Name;
-                location.href = url;
-            } else {
-                Msg.ShowError("请先选择父节点，且只能选择一个！");
-
-            }
-
-        }
+       
         function deleteShebeiInfo() {
             Msg.Query("确认要删除该条数据?", function () {
 
@@ -117,8 +104,17 @@
                     url: url,
                     dataType: 'json',
                     success: function (data) {
+                        var rows = $("#treeGrid").jqxDataTable('getRows');
+                        var rowIndex = -1;
+                        for (var i = 0; i < rows.length; i++) {
+                            if (rows[i].ID == rowData.ID) {
+                                rowIndex = i;
+                                break;
+                            }
+
+                        }
                         if (data.success == "true") {
-                            $("#treeGrid").jqxDataTable('deleteRow', rowData.ID);
+                            $("#treeGrid").jqxDataTable('deleteRow', rowIndex);
                             Msg.ShowSuccess("删除成功");
                         }
                         else {

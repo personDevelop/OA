@@ -663,7 +663,9 @@
     <Content Include="ShebeiInfoList.aspx" />
     <Content Include="SystemCodeList.aspx" />
     <Content Include="SystemCodeEdit.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

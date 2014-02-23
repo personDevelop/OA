@@ -108,7 +108,7 @@ width="100%">
                               src="css/images/login_title.png"></TD></TR>
                           <TR>
                             <TD 
-                              class=loigntitle>OA系统.加您的管理和推广,必能带来客户和订单！</TD></TR></TBODY></TABLE></TD>
+                              class=loigntitle>OA系统.方便您的管理,提高工作效率！</TD></TR></TBODY></TABLE></TD>
                       <TD class=loign-line><IMG alt=line 
                         src="css/images/login_line.png"></TD>
                       <TD class=login-form-center><!--from-->

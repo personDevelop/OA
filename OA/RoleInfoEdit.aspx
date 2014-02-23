@@ -93,8 +93,7 @@
                 <dl>
                     <dt>备注</dt>
                     <dd>
-                        <input name="txtNote" type="text" id="txtNote" runat="server" class="input small"
-                            datatype="n" sucmsg=" ">
+                       <textarea name="txtNote" id="txtNote" runat="server" rows="6" class="input big"></textarea>
                     </dd>
                 </dl>
             </dl>
