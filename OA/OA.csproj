@@ -1,0 +1,877 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DF1F5245-214E-4134-88BB-D22C777F9DA3}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OA</RootNamespace>
+    <AssemblyName>OA</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Sharp.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\refdll\Sharp.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Sharp.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\refdll\Sharp.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdministrativeRegionsEdit.aspx" />
+    <Content Include="AdministrativeRegionsList.aspx" />
+    <Content Include="Config\System\DataBaseConnect.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dashboard.html" />
+    <Content Include="DayLogEdit.aspx" />
+    <Content Include="DayLogList.aspx" />
+    <Content Include="main.html" />
+    <Content Include="PersonInfoEdit.aspx" />
+    <Content Include="PersonInfoList.aspx" />
+    <Content Include="Script\base64.js" />
+    <Content Include="Script\globalization\globalize.culture.zh-Hans.js" />
+    <Content Include="Script\JqueryForm.js" />
+    <Content Include="Script\basejs.js" />
+    <Content Include="Script\globalization\globalize.culture.cs-CZ.js" />
+    <Content Include="Script\globalization\globalize.culture.de-DE.js" />
+    <Content Include="Script\globalization\globalize.culture.en-CA.js" />
+    <Content Include="Script\globalization\globalize.culture.en-US.js" />
+    <Content Include="Script\globalization\globalize.culture.fr-FR.js" />
+    <Content Include="Script\globalization\globalize.culture.he-IL.js" />
+    <Content Include="Script\globalization\globalize.culture.hr-HR.js" />
+    <Content Include="Script\globalization\globalize.culture.hu-HU.js" />
+    <Content Include="Script\globalization\globalize.culture.it-IT.js" />
+    <Content Include="Script\globalization\globalize.culture.ja-JP.js" />
+    <Content Include="Script\globalization\globalize.culture.lt.js" />
+    <Content Include="Script\globalization\globalize.culture.ru-RU.js" />
+    <Content Include="Script\globalization\globalize.culture.sa-IN.js" />
+    <Content Include="Script\globalization\globalize.js" />
+    <Content Include="Script\globalization\ReadMe.txt" />
+    <Content Include="Script\IEPercent.js" />
+    <Content Include="Script\img\arrowdown.gif" />
+    <Content Include="Script\img\close.png" />
+    <Content Include="Script\img\folder.png" />
+    <Content Include="Script\img\folderIcon.png" />
+    <Content Include="Script\img\folderOpen.png" />
+    <Content Include="Script\img\help.png" />
+    <Content Include="Script\jquery-1.10.2.min.js" />
+    <Content Include="Script\jqx-all.js" />
+    <Content Include="Script\jqxcore.js" />
+    <Content Include="Script\Skin.js" />
+    <Content Include="Script\styles\images\backgroundTop.png" />
+    <Content Include="Script\styles\images\backImage.png" />
+    <Content Include="Script\styles\images\bg_black.png" />
+    <Content Include="Script\styles\images\bg_blackhover.png" />
+    <Content Include="Script\styles\images\bg_blackhover_horizontal.png" />
+    <Content Include="Script\styles\images\bg_blackpressed.png" />
+    <Content Include="Script\styles\images\bg_blackpressed_horizontal.png" />
+    <Content Include="Script\styles\images\bg_black_horizontal.png" />
+    <Content Include="Script\styles\images\bg_blueenergy.png" />
+    <Content Include="Script\styles\images\bg_darkblue.png" />
+    <Content Include="Script\styles\images\bg_darkbluehover.png" />
+    <Content Include="Script\styles\images\bg_darkbluepressed.png" />
+    <Content Include="Script\styles\images\blackbackground.png" />
+    <Content Include="Script\styles\images\black_gradient.png" />
+    <Content Include="Script\styles\images\check_black.png" />
+    <Content Include="Script\styles\images\check_blue.png" />
+    <Content Include="Script\styles\images\check_blue_indeterminate.png" />
+    <Content Include="Script\styles\images\check_disabled.png" />
+    <Content Include="Script\styles\images\check_indeterminate_black.png" />
+    <Content Include="Script\styles\images\check_indeterminate_disabled.png" />
+    <Content Include="Script\styles\images\check_indeterminate_white.png" />
+    <Content Include="Script\styles\images\check_lightblue.png" />
+    <Content Include="Script\styles\images\check_lightblue_indeterminate.png" />
+    <Content Include="Script\styles\images\check_white.png" />
+    <Content Include="Script\styles\images\close.png" />
+    <Content Include="Script\styles\images\close_blue.png" />
+    <Content Include="Script\styles\images\close_white.png" />
+    <Content Include="Script\styles\images\colorpicker\bar-hue.png" />
+    <Content Include="Script\styles\images\colorpicker\bar-saturation.png" />
+    <Content Include="Script\styles\images\colorpicker\map-hue.png" />
+    <Content Include="Script\styles\images\colorpicker\map-saturation-overlay.png" />
+    <Content Include="Script\styles\images\colorpicker\map-saturation.png" />
+    <Content Include="Script\styles\images\colorpicker\ReadMe.txt" />
+    <Content Include="Script\styles\images\crosshair-white.png" />
+    <Content Include="Script\styles\images\crosshair.png" />
+    <Content Include="Script\styles\images\darkness\ReadMe.txt" />
+    <Content Include="Script\styles\images\darkness\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Script\styles\images\darkness\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Script\styles\images\darkness\ui-bg_glass_20_555555_1x400.png" />
+    <Content Include="Script\styles\images\darkness\ui-bg_glass_40_0078a3_1x400.png" />
+    <Content Include="Script\styles\images\darkness\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="Script\styles\images\darkness\ui-bg_gloss-wave_25_333333_500x100.png" />
+    <Content Include="Script\styles\images\darkness\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="Script\styles\images\darkness\ui-bg_inset-soft_25_000000_1x100.png" />
+    <Content Include="Script\styles\images\darkness\ui-bg_inset-soft_30_f58400_1x100.png" />
+    <Content Include="Script\styles\images\darkness\ui-icons_222222_256x240.png" />
+    <Content Include="Script\styles\images\darkness\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="Script\styles\images\darkness\ui-icons_a83300_256x240.png" />
+    <Content Include="Script\styles\images\darkness\ui-icons_cccccc_256x240.png" />
+    <Content Include="Script\styles\images\darkness\ui-icons_ffffff_256x240.png" />
+    <Content Include="Script\styles\images\darkred_gradient.png" />
+    <Content Include="Script\styles\images\drag.png" />
+    <Content Include="Script\styles\images\dragcancel.png" />
+    <Content Include="Script\styles\images\filter.png" />
+    <Content Include="Script\styles\images\icon-cancel-white.png" />
+    <Content Include="Script\styles\images\icon-cancel.png" />
+    <Content Include="Script\styles\images\icon-delete - Copy.png" />
+    <Content Include="Script\styles\images\icon-delete-white.png" />
+    <Content Include="Script\styles\images\icon-delete.png" />
+    <Content Include="Script\styles\images\icon-down-blue.png" />
+    <Content Include="Script\styles\images\icon-down-transparent.png" />
+    <Content Include="Script\styles\images\icon-down-white.png" />
+    <Content Include="Script\styles\images\icon-down.png" />
+    <Content Include="Script\styles\images\icon-edit-white.png" />
+    <Content Include="Script\styles\images\icon-edit.png" />
+    <Content Include="Script\styles\images\icon-first-blue.png" />
+    <Content Include="Script\styles\images\icon-first-transparent.png" />
+    <Content Include="Script\styles\images\icon-first-white.png" />
+    <Content Include="Script\styles\images\icon-first.png" />
+    <Content Include="Script\styles\images\icon-last-blue.png" />
+    <Content Include="Script\styles\images\icon-last-transparent.png" />
+    <Content Include="Script\styles\images\icon-last-white.png" />
+    <Content Include="Script\styles\images\icon-last.png" />
+    <Content Include="Script\styles\images\icon-left-blue.png" />
+    <Content Include="Script\styles\images\icon-left-transparent.png" />
+    <Content Include="Script\styles\images\icon-left-white.png" />
+    <Content Include="Script\styles\images\icon-left.png" />
+    <Content Include="Script\styles\images\icon-right-blue.png" />
+    <Content Include="Script\styles\images\icon-right-transparent.png" />
+    <Content Include="Script\styles\images\icon-right-white.png" />
+    <Content Include="Script\styles\images\icon-right.png" />
+    <Content Include="Script\styles\images\icon-save-white.png" />
+    <Content Include="Script\styles\images\icon-save.png" />
+    <Content Include="Script\styles\images\icon-showpassword-white.png" />
+    <Content Include="Script\styles\images\icon-showpassword.png" />
+    <Content Include="Script\styles\images\icon-up-blue.png" />
+    <Content Include="Script\styles\images\icon-up-transparent.png" />
+    <Content Include="Script\styles\images\icon-up-white.png" />
+    <Content Include="Script\styles\images\icon-up.png" />
+    <Content Include="Script\styles\images\le-frog\ReadMe.txt" />
+    <Content Include="Script\styles\images\le-frog\ui-bg_diagonals-small_0_aaaaaa_40x40.png" />
+    <Content Include="Script\styles\images\le-frog\ui-bg_diagonals-thick_15_444444_40x40.png" />
+    <Content Include="Script\styles\images\le-frog\ui-bg_diagonals-thick_95_ffdc2e_40x40.png" />
+    <Content Include="Script\styles\images\le-frog\ui-bg_glass_55_fbf5d0_1x400.png" />
+    <Content Include="Script\styles\images\le-frog\ui-bg_highlight-hard_30_285c00_1x100.png" />
+    <Content Include="Script\styles\images\le-frog\ui-bg_highlight-soft_33_3a8104_1x100.png" />
+    <Content Include="Script\styles\images\le-frog\ui-bg_highlight-soft_50_4eb305_1x100.png" />
+    <Content Include="Script\styles\images\le-frog\ui-bg_highlight-soft_60_4ca20b_1x100.png" />
+    <Content Include="Script\styles\images\le-frog\ui-bg_inset-soft_10_285c00_1x100.png" />
+    <Content Include="Script\styles\images\le-frog\ui-icons_4eb305_256x240.png" />
+    <Content Include="Script\styles\images\le-frog\ui-icons_72b42d_256x240.png" />
+    <Content Include="Script\styles\images\le-frog\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Script\styles\images\le-frog\ui-icons_ffffff_256x240.png" />
+    <Content Include="Script\styles\images\lightness\icon-first.png" />
+    <Content Include="Script\styles\images\lightness\icon-last.png" />
+    <Content Include="Script\styles\images\lightness\ReadMe.txt" />
+    <Content Include="Script\styles\images\lightness\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Script\styles\images\lightness\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Script\styles\images\lightness\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Script\styles\images\lightness\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Script\styles\images\lightness\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Script\styles\images\lightness\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Script\styles\images\lightness\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Script\styles\images\lightness\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Script\styles\images\lightness\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Script\styles\images\lightness\ui-icons_222222_256x240.png" />
+    <Content Include="Script\styles\images\lightness\ui-icons_228ef1_256x240.png" />
+    <Content Include="Script\styles\images\lightness\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Script\styles\images\lightness\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Script\styles\images\lightness\ui-icons_ffffff_256x240.png" />
+    <Content Include="Script\styles\images\loader.gif" />
+    <Content Include="Script\styles\images\menubutton.png" />
+    <Content Include="Script\styles\images\metro-icon-down-white.png" />
+    <Content Include="Script\styles\images\metro-icon-down.png" />
+    <Content Include="Script\styles\images\metro-icon-first-white.png" />
+    <Content Include="Script\styles\images\metro-icon-first.png" />
+    <Content Include="Script\styles\images\metro-icon-last-white.png" />
+    <Content Include="Script\styles\images\metro-icon-last.png" />
+    <Content Include="Script\styles\images\metro-icon-left-white.png" />
+    <Content Include="Script\styles\images\metro-icon-left.png" />
+    <Content Include="Script\styles\images\metro-icon-right - Copy.png" />
+    <Content Include="Script\styles\images\metro-icon-right-white.png" />
+    <Content Include="Script\styles\images\metro-icon-right.png" />
+    <Content Include="Script\styles\images\metro-icon-up-white.png" />
+    <Content Include="Script\styles\images\metro-icon-up.png" />
+    <Content Include="Script\styles\images\multi-arrow.gif" />
+    <Content Include="Script\styles\images\office-icon-down.png" />
+    <Content Include="Script\styles\images\office-icon-left.png" />
+    <Content Include="Script\styles\images\office-icon-right.png" />
+    <Content Include="Script\styles\images\office-icon-up.png" />
+    <Content Include="Script\styles\images\overcast\ReadMe.txt" />
+    <Content Include="Script\styles\images\overcast\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Script\styles\images\overcast\ui-bg_flat_0_eeeeee_40x100.png" />
+    <Content Include="Script\styles\images\overcast\ui-bg_flat_55_c0402a_40x100.png" />
+    <Content Include="Script\styles\images\overcast\ui-bg_flat_55_eeeeee_40x100.png" />
+    <Content Include="Script\styles\images\overcast\ui-bg_glass_100_f8f8f8_1x400.png" />
+    <Content Include="Script\styles\images\overcast\ui-bg_glass_35_dddddd_1x400.png" />
+    <Content Include="Script\styles\images\overcast\ui-bg_glass_60_eeeeee_1x400.png" />
+    <Content Include="Script\styles\images\overcast\ui-bg_inset-hard_75_999999_1x100.png" />
+    <Content Include="Script\styles\images\overcast\ui-bg_inset-soft_50_c9c9c9_1x100.png" />
+    <Content Include="Script\styles\images\overcast\ui-icons_3383bb_256x240.png" />
+    <Content Include="Script\styles\images\overcast\ui-icons_454545_256x240.png" />
+    <Content Include="Script\styles\images\overcast\ui-icons_70b2e1_256x240.png" />
+    <Content Include="Script\styles\images\overcast\ui-icons_999999_256x240.png" />
+    <Content Include="Script\styles\images\overcast\ui-icons_fbc856_256x240.png" />
+    <Content Include="Script\styles\images\plus.png" />
+    <Content Include="Script\styles\images\plus_white.png" />
+    <Content Include="Script\styles\images\pointer.png" />
+    <Content Include="Script\styles\images\rangebar_classic.png" />
+    <Content Include="Script\styles\images\rangebar_darkblue.png" />
+    <Content Include="Script\styles\images\rangebar_shinyblack.png" />
+    <Content Include="Script\styles\images\rangebar_summer.png" />
+    <Content Include="Script\styles\images\redmond\icon-first.png" />
+    <Content Include="Script\styles\images\redmond\icon-last.png" />
+    <Content Include="Script\styles\images\redmond\ReadMe.txt" />
+    <Content Include="Script\styles\images\redmond\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Script\styles\images\redmond\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Script\styles\images\redmond\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Script\styles\images\redmond\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Script\styles\images\redmond\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Script\styles\images\redmond\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Script\styles\images\redmond\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Script\styles\images\redmond\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Script\styles\images\redmond\ui-icons_217bc0_256x240.png" />
+    <Content Include="Script\styles\images\redmond\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Script\styles\images\redmond\ui-icons_469bdd_256x240.png" />
+    <Content Include="Script\styles\images\redmond\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Script\styles\images\redmond\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Script\styles\images\redmond\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Script\styles\images\redmond\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Script\styles\images\red_arrow_down.png" />
+    <Content Include="Script\styles\images\red_arrow_up.png" />
+    <Content Include="Script\styles\images\red_gradient.png" />
+    <Content Include="Script\styles\images\roundbg_check_black.png" />
+    <Content Include="Script\styles\images\roundbg_check_disabled.png" />
+    <Content Include="Script\styles\images\roundbg_check_indeterminate.png" />
+    <Content Include="Script\styles\images\roundbg_check_white.png" />
+    <Content Include="Script\styles\images\roundbg_classic_hover.png" />
+    <Content Include="Script\styles\images\roundbg_classic_normal.png" />
+    <Content Include="Script\styles\images\roundbg_disabled.png" />
+    <Content Include="Script\styles\images\search.png" />
+    <Content Include="Script\styles\images\search_white.png" />
+    <Content Include="Script\styles\images\smoothness\ReadMe.txt" />
+    <Content Include="Script\styles\images\smoothness\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Script\styles\images\smoothness\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Script\styles\images\smoothness\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Script\styles\images\smoothness\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Script\styles\images\smoothness\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Script\styles\images\smoothness\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Script\styles\images\smoothness\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Script\styles\images\smoothness\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Script\styles\images\smoothness\ui-icons_222222_256x240.png" />
+    <Content Include="Script\styles\images\smoothness\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Script\styles\images\smoothness\ui-icons_454545_256x240.png" />
+    <Content Include="Script\styles\images\smoothness\ui-icons_888888_256x240.png" />
+    <Content Include="Script\styles\images\smoothness\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Script\styles\images\sortasc.png" />
+    <Content Include="Script\styles\images\sortascbutton.png" />
+    <Content Include="Script\styles\images\sortdesc.png" />
+    <Content Include="Script\styles\images\sortdescbutton.png" />
+    <Content Include="Script\styles\images\sortremove.png" />
+    <Content Include="Script\styles\images\star.png" />
+    <Content Include="Script\styles\images\start\ReadMe.txt" />
+    <Content Include="Script\styles\images\start\ui-bg_flat_55_999999_40x100.png" />
+    <Content Include="Script\styles\images\start\ui-bg_flat_75_aaaaaa_40x100.png" />
+    <Content Include="Script\styles\images\start\ui-bg_glass_45_0078ae_1x400.png" />
+    <Content Include="Script\styles\images\start\ui-bg_glass_55_f8da4e_1x400.png" />
+    <Content Include="Script\styles\images\start\ui-bg_glass_75_79c9ec_1x400.png" />
+    <Content Include="Script\styles\images\start\ui-bg_gloss-wave_45_e14f1c_500x100.png" />
+    <Content Include="Script\styles\images\start\ui-bg_gloss-wave_50_6eac2c_500x100.png" />
+    <Content Include="Script\styles\images\start\ui-bg_gloss-wave_75_2191c0_500x100.png" />
+    <Content Include="Script\styles\images\start\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Script\styles\images\start\ui-icons_0078ae_256x240.png" />
+    <Content Include="Script\styles\images\start\ui-icons_056b93_256x240.png" />
+    <Content Include="Script\styles\images\start\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Script\styles\images\start\ui-icons_e0fdff_256x240.png" />
+    <Content Include="Script\styles\images\start\ui-icons_f5e175_256x240.png" />
+    <Content Include="Script\styles\images\start\ui-icons_f7a50d_256x240.png" />
+    <Content Include="Script\styles\images\start\ui-icons_fcd113_256x240.png" />
+    <Content Include="Script\styles\images\star_disabled.png" />
+    <Content Include="Script\styles\images\star_hover.png" />
+    <Content Include="Script\styles\images\sunny\ReadMe.txt" />
+    <Content Include="Script\styles\images\sunny\ui-bg_diagonals-medium_20_d34d17_40x40.png" />
+    <Content Include="Script\styles\images\sunny\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Script\styles\images\sunny\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Script\styles\images\sunny\ui-bg_gloss-wave_45_817865_500x100.png" />
+    <Content Include="Script\styles\images\sunny\ui-bg_gloss-wave_60_fece2f_500x100.png" />
+    <Content Include="Script\styles\images\sunny\ui-bg_gloss-wave_70_ffdd57_500x100.png" />
+    <Content Include="Script\styles\images\sunny\ui-bg_gloss-wave_90_fff9e5_500x100.png" />
+    <Content Include="Script\styles\images\sunny\ui-bg_highlight-soft_100_feeebd_1x100.png" />
+    <Content Include="Script\styles\images\sunny\ui-bg_inset-soft_30_ffffff_1x100.png" />
+    <Content Include="Script\styles\images\sunny\ui-icons_3d3d3d_256x240.png" />
+    <Content Include="Script\styles\images\sunny\ui-icons_bd7b00_256x240.png" />
+    <Content Include="Script\styles\images\sunny\ui-icons_d19405_256x240.png" />
+    <Content Include="Script\styles\images\sunny\ui-icons_eb990f_256x240.png" />
+    <Content Include="Script\styles\images\sunny\ui-icons_ed9f26_256x240.png" />
+    <Content Include="Script\styles\images\sunny\ui-icons_fadc7a_256x240.png" />
+    <Content Include="Script\styles\images\sunny\ui-icons_ffe180_256x240.png" />
+    <Content Include="Script\styles\images\tick.png" />
+    <Content Include="Script\styles\images\track_classic.png" />
+    <Content Include="Script\styles\images\track_darkblue.png" />
+    <Content Include="Script\styles\images\track_shinyblack.png" />
+    <Content Include="Script\styles\images\track_summer.png" />
+    <Content Include="Script\styles\images\wp_check_indeterminate_white.png" />
+    <Content Include="Script\styles\images\wp_check_white.png" />
+    <Content Include="Script\styles\jqx.android.css" />
+    <Content Include="Script\styles\jqx.arctic.css" />
+    <Content Include="Script\styles\jqx.base.css" />
+    <Content Include="Script\styles\jqx.black.css" />
+    <Content Include="Script\styles\jqx.blackberry.css" />
+    <Content Include="Script\styles\jqx.bootstrap.css" />
+    <Content Include="Script\styles\jqx.classic.css" />
+    <Content Include="Script\styles\jqx.darkblue.css" />
+    <Content Include="Script\styles\jqx.energyblue.css" />
+    <Content Include="Script\styles\jqx.fresh.css" />
+    <Content Include="Script\styles\jqx.highcontrast.css" />
+    <Content Include="Script\styles\jqx.metro.css" />
+    <Content Include="Script\styles\jqx.metrodark.css" />
+    <Content Include="Script\styles\jqx.mobile.css" />
+    <Content Include="Script\styles\jqx.office.css" />
+    <Content Include="Script\styles\jqx.orange.css" />
+    <Content Include="Script\styles\jqx.shinyblack.css" />
+    <Content Include="Script\styles\jqx.summer.css" />
+    <Content Include="Script\styles\jqx.ui-darkness.css" />
+    <Content Include="Script\styles\jqx.ui-le-frog.css" />
+    <Content Include="Script\styles\jqx.ui-lightness.css" />
+    <Content Include="Script\styles\jqx.ui-overcast.css" />
+    <Content Include="Script\styles\jqx.ui-redmond.css" />
+    <Content Include="Script\styles\jqx.ui-smoothness.css" />
+    <Content Include="Script\styles\jqx.ui-start.css" />
+    <Content Include="Script\styles\jqx.ui-sunny.css" />
+    <Content Include="Script\styles\jqx.web.css" />
+    <Content Include="Script\styles\jqx.windowsphone.css" />
+    <Content Include="Script\styles\wt.base.css" />
+    <Content Include="Script\ueditor\dialogs\anchor\anchor.html" />
+    <Content Include="Script\ueditor\dialogs\attachment\attachment.css" />
+    <Content Include="Script\ueditor\dialogs\attachment\attachment.html" />
+    <Content Include="Script\ueditor\dialogs\attachment\callbacks.js" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="Script\ueditor\dialogs\attachment\fileTypeMaps.js" />
+    <Content Include="Script\ueditor\dialogs\background\background.css" />
+    <Content Include="Script\ueditor\dialogs\background\background.html" />
+    <Content Include="Script\ueditor\dialogs\background\background.js" />
+    <Content Include="Script\ueditor\dialogs\charts\chart.config.js" />
+    <Content Include="Script\ueditor\dialogs\charts\charts.css" />
+    <Content Include="Script\ueditor\dialogs\charts\charts.html" />
+    <Content Include="Script\ueditor\dialogs\charts\charts.js" />
+    <Content Include="Script\ueditor\dialogs\charts\images\charts0.png" />
+    <Content Include="Script\ueditor\dialogs\charts\images\charts1.png" />
+    <Content Include="Script\ueditor\dialogs\charts\images\charts2.png" />
+    <Content Include="Script\ueditor\dialogs\charts\images\charts3.png" />
+    <Content Include="Script\ueditor\dialogs\charts\images\charts4.png" />
+    <Content Include="Script\ueditor\dialogs\charts\images\charts5.png" />
+    <Content Include="Script\ueditor\dialogs\emotion\emotion.css" />
+    <Content Include="Script\ueditor\dialogs\emotion\emotion.html" />
+    <Content Include="Script\ueditor\dialogs\emotion\emotion.js" />
+    <Content Include="Script\ueditor\dialogs\emotion\images\0.gif" />
+    <Content Include="Script\ueditor\dialogs\emotion\images\bface.gif" />
+    <Content Include="Script\ueditor\dialogs\emotion\images\cface.gif" />
+    <Content Include="Script\ueditor\dialogs\emotion\images\fface.gif" />
+    <Content Include="Script\ueditor\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="Script\ueditor\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="Script\ueditor\dialogs\emotion\images\tface.gif" />
+    <Content Include="Script\ueditor\dialogs\emotion\images\wface.gif" />
+    <Content Include="Script\ueditor\dialogs\emotion\images\yface.gif" />
+    <Content Include="Script\ueditor\dialogs\gmap\gmap.html" />
+    <Content Include="Script\ueditor\dialogs\help\help.css" />
+    <Content Include="Script\ueditor\dialogs\help\help.html" />
+    <Content Include="Script\ueditor\dialogs\help\help.js" />
+    <Content Include="Script\ueditor\dialogs\image\image.css" />
+    <Content Include="Script\ueditor\dialogs\image\image.html" />
+    <Content Include="Script\ueditor\dialogs\image\image.js" />
+    <Content Include="Script\ueditor\dialogs\image\images\center_focus.jpg" />
+    <Content Include="Script\ueditor\dialogs\image\images\left_focus.jpg" />
+    <Content Include="Script\ueditor\dialogs\image\images\none_focus.jpg" />
+    <Content Include="Script\ueditor\dialogs\image\images\right_focus.jpg" />
+    <Content Include="Script\ueditor\dialogs\image\imageUploader.swf" />
+    <Content Include="Script\ueditor\dialogs\insertframe\insertframe.html" />
+    <Content Include="Script\ueditor\dialogs\internal.js" />
+    <Content Include="Script\ueditor\dialogs\link\link.html" />
+    <Content Include="Script\ueditor\dialogs\map\map.html" />
+    <Content Include="Script\ueditor\dialogs\map\show.html" />
+    <Content Include="Script\ueditor\dialogs\music\music.css" />
+    <Content Include="Script\ueditor\dialogs\music\music.html" />
+    <Content Include="Script\ueditor\dialogs\music\music.js" />
+    <Content Include="Script\ueditor\dialogs\preview\preview.html" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\addimg.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\brush.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\delimg.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\empty.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\eraser.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\redo.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\redoH.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\scale.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\size.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\undo.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\images\undoH.png" />
+    <Content Include="Script\ueditor\dialogs\scrawl\scrawl.css" />
+    <Content Include="Script\ueditor\dialogs\scrawl\scrawl.html" />
+    <Content Include="Script\ueditor\dialogs\scrawl\scrawl.js" />
+    <Content Include="Script\ueditor\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="Script\ueditor\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="Script\ueditor\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="Script\ueditor\dialogs\spechars\spechars.html" />
+    <Content Include="Script\ueditor\dialogs\spechars\spechars.js" />
+    <Content Include="Script\ueditor\dialogs\table\dragicon.png" />
+    <Content Include="Script\ueditor\dialogs\table\edittable.css" />
+    <Content Include="Script\ueditor\dialogs\table\edittable.html" />
+    <Content Include="Script\ueditor\dialogs\table\edittable.js" />
+    <Content Include="Script\ueditor\dialogs\table\edittd.html" />
+    <Content Include="Script\ueditor\dialogs\table\edittip.html" />
+    <Content Include="Script\ueditor\dialogs\tangram.js" />
+    <Content Include="Script\ueditor\dialogs\template\config.js" />
+    <Content Include="Script\ueditor\dialogs\template\images\bg.gif" />
+    <Content Include="Script\ueditor\dialogs\template\images\pre0.png" />
+    <Content Include="Script\ueditor\dialogs\template\images\pre1.png" />
+    <Content Include="Script\ueditor\dialogs\template\images\pre2.png" />
+    <Content Include="Script\ueditor\dialogs\template\images\pre3.png" />
+    <Content Include="Script\ueditor\dialogs\template\images\pre4.png" />
+    <Content Include="Script\ueditor\dialogs\template\template.css" />
+    <Content Include="Script\ueditor\dialogs\template\template.html" />
+    <Content Include="Script\ueditor\dialogs\template\template.js" />
+    <Content Include="Script\ueditor\dialogs\video\callbacks.js" />
+    <Content Include="Script\ueditor\dialogs\video\images\center_focus.jpg" />
+    <Content Include="Script\ueditor\dialogs\video\images\left_focus.jpg" />
+    <Content Include="Script\ueditor\dialogs\video\images\none_focus.jpg" />
+    <Content Include="Script\ueditor\dialogs\video\images\right_focus.jpg" />
+    <Content Include="Script\ueditor\dialogs\video\video.css" />
+    <Content Include="Script\ueditor\dialogs\video\video.html" />
+    <Content Include="Script\ueditor\dialogs\video\video.js" />
+    <Content Include="Script\ueditor\dialogs\webapp\webapp.html" />
+    <Content Include="Script\ueditor\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="Script\ueditor\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="Script\ueditor\dialogs\wordimage\wordimage.html" />
+    <Content Include="Script\ueditor\dialogs\wordimage\wordimage.js" />
+    <Content Include="Script\ueditor\index.html" />
+    <Content Include="Script\ueditor\lang\en\en.js" />
+    <Content Include="Script\ueditor\lang\en\images\addimage.png" />
+    <Content Include="Script\ueditor\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="Script\ueditor\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="Script\ueditor\lang\en\images\background.png" />
+    <Content Include="Script\ueditor\lang\en\images\button.png" />
+    <Content Include="Script\ueditor\lang\en\images\copy.png" />
+    <Content Include="Script\ueditor\lang\en\images\deletedisable.png" />
+    <Content Include="Script\ueditor\lang\en\images\deleteenable.png" />
+    <Content Include="Script\ueditor\lang\en\images\imglabel.png" />
+    <Content Include="Script\ueditor\lang\en\images\listbackground.png" />
+    <Content Include="Script\ueditor\lang\en\images\localimage.png" />
+    <Content Include="Script\ueditor\lang\en\images\music.png" />
+    <Content Include="Script\ueditor\lang\en\images\rotateleftdisable.png" />
+    <Content Include="Script\ueditor\lang\en\images\rotateleftenable.png" />
+    <Content Include="Script\ueditor\lang\en\images\rotaterightdisable.png" />
+    <Content Include="Script\ueditor\lang\en\images\rotaterightenable.png" />
+    <Content Include="Script\ueditor\lang\en\images\upload.png" />
+    <Content Include="Script\ueditor\lang\zh-cn\images\copy.png" />
+    <Content Include="Script\ueditor\lang\zh-cn\images\imglabel.png" />
+    <Content Include="Script\ueditor\lang\zh-cn\images\localimage.png" />
+    <Content Include="Script\ueditor\lang\zh-cn\images\music.png" />
+    <Content Include="Script\ueditor\lang\zh-cn\images\upload.png" />
+    <Content Include="Script\ueditor\lang\zh-cn\zh-cn.js" />
+    <Content Include="Script\ueditor\themes\default\css\ueditor.css" />
+    <Content Include="Script\ueditor\themes\default\css\ueditor.min.css" />
+    <Content Include="Script\ueditor\themes\default\dialogbase.css" />
+    <Content Include="Script\ueditor\themes\default\images\anchor.gif" />
+    <Content Include="Script\ueditor\themes\default\images\arrow.png" />
+    <Content Include="Script\ueditor\themes\default\images\arrow_down.png" />
+    <Content Include="Script\ueditor\themes\default\images\arrow_up.png" />
+    <Content Include="Script\ueditor\themes\default\images\button-bg.gif" />
+    <Content Include="Script\ueditor\themes\default\images\cancelbutton.gif" />
+    <Content Include="Script\ueditor\themes\default\images\charts.png" />
+    <Content Include="Script\ueditor\themes\default\images\cursor_h.gif" />
+    <Content Include="Script\ueditor\themes\default\images\cursor_h.png" />
+    <Content Include="Script\ueditor\themes\default\images\cursor_v.gif" />
+    <Content Include="Script\ueditor\themes\default\images\cursor_v.png" />
+    <Content Include="Script\ueditor\themes\default\images\dialog-title-bg.png" />
+    <Content Include="Script\ueditor\themes\default\images\filescan.png" />
+    <Content Include="Script\ueditor\themes\default\images\highlighted.gif" />
+    <Content Include="Script\ueditor\themes\default\images\icons-all.gif" />
+    <Content Include="Script\ueditor\themes\default\images\icons.gif" />
+    <Content Include="Script\ueditor\themes\default\images\icons.png" />
+    <Content Include="Script\ueditor\themes\default\images\lock.gif" />
+    <Content Include="Script\ueditor\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="Script\ueditor\themes\default\images\pagebreak.gif" />
+    <Content Include="Script\ueditor\themes\default\images\scale.png" />
+    <Content Include="Script\ueditor\themes\default\images\sortable.png" />
+    <Content Include="Script\ueditor\themes\default\images\spacer.gif" />
+    <Content Include="Script\ueditor\themes\default\images\sparator_v.png" />
+    <Content Include="Script\ueditor\themes\default\images\table-cell-align.png" />
+    <Content Include="Script\ueditor\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="Script\ueditor\themes\default\images\toolbar_bg.png" />
+    <Content Include="Script\ueditor\themes\default\images\unhighlighted.gif" />
+    <Content Include="Script\ueditor\themes\default\images\upload.png" />
+    <Content Include="Script\ueditor\themes\default\images\videologo.gif" />
+    <Content Include="Script\ueditor\themes\default\images\word.gif" />
+    <Content Include="Script\ueditor\themes\default\images\wordpaste.png" />
+    <Content Include="Script\ueditor\themes\iframe.css" />
+    <Content Include="Script\ueditor\third-party\codemirror\codemirror.css" />
+    <Content Include="Script\ueditor\third-party\codemirror\codemirror.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\highcharts-more.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\highcharts.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\highcharts.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\annotations.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\data.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\data.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\exporting.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\funnel.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\map.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\map.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\themes\gray.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\themes\grid.js" />
+    <Content Include="Script\ueditor\third-party\highcharts\themes\skies.js" />
+    <Content Include="Script\ueditor\third-party\jquery-1.10.2.min.js" />
+    <Content Include="Script\ueditor\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="Script\ueditor\third-party\swfupload\fileprogress.js" />
+    <Content Include="Script\ueditor\third-party\swfupload\swfupload.cookies.js" />
+    <Content Include="Script\ueditor\third-party\swfupload\swfupload.js" />
+    <Content Include="Script\ueditor\third-party\swfupload\swfupload.proxy.js" />
+    <Content Include="Script\ueditor\third-party\swfupload\swfupload.queue.js" />
+    <Content Include="Script\ueditor\third-party\swfupload\swfupload.speed.js" />
+    <Content Include="Script\ueditor\third-party\swfupload\swfupload.swf" />
+    <Content Include="Script\ueditor\third-party\swfupload\swfupload_fp9.swf" />
+    <Content Include="Script\ueditor\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="Script\ueditor\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="Script\ueditor\third-party\video-js\font\vjs.svg" />
+    <Content Include="Script\ueditor\third-party\video-js\video-js.css" />
+    <Content Include="Script\ueditor\third-party\video-js\video-js.min.css" />
+    <Content Include="Script\ueditor\third-party\video-js\video-js.swf" />
+    <Content Include="Script\ueditor\third-party\video-js\video.dev.js" />
+    <Content Include="Script\ueditor\third-party\video-js\video.js" />
+    <Content Include="Script\ueditor\ueditor.all.js" />
+    <Content Include="Script\ueditor\ueditor.all.min.js" />
+    <Content Include="Script\ueditor\ueditor.config.js" />
+    <Content Include="Script\ueditor\ueditor.parse.js" />
+    <Content Include="Script\ueditor\ueditor.parse.min.js" />
+    <Content Include="selectSheBeiInfo.aspx" />
+    <Content Include="ShebeiInfoEdit.aspx" />
+    <Content Include="ShebeiInfoList.aspx" />
+    <Content Include="SystemCodeList.aspx" />
+    <Content Include="SystemCodeEdit.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="WorkHandLogEdit.aspx" />
+    <Content Include="WorkInfoEdit.aspx" />
+    <Content Include="WorkInfoList.aspx" />
+    <Content Include="YuanGongKaoQinList.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdministrativeRegionsEdit.aspx.cs">
+      <DependentUpon>AdministrativeRegionsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrativeRegionsEdit.aspx.designer.cs">
+      <DependentUpon>AdministrativeRegionsEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministrativeRegionsList.aspx.cs">
+      <DependentUpon>AdministrativeRegionsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrativeRegionsList.aspx.designer.cs">
+      <DependentUpon>AdministrativeRegionsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DayLogEdit.aspx.cs">
+      <DependentUpon>DayLogEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DayLogEdit.aspx.designer.cs">
+      <DependentUpon>DayLogEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\AdministrativeRegionsDeleteHandler.ashx.cs">
+      <DependentUpon>AdministrativeRegionsDeleteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\AdministrativeRegionsListHandler.ashx.cs">
+      <DependentUpon>AdministrativeRegionsListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\AdministrativeRegionsSaveHandler.ashx.cs">
+      <DependentUpon>AdministrativeRegionsSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\DayLogListHandler.ashx.cs">
+      <DependentUpon>DayLogListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\DayLogSaveHandler.ashx.cs">
+      <DependentUpon>DayLogSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\FenPaiHandler.ashx.cs">
+      <DependentUpon>FenPaiHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\PersonInfoDeleteHandler.ashx.cs">
+      <DependentUpon>PersonInfoDeleteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\PersonInfoListHandler.ashx.cs">
+      <DependentUpon>PersonInfoListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\PersonInfoSaveHandler.ashx.cs">
+      <DependentUpon>PersonInfoSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\ShebeiInfoDeleteHandler.ashx.cs">
+      <DependentUpon>ShebeiInfoDeleteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\ShebeiInfoListHandler.ashx.cs">
+      <DependentUpon>ShebeiInfoListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\ShebeiInfoSaveHandler.ashx.cs">
+      <DependentUpon>ShebeiInfoSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\SystemCodeDeleteHandler.ashx.cs">
+      <DependentUpon>SystemCodeDeleteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\SystemCodeListHandler.ashx.cs">
+      <DependentUpon>SystemCodeListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\SystemCodeSaveHandler.ashx.cs">
+      <DependentUpon>SystemCodeSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\WorkHandLogListHandler.ashx.cs">
+      <DependentUpon>WorkHandLogListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\WorkHandLogSaveHandler.ashx.cs">
+      <DependentUpon>WorkHandLogSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\WorkInfoBanLiHandler.ashx.cs">
+      <DependentUpon>WorkInfoBanLiHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\WorkInfoListHandler.ashx.cs">
+      <DependentUpon>WorkInfoListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\WorkInfoSaveHandler.ashx.cs">
+      <DependentUpon>WorkInfoSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\YuanGongKaoQinListHandler.ashx.cs">
+      <DependentUpon>YuanGongKaoQinListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="JsonConvert.cs" />
+    <Compile Include="JsonToDataSet.cs" />
+    <Compile Include="PersonInfoEdit.aspx.cs">
+      <DependentUpon>PersonInfoEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonInfoEdit.aspx.designer.cs">
+      <DependentUpon>PersonInfoEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonInfoList.aspx.cs">
+      <DependentUpon>PersonInfoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonInfoList.aspx.designer.cs">
+      <DependentUpon>PersonInfoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="selectSheBeiInfo.aspx.cs">
+      <DependentUpon>selectSheBeiInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="selectSheBeiInfo.aspx.designer.cs">
+      <DependentUpon>selectSheBeiInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShebeiInfoEdit.aspx.cs">
+      <DependentUpon>ShebeiInfoEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShebeiInfoEdit.aspx.designer.cs">
+      <DependentUpon>ShebeiInfoEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShebeiInfoList.aspx.cs">
+      <DependentUpon>ShebeiInfoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShebeiInfoList.aspx.designer.cs">
+      <DependentUpon>ShebeiInfoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemCodeList.aspx.cs">
+      <DependentUpon>SystemCodeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemCodeList.aspx.designer.cs">
+      <DependentUpon>SystemCodeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemCodeEdit.aspx.cs">
+      <DependentUpon>SystemCodeEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemCodeEdit.aspx.designer.cs">
+      <DependentUpon>SystemCodeEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WorkHandLogEdit.aspx.cs">
+      <DependentUpon>WorkHandLogEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WorkHandLogEdit.aspx.designer.cs">
+      <DependentUpon>WorkHandLogEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WorkInfoEdit.aspx.cs">
+      <DependentUpon>WorkInfoEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WorkInfoEdit.aspx.designer.cs">
+      <DependentUpon>WorkInfoEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WorkInfoList.aspx.cs">
+      <DependentUpon>WorkInfoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WorkInfoList.aspx.designer.cs">
+      <DependentUpon>WorkInfoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YuanGongKaoQinList.aspx.cs">
+      <DependentUpon>YuanGongKaoQinList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YuanGongKaoQinList.aspx.designer.cs">
+      <DependentUpon>YuanGongKaoQinList.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="handler\SystemCodeSaveHandler.ashx" />
+    <Content Include="handler\SystemCodeListHandler.ashx" />
+    <Content Include="handler\SystemCodeDeleteHandler.ashx" />
+    <Content Include="handler\WorkInfoSaveHandler.ashx" />
+    <Content Include="handler\WorkInfoListHandler.ashx" />
+    <Content Include="handler\PersonInfoSaveHandler.ashx" />
+    <Content Include="handler\PersonInfoDeleteHandler.ashx" />
+    <Content Include="handler\PersonInfoListHandler.ashx" />
+    <Content Include="handler\FenPaiHandler.ashx" />
+    <Content Include="handler\WorkHandLogListHandler.ashx" />
+    <Content Include="handler\WorkInfoBanLiHandler.ashx" />
+    <Content Include="handler\WorkHandLogSaveHandler.ashx" />
+    <Content Include="handler\DayLogSaveHandler.ashx" />
+    <Content Include="handler\DayLogListHandler.ashx" />
+    <Content Include="handler\AdministrativeRegionsSaveHandler.ashx" />
+    <Content Include="handler\AdministrativeRegionsDeleteHandler.ashx" />
+    <Content Include="handler\AdministrativeRegionsListHandler.ashx" />
+    <Content Include="handler\YuanGongKaoQinListHandler.ashx" />
+    <Content Include="handler\ShebeiInfoDeleteHandler.ashx" />
+    <Content Include="handler\ShebeiInfoListHandler.ashx" />
+    <Content Include="handler\ShebeiInfoSaveHandler.ashx" />
+    <None Include="Script\ueditor\php\config.php" />
+    <None Include="Script\ueditor\php\fileUp.php" />
+    <None Include="Script\ueditor\php\getContent.php" />
+    <None Include="Script\ueditor\php\getMovie.php" />
+    <None Include="Script\ueditor\php\getRemoteImage.php" />
+    <None Include="Script\ueditor\php\imageManager.php" />
+    <None Include="Script\ueditor\php\imageUp.php" />
+    <None Include="Script\ueditor\php\scrawlUp.php" />
+    <None Include="Script\ueditor\php\Uploader.class.php" />
+    <None Include="Script\ueditor\third-party\video-js\font\vjs.eot" />
+    <None Include="Script\ueditor\third-party\video-js\font\vjs.ttf" />
+    <None Include="Script\ueditor\third-party\video-js\font\vjs.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OAEntity\OAEntity.csproj">
+      <Project>{D7D380A8-5312-4763-916F-934142BC9DAE}</Project>
+      <Name>OAEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OAManager\OAManager.csproj">
+      <Project>{23A2450B-95F3-4992-95D1-3351AC5A406C}</Project>
+      <Name>OAManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2676</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

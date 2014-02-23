@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OA", "OA\OA.csproj", "{DF1F5245-214E-4134-88BB-D22C777F9DA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAEntity", "OAEntity\OAEntity.csproj", "{D7D380A8-5312-4763-916F-934142BC9DAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAManager", "OAManager\OAManager.csproj", "{23A2450B-95F3-4992-95D1-3351AC5A406C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF1F5245-214E-4134-88BB-D22C777F9DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF1F5245-214E-4134-88BB-D22C777F9DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF1F5245-214E-4134-88BB-D22C777F9DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF1F5245-214E-4134-88BB-D22C777F9DA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7D380A8-5312-4763-916F-934142BC9DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D380A8-5312-4763-916F-934142BC9DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D380A8-5312-4763-916F-934142BC9DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D380A8-5312-4763-916F-934142BC9DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23A2450B-95F3-4992-95D1-3351AC5A406C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23A2450B-95F3-4992-95D1-3351AC5A406C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23A2450B-95F3-4992-95D1-3351AC5A406C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23A2450B-95F3-4992-95D1-3351AC5A406C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
