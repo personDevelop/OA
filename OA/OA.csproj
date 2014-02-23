@@ -64,9 +64,11 @@
     <Content Include="dashboard.html" />
     <Content Include="DayLogEdit.aspx" />
     <Content Include="DayLogList.aspx" />
+    <Content Include="login.aspx" />
     <Content Include="main.html" />
     <Content Include="PersonInfoEdit.aspx" />
     <Content Include="PersonInfoList.aspx" />
+    <Content Include="randomCode.aspx" />
     <Content Include="Script\base64.js" />
     <Content Include="Script\globalization\globalize.culture.zh-Hans.js" />
     <Content Include="Script\JqueryForm.js" />
@@ -699,6 +701,9 @@
     <Compile Include="handler\SystemCodeSaveHandler.ashx.cs">
       <DependentUpon>SystemCodeSaveHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\VerifyUser.ashx.cs">
+      <DependentUpon>VerifyUser.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\WorkHandLogListHandler.ashx.cs">
       <DependentUpon>WorkHandLogListHandler.ashx</DependentUpon>
     </Compile>
@@ -719,6 +724,13 @@
     </Compile>
     <Compile Include="JsonConvert.cs" />
     <Compile Include="JsonToDataSet.cs" />
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PersonInfoEdit.aspx.cs">
       <DependentUpon>PersonInfoEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -734,6 +746,13 @@
       <DependentUpon>PersonInfoList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="randomCode.aspx.cs">
+      <DependentUpon>randomCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="randomCode.aspx.designer.cs">
+      <DependentUpon>randomCode.aspx</DependentUpon>
+    </Compile>
     <Compile Include="selectSheBeiInfo.aspx.cs">
       <DependentUpon>selectSheBeiInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -823,6 +842,7 @@
     <Content Include="handler\ShebeiInfoDeleteHandler.ashx" />
     <Content Include="handler\ShebeiInfoListHandler.ashx" />
     <Content Include="handler\ShebeiInfoSaveHandler.ashx" />
+    <Content Include="handler\VerifyUser.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />

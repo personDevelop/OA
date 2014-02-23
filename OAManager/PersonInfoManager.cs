@@ -69,6 +69,24 @@ namespace OAManager
 
         }
 
+        /// <summary>
+        /// 检查用户名和密码是否匹配
+        /// </summary>
+        /// <param name="passwd"></param>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public bool checkUserIndentity(string passwd, string username)
+        {
+            try
+            {
+                bool ex = Dal.Exists<PersonInfo>(PersonInfo._.UserName == username && PersonInfo._.Pwd == passwd);
+                return ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         /// <summary>
         /// 保存员工信息表实体，包括添加、修改、删除

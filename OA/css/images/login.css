@@ -1,0 +1,106 @@
+INPUT.smallInput {
+	BORDER-BOTTOM-COLOR: #cad9ea; BORDER-RIGHT-WIDTH: 1px; BACKGROUND-COLOR: #ffffff; BORDER-TOP-COLOR: black; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; HEIGHT: 15px; BORDER-RIGHT-COLOR: #cad9ea; FONT-SIZE: 9pt; BORDER-LEFT-COLOR: black; BORDER-LEFT-WIDTH: 1px
+}
+INPUT.infoInput {
+	BORDER-BOTTOM-COLOR: #cad9ea; BORDER-RIGHT-WIDTH: 1px; BORDER-TOP-COLOR: #a0a0a0; BACKGROUND: url(../images/bj_line.gif) repeat-x; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; HEIGHT: 18px; BORDER-RIGHT-COLOR: #cad9ea; FONT-SIZE: 9pt; BORDER-LEFT-COLOR: #a0a0a0; BORDER-LEFT-WIDTH: 1px
+}
+INPUT.infoInput:hover {
+	BORDER-BOTTOM-COLOR: #cbd9eb; BORDER-RIGHT-WIDTH: 1px; BORDER-TOP-COLOR: #a0a0a0; BACKGROUND: url(../images/class_bg.jpg) repeat-x 0px -72px; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; HEIGHT: 18px; BORDER-RIGHT-COLOR: #cbd9eb; FONT-SIZE: 9pt; BORDER-LEFT-COLOR: #a0a0a0; BORDER-LEFT-WIDTH: 1px
+}
+INPUT.buttonface {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 27px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 115px; PADDING-RIGHT: 0px; BACKGROUND: url(../images/subbotton.gif) no-repeat 0px 0px; HEIGHT: 27px; COLOR: #57250e; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: bold; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+INPUT.buttonface:hover {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 27px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 115px; PADDING-RIGHT: 0px; BACKGROUND: url(../images/subbotton.gif) no-repeat 0px -81px; HEIGHT: 27px; COLOR: #4775b2; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: bold; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+INPUT.bottons02 {
+	BORDER-BOTTOM-COLOR: #cad9ea; PADDING-BOTTOM: 0px; LINE-HEIGHT: 22px; BORDER-RIGHT-WIDTH: 1px; BORDER-TOP-COLOR: #a0a0a0; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 80px; PADDING-RIGHT: 0px; BACKGROUND: url(../images/class_bg.jpg) repeat-x 0px 0px; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; HEIGHT: 23px; COLOR: #209248; BORDER-RIGHT-COLOR: #cad9ea; BORDER-LEFT-COLOR: #a0a0a0; BORDER-LEFT-WIDTH: 1px; CURSOR: pointer; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+INPUT.bottons02:hover {
+	BACKGROUND: url(../images/class_bg.jpg) repeat-x 0px -120px; COLOR: #ee5b17; CURSOR: pointer
+}
+INPUT.bottons03 {
+	BORDER-BOTTOM-COLOR: #cad9ea; PADDING-BOTTOM: 0px; LINE-HEIGHT: 22px; BORDER-RIGHT-WIDTH: 1px; BORDER-TOP-COLOR: #a0a0a0; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100px; PADDING-RIGHT: 0px; BACKGROUND: url(../images/class_bg.jpg) repeat-x 0px -80px; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; HEIGHT: 23px; COLOR: #ee5b17; BORDER-RIGHT-COLOR: #cad9ea; BORDER-LEFT-COLOR: #a0a0a0; BORDER-LEFT-WIDTH: 1px; CURSOR: pointer; PADDING-TOP: 0px
+}
+INPUT.bottons03:hover {
+	BACKGROUND: url(../images/class_bg.jpg) repeat-x 0px -120px; COLOR: #209248; CURSOR: pointer
+}
+INPUT.bottons04 {
+	BORDER-BOTTOM-COLOR: #cad9ea; PADDING-BOTTOM: 0px; LINE-HEIGHT: 20px; BORDER-RIGHT-WIDTH: 1px; BORDER-TOP-COLOR: #a0a0a0; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 60px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; HEIGHT: 21px; COLOR: #ee5b17; BORDER-RIGHT-COLOR: #cad9ea; BORDER-LEFT-COLOR: #a0a0a0; BORDER-LEFT-WIDTH: 1px; CURSOR: pointer; PADDING-TOP: 0px
+}
+INPUT.bottons04:hover {
+	BACKGROUND: url(../images/class_bg.jpg) repeat-x 0px -120px; COLOR: #209248; CURSOR: pointer
+}
+BODY {
+	BACKGROUND: url(../images/login_bg_line.jpg) #ecf5fb repeat-x; HEIGHT: 100%; OVERFLOW: hidden
+}
+.login-div {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; BACKGROUND: url(../images/login_bg_top.jpg) no-repeat; PADDING-TOP: 0px
+}
+.login-top {
+	WIDTH: 564px; DISPLAY: block; BACKGROUND: url(../images/login_topbg.png) no-repeat 0px 0px; FLOAT: left; HEIGHT: 21px
+}
+.login-down {
+	WIDTH: 564px; DISPLAY: block; BACKGROUND: url(../images/login_topbg.png) no-repeat 0px -21px; HEIGHT: 50px
+}
+.login-bg {
+	WIDTH: 564px; BACKGROUND: url(../images/login_bg.png) repeat-y 50% top
+}
+.login {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.login-title {
+	TEXT-ALIGN: left; PADDING-LEFT: 25px; WIDTH: 200px; PADDING-TOP: 10px
+}
+.loigntitle {
+	LINE-HEIGHT: 180%; COLOR: gray; FONT-SIZE: 12px; PADDING-TOP: 10px
+}
+.loign-line {
+	MARGIN: 0px auto; PADDING-LEFT: 15px
+}
+.login-form-center {
+	TEXT-ALIGN: left; PADDING-LEFT: 10px; WIDTH: 300px; OVERFLOW: hidden
+}
+.logintd {
+	TEXT-ALIGN: right; LINE-HEIGHT: 33px; HEIGHT: 33px; COLOR: #3e3e3e; FONT-SIZE: 14px
+}
+.logintd2 {
+	TEXT-ALIGN: left; PADDING-LEFT: 8px
+}
+.loginwanntile {
+	BORDER-BOTTOM: #e9a43b 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #e9a43b 1px solid; WIDTH: 175px; BACKGROUND: url(../images/login_login_BG.jpg) #fae8b9 repeat-x 50% top; CLEAR: both; OVERFLOW: hidden; BORDER-TOP: #e9a43b 1px solid; BORDER-RIGHT: #e9a43b 1px solid
+}
+.loginwanntile UL {
+	PADDING-BOTTOM: 2px; LINE-HEIGHT: 24px; LIST-STYLE-TYPE: none; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; HEIGHT: 24px; LIST-STYLE-IMAGE: none; PADDING-TOP: 2px
+}
+.loginwanntile UL LI {
+	PADDING-LEFT: 25px; BACKGROUND: url(../images/icon_24.gif) no-repeat 0px -192px; COLOR: #cf6b47
+}
+#centerlogin {
+	MARGIN: 0px auto; WIDTH: 564px; OVERFLOW: hidden
+}
+.login-form {
+	WIDTH: 564px; FLOAT: left; OVERFLOW: hidden
+}
+.fotter {
+	LINE-HEIGHT: 20px; WIDTH: 564px; FLOAT: left; HEIGHT: 20px; COLOR: gray; OVERFLOW: hidden
+}
+.formtablewin {
+	WIDTH: 100%; BORDER-COLLAPSE: collapse; PADDING-TOP: 5px
+}
+.formtablewin .trstyle2 TD {
+	LINE-HEIGHT: 25px; HEIGHT: 25px
+}
+.formtablewin .trstyle3 TD {
+	BORDER-BOTTOM: 0px
+}
+.formtablewin .trtitle01 {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 5px; WIDTH: 20%; PADDING-RIGHT: 2px; FONT-WEIGHT: bold; PADDING-TOP: 5px
+}
+.formtablewin .trtitle02 {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; WIDTH: 80%; PADDING-TOP: 5px
+}
+.formtablewin .trtitle03 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #d0dbe8; PADDING-LEFT: 5px; WIDTH: 100%; FONT-WEIGHT: bold; PADDING-TOP: 5px
+}
+/*Download by http://www.codefans.net*/
