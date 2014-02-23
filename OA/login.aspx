@@ -139,7 +139,7 @@ width="100%">
                               name=login_pwd></TD></TR>
                           <TR>
                             <TD class=logintd>安全问题</TD>
-                            <TD class=logintd2><IMG 
+                            <TD class=logintd2 style="POSITION: relative;"><IMG 
                               style="POSITION: relative; TOP: 6px; MARGIN-RIGHT: 4px;cursor:pointer;" 
                               id=login_captcha class=captchaimg 
                               onclick="this.src='randomCode.aspx?secode=ecisp_seccode&amp;' + Math.random()" 
