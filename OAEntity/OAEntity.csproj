@@ -45,6 +45,7 @@
     <Compile Include="AdministrativeRegions.cs" />
     <Compile Include="DayLog.cs" />
     <Compile Include="PersonInfo.cs" />
+    <Compile Include="RoleInfo.cs" />
     <Compile Include="ShebeiInfo.cs" />
     <Compile Include="SystemCode.cs" />
     <Compile Include="WorkHandLog.cs" />

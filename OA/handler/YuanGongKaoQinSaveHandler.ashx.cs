@@ -6,16 +6,15 @@ using OAEntity;
 using OAManager;
 using Sharp.Common;
 using System.Text;
-using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// 保存 系统参数表
     /// </summary>
-    public class DayLogSaveHandler : IHttpHandler, IRequiresSessionState
+    public class YuanGongKaoQinSaveHandler : IHttpHandler
     {
-        DayLog entity = new DayLog();
+        YuanGongKaoQin entity = new YuanGongKaoQin();
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
@@ -29,8 +28,7 @@ namespace OA.handler
                     entity.ID = Guid.NewGuid();
                     if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
                     {
-                        entity.UserID = new Guid(context.Session["UserID"].ToString());
-                        entity.UserName = context.Session["UserName"] as string;
+                        entity.CreaterID = new Guid(context.Session["UserID"].ToString());
                         entity.CreateDate = DateTime.Now;
                     }
                 }
@@ -38,21 +36,23 @@ namespace OA.handler
                 {
                     entity.ID = new Guid(rp["txtID"]);
                     entity.RecordStatus = StatusType.update;
-                } 
-                entity.Content = rp["txtContent"]; 
-                entity.GS = rp["txtGS"];
-                entity.WordDate = DateTime.Parse(rp["txtWordDate"]);  
-                DayLogManager manager = new DayLogManager();
-                bool IsExit = manager.ExitDayLog(entity);//日期重复校验参考
-                if (IsExit)
-                {
-                    msg = "今天已填写过工作日志！";
+                    if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
+                    {
+                        entity.UpdaterID = new Guid(context.Session["UserID"].ToString());
+                        entity.Updatedate = DateTime.Now;
+                    }
                 }
-                else
-                {
-                    manager.Save(entity);
-                    context.Response.Write("{\"success\":\"true\",\"ID\":\"" + entity.ID + "\"}");
-                }
+                entity.UserID = new Guid(rp["txtUserID"]); 
+                entity.UserName = rp["txtUserName"]; 
+                entity.StartTime = rp["txtStartTime"]; 
+                entity.EndTime = rp["txtEndTime"];
+                entity.KQRQ = DateTime.Parse(rp["txtKQRQ"]);
+                entity.Status = rp["txtStatus"];
+                entity.Note = rp["txtNote"];
+                YuanGongKaoQinManager manager = new YuanGongKaoQinManager(); 
+                manager.Save(entity);
+                context.Response.Write("{\"success\":\"true\",\"ID\":\"" + entity.ID + "\"}");
+
             }
             catch (Exception ex)
             {

@@ -17,8 +17,37 @@
     <script src="Script/globalization/globalize.js" type="text/javascript"></script>
     <script src="Script/globalization/globalize.culture.zh-Hans.js" type="text/javascript"></script>
     <script type="text/javascript">
-       
-    
+        var kqdata = null;
+        function saveList(rowindex) {
+            if (!data) {
+
+            }
+            else {
+                kqdata = $('#jqxGrid').jqxGrid('getrowdata', rowindex); 
+            }
+        }
+        $(function () {
+            $('#form1').submit(function ()//提交表单 
+            {
+                var options = {
+                    url: 'handler/RoleInfoSaveHandler.ashx', //提交给哪个执行 
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.success == "true") {
+                            $("#txtID").val(data.ID);
+                            Msg.ShowSuccess("保存成功");
+                        }
+                        else {
+                            Msg.ShowError(base64decode(data.msg));
+                        }
+                    }
+                };
+                $('#form1').ajaxSubmit(options);
+                return false; //为了不刷新页面,返回false
+            });
+        }
+    )
     </script>
     <script type="text/javascript">
 
@@ -55,8 +84,8 @@
             { name: 'ID', type: 'string' },
 { name: 'UserID', type: 'string' },
 { name: 'UserName', type: 'string' },
-{ name: 'StartTime', type: 'date' },
-{ name: 'EndTime', type: 'date' },
+{ name: 'StartTime', type: 'string' },
+{ name: 'EndTime', type: 'string' },
 { name: 'KQRQ', type: 'string' },
 { name: 'Status', type: 'string', values: { source: countriesAdapter.records, value: 'value', name: 'label'} },
 { name: 'CreaterID', type: 'string' },
@@ -92,7 +121,7 @@
 
             //绑定树
 
-                $("#treeGrid").jqxGrid
+            $("#treeGrid").jqxGrid
 (
             {
                 editable: true,
@@ -106,7 +135,7 @@
                 columns: [
 
 { text: '员工姓名', align: 'center', dataField: 'RealName', minWidth: 100, width: 150 },
-{ text: '上班时间', align: 'center', dataField: 'StartTime',   minWidth: 100, width: 150 },
+{ text: '上班时间', align: 'center', dataField: 'StartTime', minWidth: 100, width: 150 },
 { text: '下班时间', align: 'center', dataField: 'EndTime', minWidth: 100, width: 150 },
 { text: '状态', align: 'center', dataField: 'Status', columntype: 'dropdownlist', minWidth: 100, width: 150,
     createeditor: function (row, value, editor) {
@@ -117,8 +146,8 @@
 
                    {
                        text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
-                       dataField: null, cellsRenderer: function (row, column, value) {
-                           return "<a href='YuanGongKaoQinEdit.aspx?ID=" + row + "'>保存</a> ";
+                       dataField: null, cellsRenderer: function (row, column, value, data) {
+                           return "<a href='#' onclick='return saveList(" + row + ")' >保存</a> ";
                        }
                    }
                 ]
@@ -135,7 +164,7 @@
     </div>
     <div style='margin-left: 10px; margin-top: 20px;'>
         <ul class="icon-list">
-            <li><a class="add" href="YuanGongKaoQinEdit.aspx"><i></i><span>保存</span></a></li>
+            <li><a class="add" onclick="return saveList()" href="#"><i></i><span>保存</span></a></li>
         </ul>
     </div>
     <div style="clear: both;">

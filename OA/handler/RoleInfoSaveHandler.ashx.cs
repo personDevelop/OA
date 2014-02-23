@@ -6,16 +6,15 @@ using OAEntity;
 using OAManager;
 using Sharp.Common;
 using System.Text;
-using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// 保存 系统参数表
     /// </summary>
-    public class DayLogSaveHandler : IHttpHandler, IRequiresSessionState
+    public class RoleInfoSaveHandler : IHttpHandler
     {
-        DayLog entity = new DayLog();
+        RoleInfo entity = new RoleInfo();
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
@@ -27,26 +26,23 @@ namespace OA.handler
                 if (string.IsNullOrEmpty(rp["txtID"]))
                 {
                     entity.ID = Guid.NewGuid();
-                    if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
-                    {
-                        entity.UserID = new Guid(context.Session["UserID"].ToString());
-                        entity.UserName = context.Session["UserName"] as string;
-                        entity.CreateDate = DateTime.Now;
-                    }
                 }
                 else
                 {
                     entity.ID = new Guid(rp["txtID"]);
                     entity.RecordStatus = StatusType.update;
                 } 
-                entity.Content = rp["txtContent"]; 
-                entity.GS = rp["txtGS"];
-                entity.WordDate = DateTime.Parse(rp["txtWordDate"]);  
-                DayLogManager manager = new DayLogManager();
-                bool IsExit = manager.ExitDayLog(entity);//日期重复校验参考
+
+                entity.Code = rp["txtCode"];  
+                entity.Name = rp["txtName"];  
+                entity.RoleClass = rp["txtRoleClass"];  
+                entity.IsEnable = rp["txtIsEnable"] == "on";  
+                entity.Note = rp["txtNote"]; 
+                RoleInfoManager manager = new RoleInfoManager();
+                bool IsExit = manager.ExitCodeAndName(entity);//重复校验参考
                 if (IsExit)
                 {
-                    msg = "今天已填写过工作日志！";
+                    msg = "已存在相同编号或名称！";
                 }
                 else
                 {

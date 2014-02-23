@@ -69,6 +69,8 @@
     <Content Include="PersonInfoEdit.aspx" />
     <Content Include="PersonInfoList.aspx" />
     <Content Include="randomCode.aspx" />
+    <Content Include="RoleInfoEdit.aspx" />
+    <Content Include="RoleInfoList.aspx" />
     <Content Include="Script\base64.js" />
     <Content Include="Script\globalization\globalize.culture.zh-Hans.js" />
     <Content Include="Script\JqueryForm.js" />
@@ -683,6 +685,12 @@
     <Compile Include="handler\PersonInfoSaveHandler.ashx.cs">
       <DependentUpon>PersonInfoSaveHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\RoleInfoListHandler.ashx.cs">
+      <DependentUpon>RoleInfoListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\RoleInfoSaveHandler.ashx.cs">
+      <DependentUpon>RoleInfoSaveHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\ShebeiInfoDeleteHandler.ashx.cs">
       <DependentUpon>ShebeiInfoDeleteHandler.ashx</DependentUpon>
     </Compile>
@@ -722,6 +730,9 @@
     <Compile Include="handler\YuanGongKaoQinListHandler.ashx.cs">
       <DependentUpon>YuanGongKaoQinListHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\YuanGongKaoQinSaveHandler.ashx.cs">
+      <DependentUpon>YuanGongKaoQinSaveHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="JsonConvert.cs" />
     <Compile Include="JsonToDataSet.cs" />
     <Compile Include="login.aspx.cs">
@@ -752,6 +763,19 @@
     </Compile>
     <Compile Include="randomCode.aspx.designer.cs">
       <DependentUpon>randomCode.aspx</DependentUpon>
+    <Compile Include="RoleInfoEdit.aspx.cs">
+      <DependentUpon>RoleInfoEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RoleInfoEdit.aspx.designer.cs">
+      <DependentUpon>RoleInfoEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RoleInfoList.aspx.cs">
+      <DependentUpon>RoleInfoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RoleInfoList.aspx.designer.cs">
+      <DependentUpon>RoleInfoList.aspx</DependentUpon>
     </Compile>
     <Compile Include="selectSheBeiInfo.aspx.cs">
       <DependentUpon>selectSheBeiInfo.aspx</DependentUpon>
@@ -843,6 +867,9 @@
     <Content Include="handler\ShebeiInfoListHandler.ashx" />
     <Content Include="handler\ShebeiInfoSaveHandler.ashx" />
     <Content Include="handler\VerifyUser.ashx" />
+    <Content Include="handler\RoleInfoSaveHandler.ashx" />
+    <Content Include="handler\RoleInfoListHandler.ashx" />
+    <Content Include="handler\YuanGongKaoQinSaveHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />
