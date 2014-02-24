@@ -51,7 +51,7 @@ namespace OAManager
         {
             return Dal.From<PersonInfo>().Join<YuanGongKaoQin>(PersonInfo._.ID == YuanGongKaoQin._.UserID && YuanGongKaoQin._.KQRQ == kaoqindate
                 , JoinType.leftJoin)
-                .Select(PersonInfo._.RealName, YuanGongKaoQin._.ID.All)
+                .Select(PersonInfo._.RealName, PersonInfo._.ID.Alias("PersonID"), YuanGongKaoQin._.ID.All)
 
                 .OrderBy(PersonInfo._.RealName)
                 .ToDataTable();
@@ -87,10 +87,12 @@ namespace OAManager
             try
             {
                 result = Dal.Submit(tr, list);
+                Dal.CommitTransaction(tr);
 
             }
             catch (Exception)
             {
+                Dal.RollbackTransaction(tr);
                 throw;
 
             }

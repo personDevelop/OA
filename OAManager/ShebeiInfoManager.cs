@@ -83,9 +83,12 @@ namespace OAManager
             {
                 result = Dal.Submit(tr, list);
 
+                Dal.CommitTransaction(tr);
+
             }
             catch (Exception)
             {
+                Dal.RollbackTransaction(tr);
                 throw;
 
             }

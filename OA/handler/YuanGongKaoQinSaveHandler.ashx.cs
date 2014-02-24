@@ -6,52 +6,111 @@ using OAEntity;
 using OAManager;
 using Sharp.Common;
 using System.Text;
+using System.Collections.Specialized;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// 保存 系统参数表
     /// </summary>
-    public class YuanGongKaoQinSaveHandler : IHttpHandler
+    public class YuanGongKaoQinSaveHandler : IHttpHandler, IRequiresSessionState
     {
-        YuanGongKaoQin entity = new YuanGongKaoQin();
+
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            HttpRequest rp = context.Request;
+            NameValueCollection rp = context.Request.Form;
             string msg = string.Empty;
             try
             {
-
-                if (string.IsNullOrEmpty(rp["txtID"]))
+                string succesmsg = "";
+                List<BaseEntity> list = new List<BaseEntity>();
+                if (rp.AllKeys.Contains("ID"))
                 {
-                    entity.ID = Guid.NewGuid();
-                    if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
+                    //单条记录保存
+                    YuanGongKaoQin entity = new YuanGongKaoQin();
+                    if (string.IsNullOrEmpty(rp["ID"]))
                     {
-                        entity.CreaterID = new Guid(context.Session["UserID"].ToString());
+                        entity.ID = Guid.NewGuid();
                         entity.CreateDate = DateTime.Now;
+                        if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
+                        {
+                            entity.CreaterID = new Guid(context.Session["UserID"].ToString());
+
+                        }
+                        else
+                        {
+                            entity.CreaterID = Guid.NewGuid();
+                        }
                     }
+                    else
+                    {
+                        entity.ID = new Guid(rp["ID"]);
+                        entity.RecordStatus = StatusType.update;
+                        if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
+                        {
+                            entity.UpdaterID = new Guid(context.Session["UserID"].ToString());
+                            entity.Updatedate = DateTime.Now;
+                        }
+                    }
+                    entity.UserID = new Guid(rp["PersonID"]);
+                    entity.UserName = rp["RealName"];
+                    entity.StartTime = rp["StartTime"];
+                    entity.EndTime = rp["EndTime"];
+                    entity.KQRQ = DateTime.Parse(rp["KQRQ"]);
+                    entity.Status = rp["Status"];
+                    entity.Note = rp["Note"];
+                    list.Add(entity);
+                    succesmsg = "{\"success\":\"true\",\"ID\":\"" + entity.ID + "\"}";
                 }
                 else
                 {
-                    entity.ID = new Guid(rp["txtID"]);
-                    entity.RecordStatus = StatusType.update;
-                    if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
+                    //多条记录保存
+                    int rows = ((rp.Count - 1) / 14) - 1;
+                    for (int i = 0; i < rows; i++)
                     {
-                        entity.UpdaterID = new Guid(context.Session["UserID"].ToString());
-                        entity.Updatedate = DateTime.Now;
+                        string rowpix = string.Format("row[{0}]", i);
+                        YuanGongKaoQin entity = new YuanGongKaoQin();
+                        if (string.IsNullOrEmpty(rp[rowpix + "[ID]"]))
+                        {
+                            entity.ID = Guid.NewGuid();
+                            entity.CreateDate = DateTime.Now;
+                            if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
+                            {
+                                entity.CreaterID = new Guid(context.Session["UserID"].ToString());
+                               
+                            }
+                            else
+                            {
+                                entity.CreaterID = Guid.NewGuid();
+                            }
+                        }
+                        else
+                        {
+                            entity.ID = new Guid(rp[rowpix + "[ID]"]);
+                            entity.RecordStatus = StatusType.update;
+                            if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
+                            {
+                                entity.UpdaterID = new Guid(context.Session["UserID"].ToString());
+                                entity.Updatedate = DateTime.Now;
+                            }
+                        }
+                        entity.UserID = new Guid(rp[rowpix + "[PersonID]"]);
+                        entity.UserName = rp[rowpix + "[RealName]"];
+                        entity.StartTime = rp[rowpix + "[StartTime]"];
+                        entity.EndTime = rp[rowpix + "[EndTime]"];
+                        entity.KQRQ = DateTime.Parse(rp["KQRQ"]);
+                        entity.Status = rp[rowpix + "[Status]"];
+                        entity.Note = rp[rowpix + "[Note]"];
+                        list.Add(entity);
                     }
+                    succesmsg = "{\"success\":\"true\" }";
                 }
-                entity.UserID = new Guid(rp["txtUserID"]); 
-                entity.UserName = rp["txtUserName"]; 
-                entity.StartTime = rp["txtStartTime"]; 
-                entity.EndTime = rp["txtEndTime"];
-                entity.KQRQ = DateTime.Parse(rp["txtKQRQ"]);
-                entity.Status = rp["txtStatus"];
-                entity.Note = rp["txtNote"];
-                YuanGongKaoQinManager manager = new YuanGongKaoQinManager(); 
-                manager.Save(entity);
-                context.Response.Write("{\"success\":\"true\",\"ID\":\"" + entity.ID + "\"}");
+
+                YuanGongKaoQinManager manager = new YuanGongKaoQinManager();
+                manager.Save(list);
+                context.Response.Write(succesmsg);
 
             }
             catch (Exception ex)

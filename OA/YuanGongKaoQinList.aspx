@@ -16,26 +16,46 @@
     <script src="Script/base64.js" type="text/javascript"></script>
     <script src="Script/globalization/globalize.js" type="text/javascript"></script>
     <script src="Script/globalization/globalize.culture.zh-Hans.js" type="text/javascript"></script>
+    <script src="Script/JqueryForm.js" type="text/javascript"></script>
     <script type="text/javascript">
+        var selectrowindex = -1;
         var kqdata = null;
+        options = null;
         function saveList(rowindex) {
-            if (!data) {
-
-            }
-            else {
-                kqdata = $('#jqxGrid').jqxGrid('getrowdata', rowindex); 
-            }
-        }
-        $(function () {
-            $('#form1').submit(function ()//提交表单 
-            {
-                var options = {
-                    url: 'handler/RoleInfoSaveHandler.ashx', //提交给哪个执行 
+            if (!rowindex) {
+                if (selectrowindex>-1) {
+                    $("#jqxGrid").jqxGrid('endrowedit', selectrowindex, false);
+                }
+                var rows = $('#treeGrid').jqxGrid('getrows');
+                options = {
+                    url: 'handler/YuanGongKaoQinSaveHandler.ashx', //提交给哪个执行 
                     type: 'POST',
+                    data: { row: rows, KQRQ: $("#txtKQRQ").jqxDateTimeInput('getText') },
                     dataType: 'json',
                     success: function (data) {
                         if (data.success == "true") {
-                            $("#txtID").val(data.ID);
+                            $('#treeGrid').jqxGrid('refreshdata');
+                            Msg.ShowSuccess("保存成功");
+
+                        }
+                        else {
+                            Msg.ShowError(base64decode(data.msg));
+                        }
+                    }
+                };
+            }
+            else {
+                $("#jqxGrid").jqxGrid('endrowedit', rowindex, false);
+                kqdata = $('#treeGrid').jqxGrid('getrowdata', rowindex);
+                kqdata.KQRQ = $("#txtKQRQ").jqxDateTimeInput('getText');
+                options = {
+                    url: 'handler/YuanGongKaoQinSaveHandler.ashx', //提交给哪个执行 
+                    type: 'POST',
+                    data: kqdata,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.success == "true") {
+                            $('#treeGrid').jqxGrid('refreshdata');
                             Msg.ShowSuccess("保存成功");
                         }
                         else {
@@ -43,11 +63,14 @@
                         }
                     }
                 };
-                $('#form1').ajaxSubmit(options);
-                return false; //为了不刷新页面,返回false
-            });
+            }
+
+
+            $(this).ajaxSubmit(options);
+            return false;
         }
-    )
+        
+   
     </script>
     <script type="text/javascript">
 
@@ -82,6 +105,7 @@
                 dataType: "json",
                 dataFields: [
             { name: 'ID', type: 'string' },
+             { name: 'PersonID', type: 'string' },
 { name: 'UserID', type: 'string' },
 { name: 'UserName', type: 'string' },
 { name: 'StartTime', type: 'string' },
@@ -125,6 +149,7 @@
 (
             {
                 editable: true,
+                editmode: 'click',
                 width: "90%",
                 height: "460px",
                 source: dataAdapter,
@@ -147,10 +172,14 @@
                    {
                        text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
                        dataField: null, cellsRenderer: function (row, column, value, data) {
-                           return "<a href='#' onclick='return saveList(" + row + ")' >保存</a> ";
+                           return "<a href='#' onclick='return saveList(\"" + row + "\");' >保存</a> ";
                        }
                    }
                 ]
+            });
+            $("#treeGrid").on('rowselect', function (event) {
+                selectrowindex = event.args.rowindex;
+                 
             });
 
         }); 
