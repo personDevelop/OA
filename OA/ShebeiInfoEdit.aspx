@@ -81,7 +81,7 @@
 <dl>
                     <dt>是否启用</dt>
                     <dd> 
-                    <input name="txtIsEnable" type="checkbox" id="txtIsEnable"  runat="server"  class="input small" datatype="n" sucmsg=" ">
+                    <input name="txtIsEnable" type="checkbox" id="txtIsEnable" checked="checked"  runat="server"  class="input small" datatype="n" sucmsg=" ">
                     </dd>
                 </dl>
 <dl>
