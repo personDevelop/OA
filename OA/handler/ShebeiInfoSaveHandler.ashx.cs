@@ -50,6 +50,8 @@ namespace OA.handler
 
                 entity.Note = rp["txtNote"];
 
+                entity.State = rp["txtState"];
+
 
 
                 //if (!string.IsNullOrEmpty(rp["txtParentId"]))//父ID传值参考

@@ -1,6 +1,6 @@
 ﻿/*
  * author:卢永列
- * date: 2014/2/21 22:58:11
+ * date: 2014/2/24 22:10:21
  */
 using System;
 using System.Collections.Generic;
@@ -155,6 +155,9 @@ namespace OAManager
         {
             return Dal.Exists<ShebeiInfo>(ShebeiInfo._.ID != entity.ID && (ShebeiInfo._.Code == entity.Code || ShebeiInfo._.Name == entity.Name));
         }
+
+
+
 
 
 

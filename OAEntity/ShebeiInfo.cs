@@ -23,6 +23,9 @@ namespace OAEntity
         private string _GuiGe;
         private bool _IsEnable;
         private string _Note;
+        private string _State;
+        private string _FID;
+        private string _PATH;
 
         #endregion
 
@@ -147,6 +150,66 @@ namespace OAEntity
                 this._Note = value;
             }
         }
+        /// <summary>
+        /// 状态,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "State", DbTypeString = "NVarChar", ColumnIsNull = true, IsUnique = false, ColumnLength = 20, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public string State
+        {
+            get
+            {
+                return this._State;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("State", this._State, value);
+                this._State = value;
+            }
+        }
+        /// <summary>
+        /// 文件ID,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "FID", DbTypeString = "NVarChar", ColumnIsNull = true, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public string FID
+        {
+            get
+            {
+                return this._FID;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("FID", this._FID, value);
+                this._FID = value;
+            }
+        }
+        /// <summary>
+        /// 地址,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "PATH", DbTypeString = "NVarChar", ColumnIsNull = true, IsUnique = false, ColumnLength = 200, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public string PATH
+        {
+            get
+            {
+                return this._PATH;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("PATH", this._PATH, value);
+                this._PATH = value;
+            }
+        }
 
 
         #endregion
@@ -163,6 +226,9 @@ namespace OAEntity
                 GuiGe = new PropertyItem("GuiGe", tableName);
                 IsEnable = new PropertyItem("IsEnable", tableName);
                 Note = new PropertyItem("Note", tableName);
+                State = new PropertyItem("State", tableName);
+                FID = new PropertyItem("FID", tableName);
+                PATH = new PropertyItem("PATH", tableName);
 
             }
             /// <summary>
@@ -189,6 +255,18 @@ namespace OAEntity
             /// 备注,
             /// </summary> 
             public PropertyItem Note = null;
+            /// <summary>
+            /// 状态,
+            /// </summary> 
+            public PropertyItem State = null;
+            /// <summary>
+            /// 文件ID,
+            /// </summary> 
+            public PropertyItem FID = null;
+            /// <summary>
+            /// 地址,
+            /// </summary> 
+            public PropertyItem PATH = null;
 
 
         }

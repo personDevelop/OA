@@ -55,6 +55,16 @@
     </div>
     <div style='margin-top: 20px;'>
     </div>
+     <div class="content-tab-wrap">
+  <div id="floatHead" class="content-tab">
+    <div class="content-tab-ul-wrap">
+      <ul>
+        <li><a href="javascript:;" onclick="tabs(this);" class="selected">基本信息</a></li>
+        <li><a href="javascript:;" onclick="tabs(this);" class="">设备图片</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
     <div class="content-tab-wrap">
         <div class="tab-content" style="display: block;">
          <input name="txtID" type="hidden" id="txtID" runat="server" />
@@ -84,10 +94,17 @@
                     <input name="txtIsEnable" type="checkbox" id="txtIsEnable" checked="checked"  runat="server"  class="input small" datatype="n" sucmsg=" ">
                     </dd>
                 </dl>
+
+                <dl>
+                    <dt>设备状态</dt>
+                    <dd> 
+                    <input name="txtState"  type="text" id="txtState"   runat="server"  class="input small" datatype="n" sucmsg=" ">
+                    </dd>
+                </dl>
 <dl>
                     <dt>备注</dt>
                     <dd> 
-                    <textarea name="txtNote" id="txtNote" runat="server" rows="6" class="input big"></textarea>
+                    <textarea name="txtNote" id="txtNote" runat="server" style='width:600px;' rows="6" class="input big"></textarea>
                     </dd>
                 </dl>
   
