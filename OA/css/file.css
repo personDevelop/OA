@@ -1,0 +1,24 @@
+﻿ .imgPreview{display:none;border:1px dashed #eee;box-shadow: 1px 1px 16px #A09D9D;position:absolute;padding: 8px;}
+ .uploadify-queue,.file_queueone,.uploadify{}
+ .uploadify-button {height: 37px;width: 75px;cursor: pointer;background: url(images/bg.png);border: none;border-radius:0;}
+ .uploadify-button{font-family: 微软雅黑;font-size: 17px;font-weight: normal;border:1px solid #0C528D;}
+ .uploadone:hover{background:#FAFAFA;}
+ .uploadone
+ {
+border: 1px solid #D1D1D1;
+background: #FFFFFF;
+height: 141px;
+width: 155px;
+font-size: 12px;
+font-family: 微软雅黑;
+line-height: 29px;
+margin: 5px;
+float: left;}
+ .file_queueone{float:left;overflow: auto;height: 306px;}
+ .upload{clear:both;margin-top:10px;margin-left:15px;}
+ a,a:visited{color:#D83D3D;text-decoration:none;} 
+ .img_desk{height: 100px;
+width: 135px;
+margin-top: 9px;
+margin-left: 9px;}
+ 

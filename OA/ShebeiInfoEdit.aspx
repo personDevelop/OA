@@ -7,7 +7,11 @@
     <title>设备信息表</title>
     <link href="base.css" rel="stylesheet">
     <link href="Script/styles/jqx.base.css" rel="stylesheet" type="text/css" />
+    <link href="Script/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+    <link href="css/file.css" rel="stylesheet" type="text/css" />
     <script src="Script/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="Script/uploadify/jquery.uploadify-3.1.js" type="text/javascript"></script>
+    <script src="Script/Uploaderone.js" type="text/javascript"></script>
     <script src="Script/jqxcore.js" type="text/javascript"></script>
     <script src="Script/jqx-all.js" type="text/javascript"></script>
     <script src="Script/basejs.js" type="text/javascript"></script>
@@ -21,6 +25,9 @@
                        { input: '#txtCode', message: '编码必填!', action: 'keyup, blur', rule: 'required' },
                        { input: '#txtName', message: '名称必填!', action: 'keyup, blur', rule: 'required'}]
             });
+
+            $("#txtFILEID").uploadone({});
+            $("#uploadify").css("margin-left","15px");
             $('#form1').submit(function ()//提交表单 
             {
                 var issuccess = $('#form1').jqxValidator('validate');
@@ -43,7 +50,24 @@
                 }
                 return false; //为了不刷新页面,返回false  
             });
-        }); 
+        });
+
+        function tabs(ele) {
+            var id = ele.id;
+            if (id == "pic") {
+                $("#basic_wrap").hide();
+                $("#pic_wrap").show();
+                $("#pic").addClass("selected");
+                $("#basic").removeClass("selected");
+                
+            }
+            if (id == "basic") {
+                $("#pic_wrap").hide();
+                $("#basic_wrap").show();
+                $("#basic").addClass("selected");
+                $("#pic").removeClass("selected");
+            }
+        }
     </script>
 </head>
 <body style='padding-left: 10px; padding-right: 10px; padding-top: 10px;'>
@@ -59,14 +83,17 @@
   <div id="floatHead" class="content-tab">
     <div class="content-tab-ul-wrap">
       <ul>
-        <li><a href="javascript:;" onclick="tabs(this);" class="selected">基本信息</a></li>
-        <li><a href="javascript:;" onclick="tabs(this);" class="">设备图片</a></li>
+        <li><a href="javascript:;" id='basic' onclick="tabs(this);" class="selected">基本信息</a></li>
+        <li><a href="javascript:;"  id='pic' onclick="tabs(this);" class="">设备图片</a></li>
       </ul>
     </div>
   </div>
 </div>
-    <div class="content-tab-wrap">
-        <div class="tab-content" style="display: block;">
+
+         <div class="tab-content" id='pic_wrap' style="display: none;height: 350px;">
+         <input name="txtFILEID" type="text" id="txtFILEID" runat="server" />
+         </div>
+        <div class="tab-content" id='basic_wrap' style="display: block;">
          <input name="txtID" type="hidden" id="txtID" runat="server" />
             <dl>
  

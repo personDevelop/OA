@@ -62,7 +62,9 @@
     <Content Include="Config\System\DataBaseConnect.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="css\file.css" />
     <Content Include="css\images\all.css" />
+    <Content Include="css\images\bg.png" />
     <Content Include="css\images\bj_line.gif" />
     <Content Include="css\images\captcha.jpg" />
     <Content Include="css\images\chart_bar.png" />
@@ -74,6 +76,7 @@
     <Content Include="css\images\icon_24.gif" />
     <Content Include="css\images\jquery.min.js" />
     <Content Include="css\images\lightbulb_off.png" />
+    <Content Include="css\images\loading.gif" />
     <Content Include="css\images\login.css" />
     <Content Include="css\images\login_bg.png" />
     <Content Include="css\images\login_bg_line.jpg" />
@@ -139,6 +142,7 @@
     <Content Include="Script\jquery-1.10.2.min.js" />
     <Content Include="Script\jqx-all.js" />
     <Content Include="Script\jqxcore.js" />
+    <Content Include="Script\jqxdateinput.js" />
     <Content Include="Script\Skin.js" />
     <Content Include="Script\styles\images\backgroundTop.png" />
     <Content Include="Script\styles\images\backImage.png" />
@@ -658,6 +662,14 @@
     <Content Include="Script\ueditor\ueditor.config.js" />
     <Content Include="Script\ueditor\ueditor.parse.js" />
     <Content Include="Script\ueditor\ueditor.parse.min.js" />
+    <Content Include="Script\Uploaderone.js" />
+    <Content Include="Script\uploadify\Change Log.txt" />
+    <Content Include="Script\uploadify\jquery.uploadify-3.1.js" />
+    <Content Include="Script\uploadify\jquery.uploadify-3.1.min.js" />
+    <Content Include="Script\uploadify\license.txt" />
+    <Content Include="Script\uploadify\uploadify-cancel.png" />
+    <Content Include="Script\uploadify\uploadify.css" />
+    <Content Include="Script\uploadify\uploadify.swf" />
     <Content Include="selectSheBeiInfo.aspx" />
     <Content Include="ShebeiInfoEdit.aspx" />
     <Content Include="ShebeiInfoList.aspx" />
@@ -749,6 +761,9 @@
     </Compile>
     <Compile Include="handler\SystemCodeSaveHandler.ashx.cs">
       <DependentUpon>SystemCodeSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\uploadHandler.ashx.cs">
+      <DependentUpon>uploadHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\VerifyUser.ashx.cs">
       <DependentUpon>VerifyUser.ashx</DependentUpon>
@@ -912,6 +927,7 @@
     <Content Include="handler\RoleInfoSaveHandler.ashx" />
     <Content Include="handler\RoleInfoListHandler.ashx" />
     <Content Include="handler\YuanGongKaoQinSaveHandler.ashx" />
+    <Content Include="handler\uploadHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />
@@ -924,6 +940,9 @@
     <None Include="Script\ueditor\third-party\video-js\font\vjs.eot" />
     <None Include="Script\ueditor\third-party\video-js\font\vjs.ttf" />
     <None Include="Script\ueditor\third-party\video-js\font\vjs.woff" />
+    <None Include="Script\uploadify\.htaccess" />
+    <None Include="Script\uploadify\check-exists.php" />
+    <None Include="Script\uploadify\uploadify.php" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OAEntity\OAEntity.csproj">
