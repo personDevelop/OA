@@ -61,6 +61,9 @@
                 var fileques = this.file_queue;
                 var g = this;
                 var gg = $(render_dom).uploadify({
+                    'onSelect': function (event, queueID, fileObj){
+                        uploadifySettings(this);
+                    },
                     auto: true,
                     height: 30,
                     swf: '../Script/uploadify/uploadify.swf',
@@ -133,4 +136,11 @@
     };
 })(jQuery);
 
- 
+
+var uploadifySettings = function (obj) {
+
+
+    var url = '../handler/uploadHandler.ashx?sid=' + $("#txtID").val();
+    obj.setUploadURL(url); //重新设置后台处理地址
+    //obj.setFileSizeLimit(maxLength); //设置允许上传的文件大小
+}

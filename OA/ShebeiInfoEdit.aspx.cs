@@ -18,6 +18,10 @@ namespace OA
                 //修改
                 LoadData(Request.QueryString["ID"]);
             }
+            else
+            {
+                txtID.Value = Guid.NewGuid().ToString();
+            }
 
         }
 

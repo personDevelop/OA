@@ -26,11 +26,12 @@ namespace OA.handler
                 if (string.IsNullOrEmpty(rp["txtID"]))
                 {
                     entity.ID = Guid.NewGuid();
+
                 }
                 else
                 {
                     entity.ID = new Guid(rp["txtID"]);
-                    entity.RecordStatus = StatusType.update;
+                    //entity.RecordStatus = StatusType.update;
                 }
 
 
@@ -70,7 +71,8 @@ namespace OA.handler
                 //  }
                 //  else
                 //  {
-                manager.Save(entity);
+                manager.DelateById(entity.ID);//先删除
+                manager.Save(entity);//后新增
                 context.Response.Write("{\"success\":\"true\",\"ID\":\"" + entity.ID + "\"}");
                 // }
             }

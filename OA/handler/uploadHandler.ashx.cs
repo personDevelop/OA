@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 using System.IO;
+using OAEntity;
 
 namespace OA.handler
 {
@@ -56,6 +57,17 @@ namespace OA.handler
                     // alb.add(uc);
                     //保存图片 
                     fileUpload.SaveAs(path + folder + "/" + saveName);
+                    string SBID = "";
+                    //string FileName = "";
+                    OAEntity.FileInfo fl = new OAEntity.FileInfo();
+                    fl.ID = Guid.NewGuid();
+                    fl.SBID = SBID;
+                    fl.FILENAME = fileUpload.FileName;
+                    fl.FILEPATH = UploadDir + folder + "/" + saveName;
+                    fl.FILEEXT = "";
+                    OAManager.FileInfoManager flMgr = new OAManager.FileInfoManager();
+                    flMgr.Save(fl);
+                    
                     context.Response.Write(UploadDir + folder + "/" + saveName);
                 }
                 catch
