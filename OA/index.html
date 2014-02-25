@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<SCRIPT language=javascript type=text/javascript src="css/images/jquery.min.js"></SCRIPT>
+<script>
+    $(function () {
+        var data = GetSbList();
+        if (data.rows.length > 0) {
+            for (var item in data.rows) {
+                var row = data.rows[item];
+                var html = '<div class="offer_box_wide">' +
+             '<a href="#"><img src="css/images/p1.jpg" width="130" height="98" class="img_left" alt="" title="" border="0"></a>' +
+             '<div class="offer_info">' +
+             '<span>' + row["Name"] + '</span>' +
+             '<p class="offer" style="margin-top: 10px;">规格型号：' + row["GuiGe"] + '</p>' +
+             '<p class="offer">运行状态：' + row["State"] + '</p>' +
+             '<div class="more"><a href="#">...more</a></div>' +
+             '</div>' +
+             '</div>';
+                $("#s_wrap").append(html);
+            }
+        }
+    });
+
+    function GetSbList() {
+        var resobj = null;
+        var vsJsonData = {   };
+        $.ajax({
+            url: "../handler/getShebeiImgListHandler.ashx",
+            type: "post",
+            data: vsJsonData,
+            dataType: "json",
+            async: false,
+            success:
+                function (reval) {
+                    resobj = reval;
+                },
+            error: function (err) {
+                throw err.responseText;
+                return false;
+            }
+        });
+        return resobj;
+
+    }
+
+</script>
+</head>
+<body>
+<div id="main_container">
+
+<div id="header">
+
+       <div id="logo">
+        <a href="index.html">
+		<img src="css/images/1.gif" width="547" height="68" alt="" title="" border="0">
+		</a>
+       </div>
+           
+       <div class="banner_adds"></div>    
+
+
+<div class="menu">
+
+<ul>
+<li><a href="index.html">首页</a></li>
+<li><a href="login.aspx" target=_blank>报工管理</a>
+</li>
+<li><a href="login.aspx" target=_blank>派工管理</a>
+</li>
+<li><a href="login.aspx" target=_blank>设备管理</a>
+</li>
+<li><a href="login.aspx" target=_blank>后台管理</a>
+</li>
+
+</ul>
+
+</div>
+
+
+
+
+
+
+</div>
+<div style='background: #2C6FA2;padding: 6px 15px;margin-top: 8px;color: white;font-weight: bold;'>设备信息</div>
+<div id='center'>
+<div class="" id='s_wrap'>
+        
+         
+        	
+             <div class="offer_box_wide">
+            	<a href="#"><img src="css/images/p1.jpg" width="130" height="98" class="img_left" alt="" title="" border="0"></a>
+                <div class="offer_info">
+                <span>天梭K1服务器</span>
+                <p class="offer" style='margin-top: 10px;'>
+                规格型号：C33386             
+                </p>
+				 <p class="offer">
+                运行状态：已停止             
+                </p>
+                <div class="more"><a href="#">...more</a></div>
+                </div>
+            </div>
+            
+             
+			
+             
+			
+             
+			
+             
+			 
+			
+             
+            
+              
+
+
+             
+            
+            
+             
+
+            
+            
+                
+
+ 
+            
+             
+
+           
+        
+        </div>
+		 <div class="pagination" style='clear:both;display:none;'>
+            <span class="disabled">&lt;&lt;</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=3">4</a><a href="#?page=3">5</a><a href="#?page=3">6</a><a href="#?page=3">7</a>…<a href="#?page=199">10</a><a href="#?page=200">11</a><a href="#?page=2">&gt;&gt;</a>
+            </div> 
+</div>
+
+    
+ 
+<div id="footer">
+
+	<div id="copyright">
+    <div style="float:left; padding:3px;"><a href="#"></a></div>
+    <div style="float:left; padding:14px 10px 10px 10px;"> 济南软捷软件有限公司.&copy; All Rights Reserved 2014 - By <a href="http://csscreme.com" style="color:#772c17;">RUANJIE</a></div>
+    </div>
+    
+    
+ 
+</div>
+
+
+</div>
+<!-- end of main_container -->
+
+</body>
+</html>

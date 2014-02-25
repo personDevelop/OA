@@ -32,10 +32,14 @@ INPUT.bottons04:hover {
 	BACKGROUND: url(../images/class_bg.jpg) repeat-x 0px -120px; COLOR: #209248; CURSOR: pointer
 }
 BODY {
-	BACKGROUND: url(../images/login_bg_line.jpg) #ecf5fb repeat-x; HEIGHT: 100%; OVERFLOW: hidden
+	/*BACKGROUND: url(../images/login_bg_line.jpg) #ecf5fb repeat-x;*/
+	BACKGROUND: rgb(234, 247, 255); HEIGHT: 100%; OVERFLOW: hidden
 }
 .login-div {
-	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; BACKGROUND: url(../images/login_bg_top.jpg) no-repeat; PADDING-TOP: 0px
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; 
+	WIDTH: 100%; PADDING-RIGHT: 0px;
+	/* BACKGROUND: url(../images/login_bg_top.jpg) no-repeat;*/
+	  PADDING-TOP: 0px
 }
 .login-top {
 	WIDTH: 564px; DISPLAY: block; BACKGROUND: url(../images/login_topbg.png) no-repeat 0px 0px; FLOAT: left; HEIGHT: 21px

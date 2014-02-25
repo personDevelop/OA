@@ -82,7 +82,6 @@ namespace OAManager
             try
             {
                 result = Dal.Submit(tr, list);
-
                 Dal.CommitTransaction(tr);
 
             }

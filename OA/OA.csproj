@@ -63,6 +63,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="css\file.css" />
+    <Content Include="css\images\1.gif" />
     <Content Include="css\images\all.css" />
     <Content Include="css\images\bg.png" />
     <Content Include="css\images\bj_line.gif" />
@@ -87,13 +88,16 @@
     <Content Include="css\images\login_title.png" />
     <Content Include="css\images\login_topbg.png" />
     <Content Include="css\images\logo.png" />
+    <Content Include="css\images\p1.jpg" />
     <Content Include="css\images\skin_icons.png" />
     <Content Include="css\images\sound.png" />
     <Content Include="css\images\subbotton.gif" />
     <Content Include="css\images\tag_blue.png" />
+    <Content Include="css\style.css" />
     <Content Include="dashboard.html" />
     <Content Include="DayLogEdit.aspx" />
     <Content Include="DayLogList.aspx" />
+    <Content Include="index.html" />
     <Content Include="js\DatePicker\calendar.js" />
     <Content Include="js\DatePicker\lang\en.js" />
     <Content Include="js\DatePicker\lang\zh-cn.js" />
@@ -735,6 +739,9 @@
     <Compile Include="handler\FileInfoListHandler.ashx.cs">
       <DependentUpon>FileInfoListHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\getShebeiImgListHandler.ashx.cs">
+      <DependentUpon>getShebeiImgListHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\PersonInfoDeleteHandler.ashx.cs">
       <DependentUpon>PersonInfoDeleteHandler.ashx</DependentUpon>
     </Compile>
@@ -936,6 +943,7 @@
     <Content Include="handler\uploadHandler.ashx" />
     <Content Include="handler\FileInfoListHandler.ashx" />
     <Content Include="handler\FileDel.ashx" />
+    <Content Include="handler\getShebeiImgListHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />
