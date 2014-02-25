@@ -52,6 +52,18 @@ namespace OAManager
             return Dal.From<FileInfo>().ToDataTable();
         }
 
+
+        /// <summary>
+        /// 获取文件列表datatable
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetDataTable(string sid)
+        {
+             
+            WhereClip where =FileInfo._.SBID == sid;
+            return Dal.From<FileInfo>().Where(where).ToDataTable();
+        }
+
         /// <summary>
         /// 分页获取获取文件列表datatable
         /// </summary>

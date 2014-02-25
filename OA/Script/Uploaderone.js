@@ -23,30 +23,23 @@
                 this.initUploadCtrl();
                 this.initIamgePreview();
                 this.addEvent();
-                if (fileValue !== "") {
-                    this.initData(this.fileData, this.fileValue);
-                    this.filepath = fileValue;
-                }
+                this.initData(this.fileData, this.fileValue);
+                    //this.filepath = fileValue;
+                 
             },
             initData: function (data, fileValue) {
                 //加载数据
-
                 var fileques = this.file_queue;
+                for (var item in data) {
+                    fileques.append(
+                            '<div id="' + data[item]["ID"] + '" class="uploadone">'
+                            + '<img src="' + data[item]["FILEPATH"] + '" class="img_desk">'
+                            + '<div style="float: right;margin-right: 12px;">'
+                            + '<a class="del_File_One" href="#" databind="' + data[item]["ID"] + '" onclick="flieDel(this)" style="margin-right: 4px;">删除</a>'
+                            + '<a class="pre_view_one" target="_blank" href="' + data[item]["FILEPATH"] + '"   style="">查看</a></div>' +
+                            '</div>');
+                }
 
-                fileques.html(
-                        '<div class="uploadone">'
-                        + '<span style="width: 524px;float: left;">' + data + '</span>'
-                        + '<a class="del_File_One" href="#" path="' + data + '" style="margin-right: 4px;">删除</a>'
-                        + '<a class="pre_view_one" path="' + data + '" href="#" style="">查看</a>'
-                        + '</div>');
-                //                for (var item in data) {
-                //                    fileques.html(
-                //                        '<div id="' + item + '" class="uploadone">'
-                //                        + '<span style="width: 324px;float: left;">' + data[item].name + '</span>'
-                //                        + '<a class="del_File_One" href="#" style="margin-right: 4px;">删除</a>'
-                //                        + '<a class="pre_view_one" href="#" style="">查看</a>'
-                //                        + '</div>');
-                //                }
             },
             initWrap: function () {
                 var render_dom = this.g;
@@ -61,13 +54,10 @@
                 var fileques = this.file_queue;
                 var g = this;
                 var gg = $(render_dom).uploadify({
-                    'onSelect': function (event, queueID, fileObj){
-                        uploadifySettings(this);
-                    },
                     auto: true,
                     height: 30,
                     swf: '../Script/uploadify/uploadify.swf',
-                    uploader: '../handler/uploadHandler.ashx',
+                    uploader: '../handler/uploadHandler.ashx?sid=' + $("#txtID").val(),
                     width: 120,
                     buttonText: '选择图片',
                     fileTypeExts: '*.gif;*.jpg;*.jpeg;*.png',
@@ -93,17 +83,19 @@
                             //alert(data);
                             //render_dom.val("admin/" + data);
 
-                            g.filepath = data;
+                            g.filepath = data.split(";")[0];
+                            var fileUid = data.split(";")[1];
                             //alert( render_dom.val());
                             g.fileData = {};
                             g.fileData[file.id] = { name: file.name, path: data };
                             fileques.append(
                             '<div id="' + file.id + '" class="uploadone">'
                             + '<img src="' + g.filepath + '" class="img_desk">'
-                           // + '<span style="width: 524px;float: left;">' + "../" + g.filepath + '</span>'
-                            + '<div style="float: right;margin-right: 12px;"><a class="del_File_One" href="#" path=' + "../" + g.filepath + ' style="margin-right: 4px;">删除</a>'
-                            + '<a class="pre_view_one" href="#"  path=' + "../" + g.filepath + '  style="">查看</a></div>' +
-                            '</div>');
+                            + '<div style="float: right;margin-right: 12px;">'
+                            + '<a class="del_File_One" href="#" databind="' + fileUid + '" onclick="flieDel(this)"  style="margin-right: 4px;">删除</a>'
+                            + '<a class="pre_view_one" target="_blank" href="' + +g.filepath +'" >查看</a>'
+                            +'</div>' 
+                            + '</div>');
                         }
                     },
                     onUploadError: function (file, errorCode, errorMsg, errorString) {//当单个文件上传出错时触发 
@@ -136,6 +128,33 @@
     };
 })(jQuery);
 
+function flieDel(ele) {
+    //alert($(ele).attr("databind"));
+    var fid = $(ele).attr("databind");
+    var resobj = null;
+    var vsJsonData = { "fid": fid };
+    $.ajax({
+        url: "../handler/FileDel.ashx",
+        type: "post",
+        data: vsJsonData,
+        dataType: "text",
+        async: true,
+        success:
+                function (reval) {
+                    if (reval == "sucess") {
+                        Msg.ShowSuccess("删除成功！");
+                        $("#" + fid).remove();
+                    } else {
+                        Msg.ShowError("删除失败！");
+                    }
+                },
+        error: function (err) {
+            throw err.responseText;
+            return false;
+        }
+    });
+    return resobj;
+}
 
 var uploadifySettings = function (obj) {
 

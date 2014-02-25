@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Web;
 using System.IO;
 using OAEntity;
+using Sharp.Common;
+using Sharp.Data;
 
 namespace OA.handler
 {
@@ -57,18 +59,21 @@ namespace OA.handler
                     // alb.add(uc);
                     //保存图片 
                     fileUpload.SaveAs(path + folder + "/" + saveName);
-                    string SBID = "";
+                    string SBID = context.Request.QueryString.Get("sid");
                     //string FileName = "";
                     OAEntity.FileInfo fl = new OAEntity.FileInfo();
+                    
                     fl.ID = Guid.NewGuid();
                     fl.SBID = SBID;
                     fl.FILENAME = fileUpload.FileName;
                     fl.FILEPATH = UploadDir + folder + "/" + saveName;
                     fl.FILEEXT = "";
+                    fl.RecordStatus = StatusType.add;
                     OAManager.FileInfoManager flMgr = new OAManager.FileInfoManager();
+                    //flMgr.RecordStatus == StatusType.add;
                     flMgr.Save(fl);
-                    
-                    context.Response.Write(UploadDir + folder + "/" + saveName);
+
+                    context.Response.Write(UploadDir + folder + "/" + saveName + ";" + fl.ID);
                 }
                 catch
                 {

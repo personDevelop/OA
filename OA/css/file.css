@@ -16,9 +16,10 @@ margin: 5px;
 float: left;}
  .file_queueone{float:left;overflow: auto;height: 306px;}
  .upload{clear:both;margin-top:10px;margin-left:15px;}
- a,a:visited{color:#D83D3D;text-decoration:none;} 
  .img_desk{height: 100px;
 width: 135px;
 margin-top: 9px;
 margin-left: 9px;}
+
+.uploadify{margin-left: 5px;}
  

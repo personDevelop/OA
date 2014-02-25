@@ -25,9 +25,9 @@
                        { input: '#txtCode', message: '编码必填!', action: 'keyup, blur', rule: 'required' },
                        { input: '#txtName', message: '名称必填!', action: 'keyup, blur', rule: 'required'}]
             });
-
-            $("#txtFILEID").uploadone({});
-            $("#uploadify").css("margin-left","15px");
+            var vsData = GetSbList();
+            $("#txtFILEID").uploadone({ "loadData": vsData });
+            $("#uploadify").css("margin-left", "15px");
             $('#form1').submit(function ()//提交表单 
             {
                 var issuccess = $('#form1').jqxValidator('validate');
@@ -50,7 +50,33 @@
                 }
                 return false; //为了不刷新页面,返回false  
             });
+
+
+            
         });
+
+        function GetSbList() {
+            var resobj = null;
+            var sid = $("#txtID").val();
+            var vsJsonData = { "sid": sid };
+            $.ajax({
+                url: "../handler/FileInfoListHandler.ashx",
+                type: "post",
+                data: vsJsonData,
+                dataType: "json",
+                async: false,
+                success:
+                function (reval) {
+                    resobj = reval;
+                },
+                error: function (err) {
+                    throw err.responseText;
+                    return false;
+                }
+            });
+            return resobj;
+
+        }
 
         function tabs(ele) {
             var id = ele.id;
@@ -82,15 +108,15 @@
     <div style='margin-top: 20px;'>
     </div>
      <div class="content-tab-wrap">
-  <div id="floatHead" class="content-tab">
-    <div class="content-tab-ul-wrap">
-      <ul>
-        <li><a href="javascript:;" id='basic' onclick="tabs(this);" class="selected">基本信息</a></li>
-        <li><a href="javascript:;"  id='pic' onclick="tabs(this);" class="">设备图片</a></li>
-      </ul>
+      <div id="floatHead" class="content-tab">
+        <div class="content-tab-ul-wrap">
+          <ul>
+            <li><a href="javascript:;" id='basic' onclick="tabs(this);" class="selected">基本信息</a></li>
+            <li><a href="javascript:;"  id='pic' onclick="tabs(this);" class="">设备图片</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
          <div class="tab-content" id='pic_wrap' style="display: none;height: 350px;">
          <input name="txtFILEID" type="text" id="txtFILEID" runat="server" />

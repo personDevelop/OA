@@ -41,6 +41,7 @@ namespace OA
             txtRoleClass.Value = code.RoleClass;
             txtIsEnable.Checked = code.IsEnable;
             txtNote.Value = code.Note;
+            
 
         }
 

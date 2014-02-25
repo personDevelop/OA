@@ -729,6 +729,12 @@
     <Compile Include="handler\FenPaiHandler.ashx.cs">
       <DependentUpon>FenPaiHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\FileDel.ashx.cs">
+      <DependentUpon>FileDel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\FileInfoListHandler.ashx.cs">
+      <DependentUpon>FileInfoListHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\PersonInfoDeleteHandler.ashx.cs">
       <DependentUpon>PersonInfoDeleteHandler.ashx</DependentUpon>
     </Compile>
@@ -928,6 +934,8 @@
     <Content Include="handler\RoleInfoListHandler.ashx" />
     <Content Include="handler\YuanGongKaoQinSaveHandler.ashx" />
     <Content Include="handler\uploadHandler.ashx" />
+    <Content Include="handler\FileInfoListHandler.ashx" />
+    <Content Include="handler\FileDel.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />

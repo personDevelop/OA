@@ -21,6 +21,7 @@ namespace OA
             else
             {
                 txtID.Value = Guid.NewGuid().ToString();
+                txtState.Value = "正常";
             }
 
         }
@@ -34,8 +35,9 @@ namespace OA
             txtGuiGe.Value = sb.GuiGe.ToString();
             txtCode.Value = sb.Code.ToString();
             txtIsEnable.Checked = sb.IsEnable;
-
             txtNote.Value = sb.Note.ToString();
+
+            txtState.Value = sb.State.ToString();
 
 
         }
