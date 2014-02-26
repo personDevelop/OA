@@ -18,13 +18,15 @@
     <script src="Script/globalization/globalize.culture.zh-Hans.js" type="text/javascript"></script>
     <script src="Script/JqueryForm.js" type="text/javascript"></script>
     <script type="text/javascript">
-        var selectrowindex = -1;
+        
+        var dataAdapter;
         var kqdata = null;
         options = null;
         function saveList(rowindex) {
+            var selectedrowindex = $('#treeGrid').jqxGrid('selectedrowindex'); 
             if (!rowindex) {
-                if (selectrowindex>-1) {
-                    $("#jqxGrid").jqxGrid('endrowedit', selectrowindex, false);
+                if (selectedrowindex > -1) {
+                    $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
                 }
                 var rows = $('#treeGrid').jqxGrid('getrows');
                 options = {
@@ -34,7 +36,8 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.success == "true") {
-                            $('#treeGrid').jqxGrid('refreshdata');
+                            //$('#treeGrid').jqxGrid('refresh');
+                            dataAdapter.dataBind();
                             Msg.ShowSuccess("保存成功");
 
                         }
@@ -42,10 +45,13 @@
                             Msg.ShowError(base64decode(data.msg));
                         }
                     }
-                };
+                }
             }
             else {
-                $("#jqxGrid").jqxGrid('endrowedit', rowindex, false);
+                if (selectedrowindex > -1) {
+                    $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
+                }
+                var data = $('#treeGrid').jqxGrid('getrowdata', 1);
                 kqdata = $('#treeGrid').jqxGrid('getrowdata', rowindex);
                 kqdata.KQRQ = $("#txtKQRQ").jqxDateTimeInput('getText');
                 options = {
@@ -55,7 +61,8 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.success == "true") {
-                            $('#treeGrid').jqxGrid('refreshdata');
+                            //$('#treeGrid').jqxGrid('refresh');
+                            dataAdapter.dataBind();
                             Msg.ShowSuccess("保存成功");
                         }
                         else {
@@ -123,7 +130,7 @@
                 id: 'ID',
                 url: 'handler/YuanGongKaoQinListHandler.ashx'
             };
-            var dataAdapter = new $.jqx.dataAdapter(source,
+              dataAdapter = new $.jqx.dataAdapter(source,
                 {
                     formatData: function (data) {
 
@@ -177,10 +184,7 @@
                    }
                 ]
             });
-            $("#treeGrid").on('rowselect', function (event) {
-                selectrowindex = event.args.rowindex;
-                 
-            });
+            
 
         }); 
     </script>
