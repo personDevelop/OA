@@ -41,7 +41,9 @@ namespace OAManager
                 WhereClip where = PersonInfo._.UserName == username;
                 //wr.
                 PersonInfo pr = new PersonInfo();
+                pr.RecordStatus = StatusType.update;
                 pr.Pwd = pwd;
+               
                 Dal.Update(where, pr);//这里没成功 不知道是什么原因
                 return true;
             }

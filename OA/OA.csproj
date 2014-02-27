@@ -852,6 +852,18 @@
     <Compile Include="handler\FileInfoListHandler.ashx.cs">
       <DependentUpon>FileInfoListHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\FunctionInfoDeleteHandler.ashx.cs">
+      <DependentUpon>FunctionInfoDeleteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\FunctionInfoListHandler.ashx.cs">
+      <DependentUpon>FunctionInfoListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\FunctionInfoSaveHandler.ashx.cs">
+      <DependentUpon>FunctionInfoSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\GetRolePersonHandler.ashx.cs">
+      <DependentUpon>GetRolePersonHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\getShebeiImgListHandler.ashx.cs">
       <DependentUpon>getShebeiImgListHandler.ashx</DependentUpon>
     </Compile>
@@ -1080,6 +1092,10 @@
     <Content Include="handler\getState.ashx" />
     <Content Include="handler\clearState.ashx" />
     <Content Include="handler\resetPass.ashx" />
+    <Content Include="handler\FunctionInfoDeleteHandler.ashx" />
+    <Content Include="handler\FunctionInfoListHandler.ashx" />
+    <Content Include="handler\FunctionInfoSaveHandler.ashx" />
+    <Content Include="handler\GetRolePersonHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />
