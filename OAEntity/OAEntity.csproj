@@ -46,6 +46,7 @@
     <Compile Include="DayLog.cs" />
     <Compile Include="FileInfo.cs" />
     <Compile Include="FunctionInfo.cs" />
+    <Compile Include="NoticeInfo.cs" />
     <Compile Include="PersonInfo.cs" />
     <Compile Include="RoleInfo.cs" />
     <Compile Include="RolePerson.cs" />

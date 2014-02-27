@@ -315,7 +315,7 @@ padding:10px;
 margin:10px 0px 10px 0px;
 }
 .offer_box_wide{
-width:289px;
+width:285px;
 height:106px;
 float:left;
 background-color:#f3f5f6;
@@ -362,8 +362,9 @@ padding-left:40px;
 }
 /*------------------table style---------------*/
 td{
-text-align:center;
-padding:5px;
+text-align:left;
+padding:1px;
+padding-left:2px;
 border-bottom:2px #fff solid;
 }
 th{
@@ -544,3 +545,6 @@ text-decoration:none;  color:#2F2626;}
 float:left;
 padding:0px;
 }
+#news_info a{color: #696969;
+text-decoration: none;}
+#news_info a:hover{color:Blue;}

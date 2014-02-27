@@ -49,6 +49,7 @@
     <Compile Include="DayLogManager.cs" />
     <Compile Include="FileInfoManager.cs" />
     <Compile Include="FunctionInfoManager.cs" />
+    <Compile Include="NoticeInfoManager.cs" />
     <Compile Include="PersonInfoManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleInfoManager.cs" />

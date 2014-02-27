@@ -197,6 +197,7 @@ background: #16a0d3;
 .selected{background:blue;}
 .subMenu{margin-left:32px;}
 .item{font-size:12px;color:#666;text-decoration:none;}
+ 
 .logo i{background: url(css/images/skin_icons.png);width:10px;height:10px;}
 
 .drop-box {
@@ -374,8 +375,13 @@ white-space: nowrap;
 					<ul  class='subblock'>
 						<li>
 							<a navid="site_config" href="ShebeiInfoList.aspx" target="mainframe" class="item">
-							<div class="arrow"></div><div class="expandable"></div><div class=""></div><span class='subMenu'>设备管理</span>
-						</a>
+							    <div class="arrow"></div><div class="expandable"></div><div class=""></div><span class='subMenu'>设备管理</span>
+						    </a>
+						</li>
+                        <li>
+							<a navid="site_config" href="NoticeInfoList.aspx" target="mainframe" class="item">
+							    <div class="arrow"></div><div class="expandable"></div><div class=""></div><span class='subMenu'>公告管理</span>
+						    </a>
 						</li>
 					</ul>
 					</li>
@@ -407,6 +413,11 @@ white-space: nowrap;
 							<a navid="site_config" href="RoleInfoList.aspx" target="mainframe" class="item">
 							<div class="arrow"></div><div class="expandable"></div><div class=""></div><span class='subMenu'>角色管理</span>
 						</a>
+						</li>
+                        <li>
+							<a navid="site_config" href="FunctionInfoList.aspx" target="mainframe" class="item">
+							    <div class="arrow"></div><div class="expandable"></div><div class=""></div><span class='subMenu'>功能管理</span>
+						    </a>
 						</li>
 						<li>
 							<a navid="site_config" href="FuncAccess.html" target="mainframe" class="item">
