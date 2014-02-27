@@ -94,6 +94,15 @@ namespace OA {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtState;
         
         /// <summary>
+        /// txtPATH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPATH;
+        
+        /// <summary>
         /// txtNote control.
         /// </summary>
         /// <remarks>

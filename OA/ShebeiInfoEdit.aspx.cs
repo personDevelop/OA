@@ -36,7 +36,7 @@ namespace OA
             txtCode.Value = sb.Code.ToString();
             txtIsEnable.Checked = sb.IsEnable;
             txtNote.Value = sb.Note.ToString();
-
+            txtPATH.Value = sb.PATH.ToString();
             txtState.Value = sb.State.ToString();
 
 

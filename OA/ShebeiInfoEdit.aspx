@@ -164,6 +164,12 @@
                     <input name="txtState"  type="text" id="txtState"   runat="server"  class="input small" datatype="n" sucmsg=" ">
                     </dd>
                 </dl>
+                 <dl>
+                    <dt>设备外链地址</dt>
+                    <dd> 
+                    <input name="txtPATH"  type="text" id="txtPATH"   style='width:600px;' runat="server"  class="input small" datatype="n" sucmsg=" ">
+                    </dd>
+                </dl>
 <dl>
                     <dt>备注</dt>
                     <dd> 

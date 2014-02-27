@@ -53,7 +53,7 @@ namespace OA.handler
 
                 entity.State = rp["txtState"];
 
-
+                entity.PATH = rp["txtPATH"];
 
                 //if (!string.IsNullOrEmpty(rp["txtParentId"]))//父ID传值参考
                 //{
