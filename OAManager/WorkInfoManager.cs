@@ -67,8 +67,8 @@ namespace OAManager
         {
 
 
-            return Dal.From<WorkInfo>().Join<ShebeiInfo>(ShebeiInfo._.ID==WorkInfo._.SbID)
-                .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe) 
+            return Dal.From<WorkInfo>().Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
+                .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe)
                 .Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
@@ -104,12 +104,16 @@ namespace OAManager
         /// </summary>
         /// <param name="list">待保存的工作信息表集合</param>
         /// <returns></returns> 
-        public int Save(Sharp.Common.BaseEntity item)
+        public int Save(WorkInfo item)
         {
             int result = 0;
             try
             {
-                result = Dal.Submit(item);
+                ShebeiInfo s = new ShebeiInfo();
+                s.ID = item.SbID;
+                s.RecordStatus = StatusType.update;
+                s.State = "故障报修";
+                result = Dal.Submit(item, s);
 
             }
             catch (Exception)
@@ -199,16 +203,16 @@ namespace OAManager
 
         public DataTable GetWorkInfo(string workid)
         {
-            return  Dal.From<WorkInfo>().Join<ShebeiInfo>(WorkInfo._.SbID==ShebeiInfo._.ID)
-                .Where(WorkInfo._.ID==new Guid(workid))
+            return Dal.From<WorkInfo>().Join<ShebeiInfo>(WorkInfo._.SbID == ShebeiInfo._.ID)
+                .Where(WorkInfo._.ID == new Guid(workid))
                 .Select(
                 WorkInfo._.ChuLiYiJian,
                 WorkInfo._.GuZhangXx,
                 WorkInfo._.Status,
                 ShebeiInfo._.Name.Alias("ShebeiName")
-                
-                ) .ToDataTable();
-             
+
+                ).ToDataTable();
+
         }
 
         public WorkHandLog GetLstWorkHandInfo(string workid)

@@ -45,14 +45,19 @@
     <Compile Include="AdministrativeRegions.cs" />
     <Compile Include="DayLog.cs" />
     <Compile Include="FileInfo.cs" />
+    <Compile Include="FunctionInfo.cs" />
     <Compile Include="PersonInfo.cs" />
     <Compile Include="RoleInfo.cs" />
+    <Compile Include="RolePerson.cs" />
     <Compile Include="ShebeiInfo.cs" />
     <Compile Include="SystemCode.cs" />
     <Compile Include="WorkHandLog.cs" />
     <Compile Include="WorkInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YuanGongKaoQin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

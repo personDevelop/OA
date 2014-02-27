@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using OAManager;
 using System.Data;
+using Sharp.Common;
+using OAEntity;
 
 namespace OA.handler
 {
@@ -20,7 +22,13 @@ namespace OA.handler
             int pageNum = int.Parse(context.Request.QueryString.Get("pagenum"));
             int pagesize = int.Parse(context.Request.QueryString.Get("pagesize"));
             int recordCount=0;
-            DataTable dt = manager.GetDataTable(pageNum + 1, pagesize, " CODE ", ref pagesize, ref recordCount);
+            WhereClip where = null;
+            if (!string.IsNullOrEmpty(context.Request["status"]))
+            {
+                where= ShebeiInfo._.State!=context.Request["status"];
+               
+            }
+            DataTable dt = manager.GetDataTable(pageNum + 1, pagesize,where, " CODE ", ref pagesize, ref recordCount);
             //manager.GetDataTable();
             string result = JsonConvert.Convert2Json(dt);
             context.Response.Write("{\"total\":\"" + recordCount.ToString() + "\",\"rows\":"+result+"}");

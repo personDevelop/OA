@@ -29,7 +29,26 @@ namespace OAManager
         {
             PersonInfo tem = new PersonInfo();
             tem = Dal.Find<PersonInfo>(PersonInfo._.ID == guid);
+
             return tem;
+        }
+
+
+        public bool UpdatePwd(string username,string pwd)
+        {
+            try
+            {
+                WhereClip where = PersonInfo._.UserName == username;
+                //wr.
+                PersonInfo pr = new PersonInfo();
+                pr.Pwd = pwd;
+                Dal.Update(where, pr);//这里没成功 不知道是什么原因
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>

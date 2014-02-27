@@ -65,7 +65,8 @@ namespace OAManager
         {
 
 
-            return Dal.From<RoleInfo>().OrderBy(new OrderByClip(orderby)).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
+            return Dal.From<RoleInfo>()
+                .OrderBy(new OrderByClip(orderby)).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
 
@@ -146,6 +147,7 @@ namespace OAManager
         /// </summary>
         public int DelateById(string IDS)
         {
+            
             return Dal.Delete<RoleInfo>(RoleInfo._.ID.In(IDS.Split(',')));
         }
 
@@ -160,7 +162,32 @@ namespace OAManager
         }
 
 
-
+        /// <summary>
+        /// 分页获取获取待选的人员
+        /// </summary>
+        /// <param name="pageindex">当前页数</param>
+        /// <param name="pagesize">每页显示条数</param>
+        /// <param name="orderby">排序方式</param>
+        /// <param name="pageCount">总页数</param>
+        /// <param name="recordCount">总记录数</param>
+        /// <returns></returns>
+        public DataTable GetPersonByRoleID(int pageindex, int pagesize, string roleID, ref int pageCount, ref int recordCount) 
+        {
+            if (string.IsNullOrEmpty(roleID))
+            {
+                roleID = Guid.NewGuid().ToString();
+            }
+             return Dal.From<PersonInfo>().Join<RolePerson>( RolePerson._.PersonID== PersonInfo._.ID && RolePerson._.RoleID==new Guid(roleID), JoinType.leftJoin)
+                 .Select(PersonInfo._.ID,PersonInfo._.UserName,PersonInfo._.RealName,RolePerson._.ID.Alias("RolePersonID"),
+                 RolePerson._.RoleID).OrderBy(PersonInfo._.RealName).ToDataTable(pagesize, pageindex,ref pageCount,
+                 ref recordCount);
+//            
+//            return Dal.FromCustomSql(@"select * from personinfo
+//where ID NOT IN (   SELECT        PersonID
+//FROM         RolePerson INNER JOIN
+//                       RoleInfo ON  RoleID = RoleInfo.ID
+//                 WHERE RoleId=@RoleId    )  order by RealName").AddInputParameter("RoleId", new Guid(roleID)).ToDataTable();
+       }
 
 
 

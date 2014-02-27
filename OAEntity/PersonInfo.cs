@@ -7,7 +7,7 @@ namespace OAEntity
     /// 员工信息表实体
     /// </summary>  
 
-    public class PersonInfo : BaseEntity
+    public partial class PersonInfo : BaseEntity
     {
         public static Column _ = new Column("PersonInfo");
 
@@ -479,5 +479,12 @@ namespace OAEntity
 
         }
         #endregion
+    }
+
+
+    public partial class PersonInfo
+    {
+        [NotDbCol]
+        public bool IsSelect { get; set; }
     }
 }

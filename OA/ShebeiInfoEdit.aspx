@@ -39,7 +39,15 @@
                         success: function (data) {
                             if (data.success == "true") {
                                 $("#txtID").val(data.ID);
-                                Msg.ShowSuccess("保存成功");
+                                parent.art.dialog({
+                                    title: '系统提示',
+                                    content: '保存成功！',
+                                    icon: 'succeed',
+                                    lock: true,
+                                    ok: function () {
+                                        
+                                    }
+                                });
                             }
                             else {
                                 Msg.ShowError(base64decode(data.msg));

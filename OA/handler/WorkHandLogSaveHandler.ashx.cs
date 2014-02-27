@@ -30,6 +30,10 @@ namespace OA.handler
                 work.ID = new Guid(rp["txtWorkID"]);
                 work.RecordStatus = StatusType.update;
                 work.Status = zt;
+                ShebeiInfo s = new ShebeiInfo();
+                s.ID = manager.GetItemById(work.ID).ID;
+                s.RecordStatus = StatusType.update;
+                
                 if (zt == "处理中")
                 {
                     string[] zprid = rp["txtZprID"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
@@ -43,6 +47,7 @@ namespace OA.handler
                         tem.HandSequence = maxsequenc;
                         entityList.Add(tem);
                     }
+                    s.State = zt;
                 }
                 else
                 {
@@ -51,9 +56,10 @@ namespace OA.handler
                     WorkHandLog tem = SetValue(rp);
                     tem.HandSequence = maxsequenc;
                     entityList.Add(tem);
-
+                    s.State = "正常";
                 }
                 entityList.Add(work);
+                entityList.Add(s);
                 manager.Save(entityList);
                 context.Response.Write("{\"success\":\"true\"}");
 

@@ -44,7 +44,9 @@ namespace OA.handler
                     PersonInfoManager prManger = new PersonInfoManager();
                     if (prManger.checkUserIndentity(login_pwd, login_user))
                     {
-                        context.Response.Write("{\"result\":\"OK\",\"forward\":\"main.html\"}");
+                        //登陆成功
+                        context.Session["UserName"] = login_user; //缓存用户名
+                        context.Response.Write("{\"result\":\"OK\",\"forward\":\"main.aspx\"}");
 
                     }
                     else

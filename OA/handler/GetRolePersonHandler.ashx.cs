@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using OAManager;
 using System.Data;
+using OAEntity;
 
 namespace OA.handler
 {
@@ -17,14 +18,14 @@ namespace OA.handler
         {
             HttpRequest rp = context.Request;
             context.Response.ContentType = "text/plain";
-            PersonInfoManager manager = new PersonInfoManager();
+            RoleInfoManager manager = new RoleInfoManager();
             int currentPage = int.Parse(rp["pagenum"]);
             int pageSize = int.Parse(rp["pagesize"]);
             int count = 0, recordCount = 0;
-            DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, PersonInfo._.UserName.Asc, ref count, ref recordCount);
+            DataTable dt = manager.GetPersonByRoleID(currentPage + 1, pageSize, rp["RoleID"], ref count, ref recordCount);
             string result = JsonConvert.Convert2Json(dt);
             context.Response.Write("{ \"totalRecords\":\"" + recordCount + "\",\"rows\":" + result + "}");
-            context.Response.End();
+            context.Response.End(); 
         }
 
         public bool IsReusable

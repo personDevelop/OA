@@ -111,12 +111,121 @@
     <Content Include="js\DatePicker\skin\whyGreen\img.gif" />
     <Content Include="js\DatePicker\WdatePicker.js" />
     <Content Include="login.aspx" />
+    <Content Include="main.aspx" />
     <Content Include="main.html" />
     <Content Include="PersonInfoEdit.aspx" />
     <Content Include="PersonInfoList.aspx" />
     <Content Include="randomCode.aspx" />
+    <Content Include="resetPwd.aspx" />
     <Content Include="RoleInfoEdit.aspx" />
     <Content Include="RoleInfoList.aspx" />
+    <Content Include="Script\artDialog\artDialog.js" />
+    <Content Include="Script\artDialog\artDialog.source.js" />
+    <Content Include="Script\artDialog\index.html" />
+    <Content Include="Script\artDialog\jquery.artDialog.js" />
+    <Content Include="Script\artDialog\jquery.artDialog.source.js" />
+    <Content Include="Script\artDialog\license.txt" />
+    <Content Include="Script\artDialog\plugins\iframeTools.js" />
+    <Content Include="Script\artDialog\plugins\iframeTools.source.js" />
+    <Content Include="Script\artDialog\skins\aero.css" />
+    <Content Include="Script\artDialog\skins\aero\aero_s.png" />
+    <Content Include="Script\artDialog\skins\aero\aero_s2.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_close.hover.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_close.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_e.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_n.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_ne.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_nw.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_s.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_se.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_sw.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_title_icon.png" />
+    <Content Include="Script\artDialog\skins\aero\ie6\aui_w.png" />
+    <Content Include="Script\artDialog\skins\black.css" />
+    <Content Include="Script\artDialog\skins\black\bg.png" />
+    <Content Include="Script\artDialog\skins\black\bg2.png" />
+    <Content Include="Script\artDialog\skins\black\bg_css3.png" />
+    <Content Include="Script\artDialog\skins\black\bg_css3_2.png" />
+    <Content Include="Script\artDialog\skins\black\ie6\close.hover.png" />
+    <Content Include="Script\artDialog\skins\black\ie6\close.png" />
+    <Content Include="Script\artDialog\skins\black\ie6\e.png" />
+    <Content Include="Script\artDialog\skins\black\ie6\n.png" />
+    <Content Include="Script\artDialog\skins\black\ie6\ne.png" />
+    <Content Include="Script\artDialog\skins\black\ie6\nw.png" />
+    <Content Include="Script\artDialog\skins\black\ie6\s.png" />
+    <Content Include="Script\artDialog\skins\black\ie6\se.png" />
+    <Content Include="Script\artDialog\skins\black\ie6\sw.png" />
+    <Content Include="Script\artDialog\skins\black\ie6\w.png" />
+    <Content Include="Script\artDialog\skins\blue.css" />
+    <Content Include="Script\artDialog\skins\blue\bg.png" />
+    <Content Include="Script\artDialog\skins\blue\bg2.png" />
+    <Content Include="Script\artDialog\skins\blue\bg_css3.png" />
+    <Content Include="Script\artDialog\skins\blue\bg_css3_2.png" />
+    <Content Include="Script\artDialog\skins\blue\ie6\close.hover.png" />
+    <Content Include="Script\artDialog\skins\blue\ie6\close.png" />
+    <Content Include="Script\artDialog\skins\blue\ie6\e.png" />
+    <Content Include="Script\artDialog\skins\blue\ie6\n.png" />
+    <Content Include="Script\artDialog\skins\blue\ie6\ne.png" />
+    <Content Include="Script\artDialog\skins\blue\ie6\nw.png" />
+    <Content Include="Script\artDialog\skins\blue\ie6\s.png" />
+    <Content Include="Script\artDialog\skins\blue\ie6\se.png" />
+    <Content Include="Script\artDialog\skins\blue\ie6\sw.png" />
+    <Content Include="Script\artDialog\skins\blue\ie6\w.png" />
+    <Content Include="Script\artDialog\skins\chrome.css" />
+    <Content Include="Script\artDialog\skins\chrome\border.png" />
+    <Content Include="Script\artDialog\skins\chrome\chrome_s.png" />
+    <Content Include="Script\artDialog\skins\default.css" />
+    <Content Include="Script\artDialog\skins\green.css" />
+    <Content Include="Script\artDialog\skins\green\bg.png" />
+    <Content Include="Script\artDialog\skins\green\bg2.png" />
+    <Content Include="Script\artDialog\skins\green\bg_css3.png" />
+    <Content Include="Script\artDialog\skins\green\bg_css3_2.png" />
+    <Content Include="Script\artDialog\skins\green\color_bg.png" />
+    <Content Include="Script\artDialog\skins\green\ie6\close.hover.png" />
+    <Content Include="Script\artDialog\skins\green\ie6\close.png" />
+    <Content Include="Script\artDialog\skins\green\ie6\e.png" />
+    <Content Include="Script\artDialog\skins\green\ie6\n.png" />
+    <Content Include="Script\artDialog\skins\green\ie6\ne.png" />
+    <Content Include="Script\artDialog\skins\green\ie6\nw.png" />
+    <Content Include="Script\artDialog\skins\green\ie6\s.png" />
+    <Content Include="Script\artDialog\skins\green\ie6\se.png" />
+    <Content Include="Script\artDialog\skins\green\ie6\sw.png" />
+    <Content Include="Script\artDialog\skins\green\ie6\w.png" />
+    <Content Include="Script\artDialog\skins\icons\error.png" />
+    <Content Include="Script\artDialog\skins\icons\face-sad.png" />
+    <Content Include="Script\artDialog\skins\icons\face-smile.png" />
+    <Content Include="Script\artDialog\skins\icons\loading.gif" />
+    <Content Include="Script\artDialog\skins\icons\question.png" />
+    <Content Include="Script\artDialog\skins\icons\succeed.png" />
+    <Content Include="Script\artDialog\skins\icons\warning.png" />
+    <Content Include="Script\artDialog\skins\idialog.css" />
+    <Content Include="Script\artDialog\skins\idialog\idialog_s.png" />
+    <Content Include="Script\artDialog\skins\idialog\idialog_s2.png" />
+    <Content Include="Script\artDialog\skins\idialog\ie6\aui_close.hover.png" />
+    <Content Include="Script\artDialog\skins\idialog\ie6\aui_close.png" />
+    <Content Include="Script\artDialog\skins\idialog\ie6\aui_e.png" />
+    <Content Include="Script\artDialog\skins\idialog\ie6\aui_n.png" />
+    <Content Include="Script\artDialog\skins\idialog\ie6\aui_ne.png" />
+    <Content Include="Script\artDialog\skins\idialog\ie6\aui_nw.png" />
+    <Content Include="Script\artDialog\skins\idialog\ie6\aui_s.png" />
+    <Content Include="Script\artDialog\skins\idialog\ie6\aui_se.png" />
+    <Content Include="Script\artDialog\skins\idialog\ie6\aui_sw.png" />
+    <Content Include="Script\artDialog\skins\idialog\ie6\aui_w.png" />
+    <Content Include="Script\artDialog\skins\opera.css" />
+    <Content Include="Script\artDialog\skins\opera\ie6\aui_close.hover.png" />
+    <Content Include="Script\artDialog\skins\opera\ie6\aui_close.png" />
+    <Content Include="Script\artDialog\skins\opera\ie6\aui_e.png" />
+    <Content Include="Script\artDialog\skins\opera\ie6\aui_n.png" />
+    <Content Include="Script\artDialog\skins\opera\ie6\aui_ne.png" />
+    <Content Include="Script\artDialog\skins\opera\ie6\aui_nw.png" />
+    <Content Include="Script\artDialog\skins\opera\ie6\aui_s.png" />
+    <Content Include="Script\artDialog\skins\opera\ie6\aui_se.png" />
+    <Content Include="Script\artDialog\skins\opera\ie6\aui_sw.png" />
+    <Content Include="Script\artDialog\skins\opera\ie6\aui_w.png" />
+    <Content Include="Script\artDialog\skins\opera\s1.png" />
+    <Content Include="Script\artDialog\skins\opera\s2.png" />
+    <Content Include="Script\artDialog\skins\simple.css" />
+    <Content Include="Script\artDialog\skins\twitter.css" />
     <Content Include="Script\base64.js" />
     <Content Include="Script\globalization\globalize.culture.zh-Hans.js" />
     <Content Include="Script\JqueryForm.js" />
@@ -147,6 +256,7 @@
     <Content Include="Script\jqx-all.js" />
     <Content Include="Script\jqxcore.js" />
     <Content Include="Script\jqxdateinput.js" />
+    <Content Include="Script\main.js" />
     <Content Include="Script\Skin.js" />
     <Content Include="Script\styles\images\backgroundTop.png" />
     <Content Include="Script\styles\images\backImage.png" />
@@ -724,6 +834,9 @@
     <Compile Include="handler\AdministrativeRegionsSaveHandler.ashx.cs">
       <DependentUpon>AdministrativeRegionsSaveHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\clearState.ashx.cs">
+      <DependentUpon>clearState.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\DayLogListHandler.ashx.cs">
       <DependentUpon>DayLogListHandler.ashx</DependentUpon>
     </Compile>
@@ -742,6 +855,9 @@
     <Compile Include="handler\getShebeiImgListHandler.ashx.cs">
       <DependentUpon>getShebeiImgListHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\getState.ashx.cs">
+      <DependentUpon>getState.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\PersonInfoDeleteHandler.ashx.cs">
       <DependentUpon>PersonInfoDeleteHandler.ashx</DependentUpon>
     </Compile>
@@ -750,6 +866,9 @@
     </Compile>
     <Compile Include="handler\PersonInfoSaveHandler.ashx.cs">
       <DependentUpon>PersonInfoSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\resetPass.ashx.cs">
+      <DependentUpon>resetPass.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\RoleInfoListHandler.ashx.cs">
       <DependentUpon>RoleInfoListHandler.ashx</DependentUpon>
@@ -811,6 +930,13 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="main.aspx.cs">
+      <DependentUpon>main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="main.aspx.designer.cs">
+      <DependentUpon>main.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PersonInfoEdit.aspx.cs">
       <DependentUpon>PersonInfoEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -832,6 +958,13 @@
     </Compile>
     <Compile Include="randomCode.aspx.designer.cs">
       <DependentUpon>randomCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="resetPwd.aspx.cs">
+      <DependentUpon>resetPwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="resetPwd.aspx.designer.cs">
+      <DependentUpon>resetPwd.aspx</DependentUpon>
     </Compile>
     <Compile Include="RoleInfoEdit.aspx.cs">
       <DependentUpon>RoleInfoEdit.aspx</DependentUpon>
@@ -944,6 +1077,9 @@
     <Content Include="handler\FileInfoListHandler.ashx" />
     <Content Include="handler\FileDel.ashx" />
     <Content Include="handler\getShebeiImgListHandler.ashx" />
+    <Content Include="handler\getState.ashx" />
+    <Content Include="handler\clearState.ashx" />
+    <Content Include="handler\resetPass.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />
