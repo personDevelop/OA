@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace OA
 {
-    public partial class queryKaoQin : System.Web.UI.Page
+    public partial class queryKaoQin : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

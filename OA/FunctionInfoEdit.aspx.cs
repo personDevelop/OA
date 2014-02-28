@@ -12,7 +12,7 @@ using Sharp.Common;
 
 namespace OA
 {
-    public partial class FunctionInfoEdit : System.Web.UI.Page
+    public partial class FunctionInfoEdit : BasePage
     {
         FunctionInfo entity = new FunctionInfo();
         protected void Page_Load(object sender, EventArgs e)

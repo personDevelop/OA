@@ -12,7 +12,7 @@ using Sharp.Common;
 
 namespace OA
 {
-    public partial class PersonInfoEdit : System.Web.UI.Page
+    public partial class PersonInfoEdit : BasePage
     {
         PersonInfo entity = new PersonInfo();
         protected void Page_Load(object sender, EventArgs e)

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace OA
 {
-    public partial class DayLogEdit : System.Web.UI.Page
+    public partial class DayLogEdit : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

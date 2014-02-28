@@ -9,7 +9,7 @@ using OAManager;
 
 namespace OA
 {
-    public partial class ShebeiInfoEdit : System.Web.UI.Page
+    public partial class ShebeiInfoEdit : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

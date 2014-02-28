@@ -52,6 +52,7 @@
     <Compile Include="RolePerson.cs" />
     <Compile Include="ShebeiInfo.cs" />
     <Compile Include="SystemCode.cs" />
+    <Compile Include="UserSet.cs" />
     <Compile Include="WorkHandLog.cs" />
     <Compile Include="WorkInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

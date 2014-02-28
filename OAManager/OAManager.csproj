@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -47,6 +48,7 @@
   <ItemGroup>
     <Compile Include="AdministrativeRegionsManager.cs" />
     <Compile Include="DayLogManager.cs" />
+    <Compile Include="externInfo.cs" />
     <Compile Include="FileInfoManager.cs" />
     <Compile Include="FunctionInfoManager.cs" />
     <Compile Include="NoticeInfoManager.cs" />
@@ -54,7 +56,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleInfoManager.cs" />
     <Compile Include="ShebeiInfoManager.cs" />
+    <Compile Include="StaticClass.cs" />
     <Compile Include="SystemCodeManager.cs" />
+    <Compile Include="UserSetManager.cs" />
     <Compile Include="WorkInfoManager.cs" />
     <Compile Include="YuanGongKaoQinManager.cs" />
   </ItemGroup>

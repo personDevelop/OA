@@ -10,7 +10,7 @@ using OAEntity;
 
 namespace OA
 {
-    public partial class WorkHandLogEdit : System.Web.UI.Page
+    public partial class WorkHandLogEdit : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

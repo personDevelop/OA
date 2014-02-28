@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace OA
 {
-    public partial class resetPwd : System.Web.UI.Page
+    public partial class resetPwd : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

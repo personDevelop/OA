@@ -11,7 +11,7 @@ using System.Drawing.Text;
 
 namespace OA
 {
-    public partial class randomCode : System.Web.UI.Page
+    public partial class randomCode : BasePage
     {
         static string[] FontItems = new string[] { "Arial", "Helvetica", "Geneva", "sans-serif", "Verdana" };
         static Brush[] BrushItems = new Brush[] 

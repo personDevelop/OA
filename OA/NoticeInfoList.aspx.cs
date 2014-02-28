@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace OA
 {
-    public partial class NoticeInfoList : System.Web.UI.Page
+    public partial class NoticeInfoList : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

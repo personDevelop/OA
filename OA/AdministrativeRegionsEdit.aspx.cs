@@ -12,7 +12,7 @@ using Sharp.Common;
 
 namespace OA
 {
-    public partial class AdministrativeRegionsEdit : System.Web.UI.Page
+    public partial class AdministrativeRegionsEdit : BasePage
     {
         AdministrativeRegions entity = new AdministrativeRegions();
         protected void Page_Load(object sender, EventArgs e)

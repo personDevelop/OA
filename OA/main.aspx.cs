@@ -11,7 +11,7 @@ using Sharp.Data;
 
 namespace OA
 {
-    public partial class main : System.Web.UI.Page
+    public partial class main : BasePage
     {
         string userid = "";
         protected void Page_Load(object sender, EventArgs e)
