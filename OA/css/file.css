@@ -14,7 +14,7 @@ font-family: 微软雅黑;
 line-height: 29px;
 margin: 5px;
 float: left;}
- .file_queueone{float:left;overflow: auto;height: 306px;}
+ .file_queueone{float:left;overflow: auto;height: 306px; clear:both;}
  .upload{clear:both;margin-top:10px;margin-left:15px;}
  .img_desk{height: 100px;
 width: 135px;
@@ -23,3 +23,14 @@ margin-left: 9px;}
 
 .uploadify{margin-left: 5px;}
  
+ 
+ .progress{width: 481px;
+height: 21px;
+float:left;
+margin-left: 5px;
+border: 1px solid #E0E0E0;}
+.pecent{height: 21px;
+        width:0;
+        
+background: rgb(27, 106, 178);}
+.detail{float:left;}

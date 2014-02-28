@@ -101,6 +101,7 @@
     <Content Include="DayLogList1.aspx" />
     <Content Include="FunctionInfoEdit.aspx" />
     <Content Include="FunctionInfoList.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="index.html" />
     <Content Include="js\DatePicker\calendar.js" />
     <Content Include="js\DatePicker\lang\en.js" />
@@ -117,6 +118,7 @@
     <Content Include="login.aspx" />
     <Content Include="main.aspx" />
     <Content Include="main.html" />
+    <Content Include="newsinfo.aspx" />
     <Content Include="NoticeInfoEdit.aspx" />
     <Content Include="NoticeInfoList.aspx" />
     <Content Include="PersonInfoEdit.aspx" />
@@ -236,6 +238,7 @@
     <Content Include="Script\artDialog\skins\twitter.css" />
     <Content Include="Script\base64.js" />
     <Content Include="Script\globalization\globalize.culture.zh-Hans.js" />
+    <Content Include="Script\index.js" />
     <Content Include="Script\JqueryForm.js" />
     <Content Include="Script\basejs.js" />
     <Content Include="Script\globalization\globalize.culture.cs-CZ.js" />
@@ -974,6 +977,13 @@
     <Compile Include="handler\YuanGongKaoQinSaveHandler.ashx.cs">
       <DependentUpon>YuanGongKaoQinSaveHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="JsonConvert.cs" />
     <Compile Include="JsonToDataSet.cs" />
     <Compile Include="login.aspx.cs">
@@ -989,6 +999,13 @@
     </Compile>
     <Compile Include="main.aspx.designer.cs">
       <DependentUpon>main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="newsinfo.aspx.cs">
+      <DependentUpon>newsinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="newsinfo.aspx.designer.cs">
+      <DependentUpon>newsinfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="NoticeInfoEdit.aspx.cs">
       <DependentUpon>NoticeInfoEdit.aspx</DependentUpon>
@@ -1201,12 +1218,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7906</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/OA</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

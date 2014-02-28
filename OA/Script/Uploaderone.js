@@ -24,8 +24,8 @@
                 this.initIamgePreview();
                 this.addEvent();
                 this.initData(this.fileData, this.fileValue);
-                    //this.filepath = fileValue;
-                 
+                //this.filepath = fileValue;
+
             },
             initData: function (data, fileValue) {
                 //加载数据
@@ -45,7 +45,7 @@
                 var render_dom = this.g;
                 var Wrap = $("<div class='upload'></div>"); //upload的外侧包裹
                 this.wrap = $(render_dom).wrap(Wrap); //包裹
-
+                //$(_self).parent().append("<div><div class='progress' ><div class='pecent' ></div></div><div class='detail'></div></div>"); //创建文件队列区域。
                 $(_self).parent().append("<div class='file_queueone' ></div>"); //创建文件队列区域。
                 this.file_queue = $(".file_queueone", $(_self).parent()); //获取文件区域dom
             },
@@ -73,7 +73,8 @@
 
                     },
                     upload_progress_handler: function (file, bytesLoaded, bytesTotal) {
-
+                         
+                        //$(".detail").html((bytesLoaded / 1024).toFixed(2) + "KB/" + (bytesTotal / 1024).toFixed(2) + "KB"); //百分比
                     },
                     onUploadSuccess: function (file, data, response) {//上传完成时触发（每个文件触发一次） 
                         if (data.indexOf('错误提示') > -1) {
@@ -89,14 +90,15 @@
                             g.fileData = {};
                             g.fileData[file.id] = { name: file.name, path: data };
                             fileques.append(
-                            '<div id="' + file.id + '" class="uploadone">'
+                            '<div id="' + fileUid + '" class="uploadone">'
                             + '<img src="' + g.filepath + '" class="img_desk">'
                             + '<div style="float: right;margin-right: 12px;">'
                             + '<a class="del_File_One" href="#" databind="' + fileUid + '" onclick="flieDel(this)"  style="margin-right: 4px;">删除</a>'
-                            + '<a class="pre_view_one" target="_blank" href="' + +g.filepath +'" >查看</a>'
-                            +'</div>' 
+                            + '<a class="pre_view_one" target="_blank" href="' + g.filepath + '" >查看</a>'
+                            + '</div>'
                             + '</div>');
                         }
+                        
                     },
                     onUploadError: function (file, errorCode, errorMsg, errorString) {//当单个文件上传出错时触发 
                         alert('文件：' + file.name + ' 上传失败: ' + errorString);
@@ -142,7 +144,15 @@ function flieDel(ele) {
         success:
                 function (reval) {
                     if (reval == "sucess") {
-                        Msg.ShowSuccess("删除成功！");
+                        parent.art.dialog({
+                            title: '系统提示',
+                            content: '删除成功！',
+                            icon: 'succeed',
+                            lock: true,
+                            ok: function () {
+
+                            }
+                        });
                         $("#" + fid).remove();
                     } else {
                         Msg.ShowError("删除失败！");

@@ -68,7 +68,7 @@
             var sid = $("#txtID").val();
             var vsJsonData = { "sid": sid };
             $.ajax({
-                url: "../handler/FileInfoListHandler.ashx",
+                url: "handler/FileInfoListHandler.ashx",
                 type: "post",
                 data: vsJsonData,
                 dataType: "json",

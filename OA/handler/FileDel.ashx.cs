@@ -26,7 +26,7 @@ namespace OA.handler
                 OAEntity.FileInfo fl = new FileInfo();
                 FileInfoManager flMgr = new FileInfoManager();
                 fl=flMgr.GetItemById(new Guid(fid));
-                if (DeleteFile(fl.FILEPATH, context))//删除文件
+                if (DeleteFile("../"+fl.FILEPATH, context))//删除文件
                 {
                     flMgr.DelateById(new Guid(fid));//删除数据库记录
                     context.Response.Write("sucess");

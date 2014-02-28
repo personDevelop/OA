@@ -58,7 +58,7 @@ namespace OA.handler
                     //bll.Album alb = new bll.Album();
                     // alb.add(uc);
                     //保存图片 
-                    fileUpload.SaveAs(path + folder + "/" + saveName);
+                    fileUpload.SaveAs(path + folder + "\\" + saveName);
                     string SBID = context.Request.QueryString.Get("sid");
                     //string FileName = "";
                     OAEntity.FileInfo fl = new OAEntity.FileInfo();
@@ -66,14 +66,14 @@ namespace OA.handler
                     fl.ID = Guid.NewGuid();
                     fl.SBID = SBID;
                     fl.FILENAME = fileUpload.FileName;
-                    fl.FILEPATH = UploadDir + folder + "/" + saveName;
+                    fl.FILEPATH = "upload/" + folder + "/" + saveName;
                     fl.FILEEXT = "";
                     fl.RecordStatus = StatusType.add;
                     OAManager.FileInfoManager flMgr = new OAManager.FileInfoManager();
                     //flMgr.RecordStatus == StatusType.add;
                     flMgr.Save(fl);
 
-                    context.Response.Write(UploadDir + folder + "/" + saveName + ";" + fl.ID);
+                    context.Response.Write("upload/" + folder + "/" + saveName + ";" + fl.ID);
                 }
                 catch
                 {
