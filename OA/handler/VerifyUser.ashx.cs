@@ -46,6 +46,10 @@ namespace OA.handler
                     {
                         //登陆成功
                         context.Session["UserName"] = login_user; //缓存用户名
+                        WhereClip where = PersonInfo._.UserName == login_user;
+                        pr = prManger.GetItemById(where);
+                        context.Session["UserID"] = pr.ID; //缓存用户名
+                        //prManger.GetItemById(
                         context.Response.Write("{\"result\":\"OK\",\"forward\":\"main.aspx\"}");
 
                     }
