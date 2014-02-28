@@ -56,8 +56,8 @@
                 var gg = $(render_dom).uploadify({
                     auto: true,
                     height: 30,
-                    swf: '../Script/uploadify/uploadify.swf',
-                    uploader: '../handler/uploadHandler.ashx?sid=' + $("#txtID").val(),
+                    swf: 'Script/uploadify/uploadify.swf',
+                    uploader: 'handler/uploadHandler.ashx?sid=' + $("#txtID").val(),
                     width: 120,
                     buttonText: '选择图片',
                     fileTypeExts: '*.gif;*.jpg;*.jpeg;*.png',
@@ -134,7 +134,7 @@ function flieDel(ele) {
     var resobj = null;
     var vsJsonData = { "fid": fid };
     $.ajax({
-        url: "../handler/FileDel.ashx",
+        url: "handler/FileDel.ashx",
         type: "post",
         data: vsJsonData,
         dataType: "text",
@@ -159,7 +159,7 @@ function flieDel(ele) {
 var uploadifySettings = function (obj) {
 
 
-    var url = '../handler/uploadHandler.ashx?sid=' + $("#txtID").val();
+    var url = 'handler/uploadHandler.ashx?sid=' + $("#txtID").val();
     obj.setUploadURL(url); //重新设置后台处理地址
     //obj.setFileSizeLimit(maxLength); //设置允许上传的文件大小
 }

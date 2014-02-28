@@ -32,11 +32,7 @@
                                        }
                                    }
                                    },
-                                    { input: '#txtWordDate', message: '工作日期必须大于2013年!', action: 'keyup, blur,valuechanged', rule: function (input, commit) {
-                                        var date = $('#txtWordDate').jqxDateTimeInput('value');
-                                        return date.getFullYear() < 2013
-                                    }
-                                    }, { input: '#txtContent', message: '工作内容必填!', action: 'keyup, blur', rule: 'required' }
+                                     { input: '#txtContent', message: '工作内容必填!', action: 'keyup, blur', rule: 'required' }
                                    ]
             });
             $('#form1').submit(function ()//提交表单 
@@ -50,7 +46,15 @@
                         success: function (data) {
                             if (data.success == "true") {
                                 $("#txtID").val(data.ID);
-                                Msg.ShowSuccess("保存成功");
+                                parent.art.dialog({
+                                    title: '系统提示',
+                                    content: '保存成功！',
+                                    icon: 'succeed',
+                                    lock: true,
+                                    ok: function () {
+
+                                    }
+                                });
                             }
                             else {
                                 Msg.ShowError(base64decode(data.msg));

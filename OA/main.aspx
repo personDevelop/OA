@@ -317,8 +317,7 @@ white-space: nowrap;
 					<li>
 					<a navid="site_manage" class="item pack close">
 							<div class="arrow"></div><div class="expandable open "></div><div class="folder close"></div>
-							<span >日常工作</span>
-					</a>
+							<span >日常工作</span>					</a>
 					<ul   class='subblock'>
 						<li>
 							<a navid="site_config" href="YuanGongKaoQinList.aspx" target="mainframe"  class="item">
@@ -326,10 +325,15 @@ white-space: nowrap;
 						</a>
 						</li>
 						<li>
+						    <a  navid="site_channel_field" href="DayLogList.aspx" target="mainframe"  class="item">
+						    <div class="arrow "></div><div class="expandable"></div><div class=""></div><span  class='subMenu'>日志信息</span>
+						    </a>
+					  </li>
+					  <li>
 						<a navid="site_url_rewrite" href="DayLogEdit.aspx" target="mainframe" class="item">
-						<div class="arrow"></div><div class="expandable"></div><div class=""></div><span  class='subMenu'>填写日志</span>
-						</a>
+						<div class="arrow"></div><div class="expandable"></div><div class=""></div><span  class='subMenu'>填写日志</span>						</a>
 						</li>
+                       
 						<li>
 						<a navid="site_channel_list" href="WorkInfoEdit.aspx" target="mainframe" class="item">
 						<div class="arrow"></div><div class="expandable"></div><div class=""></div><span  class='subMenu'>报工管理</span>
@@ -349,8 +353,7 @@ white-space: nowrap;
 					<li>
 					<a navid="site_manage" class="item pack close">
 							<div class="arrow"></div><div class="expandable open"></div><div class="folder close"></div>
-							<span >查询统计</span>
-					</a>
+							<span >查询统计</span>					</a>
 					<ul   class='subblock'>
 						<li>
 							<a navid="site_config" href="settings/sys_config.aspx" target="mainframe" class="item">
@@ -363,15 +366,14 @@ white-space: nowrap;
 						</a>
 						</li>
 					</ul>
-					</li>
+				  </li>
  
 				</ul>
 				<ul style="display: block;">
 					<li>
 					<a navid="site_manage" class="item pack close">
 							<div class="arrow"></div><div class="expandable open"></div><div class="folder close"></div>
-							<span >数据管理</span>
-					</a>
+							<span >数据管理</span>					</a>
 					<ul  class='subblock'>
 						<li>
 							<a navid="site_config" href="ShebeiInfoList.aspx" target="mainframe" class="item">
@@ -384,15 +386,14 @@ white-space: nowrap;
 						    </a>
 						</li>
 					</ul>
-					</li>
+				  </li>
 				</ul>
 				
 				<ul style="display: block;">
 					<li>
 					<a navid="site_manage" class="item pack close">
 							<div class="arrow"></div><div class="expandable open"></div><div class="folder close"></div>
-							<span >系统管理</span>
-					</a>
+							<span >系统管理</span>					</a>
 					<ul  class='subblock'>
 						<li>
 							<a navid="site_config" href="SystemCodeList.aspx" target="mainframe" class="item">
@@ -425,7 +426,7 @@ white-space: nowrap;
 						</a>
 						</li>
 					</ul>
-					</li>
+				  </li>
 				</ul>
 		</div>
 		</div>

@@ -147,7 +147,7 @@
         }
     </script>
 </head>
-<body>
+<body  style='padding-left: 10px; padding-right: 10px; padding-top: 10px;'>
     <div class="location">
         <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
         <a href="dashboard.html" class="home"><i></i><span>首页</span></a> <i class="arrow">
@@ -163,7 +163,7 @@
     </div>
     <div style=" clear:both;"></div>
     <form id="form1" runat="server"  style=" margin-left:10px;">
-    <div id="treeGrid">
+    <div id="treeGrid" style='margin-top: 10px;'>
     </div>
     </form>
 </body>

@@ -33,15 +33,24 @@ namespace OA.handler
                         entity.UserName = context.Session["UserName"] as string;
                         entity.CreateDate = DateTime.Now;
                     }
+                    else
+                    {
+                        entity.UserID = Guid.NewGuid();
+                        entity.UserName = "test";
+ 
+                    }
                 }
                 else
                 {
                     entity.ID = new Guid(rp["txtID"]);
+                    entity.UserID = Guid.NewGuid();
+                    entity.UserName = "test";
                     entity.RecordStatus = StatusType.update;
                 } 
                 entity.Content = rp["txtContent"]; 
                 entity.GS = rp["txtGS"];
-                entity.WordDate = DateTime.Parse(rp["txtWordDate"]);  
+                entity.WordDate = DateTime.Parse(rp["txtWordDate"]);
+                entity.CreateDate = DateTime.Now;
                 DayLogManager manager = new DayLogManager();
                 bool IsExit = manager.ExitDayLog(entity);//日期重复校验参考
                 if (IsExit)

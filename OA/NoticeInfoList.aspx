@@ -85,8 +85,8 @@
 
                    {
                        text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
-                       dataField: null, cellsRenderer: function (row, column, value) {
-                           return "<a href='NoticeInfoEdit.aspx?ID=" + row + "'>修改</a> <a onclick='return deleteNoticeInfo();'   href='#'>删除</a>";
+                       dataField: null, cellsRenderer: function (row, column, value,data) {
+                           return "<a href='NoticeInfoEdit.aspx?ID=" + data.ID + "'>修改</a> <a onclick='return deleteNoticeInfo();'   href='#'>删除</a>";
                        }
                    }
                 ]

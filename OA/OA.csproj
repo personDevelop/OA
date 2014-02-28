@@ -97,6 +97,7 @@
     <Content Include="dashboard.html" />
     <Content Include="DayLogEdit.aspx" />
     <Content Include="DayLogList.aspx" />
+    <Content Include="DayLogList1.aspx" />
     <Content Include="FunctionInfoEdit.aspx" />
     <Content Include="FunctionInfoList.aspx" />
     <Content Include="index.html" />
@@ -119,6 +120,8 @@
     <Content Include="NoticeInfoList.aspx" />
     <Content Include="PersonInfoEdit.aspx" />
     <Content Include="PersonInfoList.aspx" />
+    <Content Include="queryDayLog.aspx" />
+    <Content Include="queryKaoQin.aspx" />
     <Content Include="randomCode.aspx" />
     <Content Include="resetPwd.aspx" />
     <Content Include="RoleInfoEdit.aspx" />
@@ -829,6 +832,13 @@
     <Compile Include="DayLogEdit.aspx.designer.cs">
       <DependentUpon>DayLogEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DayLogList.aspx.cs">
+      <DependentUpon>DayLogList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DayLogList.aspx.designer.cs">
+      <DependentUpon>DayLogList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FunctionInfoEdit.aspx.cs">
       <DependentUpon>FunctionInfoEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1005,6 +1015,20 @@
       <DependentUpon>PersonInfoList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="queryDayLog.aspx.cs">
+      <DependentUpon>queryDayLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="queryDayLog.aspx.designer.cs">
+      <DependentUpon>queryDayLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="queryKaoQin.aspx.cs">
+      <DependentUpon>queryKaoQin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="queryKaoQin.aspx.designer.cs">
+      <DependentUpon>queryKaoQin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="randomCode.aspx.cs">
       <DependentUpon>randomCode.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1174,7 +1198,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>20018</DevelopmentServerPort>
+          <DevelopmentServerPort>7906</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

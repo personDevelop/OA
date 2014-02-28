@@ -17,6 +17,7 @@
              '<span>' + row["Name"] + '</span>' +
              '<p class="offer" style="margin-top: 10px;">规格型号：' + row["GuiGe"] + '</p>' +
              '<p class="offer">运行状态：' + row["State"] + '</p>' +
+              '<p class="offer">报修状态：紧急</p>' +
              '<div class="more"><a target="_blank" href="' + row["PATH"] + '">...more</a></div>' +
              '</div>' +
              '</div>';
@@ -24,6 +25,9 @@
             }
         }
     });
+    function GetNewsList() { 
+        
+    }
 
     function GetSbList() {
         var resobj = null;
@@ -51,16 +55,8 @@
 </head>
 <body>
 <div id="main_container">
-
-<div id="header">
-
-       <div id="logo">
-        <a href="index.html">
-		<img src="css/images/1.gif" width="547" height="68" alt="" title="" border="0">
-		</a>
-       </div>
-           
-       <div class="banner_adds"></div>    
+<div>	<img src="css/images/image2.jpg" width="970" height="180" alt="" title="" border="0"></div>
+<div id="header" style='height:28px;'>
 
 
 <div class="menu">
@@ -162,6 +158,7 @@
 				 <p class="offer">
                 运行状态：已停止             
                 </p>
+                <p class="offer">报修状态：紧急</p>
                 <div class="more"><a href="#">...more</a></div>
                 </div>
             </div>
@@ -175,6 +172,7 @@
 				 <p class="offer">
                 运行状态：已停止             
                 </p>
+                <p class="offer">报修状态：紧急</p>
                 <div class="more"><a href="#">...more</a></div>
                 </div>
             </div>
@@ -188,6 +186,7 @@
 				 <p class="offer">
                 运行状态：已停止             
                 </p>
+                <p class="offer">报修状态：紧急</p>
                 <div class="more"><a href="#">...more</a></div>
                 </div>
             </div>
@@ -201,6 +200,7 @@
 				 <p class="offer">
                 运行状态：已停止             
                 </p>
+                <p class="offer">报修状态：紧急</p>
                 <div class="more"><a href="#">...more</a></div>
                 </div>
             </div>

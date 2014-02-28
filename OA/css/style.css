@@ -96,7 +96,7 @@ This stylesheet and the associated (x)html may be modified in any
 way to fit your requirements.
 =================================================================== */
 /* style the outer div to give it width */
-.menu {font-size:11px;padding:0px; float:right; width:700px;}
+.menu {font-size:11px;padding:0px; }
 
 /* remove all the bullets, borders and padding from the default list styling */
 .menu ul {padding:0;margin:0;list-style-type:none; height:28px; background:#267cb2;}

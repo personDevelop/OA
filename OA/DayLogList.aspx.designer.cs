@@ -10,7 +10,7 @@
 namespace OA {
     
     
-    public partial class WorkInfoList {
+    public partial class DayLogList {
         
         /// <summary>
         /// Head1 control.
@@ -29,14 +29,5 @@ namespace OA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// hidIsDaiBan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidIsDaiBan;
     }
 }

@@ -75,13 +75,13 @@
                 pagesizeoptions: ['20', '50', '100'],
                 columns: [
                  { text: '工作日期', align: 'center', dataField: 'WordDate', minWidth: 100, width: 150 },
-{ text: '工作内容', align: 'center', dataField: 'Content', minWidth: 100, width: 350 },
+{ text: '工作内容', align: 'center', dataField: 'Content', minWidth: 100, width: 150 },
 { text: '工时', align: 'center', dataField: 'GS', minWidth: 100, width: 150 },
 { text: '填报时间', align: 'center', dataField: 'CreateDate', minWidth: 100, width: 150 },
 { text: '填报人', align: 'center', dataField: 'UserName', minWidth: 100, width: 150 },
 
                    {
-                       text: '操作', align: 'center', width: 150, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
+                       text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
                        dataField: null, cellsRenderer: function (row, column, value) {
                            return "<a href='DayLogEdit.aspx?ID=" + row + "'>修改</a> <a onclick='return deleteDayLog();'   href='#'>删除</a>";
                        }
@@ -138,7 +138,7 @@
         }
     </script>
 </head>
-<body style='padding-left: 10px; padding-right: 10px; padding-top: 10px;'>
+<body>
     <div class="location">
         <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
         <a href="dashboard.html" class="home"><i></i><span>首页</span></a> <i class="arrow">
