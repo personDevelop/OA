@@ -21,13 +21,18 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (dateTimePicker1.Value >= dateTimePicker2.Value)
+            {
+                System.Windows.Forms.MessageBox.Show("【使用到期日期】必须大于【安装到期日期】");
+                return;
+            }
             UserSet u = new UserSetManager().GetItemById();
             if (u == null)
             {
                 u = new UserSet();
                 u.ID = Guid.NewGuid();
             }
-            u.UserInfo =( checkBox1.Checked.ToString() + "|" + dateTimePicker1.Value.ToString("yyyyMMdd")).Open().Open();
+            u.UserInfo = (checkBox1.Checked.ToString() + "|" + dateTimePicker1.Value.ToString("yyyyMMdd") + "|" + dateTimePicker1.Value.ToString("yyyyMMdd")).Open().Open();
             new UserSetManager().Save(u);
             textBox1.Text = u.UserInfo;
         }

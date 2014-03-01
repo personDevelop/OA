@@ -59,6 +59,7 @@ namespace OA.handler
                     entity.StartTime = rp["StartTime"];
                     entity.EndTime = rp["EndTime"];
                     entity.KQRQ = DateTime.Parse(rp["KQRQ"]);
+                    entity.SWStatus = rp["SWStatus"];
                     entity.Status = rp["Status"];
                     entity.Note = rp["Note"];
                     list.Add(entity);
@@ -67,7 +68,7 @@ namespace OA.handler
                 else
                 {
                     //多条记录保存
-                    int rows = ((rp.Count - 1) / 14) - 1;
+                    int rows = ((rp.Count - 1) / 14)  ;
                     for (int i = 0; i < rows; i++)
                     {
                         string rowpix = string.Format("row[{0}]", i);
@@ -101,6 +102,7 @@ namespace OA.handler
                         entity.StartTime = rp[rowpix + "[StartTime]"];
                         entity.EndTime = rp[rowpix + "[EndTime]"];
                         entity.KQRQ = DateTime.Parse(rp["KQRQ"]);
+                        entity.SWStatus = rp[rowpix + "[SWStatus]"];
                         entity.Status = rp[rowpix + "[Status]"];
                         entity.Note = rp[rowpix + "[Note]"];
                         list.Add(entity);

@@ -141,8 +141,8 @@
             $("#treeGrid").jqxDataTable
 (
             {
-                width: "65%",
-                height: "440px",
+                width: "85%",
+                height: "390px",
                 source: dataAdapter,
                 serverProcessing: true,
                 autoRowHeight: false,
@@ -162,7 +162,7 @@
                    {
                        text: '操作', align: 'center', width: 150, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
                        dataField: null, cellsRenderer: function (row, column, value, data) {
-                           return "<a href='RoleInfoEdit.aspx?ID=" + data.ID + "'>修改</a> <a onclick='return deleteRoleInfo();'   href='#'>删除</a><a onclick='return SetPerson(\"" + data.ID + "\");'   href='#'>设置人员</a>";
+                           return "<a href='RoleInfoEdit.aspx?ID=" + data.ID + "'>修改</a>&nbsp;&nbsp; <a onclick='return deleteRoleInfo();'   href='#'>删除</a>&nbsp;&nbsp;<a onclick='return SetPerson(\"" + data.ID + "\");'   href='#'>设置人员</a>";
                        }
                    }
                 ]
@@ -176,8 +176,8 @@
             if (!datatablePeroson) {
                 CreateDataGrid();
             } else {
-
-                     unselectdataAdapter.dataBind();
+                datatablePeroson.jqxGrid('updatebounddata');
+                datatablePeroson.jqxGrid('refreshdata');
             }
             $('#window').jqxWindow('open');
         }
@@ -223,13 +223,28 @@
         }
     </script>
     <script type="text/javascript">
+
+        function tabs(ele) {
+            var id = ele.id;
+            if (id == "pic") {
+                $("#basic_wrap").hide();
+                $("#pic_wrap").show();
+                $("#pic").addClass("selected");
+                $("#basic").removeClass("selected");
+                BindPerson();
+            }
+            if (id == "basic") {
+                $("#pic_wrap").hide();
+                $("#basic_wrap").show();
+                $("#basic").addClass("selected");
+                $("#pic").removeClass("selected");
+            }
+        }
+    
+    </script>
+    <script type="text/javascript">
         var unselectdataAdapter;
         var datatablePeroson;
-        $(function () {
-
-
-
-        });
         function CreateDataGrid() {
 
 
@@ -275,7 +290,7 @@
 
             //绑定树
 
-           datatablePeroson= $("#datatablePeroson").jqxGrid(
+            datatablePeroson = $("#datatablePeroson").jqxGrid(
             {
                 selectionmode: 'checkbox',
                 width: "100%",
@@ -291,14 +306,7 @@
 { text: '姓名', align: 'center', dataField: 'RealName', minWidth: 100, width: "50%" }
                 ]
             });
-            $("#datatablePeroson").on("bindingcomplete", function (event) {
-
-                debugger;
-                $('#datatablePeroson').jqxGrid('selectrow', 10);
-
-
-            });
-         }
+        }
 
         var selectID = "";
         $(function () {
@@ -310,14 +318,155 @@
                 autoOpen: false
             });
             $('#cancel').jqxButton({ width: '65px' });
-            $('#okButton').jqxButton({ width: '65px' }).on("click", function () {
+            $('#okButton').jqxButton({ width: '65px' }).on("click",
+             function () {
 
+                 var selectPerson = datatablePeroson.jqxGrid('getselectedrowindexes');
 
-            });
+                 if (selectPerson && selectPerson.length > 0) {
+                     var selectPersonID = "";
+                     for (var i = 0; i < selectPerson.length; i++) {
+                         selectPersonID += datatablePeroson.jqxGrid('getrowdata', selectPerson[i]).ID + ",";
+                         // datatablePeroson.jqxGrid('unselectrow', selectPerson[i]);
+                     }
+                     //                     for (var i = 0; i < selectPerson.length; i++) {
+                     //                         
+                     //                         datatablePeroson.jqxGrid('unselectrow', selectPerson[i]);
+                     //                     }
+                     var selectAjaxData = { roleID: RoleID, person: selectPersonID };
+                     $.ajax({
+                         url: "handler/SetRolePerson.ashx",
+                         async: false,
+                         data: selectAjaxData,
+                         dataType: 'json',
+                         type: "POST",
+                         success: function (data) {
+                             if (data.success == "true") {
+
+                                 Msg.ShowSuccess("设置成功");
+
+                             }
+                             else {
+                                 Msg.ShowError(base64decode(data.msg));
+                             }
+                         }
+
+                     });
+                 }
+             });
         })
       
 
        
+    </script>
+    <script type="text/javascript">
+        var persondatatable;
+        function BindPerson() {
+
+            if (persondatatable) {
+
+                persondatatable.jqxGrid('updatebounddata');
+                persondatatable.jqxGrid('refreshdata');
+            }
+            //获取数据
+            var source =
+            {
+                dataType: "json",
+                dataFields: [
+                { name: 'ID', type: 'string' },
+{ name: 'UserName', type: 'string' },
+{ name: 'RealName', type: 'string' },
+{ name: 'RolePersonID', type: 'string' },
+{ name: 'RoleID', type: 'string' }
+                ],
+                id: 'RolePersonID',
+                url: 'handler/GetRoleHasPersonHandler.ashx'
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source,
+                {
+                    formatData: function (data) {
+                        if (source.totalRecords) {
+
+                            data.$skip = data.pagenum * data.pagesize;
+                            data.$top = data.pagesize;
+                        }
+                        data.RoleID = RoleID;
+                        return data;
+                    },
+                    downloadComplete: function (data, status, xhr) {
+                        if (!source.totalRecords) {
+                            source.totalRecords = data.totalRecords;
+                            data.value = data.rows;
+                        }
+                    },
+                    loadError: function (xhr, status, error) {
+                        Msg.ShowError(error);
+
+                    }
+                }
+            );
+
+            //绑定树
+
+        persondatatable=    $("#person").jqxDataTable
+(
+            {
+                width: "90%",
+                height: "490px",
+                source: dataAdapter,
+                serverProcessing: true,
+                autoRowHeight: false,
+                altRows: true,
+                pageable: true,
+                columnsResize: true,
+                pageSize: 20,
+                pagesizeoptions: ['20', '50', '100'],
+                columns: [
+
+{ text: '用户名', align: 'center', dataField: 'UserName', minWidth: 50, width: 100 },
+{ text: '真实姓名', align: 'center', dataField: 'RealName', minWidth: 50, width: 100 },
+
+                   {
+                       text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
+                       dataField: null, cellsRenderer: function (row, column, value, data) {
+                           return "  <a onclick='return deleteRolePersonInfo(\"+data.RolePersonID+\");'   href='#'>删除</a>";
+                       }
+                   }
+                ]
+            });
+
+        }
+        function deletePersonInfo(RolePersonID) {
+            Msg.Query("确认要删除该条数据?", function () {
+
+                var url = "handler/RolePersonInfoDeleteHandler.ashx?ID=" + RolePersonID;
+                $.ajax(
+                {
+                    url: url,
+                    dataType: 'json',
+                    success: function (data) {
+                        var rows = $("#treeGrid").jqxDataTable('getRows');
+                        var rowIndex = -1;
+                        for (var i = 0; i < rows.length; i++) {
+                            if (rows[i].ID == rowData.ID) {
+                                rowIndex = i;
+                                break;
+                            }
+
+                        }
+                        if (data.success == "true") {
+                            $("#treeGrid").jqxDataTable('deleteRow', rowIndex);
+                            Msg.ShowSuccess("删除成功");
+                        }
+                        else {
+                            Msg.ShowError(base64decode(data.msg));
+                        }
+                    }
+                });
+
+            });
+
+        }
     </script>
 </head>
 <body style='padding-left: 10px; padding-right: 10px; padding-top: 10px;'>
@@ -334,7 +483,23 @@
     <div style="clear: both;">
     </div>
     <form id="form1" runat="server" style='margin-left: 10px;'>
-    <div id="treeGrid" style='margin-top: 20px;'>
+    <div class="content-tab-wrap">
+        <div id="floatHead" class="content-tab">
+            <div class="content-tab-ul-wrap">
+                <ul>
+                    <li><a href="javascript:;" id='basic' onclick="tabs(this);" class="selected">角色列表</a></li>
+                    <li><a href="javascript:;" id='pic' onclick="tabs(this);" class="">角色人员</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content" id='pic_wrap' style="display: none; height: 390px;">
+        <div id="person">
+        </div>
+    </div>
+    <div class="tab-content" id='basic_wrap' style="display: block; height: 390px;">
+        <div id="treeGrid">
+        </div>
     </div>
     </form>
     <div id="window">

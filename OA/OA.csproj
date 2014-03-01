@@ -102,6 +102,7 @@
     <Content Include="FunctionInfoEdit.aspx" />
     <Content Include="FunctionInfoList.aspx" />
     <Content Include="index.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="js\DatePicker\calendar.js" />
     <Content Include="js\DatePicker\lang\en.js" />
@@ -860,6 +861,9 @@
     <Compile Include="FunctionInfoList.aspx.designer.cs">
       <DependentUpon>FunctionInfoList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="handler\AdministrativeRegionsDeleteHandler.ashx.cs">
       <DependentUpon>AdministrativeRegionsDeleteHandler.ashx</DependentUpon>
     </Compile>
@@ -896,6 +900,9 @@
     <Compile Include="handler\FunctionInfoSaveHandler.ashx.cs">
       <DependentUpon>FunctionInfoSaveHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\GetRoleHasPersonHandler.ashx.cs">
+      <DependentUpon>GetRoleHasPersonHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\GetRolePersonHandler.ashx.cs">
       <DependentUpon>GetRolePersonHandler.ashx</DependentUpon>
     </Compile>
@@ -931,6 +938,12 @@
     </Compile>
     <Compile Include="handler\RoleInfoSaveHandler.ashx.cs">
       <DependentUpon>RoleInfoSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\RolePersonInfoDeleteHandler.ashx.cs">
+      <DependentUpon>RolePersonInfoDeleteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\SetRolePerson.ashx.cs">
+      <DependentUpon>SetRolePerson.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\ShebeiInfoDeleteHandler.ashx.cs">
       <DependentUpon>ShebeiInfoDeleteHandler.ashx</DependentUpon>
@@ -1186,6 +1199,9 @@
     <Content Include="handler\NoticeInfoSaveHandler.ashx" />
     <Content Include="handler\NoticeInfoListHandler.ashx" />
     <Content Include="handler\NoticeInfoDeleteHandler.ashx" />
+    <Content Include="handler\SetRolePerson.ashx" />
+    <Content Include="handler\GetRoleHasPersonHandler.ashx" />
+    <Content Include="handler\RolePersonInfoDeleteHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />

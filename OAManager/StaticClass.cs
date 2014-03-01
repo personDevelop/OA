@@ -31,10 +31,15 @@ namespace OAManager
                     return 1;
                 }
                 string d = sarr[1];
-                if (sarr.Length > 2)
+                string sd = sarr[2];
+                if (sarr.Length > 3)
                 {
-                    string f = sarr[2];
-                    string info = sarr[3];
+
+                    string info = sarr[4];
+                    if (DateTime.Now.ToString("yyyyMMdd").CompareTo(sd) > 0)
+                    {
+                        return 0;
+                    }
                     if (info == GetInfo())
                     {
                         return 1;
@@ -47,8 +52,9 @@ namespace OAManager
                 }
                 else
                 {
+
                     string n = DateTime.Now.ToString("yyyyMMdd");
-                    if (n.CompareTo(d) > 0)
+                    if (n.CompareTo(d) > 0 || n.CompareTo(sd) > 0)
                     {
                         return 0;
                     }
@@ -79,7 +85,7 @@ namespace OAManager
                     mo.Dispose();
                 }
             }
-            return Info.ToString()  ;
+            return Info.ToString();
         }
         public static string ext = "727F9213030F69982403C798B87B8640754B976FD681763DB08117E17BD365A463CEC90F0A0E057978E76625FC2A50E920798B3E2E7C6EC9BE4B124A6933812985C7BCC1B83D76F7AED52F63155FCBCD";
 

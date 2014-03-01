@@ -29,6 +29,7 @@ namespace OAEntity
         private DateTime? _Updatedate;
         private string _Note;
         private DateTime _CreateDate;
+        private string _SWStatus;
 
         #endregion
 
@@ -154,11 +155,11 @@ namespace OAEntity
             }
         }
         /// <summary>
-        /// 状态,正常、迟到、早退、旷工等，从系统编码里取值
+        /// 下午状态,正常、迟到、早退、旷工等，从系统编码里取值
         /// </summary>
 
 
-        [DbProperty(MapingColumnName = "Status", DbTypeString = "NVarChar", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "Status", DbTypeString = "NVarChar", ColumnIsNull = true, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
 
         public string Status
         {
@@ -273,6 +274,26 @@ namespace OAEntity
                 this._CreateDate = value;
             }
         }
+        /// <summary>
+        /// 上午状态,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "SWStatus", DbTypeString = "NVarChar", ColumnIsNull = true, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public string SWStatus
+        {
+            get
+            {
+                return this._SWStatus;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("SWStatus", this._SWStatus, value);
+                this._SWStatus = value;
+            }
+        }
 
 
         #endregion
@@ -295,6 +316,7 @@ namespace OAEntity
                 Updatedate = new PropertyItem("Updatedate", tableName);
                 Note = new PropertyItem("Note", tableName);
                 CreateDate = new PropertyItem("CreateDate", tableName);
+                SWStatus = new PropertyItem("SWStatus", tableName);
 
             }
             /// <summary>
@@ -322,7 +344,7 @@ namespace OAEntity
             /// </summary> 
             public PropertyItem KQRQ = null;
             /// <summary>
-            /// 状态,正常、迟到、早退、旷工等，从系统编码里取值
+            /// 下午状态,正常、迟到、早退、旷工等，从系统编码里取值
             /// </summary> 
             public PropertyItem Status = null;
             /// <summary>
@@ -345,6 +367,10 @@ namespace OAEntity
             /// 创建日期,
             /// </summary> 
             public PropertyItem CreateDate = null;
+            /// <summary>
+            /// 上午状态,
+            /// </summary> 
+            public PropertyItem SWStatus = null;
 
 
         }

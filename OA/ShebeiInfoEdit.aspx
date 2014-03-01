@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ShebeiInfoEdit.aspx.cs" Inherits="OA.ShebeiInfoEdit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ShebeiInfoEdit.aspx.cs"
+    Inherits="OA.ShebeiInfoEdit" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
@@ -45,7 +47,7 @@
                                     icon: 'succeed',
                                     lock: true,
                                     ok: function () {
-                                        
+
                                     }
                                 });
                             }
@@ -60,7 +62,7 @@
             });
 
 
-            
+
         });
 
         function GetSbList() {
@@ -93,7 +95,7 @@
                 $("#pic_wrap").show();
                 $("#pic").addClass("selected");
                 $("#basic").removeClass("selected");
-                
+
             }
             if (id == "basic") {
                 $("#pic_wrap").hide();
@@ -108,88 +110,89 @@
 </head>
 <body style='padding-left: 10px; padding-right: 10px; padding-top: 10px;'>
     <form id="form1" runat="server">
-     <div class="location">
+    <div class="location">
         <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
         <a href="dashboard.html" class="home"><i></i><span>首页</span></a> <i class="arrow">
-        </i><span>设备信息表</span>  
+        </i><span>设备信息表</span>
     </div>
     <div style='margin-top: 20px;'>
     </div>
-     <div class="content-tab-wrap">
-      <div id="floatHead" class="content-tab">
-        <div class="content-tab-ul-wrap">
-          <ul>
-            <li><a href="javascript:;" id='basic' onclick="tabs(this);" class="selected">基本信息</a></li>
-            <li><a href="javascript:;"  id='pic' onclick="tabs(this);" class="">设备图片</a></li>
-          </ul>
+    <div class="content-tab-wrap">
+        <div id="floatHead" class="content-tab">
+            <div class="content-tab-ul-wrap">
+                <ul>
+                    <li><a href="javascript:;" id='basic' onclick="tabs(this);" class="selected">基本信息</a></li>
+                    <li><a href="javascript:;" id='pic' onclick="tabs(this);" class="">设备图片</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
-
-         <div class="tab-content" id='pic_wrap' style="display: none;height: 350px;">
-         <input name="txtFILEID" type="text" id="txtFILEID" runat="server" />
-         </div>
-        <div class="tab-content" id='basic_wrap' style="display: block;">
-         <input name="txtID" type="hidden" id="txtID" runat="server" />
+    <div class="tab-content" id='pic_wrap' style="display: none; height: 350px;">
+        <input name="txtFILEID" type="text" id="txtFILEID" runat="server" />
+    </div>
+    <div class="tab-content" id='basic_wrap' style="display: block;">
+        <input name="txtID" type="hidden" id="txtID" runat="server" />
+        <dl>
             <dl>
- 
-<dl>
-                    <dt>设备编号</dt>
-                    <dd> 
-                    <input name="txtCode" type="text" id="txtCode"  runat="server"  class="input small" datatype="n" sucmsg=" ">
-                    </dd>
-                </dl>
-<dl>
-                    <dt>设备名称</dt>
-                    <dd> 
-                    <input name="txtName" type="text" id="txtName"  runat="server"  class="input small" datatype="n" sucmsg=" ">
-                    </dd>
-                </dl>
-<dl>
-                    <dt>规格型号</dt>
-                    <dd> 
-                    <input name="txtGuiGe" type="text" id="txtGuiGe"  runat="server"  class="input small" datatype="n" sucmsg=" ">
-                    </dd>
-                </dl>
-<dl>
-                    <dt>是否启用</dt>
-                    <dd> 
-                    <input name="txtIsEnable" type="checkbox" id="txtIsEnable" checked="checked"  runat="server"  class="input small" datatype="n" sucmsg=" ">
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt>设备状态</dt>
-                    <dd> 
-                    <input name="txtState"  type="text" id="txtState"   runat="server"  class="input small" datatype="n" sucmsg=" ">
-                    </dd>
-                </dl>
-                 <dl>
-                    <dt>设备外链地址</dt>
-                    <dd> 
-                    <input name="txtPATH"  type="text" id="txtPATH"   style='width:600px;' runat="server"  class="input small" datatype="n" sucmsg=" ">
-                    </dd>
-                </dl>
-<dl>
-                    <dt>备注</dt>
-                    <dd> 
-                    <textarea name="txtNote" id="txtNote" runat="server" style='width:600px;' rows="6" class="input big"></textarea>
-                    </dd>
-                </dl>
-  
-            </dl>  
+                <dt>设备编号</dt>
+                <dd>
+                    <input name="txtCode" type="text" id="txtCode" runat="server" class="input small"
+                        datatype="n" sucmsg=" ">
+                </dd>
+            </dl>
+            <dl>
+                <dt>设备名称</dt>
+                <dd>
+                    <input name="txtName" type="text" id="txtName" runat="server" class="input small"
+                        datatype="n" sucmsg=" ">
+                </dd>
+            </dl>
+            <dl>
+                <dt>规格型号</dt>
+                <dd>
+                    <input name="txtGuiGe" type="text" id="txtGuiGe" runat="server" class="input small"
+                        datatype="n" sucmsg=" ">
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否启用</dt>
+                <dd>
+                    <input name="txtIsEnable" type="checkbox" id="txtIsEnable" checked="checked" runat="server"
+                        class="input small" datatype="n" sucmsg=" ">
+                </dd>
+            </dl>
+            <dl>
+                <dt>设备状态</dt>
+                <dd>
+                    <input name="txtState" type="text" id="txtState" runat="server" class="input small"
+                        datatype="n" sucmsg=" ">
+                </dd>
+            </dl>
+            <dl>
+                <dt>设备外链地址</dt>
+                <dd>
+                    <input name="txtPATH" type="text" id="txtPATH" style='width: 600px;' runat="server"
+                        class="input small" datatype="n" sucmsg=" ">
+                </dd>
+            </dl>
+            <dl>
+                <dt>备注</dt>
+                <dd>
+                    <textarea name="txtNote" id="txtNote" runat="server" style='width: 600px;' rows="6"
+                        class="input big"></textarea>
+                </dd>
+            </dl>
+        </dl>
+    </div>
+    <div class="page-footer">
+        <div class="btn-list">
+            <asp:Button ID="Button1" runat="server" class="btn" Text="提交保存" />
+            <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);">
         </div>
-        <div class="page-footer">
-            <div class="btn-list">
-                <asp:Button ID="Button1" runat="server" class="btn" Text="提交保存" />
-                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);">
-            </div>
-            <div class="clear">
-            </div>
+        <div class="clear">
         </div>
+    </div>
     </div>
     </form>
 </body>
 </html>
-
-

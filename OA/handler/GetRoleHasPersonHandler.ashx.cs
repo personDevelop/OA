@@ -4,14 +4,13 @@ using System.Linq;
 using System.Web;
 using OAManager;
 using System.Data;
-using OAEntity;
 
 namespace OA.handler
 {
     /// <summary>
-    /// GetRolePersonHandler 的摘要说明
+    /// GetRoleHasPersonHandler 的摘要说明
     /// </summary>
-    public class GetRolePersonHandler : IHttpHandler
+    public class GetRoleHasPersonHandler : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)
@@ -22,10 +21,10 @@ namespace OA.handler
             int currentPage = int.Parse(rp["pagenum"]);
             int pageSize = int.Parse(rp["pagesize"]);
             int count = 0, recordCount = 0;
-            DataTable dt = manager.GetPersonByRoleID(currentPage + 1, pageSize, rp["RoleID"],false, ref count, ref recordCount);
+            DataTable dt = manager.GetPersonByRoleID(currentPage + 1, pageSize, rp["RoleID"],true, ref count, ref recordCount);
             string result = JsonConvert.Convert2Json(dt);
             context.Response.Write("{ \"totalRecords\":\"" + recordCount + "\",\"rows\":" + result + "}");
-            context.Response.End(); 
+            context.Response.End();
         }
 
         public bool IsReusable

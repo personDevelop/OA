@@ -147,7 +147,7 @@ namespace OAManager
         /// </summary>
         public int DelateById(string IDS)
         {
-            
+
             return Dal.Delete<RoleInfo>(RoleInfo._.ID.In(IDS.Split(',')));
         }
 
@@ -171,23 +171,39 @@ namespace OAManager
         /// <param name="pageCount">总页数</param>
         /// <param name="recordCount">总记录数</param>
         /// <returns></returns>
-        public DataTable GetPersonByRoleID(int pageindex, int pagesize, string roleID, ref int pageCount, ref int recordCount) 
+        public DataTable GetPersonByRoleID(int pageindex, int pagesize, string roleID, bool has, ref int pageCount, ref int recordCount)
         {
             if (string.IsNullOrEmpty(roleID))
             {
                 roleID = Guid.NewGuid().ToString();
             }
-             return Dal.From<PersonInfo>().Join<RolePerson>( RolePerson._.PersonID== PersonInfo._.ID && RolePerson._.RoleID==new Guid(roleID), JoinType.leftJoin)
-                 .Select(PersonInfo._.ID,PersonInfo._.UserName,PersonInfo._.RealName,RolePerson._.ID.Alias("RolePersonID"),
-                 RolePerson._.RoleID).OrderBy(PersonInfo._.RealName).ToDataTable(pagesize, pageindex,ref pageCount,
-                 ref recordCount);
-//            
-//            return Dal.FromCustomSql(@"select * from personinfo
-//where ID NOT IN (   SELECT        PersonID
-//FROM         RolePerson INNER JOIN
-//                       RoleInfo ON  RoleID = RoleInfo.ID
-//                 WHERE RoleId=@RoleId    )  order by RealName").AddInputParameter("RoleId", new Guid(roleID)).ToDataTable();
-       }
+            WhereClip where = null;
+            if (has)
+            {
+                where = RolePerson._.RoleID == roleID;
+                return Dal.From<PersonInfo>().Join<RolePerson>(RolePerson._.PersonID == PersonInfo._.ID, JoinType.leftJoin)
+                .Where(where)
+                .Select(PersonInfo._.ID, PersonInfo._.UserName, PersonInfo._.RealName, RolePerson._.ID.Alias("RolePersonID"),
+                RolePerson._.RoleID).OrderBy(PersonInfo._.RealName).ToDataTable(pagesize, pageindex, ref pageCount,
+                ref recordCount);
+            }
+            else
+            {
+                where = RolePerson._.RoleID == roleID;
+                return Dal.From<PersonInfo>().Join<RolePerson>(RolePerson._.PersonID == PersonInfo._.ID && RolePerson._.RoleID == roleID, JoinType.leftJoin)
+                .Where(RolePerson._.RoleID == null)
+                .Select(PersonInfo._.ID, PersonInfo._.UserName, PersonInfo._.RealName, RolePerson._.ID.Alias("RolePersonID"),
+                RolePerson._.RoleID).OrderBy(PersonInfo._.RealName).ToDataTable(pagesize, pageindex, ref pageCount,
+                ref recordCount);
+            }
+
+            //            
+            //            return Dal.FromCustomSql(@"select * from personinfo
+            //where ID NOT IN (   SELECT        PersonID
+            //FROM         RolePerson INNER JOIN
+            //                       RoleInfo ON  RoleID = RoleInfo.ID
+            //                 WHERE RoleId=@RoleId    )  order by RealName").AddInputParameter("RoleId", new Guid(roleID)).ToDataTable();
+        }
 
 
 
@@ -195,6 +211,11 @@ namespace OAManager
 
 
 
+
+        public int DelateRolePersonById(Guid guid)
+        {
+            return Dal.Delete<RolePerson>(guid);
+        }
     }
 
 
