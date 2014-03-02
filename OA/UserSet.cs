@@ -9,7 +9,7 @@ namespace OA
 {
     public class UserSetLogic
     {
-        static UserSetLogic()
+        public UserSetLogic()
         {
             object o = CacheContainer.GetCache(StaticClass.SessionValKey);
             int sessionVal = 2;
@@ -27,7 +27,7 @@ namespace OA
                     break;
                 default:
                     int x = StaticClass.GetSessionVal();
-                    CacheContainer.AddCache(StaticClass.SessionValKey, x);
+                    CacheContainer.AddCache(StaticClass.SessionValKey, x, 864000);
                     if (x == 0)
                     {
                         new externInfo();
@@ -35,6 +35,6 @@ namespace OA
                     break;
             }
         }
-        public   static string S = "s";
+
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web; 
+using System.Web;
 
 namespace OA
 {
@@ -9,7 +9,20 @@ namespace OA
     {
         protected void Page_Init(object sender, EventArgs e)
         {
-            string user = UserSetLogic.S;
+            if (Session["UserName"] == null)
+            {
+                string path = this.Request.FilePath.ToLower();
+                if (path.EndsWith("login.aspx") || path.EndsWith("randomcode.aspx") || path.EndsWith("index.aspx"))
+                {
+                    
+                }
+                else
+                {
+                    Response.Redirect("login.aspx");
+                     
+                }
+            }
+            new UserSetLogic();
 
         }
     }

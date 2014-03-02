@@ -12,7 +12,7 @@ namespace OA
 
         protected void Application_Start(object sender, EventArgs e)
         {
-         string user=   UserSetLogic.S;
+            new UserSetLogic();
         }
 
         protected void Session_Start(object sender, EventArgs e)
