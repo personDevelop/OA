@@ -126,6 +126,7 @@
     <Content Include="PersonInfoList.aspx" />
     <Content Include="queryDayLog.aspx" />
     <Content Include="queryKaoQin.aspx" />
+    <Content Include="queryPaiGong.aspx" />
     <Content Include="randomCode.aspx" />
     <Content Include="resetPwd.aspx" />
     <Content Include="RoleInfoEdit.aspx" />
@@ -981,11 +982,17 @@
     <Compile Include="handler\WorkInfoListHandler.ashx.cs">
       <DependentUpon>WorkInfoListHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\WorkInfoQueryHandler.ashx.cs">
+      <DependentUpon>WorkInfoQueryHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\WorkInfoSaveHandler.ashx.cs">
       <DependentUpon>WorkInfoSaveHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\YuanGongKaoQinListHandler.ashx.cs">
       <DependentUpon>YuanGongKaoQinListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\YuanGongKaoQinQueryHandler.ashx.cs">
+      <DependentUpon>YuanGongKaoQinQueryHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\YuanGongKaoQinSaveHandler.ashx.cs">
       <DependentUpon>YuanGongKaoQinSaveHandler.ashx</DependentUpon>
@@ -1062,6 +1069,13 @@
     </Compile>
     <Compile Include="queryKaoQin.aspx.designer.cs">
       <DependentUpon>queryKaoQin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="queryPaiGong.aspx.cs">
+      <DependentUpon>queryPaiGong.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="queryPaiGong.aspx.designer.cs">
+      <DependentUpon>queryPaiGong.aspx</DependentUpon>
     </Compile>
     <Compile Include="randomCode.aspx.cs">
       <DependentUpon>randomCode.aspx</DependentUpon>
@@ -1202,6 +1216,8 @@
     <Content Include="handler\SetRolePerson.ashx" />
     <Content Include="handler\GetRoleHasPersonHandler.ashx" />
     <Content Include="handler\RolePersonInfoDeleteHandler.ashx" />
+    <Content Include="handler\YuanGongKaoQinQueryHandler.ashx" />
+    <Content Include="handler\WorkInfoQueryHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />
@@ -1236,7 +1252,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>7906</DevelopmentServerPort>
+          <DevelopmentServerPort>18544</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/OA</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

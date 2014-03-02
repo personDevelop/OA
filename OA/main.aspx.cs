@@ -19,6 +19,7 @@ namespace OA
             string userid = string.Empty;
             if (!IsPostBack)
             {
+                sys_title.InnerHtml = "长清公安分局综合运维管理系统";
                 if (Session["UserName"] == null)
                 {
 

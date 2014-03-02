@@ -237,7 +237,7 @@ white-space: nowrap;
 }
 .drop-box .drop-item li a:hover{ color:#fff; text-decoration:none; background:#55afeb; }
 
-            .logo {display: block;float: left;width: 200px;height: 42px;font-family:微软雅黑;line-height:34px;color:white;margin-left:20px;font-size:18px;font-weight:normal;overflow: hidden;}
+            .logo {display: block;float: left;width: 280px;height: 42px;font-family:微软雅黑;line-height:34px;color:white;margin-left:20px;font-size:18px;font-weight:normal;overflow: hidden;}
         </style>
 		
 		<script>
@@ -245,34 +245,35 @@ white-space: nowrap;
 		    function openPer() {
 		        $("#mainframe").attr("src", "PersonInfoEdit.aspx?ID="+$("#uid").val());
             }
-		    $(function () {
-		        $(".pack").click(function () {
-		            if ($(this).hasClass("close")) {
-		                $(this).parent().find("ul").slideDown();
-		                $(this).removeClass("close");
-		            } else {
-		                $(this).parent().find("ul").slideUp();
-		                $(this).addClass("close");
-		            }
-		        });
-		        $(".subblock .item").click(function () {
-		            $(".subblock .item").css("background", "white");
-		            $(".subblock .item").css("color", "#666");
+            $(function () {
+                
+                $(".pack").click(function () {
+                    if ($(this).hasClass("close")) {
+                        $(this).parent().find("ul").slideDown();
+                        $(this).removeClass("close");
+                    } else {
+                        $(this).parent().find("ul").slideUp();
+                        $(this).addClass("close");
+                    }
+                });
+                $(".subblock .item").click(function () {
+                    $(".subblock .item").css("background", "white");
+                    $(".subblock .item").css("color", "#666");
 
-		            $(".subblock .item").find(".arrow").removeClass("arrowselected");
-		            $(this).css("background", "rgb(68, 144, 240)");
-		            $(this).css("color", "white");
-		            $(this).find(".arrow").addClass("arrowselected");
+                    $(".subblock .item").find(".arrow").removeClass("arrowselected");
+                    $(this).css("background", "rgb(68, 144, 240)");
+                    $(this).css("color", "white");
+                    $(this).find(".arrow").addClass("arrowselected");
 
-		        });
-		        $(".icon-option").click(function () {
-		            if ($("#menuslide").css("display") == "block") {
-		                $("#menuslide").hide();
-		            } else {
-		                $("#menuslide").show();
-		            }
-		        });
-		    });
+                });
+                $(".icon-option").click(function () {
+                    if ($("#menuslide").css("display") == "block") {
+                        $("#menuslide").hide();
+                    } else {
+                        $("#menuslide").show();
+                    }
+                });
+            });
 		</script>
     </head>
     <body class='ui-sunny' >
@@ -280,7 +281,7 @@ white-space: nowrap;
         
         <div id="header" style='height:42px;background: #33B5E5;'>
             <div class="header-box">
-            <h1 class="logo"><i></i><span>OA办公自动化管理系统</span></h1>
+            <h1 class="logo"><i></i><span id='sys_title' runat=server></span></h1>
             
 			<div class="nav-right">
 			<ul id="nav" class="nav" style='margin-right:6px;border-left: 1px solid #1da0d0;'>
@@ -356,12 +357,12 @@ white-space: nowrap;
 							<span >查询统计</span>					</a>
 					<ul   class='subblock'>
 						<li>
-							<a navid="site_config" href="settings/sys_config.aspx" target="mainframe" class="item">
+							<a navid="site_config" href="queryKaoQin.aspx" target="mainframe" class="item">
 							<div class="arrow"></div><div class="expandable"></div><div class=""></div><span class='subMenu'>考勤统计</span>
 						</a>
 						</li>
 						<li>
-						<a navid="site_url_rewrite" href="settings/url_rewrite_list.aspx" target="mainframe" class="item">
+						<a navid="site_url_rewrite" href="queryPaiGong.aspx" target="mainframe" class="item">
 						<div class="arrow"></div><div class="expandable"></div><div class=""></div><span  class='subMenu'>派工统计</span>
 						</a>
 						</li>

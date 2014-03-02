@@ -48,6 +48,7 @@
                             // data.pagesize - page size
                             data.$skip = data.pagenum * data.pagesize;
                             data.$top = data.pagesize;
+
                         }
                         return data;
                     },

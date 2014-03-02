@@ -74,6 +74,23 @@ namespace OAManager
 
         }
 
+        /// <summary>
+        /// 分页获取获取员工考勤datatable
+        /// </summary>
+        /// <param name="pageindex">当前页数</param>
+        /// <param name="pagesize">每页显示条数</param>
+        /// <param name="orderby">排序方式</param>
+        /// <param name="pageCount">总页数</param>
+        /// <param name="recordCount">总记录数</param>
+        /// <returns></returns>
+        public DataTable GetDataTable(int pageindex, int pagesize,WhereClip where, string orderby, ref int pageCount, ref int recordCount)
+        {
+
+
+            return Dal.From<YuanGongKaoQin>().Where(where).OrderBy(new OrderByClip(orderby)).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
+
+        }
+
 
         /// <summary>
         /// 保存员工考勤实体，包括添加、修改、删除

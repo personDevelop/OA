@@ -80,6 +80,7 @@ font-family: "Microsoft YaHei";
       .icon-list li:first-child a {border-left: solid 1px #dbdbdb;}
       .icon-list li a i {display: inline-block;margin-right: 3px;width: 14px;height: 14px;text-indent: -999em;background: url(css/images/skin_icons.png) no-repeat;vertical-align: middle;}
         .icon-list li a.add i {background-position: 0 -28px;}
+          .icon-list li a.search i {background-position: -169px -28px;}
         .icon-list li a.save i {background-position: -28px -28px;}
         .icon-list li a.all i {background-position: -56px -28px;}
         .icon-list li a.del i {background-position: -84px -28px;}
