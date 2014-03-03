@@ -422,7 +422,7 @@ white-space: nowrap;
 						    </a>
 						</li>
 						<li>
-							<a navid="site_config" href="FuncAccess.html" target="mainframe" class="item">
+							<a navid="site_config" href="FuncAccessEdit.aspx" target="mainframe" class="item">
 							<div class="arrow"></div><div class="expandable"></div><div class=""></div><span class='subMenu'>权限管理</span>
 						</a>
 						</li>

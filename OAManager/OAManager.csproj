@@ -50,6 +50,7 @@
     <Compile Include="DayLogManager.cs" />
     <Compile Include="externInfo.cs" />
     <Compile Include="FileInfoManager.cs" />
+    <Compile Include="FuncAccessManager.cs" />
     <Compile Include="FunctionInfoManager.cs" />
     <Compile Include="NoticeInfoManager.cs" />
     <Compile Include="PersonInfoManager.cs" />

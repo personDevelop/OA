@@ -99,6 +99,7 @@
     <Content Include="DayLogEdit.aspx" />
     <Content Include="DayLogList.aspx" />
     <Content Include="DayLogList1.aspx" />
+    <Content Include="FuncAccessEdit.aspx" />
     <Content Include="FunctionInfoEdit.aspx" />
     <Content Include="FunctionInfoList.aspx" />
     <Content Include="index.aspx" />
@@ -848,6 +849,13 @@
     <Compile Include="DayLogList.aspx.designer.cs">
       <DependentUpon>DayLogList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FuncAccessEdit.aspx.cs">
+      <DependentUpon>FuncAccessEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FuncAccessEdit.aspx.designer.cs">
+      <DependentUpon>FuncAccessEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FunctionInfoEdit.aspx.cs">
       <DependentUpon>FunctionInfoEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -891,6 +899,15 @@
     </Compile>
     <Compile Include="handler\FileInfoListHandler.ashx.cs">
       <DependentUpon>FileInfoListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\FuncAccessDeleteHandler.ashx.cs">
+      <DependentUpon>FuncAccessDeleteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\FuncAccessListHandler.ashx.cs">
+      <DependentUpon>FuncAccessListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\FuncAccessSaveHandler.ashx.cs">
+      <DependentUpon>FuncAccessSaveHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\FunctionInfoDeleteHandler.ashx.cs">
       <DependentUpon>FunctionInfoDeleteHandler.ashx</DependentUpon>
@@ -1218,6 +1235,9 @@
     <Content Include="handler\RolePersonInfoDeleteHandler.ashx" />
     <Content Include="handler\YuanGongKaoQinQueryHandler.ashx" />
     <Content Include="handler\WorkInfoQueryHandler.ashx" />
+    <Content Include="handler\FuncAccessDeleteHandler.ashx" />
+    <Content Include="handler\FuncAccessListHandler.ashx" />
+    <Content Include="handler\FuncAccessSaveHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />
