@@ -170,14 +170,14 @@
 
         });
 
-        
+
         function SetPerson(roleID) {
-            
+
             if (!datatablePeroson) {
                 CreateDataGrid();
             } else {
                 datatablePeroson.jqxDataTable('updatebounddata');
-               
+
             }
             $('#window').jqxWindow('open');
         }
@@ -227,17 +227,17 @@
         function tabs(ele) {
             var id = ele.id;
             if (id == "pic") {
-               
-                 var selection = $("#treeGrid").jqxDataTable('getSelection');
-                 if (selection.length == 1) {
-                     $("#basic_wrap").hide();
-                     $("#pic_wrap").show();
-                     $("#pic").addClass("selected");
-                     $("#basic").removeClass("selected");
-                     BindPerson();
-                 } else {
-                 Msg.ShowError("请选择一个角色");
-                 }
+
+                var selection = $("#treeGrid").jqxDataTable('getSelection');
+                if (selection.length == 1) {
+                    $("#basic_wrap").hide();
+                    $("#pic_wrap").show();
+                    $("#pic").addClass("selected");
+                    $("#basic").removeClass("selected");
+                    BindPerson();
+                } else {
+                    Msg.ShowError("请选择一个角色");
+                }
             }
             if (id == "basic") {
                 $("#pic_wrap").hide();
@@ -301,7 +301,7 @@
 
             datatablePeroson = $("#datatablePeroson").jqxDataTable(
             {
-               
+
                 width: "100%",
                 height: "400",
                 source: unselectdataAdapter,
@@ -335,10 +335,10 @@
                  if (selectPerson && selectPerson.length > 0) {
                      var selectPersonID = "";
                      for (var i = 0; i < selectPerson.length; i++) {
-                         selectPersonID += selectPerson[i].ID + ","; 
+                         selectPersonID += selectPerson[i].ID + ",";
                      }
                      var selection = $("#treeGrid").jqxDataTable('getSelection');
-                     var rowData = selection[0]; 
+                     var rowData = selection[0];
                      var selectAjaxData = { roleID: rowData.ID, person: selectPersonID };
                      $.ajax({
                          url: "handler/SetRolePerson.ashx",
@@ -373,7 +373,7 @@
             if (persondatatable) {
 
                 persondatatable.jqxDataTable('updatebounddata');
-//                persondatatable.jqxDataTable('refreshdata');
+                //                persondatatable.jqxDataTable('refreshdata');
             }
             //获取数据
             var personhassource =
@@ -389,7 +389,7 @@
                 id: 'RolePersonID',
                 url: 'handler/GetRoleHasPersonHandler.ashx'
             };
-              personhasdataAdapter = new $.jqx.dataAdapter(personhassource,
+            personhasdataAdapter = new $.jqx.dataAdapter(personhassource,
                 {
                     formatData: function (data) {
                         if (personhassource.totalRecords) {
@@ -397,9 +397,9 @@
                             data.$skip = data.pagenum * data.pagesize;
                             data.$top = data.pagesize;
                         }
-                        var selection = $("#treeGrid").jqxDataTable('getSelection'); 
-                    var rowData = selection[0];
-                    
+                        var selection = $("#treeGrid").jqxDataTable('getSelection');
+                        var rowData = selection[0];
+
                         data.RoleID = rowData.ID;
                         return data;
                     },
@@ -418,7 +418,7 @@
 
             //绑定树
 
-        persondatatable=    $("#person").jqxDataTable
+            persondatatable = $("#person").jqxDataTable
 (
             {
                 width: "90%",
@@ -439,7 +439,7 @@
                    {
                        text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
                        dataField: null, cellsRenderer: function (row, column, value, data) {
-                           return "  <a onclick='return deleteRolePersonInfo(\""+data.RolePersonID+"\");'   href='#'>删除</a>";
+                           return "  <a onclick='return deleteRolePersonInfo(\"" + data.RolePersonID + "\");'   href='#'>删除</a>";
                        }
                    }
                 ]
@@ -467,7 +467,7 @@
                                     break;
                                 }
 
-                            } 
+                            }
                             $("#person").jqxDataTable('deleteRow', rowIndex);
                             Msg.ShowSuccess("删除成功");
                         }
