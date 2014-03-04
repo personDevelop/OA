@@ -6,13 +6,15 @@ using OAManager;
 using System.Data;
 using Sharp.Common;
 using OAEntity;
+using System.Web.SessionState;
+
 
 namespace OA.handler
 {
     /// <summary>
     /// DayLogListHandler 的摘要说明
     /// </summary>
-    public class DayLogListHandler : IHttpHandler
+    public class DayLogListHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
@@ -27,10 +29,25 @@ namespace OA.handler
             int count = 0, recordCount = 0;
             string workstatus = rp["Workstatus"];
             WhereClip where = null;
-            if (!string.IsNullOrEmpty(workstatus))
+
+
+            if (context.Session["UserID"] != null)
             {
-                where = DayLog._.UserID == workstatus;
+                where = DayLog._.UserID == new Guid(context.Session["UserID"].ToString());
+ 
             }
+            //if (!string.IsNullOrEmpty(context.Session["UserID"] as string))
+            //{
+            //    where = DayLog._.UserID == new Guid(context.Session["UserID"].ToString());
+            //    //new Guid(context.Session["UserID"].ToString());
+
+            //}
+            //else
+            //{
+            //    where = DayLog._.UserID == "";
+
+            //}
+            
 
             DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, where, DayLog._.WordDate.Desc, ref count, ref recordCount);
             string result = JsonConvert.Convert2Json(dt);
