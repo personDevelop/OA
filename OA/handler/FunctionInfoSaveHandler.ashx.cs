@@ -50,7 +50,12 @@ namespace OA.handler
                 entity.IsEnable = rp["txtIsEnable"] == "on";
                 entity.Url = rp["txtUrl"];
                 entity.Note = rp["txtNote"];
-
+                int no;
+                if (int.TryParse(rp["txtOrderNo"],out no))
+                {
+                    entity.OrderNo = no;
+                }
+                 
                 entity.Image = rp["txtImage"];
 
 

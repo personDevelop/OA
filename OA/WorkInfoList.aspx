@@ -226,7 +226,15 @@
 
                             }
                             $("#treeGrid").jqxDataTable('deleteRow', rowIndex);
-                            Msg.ShowSuccess("删除成功");
+                           parent.art.dialog({
+                                title: '系统提示',
+                                content: '删除成功！',
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            }); 
                         }
                         else {
                             Msg.ShowError(base64decode(data.msg));
@@ -269,7 +277,16 @@
                             if (data.success == "true") {
                                 //修改状态，后重新加载处理
                                 $("#treeGrid").jqxDataTable('updateBoundData');
-                                Msg.ShowSuccess("分配成功");
+                                parent.art.dialog({
+                                    title: '系统提示',
+                                    content: '分配成功！',
+                                    icon: 'succeed',
+                                    lock: true,
+                                    ok: function () {
+
+                                    }
+                                }); 
+                               
                             }
                             else {
                                 Msg.ShowError(base64decode(data.msg));

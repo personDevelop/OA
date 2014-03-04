@@ -40,7 +40,15 @@
                         success: function (data) {
                             if (data.success == "true") {
                                 $("#txtID").val(data.ID);
-                                Msg.ShowSuccess("保存成功");
+                                parent.art.dialog({
+                                    title: '系统提示',
+                                    content: '保存成功！',
+                                    icon: 'succeed',
+                                    lock: true,
+                                    ok: function () {
+
+                                    }
+                                }); 
                             }
                             else {
                                 Msg.ShowError(base64decode(data.msg));
@@ -109,6 +117,13 @@
                     <dt>图标</dt>
                     <dd>
                         <input name="txtImage" type="text" id="txtImage" runat="server" class="input small"
+                            datatype="n" sucmsg=" ">
+                    </dd>
+                </dl>
+                 <dl>
+                    <dt>顺序</dt>
+                    <dd>
+                        <input name="txtOrderNo" type="text" id="txtOrderNo" runat="server" class="input small"
                             datatype="n" sucmsg=" ">
                     </dd>
                 </dl>

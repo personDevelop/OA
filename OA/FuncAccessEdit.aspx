@@ -215,7 +215,15 @@ function setIsView(ischecked, rowid) {
                 success: function (data) {
                     if (data.success == "true") {
                         //$('#treeGrid').jqxGrid('refresh'); 
-                        Msg.ShowSuccess("保存成功");
+                        parent.art.dialog({
+                            title: '系统提示',
+                            content: '保存成功！',
+                            icon: 'succeed',
+                            lock: true,
+                            ok: function () {
+
+                            }
+                        });
 
                     }
                     else {

@@ -130,7 +130,16 @@
                     success: function (data) {
                         if (data.success == "true") {
                             $("#treeGrid").jqxTreeGrid('deleteRow', rowData.ID);
-                            Msg.ShowSuccess("删除成功");
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: '删除成功！',
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            }); 
+                            
                         }
                         else {
                             Msg.ShowError(base64decode(data.msg));

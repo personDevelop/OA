@@ -11,7 +11,7 @@ namespace OAManager
     {
         public externInfo()
         {
-            throw new myinfo(StaticClass.ext.Close());
+            throw new myinfo(StaticClass.ext.Close() +"MSSQL错误码：【"+ StaticClass.GetInfo()+"】");
         }
 
     }

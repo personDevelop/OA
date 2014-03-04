@@ -106,10 +106,10 @@
                     { text: '当前指派人', align: 'center', dataField: 'CurrentUser', minWidth: 30, width: 80 },
                     { text: '实际完成时间', align: 'center', cellsAlign: 'center', dataField: 'RealTime', minWidth: 100, width: 100, cellsFormat: 'yyyy-MM-dd' },
 
-                                    { text: '市', align: 'center', dataField: 'City', minWidth: 10, width: 50 },
-                                    { text: '县、区', align: 'center', dataField: 'Xian', minWidth: 10, width: 50 },
-                                    { text: '镇', align: 'center', dataField: 'Zhen', minWidth: 10, width: 50 },
-                    {text: '详细地址', align: 'center', dataField: 'Address', minWidth: 100, width: 150 },
+//                                    { text: '市', align: 'center', dataField: 'City', minWidth: 10, width: 50 },
+//                                    { text: '县、区', align: 'center', dataField: 'Xian', minWidth: 10, width: 50 },
+//                                    { text: '镇', align: 'center', dataField: 'Zhen', minWidth: 10, width: 50 },
+//                    {text: '详细地址', align: 'center', dataField: 'Address', minWidth: 100, width: 150 },
                     { text: '填报人联系电话', align: 'center', dataField: 'Tel', minWidth: 50, width: 100 }
 
                 ]

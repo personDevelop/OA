@@ -69,8 +69,16 @@
                         dataType: 'json',
                         success: function (data) {
                             if (data.success == "true") {
-                                 
-                                Msg.ShowSuccess("保存成功");
+                                parent.art.dialog({
+                                    title: '系统提示',
+                                    content: '保存成功！',
+                                    icon: 'succeed',
+                                    lock: true,
+                                    ok: function () {
+
+                                    }
+                                }); 
+                               
                                 history.back(-1);
                             }
                             else {

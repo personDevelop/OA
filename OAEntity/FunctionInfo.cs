@@ -26,6 +26,7 @@ namespace OAEntity
         private string _Url;
         private string _Note;
         private string _Image;
+        private int _OrderNo;
 
         #endregion
 
@@ -210,6 +211,26 @@ namespace OAEntity
                 this._Image = value;
             }
         }
+        /// <summary>
+        /// 顺序,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "OrderNo", DbTypeString = "Int", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public int OrderNo
+        {
+            get
+            {
+                return this._OrderNo;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("OrderNo", this._OrderNo, value);
+                this._OrderNo = value;
+            }
+        }
 
 
         #endregion
@@ -229,6 +250,7 @@ namespace OAEntity
                 Url = new PropertyItem("Url", tableName);
                 Note = new PropertyItem("Note", tableName);
                 Image = new PropertyItem("Image", tableName);
+                OrderNo = new PropertyItem("OrderNo", tableName);
 
             }
             /// <summary>
@@ -267,6 +289,10 @@ namespace OAEntity
             /// 图标,
             /// </summary> 
             public PropertyItem Image = null;
+            /// <summary>
+            /// 顺序,
+            /// </summary> 
+            public PropertyItem OrderNo = null;
 
 
         }

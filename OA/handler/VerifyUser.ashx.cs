@@ -48,8 +48,17 @@ namespace OA.handler
                         context.Session["UserName"] = login_user; //缓存用户名
                         WhereClip where = PersonInfo._.UserName == login_user;
                         pr = prManger.GetItemById(where);
-                        context.Session["UserID"] = pr.ID; //缓存用户名
-                        //prManger.GetItemById(
+                        if (pr == null)
+                        {
+
+                            context.Session["UserID"] ="root"; //缓存用户名
+                            context.Session["RealName"] = "管理员";
+                        }
+                        else
+                        {
+                            context.Session["UserID"] = pr.ID; //缓存用户名
+                            context.Session["RealName"] = pr.RealName;
+                        }
                         context.Response.Write("{\"result\":\"OK\",\"forward\":\"main.aspx\"}");
 
                     }

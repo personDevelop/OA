@@ -11,6 +11,7 @@ using System.Data.Common;
 using System.Data;
 using Sharp.Common;
 using OAEntity;
+using Sharp.Common.Common;
 
 namespace OAManager
 {
@@ -192,17 +193,44 @@ namespace OAManager
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public DataTable GetAccess(string userid)
+        public DataTable GetAccess(string userid, string userName)
         {
+            if (userName.Open() == StaticClass.RootKey)
+            {
+                return Dal.From<FunctionInfo>().OrderBy(FunctionInfo._.OrderNo).ToDataTable();
+            }
+            else
+            {
 
-            string[] rolelist = Dal.From<RolePerson>().Where(RolePerson._.PersonID == new Guid(userid)).Select(RolePerson._.RoleID).ToSinglePropertyArray();
+                string[] rolelist = Dal.From<RolePerson>().Where(RolePerson._.PersonID == new Guid(userid)).Select(RolePerson._.RoleID).ToSinglePropertyArray();
 
-            return Dal.From<FunctionInfo>().Join<FuncAccess>(FunctionInfo._.ID == FuncAccess._.FunctID
-                  && FuncAccess._.RoleID.In(rolelist))
-                  .Where(FunctionInfo._.IsEnable == true && FuncAccess._.IsEnable == true && FuncAccess._.IsView == true)
-                  .Select(FunctionInfo._.ID.All)
-                  .ToDataTable();
+                return Dal.From<FunctionInfo>().Join<FuncAccess>(FunctionInfo._.ID == FuncAccess._.FunctID
+                      && FuncAccess._.RoleID.In(rolelist))
+                      .OrderBy(FunctionInfo._.OrderNo)
+                      .Where(FunctionInfo._.IsEnable == true && FuncAccess._.IsEnable == true && FuncAccess._.IsView == true)
+                      .Select(FunctionInfo._.ID.All)
+                      .ToDataTable();
+            }
 
+        }
+
+        public bool HasAccess(string userid, string userName, string funcUrl)
+        {
+            if (userName.Open() == StaticClass.RootKey)
+            {
+                return true;
+            }
+            else
+            {
+                string[] rolelist = Dal.From<RolePerson>().Where(RolePerson._.PersonID == new Guid(userid)).Select(RolePerson._.RoleID).ToSinglePropertyArray();
+              DataTable dt=  Dal.From<FunctionInfo>().Join<FuncAccess>(FunctionInfo._.ID == FuncAccess._.FunctID
+                     && FuncAccess._.RoleID.In(rolelist))
+                     .Where(FunctionInfo._.IsEnable == true && FuncAccess._.IsEnable == true && FuncAccess._.IsView == true
+                     && FunctionInfo._.Url == funcUrl)
+                     .Select(FunctionInfo._.ID)
+                     .ToDataTable();
+              return dt.Rows.Count>0;
+            }
         }
     }
 

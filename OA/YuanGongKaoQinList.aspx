@@ -38,7 +38,15 @@
                         if (data.success == "true") {
                             //$('#treeGrid').jqxGrid('refresh');
                             dataAdapter.dataBind();
-                            Msg.ShowSuccess("保存成功");
+                          parent.art.dialog({
+                                title: '系统提示',
+                                content: '保存成功！',
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            }); 
 
                         }
                         else {
@@ -63,7 +71,15 @@
                         if (data.success == "true") {
                             //$('#treeGrid').jqxGrid('refresh');
                             dataAdapter.dataBind();
-                            Msg.ShowSuccess("保存成功");
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: '保存成功！',
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            }); 
                         }
                         else {
                             Msg.ShowError(base64decode(data.msg));

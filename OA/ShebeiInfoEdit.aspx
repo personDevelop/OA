@@ -164,7 +164,7 @@
             <dl>
                 <dt>设备状态</dt>
                 <dd>
-                    <input name="txtState" type="text" id="txtState" runat="server" class="input small"
+                    <input name="txtState" type="text" id="txtState" readonly="readonly" runat="server" class="input small"
                         datatype="n" sucmsg=" ">
                 </dd>
             </dl>

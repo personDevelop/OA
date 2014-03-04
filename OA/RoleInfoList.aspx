@@ -206,7 +206,15 @@
                         }
                         if (data.success == "true") {
                             $("#treeGrid").jqxDataTable('deleteRow', rowIndex);
-                            Msg.ShowSuccess("删除成功");
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: '删除成功！',
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            }); 
                         }
                         else {
                             Msg.ShowError(base64decode(data.msg));
@@ -349,7 +357,16 @@
                          success: function (data) {
                              if (data.success == "true") {
                                  datatablePeroson.jqxDataTable('clearSelection');
-                                 Msg.ShowSuccess("设置成功");
+                                 parent.art.dialog({
+                                     title: '系统提示',
+                                     content: '设置成功！',
+                                     icon: 'succeed',
+                                     lock: true,
+                                     ok: function () {
+
+                                     }
+                                 }); 
+                                 
 
                              }
                              else {
@@ -469,7 +486,15 @@
 
                             }
                             $("#person").jqxDataTable('deleteRow', rowIndex);
-                            Msg.ShowSuccess("删除成功");
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: '删除成功！',
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            }); 
                         }
                         else {
                             Msg.ShowError(base64decode(data.msg));

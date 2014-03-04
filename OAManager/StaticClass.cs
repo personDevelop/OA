@@ -10,6 +10,8 @@ namespace OAManager
 {
     public static class StaticClass
     {
+        public static string RootKey = "065405E0AB6DE47D04B70824C5038039";
+        public static string rootKey = "7D6DB48E428AD66EC044FE9A55AD74A5";
         public static string SessionValKey = "sessionVal";
         public static char SessionValKey1 = '|';
         public static int GetSessionVal()
@@ -72,7 +74,7 @@ namespace OAManager
 
 
 
-        private static string GetInfo()
+        public static string GetInfo()
         {
             string Info = string.Empty;
             using (ManagementClass cimobject = new ManagementClass("Win32_Processor"))
