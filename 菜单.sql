@@ -1,73 +1,73 @@
-
+ï»¿
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('24BBDC90-DEC5-484D-A30D-14002A5C5655', 'Êı¾İ¹ÜÀí', 'Êı¾İ¹ÜÀí', NULL, '', 1, '', '', '', 2)
+VALUES ('24BBDC90-DEC5-484D-A30D-14002A5C5655', 'æ•°æ®ç®¡ç†', 'æ•°æ®ç®¡ç†', NULL, '', 1, '', '', '', 2)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('C9B92636-6C96-4BC3-8295-194C1DC033D7', 'ÓÃ»§¹ÜÀí', 'ÓÃ»§¹ÜÀí', '22FE18FD-A378-4394-89C7-7E68A83927D0', 'ÏµÍ³¹ÜÀí', 1, 'PersonInfoList.aspx', '', '', 1)
+VALUES ('C9B92636-6C96-4BC3-8295-194C1DC033D7', 'ç”¨æˆ·ç®¡ç†', 'ç”¨æˆ·ç®¡ç†', '22FE18FD-A378-4394-89C7-7E68A83927D0', 'ç³»ç»Ÿç®¡ç†', 1, 'PersonInfoList.aspx', '', '', 1)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('AE363AE5-93DA-4563-BC8E-19AD06E99358', '±¨¹¤¹ÜÀí', '±¨¹¤¹ÜÀí', 'C552B14A-0502-4183-896B-64C1E86B7BFA', 'ÈÕ³£¹¤×÷', 1, 'WorkInfoEdit.aspx', '', '', 3)
+VALUES ('AE363AE5-93DA-4563-BC8E-19AD06E99358', 'æŠ¥å·¥ç®¡ç†', 'æŠ¥å·¥ç®¡ç†', 'C552B14A-0502-4183-896B-64C1E86B7BFA', 'æ—¥å¸¸å·¥ä½œ', 1, 'WorkInfoEdit.aspx', '', '', 3)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('39961153-CAFF-4611-858A-404D46F900CA', 'ĞĞÕşµØÇø', 'ĞĞÕşµØÇø', '22FE18FD-A378-4394-89C7-7E68A83927D0', 'ÏµÍ³¹ÜÀí', 1, 'AdministrativeRegionsList.aspx', '', '', 4)
+VALUES ('39961153-CAFF-4611-858A-404D46F900CA', 'è¡Œæ”¿åœ°åŒº', 'è¡Œæ”¿åœ°åŒº', '22FE18FD-A378-4394-89C7-7E68A83927D0', 'ç³»ç»Ÿç®¡ç†', 1, 'AdministrativeRegionsList.aspx', '', '', 4)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('64DD070F-3ACC-4FB8-822A-4A63CE8EC418', '¹«¸æ¹ÜÀí', '¹«¸æ¹ÜÀí', '24BBDC90-DEC5-484D-A30D-14002A5C5655', 'Êı¾İ¹ÜÀí', 1, 'NoticeInfoList.aspx', '', '', 0)
+VALUES ('64DD070F-3ACC-4FB8-822A-4A63CE8EC418', 'å…¬å‘Šç®¡ç†', 'å…¬å‘Šç®¡ç†', '24BBDC90-DEC5-484D-A30D-14002A5C5655', 'æ•°æ®ç®¡ç†', 1, 'NoticeInfoList.aspx', '', '', 0)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('1887BAEC-6CB5-407F-AEA4-62D7996F5662', 'ÌîĞ´ÈÕÆÚ', 'ÌîĞ´ÈÕÆÚ', 'C552B14A-0502-4183-896B-64C1E86B7BFA', 'ÈÕ³£¹¤×÷', 1, 'DayLogEdit.aspx', '', '', 2)
+VALUES ('1887BAEC-6CB5-407F-AEA4-62D7996F5662', 'å¡«å†™æ—¥æœŸ', 'å¡«å†™æ—¥æœŸ', 'C552B14A-0502-4183-896B-64C1E86B7BFA', 'æ—¥å¸¸å·¥ä½œ', 1, 'DayLogEdit.aspx', '', '', 2)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('C552B14A-0502-4183-896B-64C1E86B7BFA', 'ÈÕ³£¹¤×÷', 'ÈÕ³£¹¤×÷', NULL, '', 1, '', '', '', 1)
+VALUES ('C552B14A-0502-4183-896B-64C1E86B7BFA', 'æ—¥å¸¸å·¥ä½œ', 'æ—¥å¸¸å·¥ä½œ', NULL, '', 1, '', '', '', 1)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('11BEB6A7-E584-4C0B-84D1-7D6B83DFA780', '¿¼ÇÚÍ³¼Æ', '¿¼ÇÚÍ³¼Æ', 'E41C7171-A11B-449E-97A8-E5D2A5D48054', '²éÑ¯Í³¼Æ', 1, 'queryKaoQin.aspx', '', '', 1)
+VALUES ('11BEB6A7-E584-4C0B-84D1-7D6B83DFA780', 'è€ƒå‹¤ç»Ÿè®¡', 'è€ƒå‹¤ç»Ÿè®¡', 'E41C7171-A11B-449E-97A8-E5D2A5D48054', 'æŸ¥è¯¢ç»Ÿè®¡', 1, 'queryKaoQin.aspx', '', '', 1)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('22FE18FD-A378-4394-89C7-7E68A83927D0', 'ÏµÍ³¹ÜÀí', 'ÏµÍ³¹ÜÀí', NULL, '', 1, '', '', '', 4)
+VALUES ('22FE18FD-A378-4394-89C7-7E68A83927D0', 'ç³»ç»Ÿç®¡ç†', 'ç³»ç»Ÿç®¡ç†', NULL, '', 1, '', '', '', 4)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('27A8016C-4646-49A7-9B7D-AC70974A796E', '¿¼ÇÚ¹ÜÀí', '¿¼ÇÚ¹ÜÀí', 'C552B14A-0502-4183-896B-64C1E86B7BFA', 'ÈÕ³£¹¤×÷', 1, 'YuanGongKaoQinList.aspx', '', '', 1)
+VALUES ('27A8016C-4646-49A7-9B7D-AC70974A796E', 'è€ƒå‹¤ç®¡ç†', 'è€ƒå‹¤ç®¡ç†', 'C552B14A-0502-4183-896B-64C1E86B7BFA', 'æ—¥å¸¸å·¥ä½œ', 1, 'YuanGongKaoQinList.aspx', '', '', 1)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('AC11811A-7D73-4333-ABFF-C3A689D632A7', 'ÅÉ¹¤Í³¼Æ', 'ÅÉ¹¤Í³¼Æ', 'E41C7171-A11B-449E-97A8-E5D2A5D48054', '²éÑ¯Í³¼Æ', 1, 'queryPaiGong.aspx', '', '', 0)
+VALUES ('AC11811A-7D73-4333-ABFF-C3A689D632A7', 'æ´¾å·¥ç»Ÿè®¡', 'æ´¾å·¥ç»Ÿè®¡', 'E41C7171-A11B-449E-97A8-E5D2A5D48054', 'æŸ¥è¯¢ç»Ÿè®¡', 1, 'queryPaiGong.aspx', '', '', 0)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('578A6DFC-744F-4D34-B787-DCA6D9F8643F', 'ÅÉ¹¤¹ÜÀí', 'ÅÉ¹¤¹ÜÀí', 'C552B14A-0502-4183-896B-64C1E86B7BFA', 'ÈÕ³£¹¤×÷', 1, 'WorkInfoList.aspx', '', '', 4)
+VALUES ('578A6DFC-744F-4D34-B787-DCA6D9F8643F', 'æ´¾å·¥ç®¡ç†', 'æ´¾å·¥ç®¡ç†', 'C552B14A-0502-4183-896B-64C1E86B7BFA', 'æ—¥å¸¸å·¥ä½œ', 1, 'WorkInfoList.aspx', '', '', 4)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('1A2B3982-E983-4EC9-BF5F-E00E606D13F8', 'Éè±¸¹ÜÀí', 'Éè±¸¹ÜÀí', '24BBDC90-DEC5-484D-A30D-14002A5C5655', 'Êı¾İ¹ÜÀí', 1, 'ShebeiInfoList.aspx', '', '', 1)
+VALUES ('1A2B3982-E983-4EC9-BF5F-E00E606D13F8', 'è®¾å¤‡ç®¡ç†', 'è®¾å¤‡ç®¡ç†', '24BBDC90-DEC5-484D-A30D-14002A5C5655', 'æ•°æ®ç®¡ç†', 1, 'ShebeiInfoList.aspx', '', '', 1)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('E41C7171-A11B-449E-97A8-E5D2A5D48054', '²éÑ¯Í³¼Æ', '²éÑ¯Í³¼Æ', NULL, '', 1, '', '', '', 3)
+VALUES ('E41C7171-A11B-449E-97A8-E5D2A5D48054', 'æŸ¥è¯¢ç»Ÿè®¡', 'æŸ¥è¯¢ç»Ÿè®¡', NULL, '', 1, '', '', '', 3)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('4873A324-207F-4A6A-9379-ED52EB61FACC', 'ÈÕÖ¾ĞÅÏ¢', 'ÈÕÖ¾ĞÅÏ¢', 'C552B14A-0502-4183-896B-64C1E86B7BFA', 'ÈÕ³£¹¤×÷', 1, 'DayLogList.aspx', '', '', 5)
+VALUES ('4873A324-207F-4A6A-9379-ED52EB61FACC', 'æ—¥å¿—ä¿¡æ¯', 'æ—¥å¿—ä¿¡æ¯', 'C552B14A-0502-4183-896B-64C1E86B7BFA', 'æ—¥å¸¸å·¥ä½œ', 1, 'DayLogList.aspx', '', '', 5)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('A6AC4001-691E-446C-94A1-EE7B2B70B55C', 'È¨ÏŞ¹ÜÀí', 'È¨ÏŞ¹ÜÀí', '22FE18FD-A378-4394-89C7-7E68A83927D0', 'ÏµÍ³¹ÜÀí', 1, 'FuncAccessEdit.aspx', '', '', 3)
+VALUES ('A6AC4001-691E-446C-94A1-EE7B2B70B55C', 'æƒé™ç®¡ç†', 'æƒé™ç®¡ç†', '22FE18FD-A378-4394-89C7-7E68A83927D0', 'ç³»ç»Ÿç®¡ç†', 1, 'FuncAccessEdit.aspx', '', '', 3)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('9BA4BD00-AB18-450F-A651-F71840976C01', '½ÇÉ«¹ÜÀí', '½ÇÉ«¹ÜÀí', '22FE18FD-A378-4394-89C7-7E68A83927D0', 'ÏµÍ³¹ÜÀí', 1, 'RoleInfoList.aspx', '', '', 2)
+VALUES ('9BA4BD00-AB18-450F-A651-F71840976C01', 'è§’è‰²ç®¡ç†', 'è§’è‰²ç®¡ç†', '22FE18FD-A378-4394-89C7-7E68A83927D0', 'ç³»ç»Ÿç®¡ç†', 1, 'RoleInfoList.aspx', '', '', 2)
 GO
 
 INSERT INTO dbo.FunctionInfo (ID, Code, Name, ParentID, ParentName, IsEnable, Url, Note, [Image], OrderNo)
-VALUES ('B0DBC608-296B-4E7A-8FED-FD5C336A20CC', 'ÏµÍ³ÉèÖÃ', 'ÏµÍ³ÉèÖÃ', '22FE18FD-A378-4394-89C7-7E68A83927D0', 'ÏµÍ³¹ÜÀí', 1, 'SystemCodeList.aspx', '', '', 5)
+VALUES ('B0DBC608-296B-4E7A-8FED-FD5C336A20CC', 'ç³»ç»Ÿè®¾ç½®', 'ç³»ç»Ÿè®¾ç½®', '22FE18FD-A378-4394-89C7-7E68A83927D0', 'ç³»ç»Ÿç®¡ç†', 1, 'SystemCodeList.aspx', '', '', 5)
 GO
 
