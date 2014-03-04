@@ -108,6 +108,7 @@
     <Content Include="index.html" />
     <Content Include="indexItemInfo.aspx" />
     <Content Include="indexKaoQin.aspx" />
+    <Content Include="indexPaiGong.aspx" />
     <Content Include="js\DatePicker\calendar.js" />
     <Content Include="js\DatePicker\lang\en.js" />
     <Content Include="js\DatePicker\lang\zh-cn.js" />
@@ -1037,6 +1038,13 @@
     </Compile>
     <Compile Include="indexKaoQin.aspx.designer.cs">
       <DependentUpon>indexKaoQin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="indexPaiGong.aspx.cs">
+      <DependentUpon>indexPaiGong.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="indexPaiGong.aspx.designer.cs">
+      <DependentUpon>indexPaiGong.aspx</DependentUpon>
     </Compile>
     <Compile Include="JsonConvert.cs" />
     <Compile Include="JsonToDataSet.cs" />

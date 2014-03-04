@@ -34,18 +34,18 @@ namespace OA
             </tr>";
 
             YuanGongKaoQinManager ykMgr = new YuanGongKaoQinManager();
-            int count=0;
+            int count = 0;
 
             WhereClip where = null;
             where = YuanGongKaoQin._.UserName != "";
-        
+
             if (!string.IsNullOrEmpty(begin_date))
             {
                 where.And(YuanGongKaoQin._.KQRQ >= begin_date);
             }
             if (!string.IsNullOrEmpty(end_date))
             {
-                    where.And(YuanGongKaoQin._.KQRQ <= end_date);
+                where.And(YuanGongKaoQin._.KQRQ <= end_date);
             }
             if (!string.IsNullOrEmpty(username))
             {
@@ -59,7 +59,7 @@ namespace OA
             {
                 where.And(YuanGongKaoQin._.Status == status);
             }
-            DataTable dt=ykMgr.GetDataTable(0, 1000, where, "", ref count, ref count);
+            DataTable dt = ykMgr.GetDataTable(0, 1000, where, "", ref count, ref count);
             string header =
             @" 
             <table width='100%' border='1' cellpadding='0' cellspacing='0' >
@@ -74,7 +74,7 @@ namespace OA
             foreach (DataRow row in dt.Rows)
             {
                 header += string.Format(tmpl, row["KQRQ"].ToString(), row["USERNAME"].ToString(), row["NOTE"].ToString(), row["SWSTATUS"].ToString(), row["STATUS"].ToString());
- 
+
             }
             header += " </tbody></table>";
             kaoqin_wrap.InnerHtml = header;

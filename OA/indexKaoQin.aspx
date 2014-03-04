@@ -104,7 +104,7 @@
           <td align="left">
 		  <table width="100" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms.07.gif" >
               <tr>
-                <td height="38" align="center"><a href="login.aspx" class="left" target=_blank>派工统计</a></td>
+                <td height="38" align="center"><a href="indexPaiGong.aspx" class="left" target=_blank>派工统计</a></td>
               </tr>
           </table>
 		  </td>
