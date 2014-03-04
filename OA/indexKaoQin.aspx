@@ -1,14 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="OA.index" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="indexKaoQin.aspx.cs" Inherits="OA.indexKaoQin" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>首页</title>
+<title>考勤统计</title>
 <link href="css/css.css" rel="stylesheet" type="text/css">
 <link href="css/css_2.css" rel="stylesheet" type="text/css">
 <script src="Script/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="Script/index.js" type="text/javascript"></script>
+<script src="js/DatePicker/WdatePicker.js" type="text/javascript"></script>
+<style>
+    .mid{width:140px;}
+</style>
 </head>
 <BODY bgColor=#ffffff leftMargin=0 topMargin=0>
 <!--登录框 -->
@@ -138,73 +141,63 @@
     <td><iframe src="top_ggl.asp" name="sina_roll" width="1004" marginwidth="0" height="65" marginheight="0" scrolling="No" frameborder="NO" id="sina_roll" border="0"></iframe></td>
   </tr>
 </table>
-
+ <form id="form1" runat="server">
 <!--滚动栏插件 -->
 <!--导航-->
-<table width="1004" border="0" align="center" cellpadding="0" cellspacing="5" bgcolor="#FFFFFF"><tr>
-    <td  align="center" valign="top" bgcolor="#FFFFFF" class="kk">
-	  <table width="100%" height="6" border="0" cellpadding="0" cellspacing="1" background="images/nzcms/nzcms_left_bg.gif" bgcolor="#F9F9F9">
-        <tr>
-          <td width="65" height="20" align="center">工单状态</td>
-          <td align="center">故障申报内容</td>
-          <td width="100" align="center">受理人</td>
-          <td width="140" align="center">处理结果</td>
-          <td width="120" align="center">时间</td>
-        </tr>
-      </table>
-
-      <div id="workinfo" runat=server></div>
-     
-	     </td>
-    <td width="250" align="center" valign="top" class="kk">
-	<!-- 这里开始通知通告栏-->
-        <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" class="right_kq">
-          
-          <tr>
-            <td width="30" height="27" align="center" background="images/nzcms/left.gif"><img src="css/images/laba.gif" /></td>
-            <td width="80" align="left" background="images/nzcms/left.gif" class="title12b">通知通告</td>
-            <td align="right" background="images/nzcms/left2.gif" class="p12">
-                <a href="#" target="_blank">
-                
-                  更多&gt;&gt;&gt;</a>&nbsp;&nbsp;</td>
-          </tr>
-        </table>
-		
-<marquee scrollamount="2" width="240"  height="150" direction="up" onMouseOver="stop()" onMouseOut="start()">
-<div id="news_wrap" runat=server></div>
-        
-      </marquee>		
-	
-        <table height="6" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-      
-<!-- 这里结束通知通告栏-->    </td>
-  </tr>
-</table>
 <!-- 这里开始签收文件栏-->
  
- <table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="kk5">
+<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="kk5">
   <tbody><tr>
-    <td colspan="2" valign="top" class="kk" style='border-bottom:none;'><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" background="css/images/news_bg.gif">
+    <td colspan="2" valign="top" class="kk"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" background="css/images/news_bg.gif">
       <tbody><tr>
-        <td width="120" height="29" align="center" class="white14B">巡检设备</td>
+        <td width="120" height="29" align="center" class="white14B">考勤统计</td>
         <td align="right">&nbsp;&nbsp;</td>
-        <td width="60"><a href="indexItemInfo.aspx" target=_blank>更多 &gt;&gt; </a></td>
+        <td width="60"><a href="login.aspx">登陆&gt;&gt;</a></td>
       </tr>
     </tbody></table>   </td>
   </tr>
   <tr>
-	<td valign="top" class="kk" width="40%" style='border-right:none;'>
-    <div id='sbinfo' runat=server></div>
+	<td valign="top" class="kk">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="">
+          <tbody><tr>
+            <td height="25" width=30 align="center" bgcolor="#F8F8F8" class="zx">开始<!--选择时间起点，检索框--></td>
+            <td height="25" align="center" bgcolor="#F8F8F8" class="zx"><input class="mid" runat=server id='begin_date'  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" type='text'/><!--选择时间起点，检索框--></td>
+            <td align="center" width=30 bgcolor="#F8F8F8" class="zx">结束</td>
+            <td height="25" align="center" bgcolor="#F8F8F8" class="zx"><input  class="mid"  runat=server id='end_date'   onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" type='text'/><!--选择时间起点，检索框--></td>
+            <td align="center" width=30 bgcolor="#F8F8F8" class="zx">人员<!--选择人员-下拉框--></td>
+            <td height="25" align="center" bgcolor="#F8F8F8" class="zx"><input type='text' class="mid"  runat=server id='username' /><!--选择时间起点，检索框--></td>
+            <td align="center" width=50 bgcolor="#F8F8F8" class="zx"><a title="工作日志或无日志">上午考勤</a><!--考勤为正常上班的title可查阅日志，没有的显示无--></td>
+            <td height="25" align="center" bgcolor="#F8F8F8" class="zx">
+                <select  class="mid" runat=server id='swstatus' >
+                    <option value="">全部</option>
+                    <option value="正常">正常</option>
+                    <option value="迟到">迟到</option>
+                    <option value="早退">早退</option>
+                    <option value="请假">请假</option>
+                    <option value="旷工">旷工</option>
+                    <option value="其他">其他</option>
+                </select><!--选择时间起点，检索框--></td>
+            <td align="center" width=50 bgcolor="#F8F8F8" class="zx"><a title="工作日志或无日志">下午考勤</a><!--考勤为正常上班的title可查阅日志，没有的显示无--></td>
+            <td height="25" align="center" bgcolor="#F8F8F8" class="zx">
+                <select  class="mid" runat=server id='status'>
+                    <option value="">全部</option>
+                    <option value="正常">正常</option>
+                    <option value="迟到">迟到</option>
+                    <option value="早退">早退</option>
+                    <option value="请假">请假</option>
+                    <option value="旷工">旷工</option>
+                    <option value="其他">其他</option>
+                </select><!--选择时间起点，检索框--></td>
+            <td align="center" bgcolor="#F8F8F8" class="zx"><input  type=submit value='查询'/></td>
+          </tr>
+      </tbody></table> 
+	  
+      <div id='kaoqin_wrap' runat=server></div>
 	     </td>
-	  <td valign="top" class="kk" width="40%">
-      <iframe id="sbiframe" frameborder=0 style='border:none;width: 100%;height:400px;'></iframe>
-      <!--调用窗口--></td>
+	
   </tr>
 </tbody></table>
+</form>
 <!-- 这里结束签收文件栏-->	
 <table width="1004" border="0" align="center" cellpadding="15" cellspacing="0" background="images/nzcms/end_bg.gif" bgcolor="#FFFFFF"">
   <tr>

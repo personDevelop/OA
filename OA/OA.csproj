@@ -106,6 +106,8 @@
     <Content Include="index.aspx" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="indexItemInfo.aspx" />
+    <Content Include="indexKaoQin.aspx" />
     <Content Include="js\DatePicker\calendar.js" />
     <Content Include="js\DatePicker\lang\en.js" />
     <Content Include="js\DatePicker\lang\zh-cn.js" />
@@ -1022,6 +1024,20 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="indexItemInfo.aspx.cs">
+      <DependentUpon>indexItemInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="indexItemInfo.aspx.designer.cs">
+      <DependentUpon>indexItemInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="indexKaoQin.aspx.cs">
+      <DependentUpon>indexKaoQin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="indexKaoQin.aspx.designer.cs">
+      <DependentUpon>indexKaoQin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="JsonConvert.cs" />
     <Compile Include="JsonToDataSet.cs" />
     <Compile Include="login.aspx.cs">
@@ -1271,7 +1287,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>18544</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

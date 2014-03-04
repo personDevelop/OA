@@ -10,25 +10,7 @@
 namespace OA {
     
     
-    public partial class index {
-        
-        /// <summary>
-        /// workinfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl workinfo;
-        
-        /// <summary>
-        /// news_wrap control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl news_wrap;
+    public partial class indexItemInfo {
         
         /// <summary>
         /// sbinfo control.
