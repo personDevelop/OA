@@ -13,6 +13,10 @@ namespace OA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserName"] != null)
+            {
+                hid.Value = Session["UserName"].ToString();
+            }
             string desc_tmpl = "信息来源：{0}&nbsp;&nbsp;&nbsp;&nbsp;发稿作者：{1}&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{2}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
             if (!IsPostBack)
             {

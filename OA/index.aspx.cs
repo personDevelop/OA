@@ -16,7 +16,10 @@ namespace OA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["UserName"] != null)
+            {
+                hid.Value = Session["UserName"].ToString();
+            }
             string tmpl = 
             @"
             <tr>

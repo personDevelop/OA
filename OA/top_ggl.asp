@@ -67,6 +67,6 @@ tick();
         <td></td>
       </tr>
     </table>
-      <marquee scrollamount=5 width=870 height="50"onmouseover=stop() onmouseout=start()><span style='font-family:Microsoft YaHei;color:#FFFF00;font-size:24px;'>长清公安分局恭祝全国人民新年快乐，全家幸福，生活美满，身体健康，万事如意！</span></marquee></td>
+      <marquee scrollamount=5 width=870 height="50"onmouseover=stop() onmouseout=start()><span id='tzinfo' style='font-family:Microsoft YaHei;color:#FFFF00;font-size:24px;'> </span></marquee></td>
   </tr>
 </table>

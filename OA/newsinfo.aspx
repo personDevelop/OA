@@ -10,10 +10,13 @@
 <link href="css/css_2.css" rel="stylesheet" type="text/css">
 <script src="Script/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="Script/index.js" type="text/javascript"></script>
+<SCRIPT language=javascript type=text/javascript src="css/images/helper.js"></SCRIPT>
 </head>
 <BODY bgColor=#ffffff leftMargin=0 topMargin=0>
 <!--登录框 -->
-
+<form id="Form1" runat=server>
+<asp:HiddenField ID="hid" runat="server" />
+</form>
 <table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" background="css/images/top_bg.jpg" bgcolor="#FFFFFF">
   <tr>
     <td height="28" valign="middle">&nbsp;&nbsp;<img src="css/images/time.gif" width="12" height="12" />&nbsp;
@@ -29,25 +32,30 @@
                     tseconds = ((now.getSeconds() < 10) ? "0" : "") + now.getSeconds()
                     gweek = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
                     hhp = gweek[now.getDay()]
-                    document.getElementById("txtTime").value = now.getYear() + "年" + tmonth + "月" + now.getDate() + "日" + " " + hhp
+                    document.getElementById("txtTime").value = now.getFullYear() + "年" + tmonth + "月" + now.getDate() + "日" + " " + hhp
                     setTimeout("ShowTime()", 100)
                 }
                 ShowTime();   
               </script>
 </td>
     <td align="right" valign="middle">
-      <table border="0" cellspacing="0" cellpadding="0">
-        <form action="file/login.asp" method="post" name="form" id="form"onsubmit="return Validator.Validate(this,2)">
+      <table id='userPer' border="0" cellspacing="0" cellpadding="0" style='margin-top:-7px;'>
+       <FORM id=loginform  onsubmit="javascript:return check_login_info(this);" method=post name=loginform action=handler/VerifyUser.ashx>
           <tr>
             <td>用户名：
-              <input name="username" type="text" class="index_dr" id="username" size="5" datatype="Require" style="height:18px" msg="请填写正确的管理帐号！" />
+              <input name="login_user" type="text" class="index_dr" id="login_user" size="5" datatype="Require" style="height:18px" msg="请填写正确的管理帐号！" />
               &nbsp;密码：
-              <input name="userpassword" type="password" class="index_dr" id="userpassword" size="5" datatype="Require"  style="height:18px" msg="请填写正确的管理密码！" />
+              <input name="login_pwd" type="password" class="index_dr" id="login_pwd" size="5" datatype="Require"  style="height:18px" msg="请填写正确的管理密码！" />
               &nbsp;
               验证码：
-              <input name="number" type="text" class="index_dr" id="number" value="" size="4" maxlength="4" datatype="Require"  msg="请不要非法提交！"  style="height:18px"/>
-              &nbsp;<img src="GetCode.bmp" alt="点击可以刷新验证码" onClick="this.src='file/getcode.asp?t='+(new Date().getTime());"/>
-            <input name="Submit" type="submit" class="top-so" value="登录" />
+              <input name="rand_rs" type="text" class="index_dr" id="rand_rs" value="" size="4" maxlength="4" datatype="Require"  msg="请不要非法提交！"  style="height:18px"/>
+              &nbsp;<IMG 
+                              style="POSITION: relative; TOP: 6px; MARGIN-RIGHT: 4px;cursor:pointer;" 
+                              id=login_captcha class=captchaimg 
+                              onclick="this.src='randomCode.aspx?secode=ecisp_seccode&amp;' + Math.random()" 
+                              border=0 
+                              src="randomCode.aspx">
+            <input name="Submit" type="submit" class="top-so"    value="登录" />
             &nbsp;</td>
           </tr>
         </form>
@@ -70,13 +78,13 @@
 <table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" background="images/nzcms/nzcms_top01.gif" bgcolor="#093887" class="top" >
   <tr>
     <td width="1004" height="38" align="center" valign="middle">
-      <table border="0" cellpadding="0" cellspacing="0" id="sddm">
+<table border="0" cellpadding="0" cellspacing="0" id="sddm">
         <tr>
           
           <td align="left"><table width="100" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms.07.gif" >
               <tr>
                 <td height="38" align="center">
-                  <a href="index.asp" class="left" >
+                  <a href="index.aspx" class="left" >
                   首页</a>                </td>
               </tr>
           </table>
@@ -86,7 +94,7 @@
           <td align="left">
 		  <table width="100" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms.07.gif" >
               <tr>
-                <td height="38" align="center"><a href="login.aspx" class="left" target=_blank>报工管理</a></td>
+                <td height="38" align="center"><a href="indexItemInfo.aspx" class="left" target=_blank>巡检设备</a></td>
               </tr>
           </table>
 		  </td>
@@ -94,7 +102,7 @@
 		  <td align="left">
 		  <table width="100" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms.07.gif" >
               <tr>
-                <td height="38" align="center"><a href="login.aspx" class="left" target=_blank>派工管理</a></td>
+                <td height="38" align="center"><a href="indexKaoQin.aspx" class="left" target=_blank>考勤统计</a></td>
               </tr>
           </table>
 		  </td>
@@ -102,7 +110,7 @@
           <td align="left">
 		  <table width="100" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms.07.gif" >
               <tr>
-                <td height="38" align="center"><a href="login.aspx" class="left" target=_blank>设备管理</a></td>
+                <td height="38" align="center"><a href="indexPaiGong.aspx" class="left" target=_blank>派工统计</a></td>
               </tr>
           </table>
 		  </td>
@@ -118,7 +126,7 @@
           <td align="left">
 		  <table width="500" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms7.gif" >
               <tr>
-                <td height="38" align="center" style="color: #FFFFFF;text-decoration: none;font-size: 14px;font-weight: bold;">通知： <marquee scrollamount=5 width=400 onmouseover=stop() onmouseout=start()>
+                <td  height="38" align="center" style="display:none;color: #FFFFFF;text-decoration: none;font-size: 14px;font-weight: bold;">通知： <marquee scrollamount=5 width=400 onmouseover=stop() onmouseout=start()>
 		 最新放假通知信息！
 		 </marquee></td>
               </tr>
@@ -129,9 +137,7 @@
           
         </tr>
         
-    </table></td>
-  </tr>
-</table>
+    </table>
 <!--滚动栏插件 -->
 
 <table width="1004" border="0" align="center" cellpadding="0" cellspacing="0">

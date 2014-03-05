@@ -16,6 +16,10 @@ namespace OA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserName"] != null)
+            {
+                hid.Value = Session["UserName"].ToString();
+            }
             string sbtmpl = @" 
 		    <tr>
                 <td height='30' align='center' bgcolor='#FFFFFF' class='zx'>{0}</td>

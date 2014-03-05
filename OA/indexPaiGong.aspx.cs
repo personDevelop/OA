@@ -15,6 +15,10 @@ namespace OA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserName"] != null)
+            {
+                hid.Value = Session["UserName"].ToString();
+            }
             if (!IsPostBack)
             {
                 string dd = Request.Form["begin"];
