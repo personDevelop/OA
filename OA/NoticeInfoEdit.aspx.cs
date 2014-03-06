@@ -19,10 +19,12 @@ namespace OA
                 {
                     //修改
                     LoadData(Request.QueryString["ID"]);
+                   
                 }
                 else
                 {
                     //新增
+                    txtPUBUSER.Value = Session["UserName"].ToString();
 
                 }
             }
@@ -34,14 +36,14 @@ namespace OA
             NoticeInfo nt = new NoticeInfoManager().GetItemById(new Guid(ID));
 
             txtID.Value = nt.ID.ToString();
-            txtCODE.Value = nt.CODE.ToString();
+            txtCODE.Value = nt.CODE;
             txtCONTENT.Value = nt.CONTENT.ToString();
-            txtISTOP.Checked = Convert.ToBoolean(nt.ISTOP);
-            txtISUSED.Checked =Convert.ToBoolean(nt.ISUSED);
-            txtPUBDATE.Value = nt.PUBDATE.ToString();
-            txtPUBUSER.Value = nt.PUBUSER.ToString();
-            txtSOURCE.Value = nt.SOURCE.ToString();
-            txtTITLE.Value = nt.TITLE.ToString();
+            txtISTOP.Checked = nt.ISTOP.Value;
+            txtISUSED.Checked = nt.ISTOP.Value;
+            hidPUBDATE.Value = nt.PUBDATE; 
+            txtPUBUSER.Value = nt.PUBUSER;
+            txtSOURCE.Value = nt.SOURCE;
+            txtTITLE.Value = nt.TITLE;
 
         }
     }

@@ -7,13 +7,14 @@ using System.Data;
 using System.Text;
 using OAEntity;
 using Sharp.Common;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// WorkInfoListHandler 的摘要说明
     /// </summary>
-    public class WorkInfoListHandler : IHttpHandler
+    public class WorkInfoListHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
@@ -27,13 +28,20 @@ namespace OA.handler
 
             int count = 0, recordCount = 0;
             string workstatus = rp["Workstatus"];
+           
             WhereClip where = null;
             if (!string.IsNullOrEmpty(workstatus))
             {
                 where = WorkInfo._.Status == workstatus;
             }
-
-            DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, where, WorkInfo._.CreateDate.Desc, ref count, ref recordCount);
+            string UserId=string.Empty ;
+            if (!string.IsNullOrEmpty(rp["IsDaiBan"]))
+            {
+                
+                UserId = context.Session["UserID"].ToString();
+                
+            }
+            DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, UserId, where, WorkInfo._.CreateDate.Desc, ref count, ref recordCount);
             string result = JsonConvert.Convert2Json(dt);
             context.Response.Write("{ \"totalRecords\":\"" + recordCount + "\",\"rows\":" + result + "}");
             context.Response.End();

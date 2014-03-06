@@ -3,6 +3,7 @@
         window.location.href = "login.aspx";
     };
     var vsasync = false;
+    var returnVal = "" ;
     $.ajax({
         url: "handler/clearState.ashx",
         type: "post",

@@ -27,12 +27,13 @@ namespace OA
             new UserSetLogic();
 
         }
-        protected void Page_Rander(object sender, EventArgs e)
+        protected void Page_PreRender(object sender, EventArgs e)
         {
             string path = this.Request.FilePath.ToLower();
-            if (path.EndsWith("main.aspx") || path.EndsWith("login.aspx") || path.EndsWith("randomcode.aspx") || path.EndsWith("index.aspx"))
-            {
 
+            if (path.EndsWith("adminIndex.aspx") || path.EndsWith("main.aspx") || path.EndsWith("login.aspx") || path.EndsWith("randomcode.aspx") || path.EndsWith("index.aspx") || path.Contains("edit.aspx")||path.EndsWith("resetpwd.aspx") )
+            {
+ 
 
             }
             else
@@ -44,6 +45,7 @@ namespace OA
                 if (!hasAcc)
                 {
                     Response.Write("<script>alert('您没有当前功能权限！');</script>");
+                    Response.End();
                 }
             }
         }

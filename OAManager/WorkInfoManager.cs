@@ -63,17 +63,57 @@ namespace OAManager
         /// <param name="pageCount">总页数</param>
         /// <param name="recordCount">总记录数</param>
         /// <returns></returns>
-        public DataTable GetDataTable(int pageindex, int pagesize, WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
+        public DataTable GetDataTable(int pageindex, int pagesize, string UserId, WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
         {
+            WhereClip wherenew = new WhereClip();
+            if (!string.IsNullOrEmpty(UserId))
+            {
+                wherenew = wherenew && WorkHandLog._.DownEr == new Guid(UserId);
+            }
 
+            if (WhereClip.IsNullOrEmpty(where))
+            {
+                where = wherenew;
 
+            }
+            else
+            {
+                where = where && wherenew;
+            }
+            if (WhereClip.IsNullOrEmpty(where))
+            {
+                where.Append(@"   handsequence = (select max(handsequence)  from [WorkHandLog] b where  [WorkInfo].[ID] = b.[WorkID]) ");
+
+            }
+            else
+            {
+                where.Append(@" and handsequence = (select max(handsequence)  from [WorkHandLog] b where  [WorkInfo].[ID] = b.[WorkID]) ");
+            }
             return Dal.From<WorkInfo>().Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
+                .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID)
                 .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe)
                 .Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
 
+        /// <summary>
+        /// 分页获取获取工作信息表datatable
+        /// </summary>
+        /// <param name="pageindex">当前页数</param>
+        /// <param name="pagesize">每页显示条数</param>
+        /// <param name="orderby">排序方式</param>
+        /// <param name="pageCount">总页数</param>
+        /// <param name="recordCount">总记录数</param>
+        /// <returns></returns>
+        public DataTable GetDataTable(int pageindex, int pagesize, WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
+        {
 
+            return Dal.From<WorkInfo>().Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
+                .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID)
+                .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe)
+                .Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
+
+        }
         /// <summary>
         /// 保存工作信息表实体，包括添加、修改、删除
         /// </summary>
@@ -170,6 +210,30 @@ namespace OAManager
         {
             return Dal.From<WorkHandLog>().Join<WorkInfo>(WorkInfo._.ID == WorkHandLog._.WorkID)
                 .Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
+                .Where(where && ShebeiInfo._.State!="正常").OrderBy(orderby)
+                .Select(WorkHandLog._.ID.All,
+                WorkInfo._.SbID, WorkInfo._.Address, WorkInfo._.ChuLiYiJian
+                , WorkInfo._.CreaterName, WorkInfo._.CurrentUser, WorkInfo._.GuZhangXx
+                , WorkInfo._.Note, WorkInfo._.PlanTime, WorkInfo._.RealTime, WorkInfo._.Status
+                , WorkInfo._.Tel, WorkInfo._.City, WorkInfo._.Xian, WorkInfo._.Zhen
+                , ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe, ShebeiInfo._.Note.Alias("SheBeiNote"))
+                .ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
+        }
+
+        /// <summary>
+        /// 根据条件获取我的派工任务
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="where"></param>
+        /// <param name="orderByClip"></param>
+        /// <param name="count"></param>
+        /// <param name="recordCount"></param>
+        /// <returns></returns>
+        public DataTable GetMyPaiGongDataTable(int pageindex, int pagesize, WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
+        {
+            return Dal.From<WorkHandLog>().Join<WorkInfo>(WorkInfo._.ID == WorkHandLog._.WorkID)
+                .Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
                 .Where(where).OrderBy(orderby)
                 .Select(WorkHandLog._.ID.All,
                 WorkInfo._.SbID, WorkInfo._.Address, WorkInfo._.ChuLiYiJian
@@ -179,6 +243,7 @@ namespace OAManager
                 , ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe, ShebeiInfo._.Note.Alias("SheBeiNote"))
                 .ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
         }
+
 
         public DataTable GetDaiBanDataTable(WhereClip where, OrderByClip orderby)
         {

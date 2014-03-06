@@ -10,6 +10,7 @@ using Sharp.Common;
 using Sharp.Data;
 using System.Text;
 using System.Data;
+using Sharp.Common.Common;
 
 namespace OA
 {
@@ -90,8 +91,21 @@ namespace OA
                     }
                     sb.Append("</ul>");
                 }
-
+               
                 sb.Append("</li>");
+                sb.Append("</ul>");
+            }
+            if (Session["UserID"].ToString().Open() == StaticClass.RootKey)
+            {
+                sb.Append("<ul style='display: block;'>");
+                sb.Append(@"<li><a navid='site_config' href='FunctionInfoList.aspx' target='mainframe' class='item'>
+                                <div class='arrow'>
+                                </div>
+                                <div class='expandable'>
+                                </div>
+                                <div class=''>
+                                </div>
+                                <span class='subMenu'>功能设置</span> </a></li>");
                 sb.Append("</ul>");
             }
             Navigator = sb.ToString();

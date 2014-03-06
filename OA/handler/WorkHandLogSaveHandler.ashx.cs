@@ -6,13 +6,14 @@ using OAEntity;
 using OAManager;
 using Sharp.Common;
 using System.Text;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// 保存 系统参数表
     /// </summary>
-    public class WorkHandLogSaveHandler : IHttpHandler
+    public class WorkHandLogSaveHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
@@ -28,12 +29,12 @@ namespace OA.handler
                 string zt = rp["txtHandResult"];
                 WorkInfo work = new WorkInfo();
                 work.ID = new Guid(rp["txtWorkID"]);
+                work = manager.GetItemById(work.ID);
                 work.RecordStatus = StatusType.update;
                 work.Status = zt;
                 ShebeiInfo s = new ShebeiInfo();
-                s.ID = manager.GetItemById(work.ID).ID;
-                s.RecordStatus = StatusType.update;
-                
+                s = new ShebeiInfoManager().GetItemById(work.SbID); 
+
                 if (zt == "处理中")
                 {
                     string[] zprid = rp["txtZprID"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
@@ -41,7 +42,7 @@ namespace OA.handler
                     work.CurrentUser = rp["txtZprName"];
                     for (int i = 0; i < zprid.Length; i++)
                     {
-                        WorkHandLog tem = SetValue(rp);
+                        WorkHandLog tem = SetValue(rp,context);
                         tem.DownEr = new Guid(zprid[i]);
                         tem.DownName = zprName[i];
                         tem.HandSequence = maxsequenc;
@@ -53,10 +54,25 @@ namespace OA.handler
                 {
                     work.RealTime = DateTime.Now;
                     work.CurrentUser = "";
-                    WorkHandLog tem = SetValue(rp);
+                    WorkHandLog tem = SetValue(rp, context);
                     tem.HandSequence = maxsequenc;
                     entityList.Add(tem);
                     s.State = "正常";
+
+                    if (rp["txtHandType"] == "0")
+                    {
+                        //维修
+
+                        string sql = "update ShebeiInfo set GZTJ=isnull(GZTJ,0)+1 where id='" + s.ID + "'";
+                        Sharp.Data.SessionFactory.Default.FromCustomSql(sql).ExecuteNonQuery();
+                    }
+                    else if (rp["txtHandType"] == "1")
+                    {
+                        //更换  
+                        string sql = "update ShebeiInfo set GHTJ=isnull(GHTJ,0)+1 where id='" + s.ID + "'";
+                        Sharp.Data.SessionFactory.Default.FromCustomSql(sql).ExecuteNonQuery();
+                    }
+
                 }
                 entityList.Add(work);
                 entityList.Add(s);
@@ -76,7 +92,7 @@ namespace OA.handler
             }
             context.Response.End();
         }
-        public WorkHandLog SetValue(HttpRequest rp)
+        public WorkHandLog SetValue(HttpRequest rp, HttpContext context)
         {
             WorkHandLog entity = new WorkHandLog();
             if (string.IsNullOrEmpty(rp["txtID"]))
@@ -87,6 +103,11 @@ namespace OA.handler
             {
                 entity.ID = new Guid(rp["txtID"]);
                 entity.RecordStatus = StatusType.update;
+            }
+            if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
+            {
+                entity.Uper = new Guid(context.Session["UserID"].ToString());
+                entity.UpName = context.Session["RealName"] as string;
             }
             entity.WorkID = new Guid(rp["txtWorkID"]);
             entity.CurrentStaus = rp["txtHandResult"];

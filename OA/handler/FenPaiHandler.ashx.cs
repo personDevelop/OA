@@ -28,8 +28,8 @@ namespace OA.handler
             string zprenstr = rp["zpren[]"];
             try
             {
-              PersonInfoManager plogic= new PersonInfoManager();
-                
+                PersonInfoManager plogic = new PersonInfoManager();
+
                 string[] zpren = zprenstr.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 for (int i = 0; i < zpren.Length; i++)
                 {
@@ -42,11 +42,11 @@ namespace OA.handler
                     log.WorkID = rwid;
                     log.CurrentStaus = "处理中";
                     log.ChuliYj = "工作指派";
-                    //if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
-                    //{
-                    //    log.Uper = new Guid(context.Session["UserID"].ToString());
-                    //    log.UpName = plogic.GetItemById(log.Uper.Value).RealName;
-                    //}
+                    if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
+                    {
+                        log.Uper = new Guid(context.Session["UserID"].ToString());
+                        log.UpName = context.Session["RealName"] as string;
+                    }
                     log.DownEr = new Guid(zpren[i]);
                     log.DownName = plogic.GetItemById(log.DownEr.Value).RealName;
                     log.HandDate = DateTime.Now;
