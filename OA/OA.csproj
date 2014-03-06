@@ -57,6 +57,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminIndex.aspx" />
     <Content Include="AdministrativeRegionsEdit.aspx" />
     <Content Include="AdministrativeRegionsList.aspx" />
     <Content Include="base.css" />
@@ -822,6 +823,13 @@
     <Content Include="YuanGongKaoQinList.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminIndex.aspx.cs">
+      <DependentUpon>AdminIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminIndex.aspx.designer.cs">
+      <DependentUpon>AdminIndex.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdministrativeRegionsEdit.aspx.cs">
       <DependentUpon>AdministrativeRegionsEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

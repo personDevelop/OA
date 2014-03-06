@@ -11,7 +11,13 @@ namespace OA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["UserName"] != null)
+                {
+                    Response.Redirect("main.aspx");
+                }
+            }
         }
     }
 }

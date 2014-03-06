@@ -35,6 +35,16 @@
             });
             $('#form1').jqxValidator({
                 rules: [
+                 { input: '#txtHandType', message: '必须选择一个处理方式!', action: 'keyup, blur', rule: function () {
+                     var date = $('input[name="txtHandType"]:checked').val();
+                     if (!date && $('input[name="txtHandResult"]:checked').val() == "完成") {
+                                           return false;
+                                       } else {
+                                           return true;
+                                       }
+
+                                   }
+                                   },
                                    { input: '#txtHandResult', message: '必须选择一个状态!', action: 'keyup, blur', rule: function () {
                                        var date = $('input[name="txtHandResult"]:checked').val();
                                        if (!date) {
@@ -61,6 +71,11 @@
             });
             $('#form1').submit(function ()//提交表单 
             {
+
+                if ($("#txtCurrentStaus").val() == "完成") {
+                    Msg.ShowError("任务已完成，不能再重复办理！");
+                    return false;
+                }
                 var issuccess = $('#form1').jqxValidator('validate');
                 if (issuccess) {
                     var options = {
@@ -77,8 +92,8 @@
                                     ok: function () {
 
                                     }
-                                }); 
-                               
+                                });
+
                                 history.back(-1);
                             }
                             else {
@@ -332,10 +347,10 @@
     </style>
 </head>
 <body style='padding-left: 10px; padding-right: 10px; padding-top: 10px;'>
-  <form id="form1" runat="server">
+    <form id="form1" runat="server">
     <div class="location">
         <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
-        <a href="dashboard.html" class="home"><i></i><span>首页</span></a> <i class="arrow">
+        <a href="AdminIndex.aspx" class="home"><i></i><span>首页</span></a> <i class="arrow">
         </i><span>设备故障处理</span>
     </div>
     <div style='margin-top: 20px;'>
@@ -382,7 +397,7 @@
                             class="input small" datatype="n" sucmsg=" " />
                     </dd>
                 </dl>
-                <dl>
+                  <dl>
                     <dt>处理结果</dt>
                     <dd>
                         <asp:RadioButtonList ID="txtHandResult" runat="server" RepeatDirection="Horizontal">
@@ -392,6 +407,16 @@
                         <input id="btnSelectPerson" type="button" value="指派他人" class="btn yellow" onclick=" return FPrenWu();">
                     </dd>
                 </dl>
+                <dl>
+                    <dt>处理方式</dt>
+                    <dd>
+                        <asp:RadioButtonList ID="txtHandType" runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Value="0" Text="维修"></asp:ListItem>
+                            <asp:ListItem Value="1" Text="更换设备"></asp:ListItem>
+                        </asp:RadioButtonList>
+                    </dd>
+                </dl>
+              
             </dl>
         </div>
         <div class="page-footer">
@@ -404,7 +429,6 @@
         </div>
     </div>
     </form>
-     
     <div id="window">
         <div id="windowHeader">
             <span>

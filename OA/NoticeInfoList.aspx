@@ -74,11 +74,11 @@
                 columnsResize: true,
                 pageable: true,
                 serverProcessing: true,
-                pageSize: 2,
+                pageSize: 20,
                 columns: [
-{ text: '编号', align: 'center', dataField: 'CODE', minWidth: 150, width: 150 },
+//{ text: '编号', align: 'center', dataField: 'CODE', minWidth: 150, width: 150 },
 { text: '标题', align: 'center', dataField: 'TITLE', minWidth: 200, width: 200 },
-{ text: '来源', align: 'center', dataField: 'SOURCE', minWidth: 90, width: 90 },
+//{ text: '来源', align: 'center', dataField: 'SOURCE', minWidth: 90, width: 90 },
 { text: '发布日期', align: 'center', dataField: 'PUBDATE', minWidth: 90, width: 90 },
 { text: '发布人', align: 'center', dataField: 'PUBUSER', minWidth: 90, width: 90 },
 { text: '是否置顶', align: 'center', dataField: 'ISTOP', minWidth: 80, width: 80 },
@@ -154,7 +154,7 @@
 <body style='padding:0 30px;padding-top:20px;'>
     <div class="location">
         <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
-        <a href="dashboard.html" class="home"><i></i><span>首页</span></a> <i class="arrow">
+        <a href="AdminIndex.aspx" class="home"><i></i><span>首页</span></a> <i class="arrow">
         </i><span>公告列表</span>  
     </div>
     <div style='margin-top: 20px;'>

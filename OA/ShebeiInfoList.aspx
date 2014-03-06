@@ -144,7 +144,7 @@
 <body style='padding:0 30px;padding-top:20px;'>
     <div class="location">
         <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
-        <a href="dashboard.html" class="home"><i></i><span>首页</span></a> <i class="arrow">
+        <a href="AdminIndex.aspx" class="home"><i></i><span>首页</span></a> <i class="arrow">
         </i><span>设备列表</span>  
     </div>
     <div style='margin-top: 20px;'>

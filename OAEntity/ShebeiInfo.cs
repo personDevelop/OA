@@ -23,8 +23,10 @@ namespace OAEntity
         private string _GuiGe;
         private bool _IsEnable;
         private string _Note;
-        private string _State;
+        private int _GHTJ;
+        private int _GZTJ;
         private string _FID;
+        private string _State;
         private string _PATH;
 
         #endregion
@@ -151,23 +153,43 @@ namespace OAEntity
             }
         }
         /// <summary>
-        /// 状态,
+        /// 更换次数,
         /// </summary>
 
 
-        [DbProperty(MapingColumnName = "State", DbTypeString = "NVarChar", ColumnIsNull = true, IsUnique = false, ColumnLength = 20, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "GHTJ", DbTypeString = "Int", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
 
-        public string State
+        public int GHTJ
         {
             get
             {
-                return this._State;
+                return this._GHTJ;
             }
             set
             {
 
-                this.OnPropertyChanged("State", this._State, value);
-                this._State = value;
+                this.OnPropertyChanged("GHTJ", this._GHTJ, value);
+                this._GHTJ = value;
+            }
+        }
+        /// <summary>
+        /// 故障次数,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "GZTJ", DbTypeString = "Int", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public int GZTJ
+        {
+            get
+            {
+                return this._GZTJ;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("GZTJ", this._GZTJ, value);
+                this._GZTJ = value;
             }
         }
         /// <summary>
@@ -188,6 +210,26 @@ namespace OAEntity
 
                 this.OnPropertyChanged("FID", this._FID, value);
                 this._FID = value;
+            }
+        }
+        /// <summary>
+        /// 状态,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "State", DbTypeString = "NVarChar", ColumnIsNull = true, IsUnique = false, ColumnLength = 20, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public string State
+        {
+            get
+            {
+                return this._State;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("State", this._State, value);
+                this._State = value;
             }
         }
         /// <summary>
@@ -226,8 +268,10 @@ namespace OAEntity
                 GuiGe = new PropertyItem("GuiGe", tableName);
                 IsEnable = new PropertyItem("IsEnable", tableName);
                 Note = new PropertyItem("Note", tableName);
-                State = new PropertyItem("State", tableName);
+                GHTJ = new PropertyItem("GHTJ", tableName);
+                GZTJ = new PropertyItem("GZTJ", tableName);
                 FID = new PropertyItem("FID", tableName);
+                State = new PropertyItem("State", tableName);
                 PATH = new PropertyItem("PATH", tableName);
 
             }
@@ -256,13 +300,21 @@ namespace OAEntity
             /// </summary> 
             public PropertyItem Note = null;
             /// <summary>
-            /// 状态,
+            /// 更换次数,
             /// </summary> 
-            public PropertyItem State = null;
+            public PropertyItem GHTJ = null;
+            /// <summary>
+            /// 故障次数,
+            /// </summary> 
+            public PropertyItem GZTJ = null;
             /// <summary>
             /// 文件ID,
             /// </summary> 
             public PropertyItem FID = null;
+            /// <summary>
+            /// 状态,
+            /// </summary> 
+            public PropertyItem State = null;
             /// <summary>
             /// 地址,
             /// </summary> 

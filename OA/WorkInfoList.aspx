@@ -57,6 +57,7 @@
                             data.$skip = data.pagenum * data.pagesize;
                             data.$top = data.pagesize;
                         }
+                        data.IsDaiBan=$("#hidIsDaiBan").val();
                         //                        data.Workstatus = "制单";
                         return data;
                     },
@@ -191,6 +192,10 @@
             var selection = $("#treeGrid").jqxDataTable('getSelection');
             if (selection.length == 1) {
                 var rowData = selection[0];
+                if (rowData.Status=="完成") {
+     Msg.ShowError("任务已完成，不能再分配！");
+     return;
+}
                 $("#unselectperson").jqxDataTable('updateBoundData');
                 $("#selectPerson").jqxDataTable('updateBoundData');
                 $('#window').jqxWindow('open');
@@ -522,7 +527,7 @@
 <body  style='padding-left: 10px; padding-right: 10px; padding-top: 10px;'>
     <div class="location">
         <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
-        <a href="dashboard.html" class="home"><i></i><span>首页</span></a> <i class="arrow">
+        <a href="AdminIndex.aspx" class="home"><i></i><span>首页</span></a> <i class="arrow">
         </i><span>派工管理</span>
     </div>
     <div style='margin-top: 20px; margin-left: 10px;'>

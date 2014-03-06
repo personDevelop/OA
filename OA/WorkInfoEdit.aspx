@@ -20,8 +20,10 @@
     <script type="text/javascript">
         $(function () {
             $("#txtPlanTime").jqxDateTimeInput({ width: '250px', height: '25px', culture: 'zh-Hans', formatString: 'd' });
+
             $('#form1').submit(function ()//提交表单 
             {
+
                 var options = {
                     url: 'handler/WorkInfoSaveHandler.ashx', //提交给哪个执行 
                     type: 'POST',
@@ -159,7 +161,7 @@
     <form id="form1" runat="server">
     <div class="location">
         <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
-        <a href="dashboard.html" class="home"><i></i><span>首页</span></a> <i class="arrow">
+        <a href="AdminIndex.aspx" class="home"><i></i><span>首页</span></a> <i class="arrow">
         </i><span>设备故障上报</span>
     </div>
     <div style='margin-top: 20px;'>
@@ -216,6 +218,7 @@
                     <dd>
                         <div id='txtPlanTime'>
                         </div>
+                       
                     </dd>
                 </dl>
                 <dl>

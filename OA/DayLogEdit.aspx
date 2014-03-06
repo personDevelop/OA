@@ -20,7 +20,7 @@
     <script type="text/javascript">
         $(function () {
             $("#txtWordDate").jqxDateTimeInput({ width: '250px', height: '25px', culture: 'zh-Hans', formatString: 'd' });
-
+           
             $('#form1').jqxValidator({
                 rules: [
                                    { input: '#txtWordDate', message: '工作日期必填!', action: 'keyup, blur', rule: function (input, commit) {
@@ -73,7 +73,7 @@
     <form id="form1" runat="server">
     <div class="location">
         <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
-        <a href="dashboard.html" class="home"><i></i><span>首页</span></a> <i class="arrow">
+        <a href="AdminIndex.aspx" class="home"><i></i><span>首页</span></a> <i class="arrow">
         </i><span>日志信息表</span>
     </div>
     <div style='margin-top: 20px;'>

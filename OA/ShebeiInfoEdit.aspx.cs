@@ -31,13 +31,13 @@ namespace OA
             ShebeiInfo sb = new ShebeiInfoManager().GetItemById(new Guid(ID));
 
             txtID.Value = sb.ID.ToString();
-            txtName.Value = sb.Name.ToString();
-            txtGuiGe.Value = sb.GuiGe.ToString();
-            txtCode.Value = sb.Code.ToString();
+            txtName.Value = sb.Name ;
+            txtGuiGe.Value = sb.GuiGe ;
+            txtCode.Value = sb.Code ;
             txtIsEnable.Checked = sb.IsEnable;
-            txtNote.Value = sb.Note.ToString();
-            txtPATH.Value = sb.PATH.ToString();
-            txtState.Value = sb.State.ToString();
+            txtNote.Value = sb.Note ;
+            txtPATH.Value = sb.PATH ;
+            txtState.Value = sb.State ;
 
 
         }

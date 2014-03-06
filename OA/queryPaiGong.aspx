@@ -115,6 +115,7 @@
                 ]
             });
         });
+         var nestedTables = new Array();
         var initRowDetails = function (id, row, element, rowinfo) {
              element.append($("<div style='margin: 10px;'></div>"));
                 var nestedDataTable = $(element.children()[0]);
@@ -216,7 +217,7 @@ overflow: hidden;}
 <body style='padding:0 30px;padding-top:20px;'>
     <div class="location">
         <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
-        <a href="dashboard.html" class="home"><i></i><span>首页</span></a> <i class="arrow">
+        <a href="AdminIndex.aspx" class="home"><i></i><span>首页</span></a> <i class="arrow">
         </i><span>派工统计</span>  
     </div>
     <div style='margin-top: 11px;'>

@@ -372,7 +372,7 @@
             </h1>
             <div class="nav-right">
                 <ul id="nav" class="nav" style='margin-right: 6px; border-left: 1px solid #1da0d0;'>
-                    <li class=""><i class="icon-0"></i><span>待办任务</span></li>
+                    <li class=""><i class="icon-0"></i><span><a href="WorkInfoList.aspx?DaiBan=1"  target='mainframe'>待办任务</a></span></li>
                 </ul>
                 <div class="icon-info">
                     <span>
@@ -387,7 +387,8 @@
                         <ul class="drop-item">
                             <li><a target="mainframe" onclick="openPer();">个人资料</a></li>
                             <li><a href="SystemCodeList.aspx" target="mainframe">系统设置</a></li>
-                            <li><a onclick="linkMenuTree(false, '');" href="resetPwd.aspx" target="mainframe">修改密码</a></li>
+                           <%-- onclick="linkMenuTree(false, '');"--%>
+                            <li><a  href="resetPwd.aspx" target="mainframe">修改密码</a></li>
                             <li><a id="lbtnExit" href="javascript:logout()">注销登录</a></li>
                         </ul>
                     </div>
@@ -404,7 +405,7 @@
     </div>
     </form>
     <div class="main-container">
-        <iframe name='mainframe' id='mainframe' src='dashboard.html' frameborder="0" style='height: 100%;
+        <iframe name='mainframe' id='mainframe' src='AdminIndex.aspx' frameborder="0" style='height: 100%;
             width: 100%; border: none;'></iframe>
     </div>
     <div style='border-top: 1px solid #DADADA; height: 24px; background: rgb(241, 241, 241);

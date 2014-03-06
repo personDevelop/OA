@@ -65,7 +65,8 @@ namespace OAManager
         {
 
 
-            return Dal.From<NoticeInfo>().OrderBy(new OrderByClip(orderby)).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
+            return Dal.From<NoticeInfo>().Where(NoticeInfo._.ISUSED==true)
+                .OrderBy(new OrderByClip(orderby)).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
 
