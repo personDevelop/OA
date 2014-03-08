@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using OAEntity;
 using OAManager;
 using Sharp.Common;
+using OAEntity;
 using System.Data;
 
 namespace OA
@@ -15,12 +15,10 @@ namespace OA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserName"] != null)
-            {
-                hid.Value = Session["UserName"].ToString();
-            }
+             
             if (!IsPostBack)
             {
+              
                 string dd = Request.Form["begin"];
             }
 

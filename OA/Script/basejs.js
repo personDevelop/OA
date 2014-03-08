@@ -1,7 +1,7 @@
 ﻿var Msg = {
-    errorWindow: "<div id='errorWindow'> <div id='title'> <img width='14'   height='14' src='../../script/img/close.png' alt='' /> 错误</div> <div><div id='errormsg'></div><div><div style='float: right; margin-top: 15px;'><input type='button' id='errorWindowok' value='确定' style='margin-right: 10px' /></div></div></div></div>",
-    querryWindow: " <div id='querryWindow'><div><img width='14'height='14'src='../../script/img/help.png'alt=''/>询问信息</div><div><div id='querrymsg'></div><div><div style='float: right; margin-top: 15px;'><input type='button'id='querryok'value='是'style='margin-right: 10px'/><input type='button'id='querrycancel'value='否'/></div></div></div></div>",
-    successWindow: "<div id='successWindow'> <div id='title'> <img width='14'   height='14' src='../../script/img/arrowdown.gif' alt='' />操作成功</div> <div><div id='successmsg'></div><div><div style='float: right; margin-top: 15px;'><input type='button' id='successok' value='确定' style='margin-right: 10px' /></div></div></div></div>",
+    errorWindow: "<div id='errorWindow'> <div id='title'> <img width='14'   height='14' src='script/img/close.png' alt='' /> 错误</div> <div><div id='errormsg'></div><div><div style='float: right; margin-top: 15px;'><input type='button' id='errorWindowok' value='确定' style='margin-right: 10px' /></div></div></div></div>",
+    querryWindow: " <div id='querryWindow'><div><img width='14'height='14'src='script/img/help.png'alt=''/>询问信息</div><div><div id='querrymsg'></div><div><div style='float: right; margin-top: 15px;'><input type='button'id='querryok'value='是'style='margin-right: 10px'/><input type='button'id='querrycancel'value='否'/></div></div></div></div>",
+    successWindow: "<div id='successWindow'> <div id='title'> <img width='14'   height='14' src='script/img/arrowdown.gif' alt='' />操作成功</div> <div><div id='successmsg'></div><div><div style='float: right; margin-top: 15px;'><input type='button' id='successok' value='确定' style='margin-right: 10px' /></div></div></div></div>",
     ShowError: function (msg, title) {
 
 

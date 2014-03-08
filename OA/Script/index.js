@@ -7,10 +7,12 @@
 
 $(function () {
 
-    if ($("#hid").val() != "") {
+     
+    if ($("#ctl00_hid").val()) {
+        
         $("#userPer").empty();
-        $("#userPer").html("您好！" + $("#hid").val() + "&nbsp;&nbsp;<a href='main.aspx'>进入后台管理</a>");
-        $("#userPer").css("margin-top", "0");
+        $("#userPer").html("您好！" + $("#ctl00_hid").val() + "&nbsp;&nbsp;<a href='main.aspx'>进入后台管理</a>");
+        $("#userPer").css("margin-top", "5px");
     }
 });
 function check_login_info(thisForm) {
@@ -25,13 +27,13 @@ function check_login_info(thisForm) {
         return false;
     }
     if (/^\s*$/.test(thisForm.elements["rand_rs"].value)) {
-        alert("请输入答案！");
+        alert("请输入验证码！");
         thisForm.elements["rand_rs"].focus();
         return false;
     }
     _ajax_submit(thisForm, on_success, on_failure);
     return false;
-    return true;
+  
 }
 function on_success(response) {
     var o_result = _eval_json(response);
@@ -47,8 +49,10 @@ function on_success(response) {
         alert(o_result.errmsg);
         return false;
     } else if (o_result.result == "OK") {
+       
         window.location.reload();
     } else {
+         
         return on_failure(response);
     }
 }

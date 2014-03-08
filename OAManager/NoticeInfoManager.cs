@@ -65,7 +65,7 @@ namespace OAManager
         {
 
 
-            return Dal.From<NoticeInfo>().Where(NoticeInfo._.ISUSED==true)
+            return Dal.From<NoticeInfo>().Where(NoticeInfo._.ISUSED == true)
                 .OrderBy(new OrderByClip(orderby)).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
@@ -172,6 +172,13 @@ namespace OAManager
         public bool ExitCodeAndName(NoticeInfo entity)
         {
             return Dal.Exists<NoticeInfo>(NoticeInfo._.ID != entity.ID && (NoticeInfo._.CODE == entity.CODE));
+        }
+
+        public NoticeInfo GetTopText()
+        {
+            return Dal.From<NoticeInfo>().Where(NoticeInfo._.ISUSED == true && NoticeInfo._.ISTOP == true)
+                .OrderBy(NoticeInfo._.PUBDATE.Desc).ToFirst<NoticeInfo>()
+                ;
         }
     }
 

@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="YuanGongKaoQinList.aspx.cs"
-    Inherits="OA.YuanGongKaoQinList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="YuanGongKaoQinTongJi.aspx.cs"
+    Inherits="OA.YuanGongKaoQinTongJi" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>

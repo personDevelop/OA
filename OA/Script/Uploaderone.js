@@ -155,7 +155,16 @@ function flieDel(ele) {
                         });
                         $("#" + fid).remove();
                     } else {
-                        Msg.ShowError("删除失败！");
+                        parent.art.dialog({
+                            title: '系统提示',
+                            content: "删除失败！",
+                            icon: 'succeed',
+                            lock: true,
+                            ok: function () {
+
+                            }
+                        });
+                        
                     }
                 },
         error: function (err) {

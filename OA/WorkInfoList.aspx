@@ -193,14 +193,32 @@
             if (selection.length == 1) {
                 var rowData = selection[0];
                 if (rowData.Status=="完成") {
-     Msg.ShowError("任务已完成，不能再分配！");
+                  parent.art.dialog({
+                                title: '系统提示',
+                                content: "任务已完成，不能再分配！",
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+                                return;
+                                }
+                            });
+      
      return;
 }
                 $("#unselectperson").jqxDataTable('updateBoundData');
                 $("#selectPerson").jqxDataTable('updateBoundData');
                 $('#window').jqxWindow('open');
             } else {
-                Msg.ShowError("请先选择要分配的设备故障，且只能选择一个！");
+              parent.art.dialog({
+                                title: '系统提示',
+                                content: "请先选择要分配的设备故障，且只能选择一个！",
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
+               
 
             }
 
@@ -242,13 +260,31 @@
                             }); 
                         }
                         else {
-                            Msg.ShowError(base64decode(data.msg));
+                           parent.art.dialog({
+                                title: '系统提示',
+                                content: base64decode(data.msg),
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
                         }
                     }
                 }
                 );
                 } else {
-                    Msg.ShowError("请先选择要删除的节点，且只能选择一个！");
+                  parent.art.dialog({
+                                title: '系统提示',
+                                content: "请先选择要删除的节点，且只能选择一个！",
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
+               
+                  
 
                 }
             });
@@ -294,7 +330,15 @@
                                
                             }
                             else {
-                                Msg.ShowError(base64decode(data.msg));
+                                parent.art.dialog({
+                                    title: '系统提示',
+                                    content: base64decode(data.msg),
+                                    icon: 'succeed',
+                                    lock: true,
+                                    ok: function () {
+
+                                    }
+                                });
                             }
                         }
                     });
@@ -313,7 +357,16 @@
 
                 } else {
 
-                    Msg.ShowError("请给当前工作指派人员");
+                    parent.art.dialog({
+                        title: '系统提示',
+                        content: "请给当前工作指派人员",
+                        icon: 'succeed',
+                        lock: true,
+                        ok: function () {
+
+                        }
+                    });
+                    
                 }
 
 
@@ -360,7 +413,15 @@
                         //                        }
                     },
                     loadError: function (xhr, status, error) {
-                        Msg.ShowError(error);
+                        parent.art.dialog({
+                            title: '系统提示',
+                            content: error,
+                            icon: 'succeed',
+                            lock: true,
+                            ok: function () {
+
+                            }
+                        });
 
                     }
                 }
@@ -444,7 +505,16 @@
                 $(from).jqxDataTable('deleteRow', rowIndex);
 
             } else {
-                Msg.ShowError("请先选择要移动的人员，且只能选择一个！");
+                parent.art.dialog({
+                    title: '系统提示',
+                    content: "请先选择要移动的人员，且只能选择一个！",
+                    icon: 'succeed',
+                    lock: true,
+                    ok: function () {
+
+                    }
+                });
+               
 
             }
         }

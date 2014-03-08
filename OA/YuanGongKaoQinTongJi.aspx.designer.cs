@@ -10,7 +10,7 @@
 namespace OA {
     
     
-    public partial class YuanGongKaoQinList {
+    public partial class YuanGongKaoQinTongJi {
         
         /// <summary>
         /// Head1 控件。

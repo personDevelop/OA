@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using OAEntity;
 using OAManager;
 using Sharp.Common;
-using Sharp.Data;
+using System.Data;
+using OAEntity;
 
 namespace OA
 {
@@ -16,11 +15,9 @@ namespace OA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserName"] != null)
-            {
-                hid.Value = Session["UserName"].ToString();
-            }
-            string tmpl = 
+
+             
+            string tmpl =
             @"
             <tr>
                 <td height='25' align='left' valign='middle' >
@@ -39,7 +36,7 @@ namespace OA
                 </td>
                 <td align='left' valign='middle' >
                     {1}:
-                    <a href='nzcms_show_book.asp?id=208' target='_blank'>
+                    <a href='indexworkinfo.aspx?id={6}' target='_blank'>
                     {2}
                     </a>
                 </td>
@@ -62,31 +59,33 @@ namespace OA
 
             if (!IsPostBack)
             {
+               
                 #region 格式化新闻
-                string result = "<table width='100%' border='0' align='center' cellpadding='0'  cellspacing='0'>";
                 NoticeInfoManager ntMgr = new NoticeInfoManager();
-                int count=0;
-                DataTable dt=ntMgr.GetDataTable(0, 5, "ISTOP", ref count, ref count);
-                foreach(DataRow row in dt.Rows)
+                string result = "<table width='100%' border='0' align='center' cellpadding='0'  cellspacing='0'>";
+
+                int count = 0;
+                DataTable dt = ntMgr.GetDataTable(0, 5, "ISTOP", ref count, ref count);
+                foreach (DataRow row in dt.Rows)
                 {
-                    result += string.Format(tmpl, "newsinfo.aspx?id=" + row["ID"].ToString(), row["TITLE"]); 
+                    result += string.Format(tmpl, "newsinfo.aspx?id=" + row["ID"].ToString(), row["TITLE"]);
 
                 }
-                result+="</table>";
-                
-        
-                news_wrap.InnerHtml=result;
+                result += "</table>";
+
+
+                news_wrap.InnerHtml = result;
                 #endregion
 
                 #region 格式化派工
-                string worinfohtml="<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0'> ";
-                WorkInfoManager wkMgr=new WorkInfoManager();
-                WhereClip where=null;
-                OrderByClip order = null;
-                //DataTable dtwk=wkMgr.GetDataTable(0, 6, where,order,ref count,ref count);
-                DataTable dtwk = wkMgr.GetDataTable();
+                string worinfohtml = "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0'> ";
+                WorkInfoManager wkMgr = new WorkInfoManager();
+                WhereClip where = WorkInfo._.Status != "完成";
+                OrderByClip order = WorkInfo._.CreateDate.Desc;
+                DataTable dtwk = wkMgr.GetDataTable(1, 10, where, order, ref count, ref count);
+                // DataTable dtwk = wkMgr.GetDataTable();
                 int i = 0;
-                foreach(DataRow row in dtwk.Rows)
+                foreach (DataRow row in dtwk.Rows)
                 {
                     i++;
                     if (i > 6) break;
@@ -100,14 +99,14 @@ namespace OA
                     {
                         clyj = clyj.Substring(0, 10);
                     }
-                    worinfohtml += string.Format(wrtmpl, row["Status"].ToString(), row["CreaterName"].ToString(), gzxx, row["CurrentUser"].ToString(), clyj, row["CreateDate"].ToString()); 
+                    worinfohtml += string.Format(wrtmpl, row["Status"].ToString(), row["CreaterName"].ToString(), gzxx, row["CurrentUser"].ToString(), clyj, row["CreateDate"].ToString(), row["ID"]);
 
                 }
                 worinfohtml += "</table>";
                 workinfo.InnerHtml = worinfohtml;
                 #endregion
 
-                string sresult = 
+                string sresult =
                 @"<table width='100%' border='0' cellpadding='0' cellspacing='0' class='dx'>
                       <tbody><tr>
                         <td width='12%' height='25' align='center' bgcolor='#F8F8F8' class='zx'>编号</td>
@@ -119,14 +118,14 @@ namespace OA
                       </tr>";
                 ShebeiInfoManager sbMgr = new ShebeiInfoManager();
                 DataTable dt_sb = sbMgr.GetDataTable();
-                
+
                 int scount = 0;
                 foreach (DataRow row in dt_sb.Rows)
                 {
                     scount++;
                     if (scount > 10) return;
                     OAManager.FileInfoManager flMgr = new FileInfoManager();
-                    DataTable dtimg=flMgr.GetDataTable(row["ID"].ToString());
+                    DataTable dtimg = flMgr.GetDataTable(row["ID"].ToString());
                     string img_html = string.Empty;
                     if (dtimg.Rows.Count > 0)
                     {
@@ -136,7 +135,7 @@ namespace OA
                     else
                     {
                         img_html = "无缩略图";
- 
+
                     }
 
                     sresult += string.Format(sbtmpl, row["Code"].ToString(), row["State"].ToString(), "<a href='" + row["PATH"].ToString() + "' target='sbiframe'>" + row["Name"].ToString() + "</a>", img_html, row["GZTJ"].ToString(), row["GHTJ"].ToString());

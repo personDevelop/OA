@@ -9,6 +9,18 @@
 <script src="Script/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="Script/index.js" type="text/javascript"></script>
 <SCRIPT language=javascript type=text/javascript src="css/images/helper.js"></SCRIPT>
+  <script type="text/javascript" src="css/images/helper.js"></script>
+ 
+    <script type="text/javascript">
+        $(function () {
+
+            $("#toptongzhi").html($("#hidTopTongZhid").val());
+
+
+        });
+    
+    
+    </script>
 </head>
 <BODY bgColor=#ffffff leftMargin=0 topMargin=0>
 <!--登录框 -->
@@ -36,6 +48,7 @@
 </td>
 <form id="Form1" runat=server>
 <asp:HiddenField ID="hid" runat="server" />
+ <asp:HiddenField ID="hidTopTongZhid" runat="server" />
 </form>
     <td align="right" valign="middle">
      <table id='userPer' border="0" cellspacing="0" cellpadding="0" style='margin-top:-7px;'>
@@ -143,9 +156,64 @@
 
 <table width="1004" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td><iframe src="top_ggl.asp" name="sina_roll" width="1004" marginwidth="0" height="65" marginheight="0" scrolling="No" frameborder="NO" id="sina_roll" border="0"></iframe></td>
+    <td>
+    <table width="1004" border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#000000" style="border: 5px solid #000000;">
+  <tr>
+    <td width="120" height="60" align="center" background="css/images/timebg.gif" class="white18">
+	
+<span id=localtime></span>
+<script type="text/javascript">
+    function showLocale(objD) {
+        var str, colorhead, colorfoot;
+        var yy = objD.getYear();
+        if (yy < 1900) yy = yy + 1900;
+        var MM = objD.getMonth() + 1;
+        if (MM < 10) MM = '0' + MM;
+        var dd = objD.getDate();
+        if (dd < 10) dd = '0' + dd;
+        var hh = objD.getHours();
+        if (hh < 10) hh = '0' + hh;
+        var mm = objD.getMinutes();
+        if (mm < 10) mm = '0' + mm;
+        var ss = objD.getSeconds();
+        if (ss < 10) ss = '0' + ss;
+        var ww = objD.getDay();
+        if (ww == 0) colorhead = "<font color=\"#FF5300\">";
+        if (ww > 0 && ww < 6) colorhead = "<font color=\"#FF5300\">";
+        if (ww == 6) colorhead = "<font color=\"#FF5300\">";
+        if (ww == 0) ww = "星期日";
+        if (ww == 1) ww = "星期一";
+        if (ww == 2) ww = "星期二";
+        if (ww == 3) ww = "星期三";
+        if (ww == 4) ww = "星期四";
+        if (ww == 5) ww = "星期五";
+        if (ww == 6) ww = "星期六";
+        colorfoot = "</font>"
+        str = colorhead + hh + ":" + mm + ":" + ss + "<br><font style='font-size: 24px':font-family: '微软雅黑';>" + ww + colorfoot;
+        return (str);
+    }
+    function tick() {
+        var today;
+        today = new Date();
+        document.getElementById("localtime").innerHTML = showLocale(today);
+        window.setTimeout("tick()", 1000);
+    }
+    tick();
+</script>
+	
+	</td>
+    <td align="left" valign="top" background="css/images/timebg.gif"><table height="8" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td></td>
+      </tr>
+    </table>
+      <marquee scrollamount=5 width=870 height="50"onmouseover=stop() onmouseout=start()><span id="toptongzhi" >  </span></marquee></td>
   </tr>
 </table>
+       </td>
+  </tr>
+</table>
+    
 
 <!--滚动栏插件 -->
 <!--导航-->
@@ -166,21 +234,21 @@
     <div id='sbinfo' runat=server></div>
 	     </td>
 	  <td valign="top" class="kk" width="40%">
-      <iframe id="sbiframe" frameborder=0 style='border:none;width: 100%;height:400px;'></iframe>
+      <iframe id="sbiframe" name="sbiframe" frameborder="0" style='border:none;width: 100%;height:400px;'></iframe>
       <!--调用窗口--></td>
   </tr>
 </tbody></table>
 <!-- 这里结束签收文件栏-->	
 <table width="1004" border="0" align="center" cellpadding="15" cellspacing="0" background="images/nzcms/end_bg.gif" bgcolor="#FFFFFF"">
   <tr>
-    <td align="center" valign="top" class="end">主办单位：长清公安分局&nbsp; &nbsp; 本站最佳浏览效果：1024*768分辨率/建议使用微软公司浏览器IE6.0以上&nbsp;&nbsp;
+    <td align="center" valign="top" class="end"><span runat="server" id="down"></span>&nbsp; &nbsp; 本站最佳浏览效果：1024*768分辨率/建议使用微软公司浏览器IE6.0以上&nbsp;&nbsp;
 <br />
 <script language="JavaScript" src="count.asp" type="text/javascript"></script>
 <br />
 <table border="0" cellpadding="3" cellspacing="0">
   <tr>
-    <td align="center" bgcolor="#009900">&nbsp;&nbsp;&nbsp;<a href="http://www.ningzhi.net" target="_blank"><font color="#FFFFFF">本站由：致群智能工程有限公司搭建</font></a>&nbsp;&nbsp;&nbsp;</td>
-    <td align="center" bgcolor="#006600">&nbsp;&nbsp;&nbsp;<a href="nz0808" target="_blank"><font color="#FFFFFF">进入后台管理</font></a>&nbsp;&nbsp;&nbsp;</td>
+    <td align="center" bgcolor="#009900">&nbsp;&nbsp;&nbsp;<a href="index.aspx" target="_blank"><font color="#FFFFFF">本站由：致群智能工程有限公司搭建</font></a>&nbsp;&nbsp;&nbsp;</td>
+    <td align="center" bgcolor="#006600">&nbsp;&nbsp;&nbsp;<a href="login.aspx" target="_blank"><font color="#FFFFFF">进入后台管理</font></a>&nbsp;&nbsp;&nbsp;</td>
   </tr>
 </table></td>
   </tr>

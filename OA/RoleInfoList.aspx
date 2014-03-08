@@ -217,13 +217,29 @@
                             }); 
                         }
                         else {
-                            Msg.ShowError(base64decode(data.msg));
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: base64decode(data.msg),
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
                         }
                     }
                 }
                 );
                 } else {
-                    Msg.ShowError("请先选择要删除的节点，且只能选择一个！");
+                parent.art.dialog({
+                    title: '系统提示',
+                    content: "请先选择要删除的节点，且只能选择一个！",
+                    icon: 'succeed',
+                    lock: true,
+                    ok: function () {
+
+                    }
+                });
 
                 }
             });
@@ -244,7 +260,16 @@
                     $("#basic").removeClass("selected");
                     BindPerson();
                 } else {
-                    Msg.ShowError("请选择一个角色");
+                    parent.art.dialog({
+                        title: '系统提示',
+                        content: "请选择一个角色！",
+                        icon: 'succeed',
+                        lock: true,
+                        ok: function () {
+
+                        }
+                    });
+                 
                 }
             }
             if (id == "basic") {
@@ -370,7 +395,15 @@
 
                              }
                              else {
-                                 Msg.ShowError(base64decode(data.msg));
+                                 parent.art.dialog({
+                                     title: '系统提示',
+                                     content: base64decode(data.msg),
+                                     icon: 'succeed',
+                                     lock: true,
+                                     ok: function () {
+
+                                     }
+                                 });
                              }
                          }
 
@@ -384,16 +417,18 @@
     </script>
     <script type="text/javascript">
         var persondatatable;
+        var personhassource;
         var personhasdataAdapter;
         function BindPerson() {
 
             if (persondatatable) {
 
+                personhassource.hierarchy = [];
                 persondatatable.jqxDataTable('updatebounddata');
                 //                persondatatable.jqxDataTable('refreshdata');
             }
             //获取数据
-            var personhassource =
+              personhassource =
             {
                 dataType: "json",
                 dataFields: [
@@ -403,6 +438,7 @@
 { name: 'RolePersonID', type: 'string' },
 { name: 'RoleID', type: 'string' }
                 ],
+                hierarchy:[],
                 id: 'RolePersonID',
                 url: 'handler/GetRoleHasPersonHandler.ashx'
             };
@@ -427,7 +463,15 @@
                         }
                     },
                     loadError: function (xhr, status, error) {
-                        Msg.ShowError(error);
+                        parent.art.dialog({
+                            title: '系统提示',
+                            content: error,
+                            icon: 'succeed',
+                            lock: true,
+                            ok: function () {
+
+                            }
+                        });
 
                     }
                 }
@@ -497,7 +541,15 @@
                             }); 
                         }
                         else {
-                            Msg.ShowError(base64decode(data.msg));
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: base64decode(data.msg),
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
                         }
                     }
                 });

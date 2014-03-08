@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace OA
 {
-    public partial class YuanGongKaoQinList : BasePage
+    public partial class YuanGongKaoQinTongJi : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

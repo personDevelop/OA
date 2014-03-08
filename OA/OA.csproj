@@ -65,21 +65,33 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="css\css.css" />
+    <Content Include="css\css_2.css" />
     <Content Include="css\file.css" />
     <Content Include="css\images\1.gif" />
+    <Content Include="css\images\20140228013424.jpg" />
+    <Content Include="css\images\20140228013502.jpg" />
     <Content Include="css\images\all.css" />
+    <Content Include="css\images\bar1.jpg" />
     <Content Include="css\images\bg.png" />
+    <Content Include="css\images\biao.gif" />
     <Content Include="css\images\bj_line.gif" />
     <Content Include="css\images\captcha.jpg" />
     <Content Include="css\images\chart_bar.png" />
     <Content Include="css\images\class_bg.jpg" />
     <Content Include="css\images\column-header-bg.png" />
+    <Content Include="css\images\end.gif" />
     <Content Include="css\images\helper.js" />
     <Content Include="css\images\hourglass_go.png" />
     <Content Include="css\images\icon.png" />
+    <Content Include="css\images\icon01.gif" />
     <Content Include="css\images\icon_24.gif" />
+    <Content Include="css\images\image1.jpg" />
+    <Content Include="css\images\image2.jpg" />
     <Content Include="css\images\jquery.min.js" />
+    <Content Include="css\images\laba.gif" />
     <Content Include="css\images\lightbulb_off.png" />
+    <Content Include="css\images\list_bg.gif" />
     <Content Include="css\images\loading.gif" />
     <Content Include="css\images\login.css" />
     <Content Include="css\images\login_bg.png" />
@@ -91,25 +103,35 @@
     <Content Include="css\images\login_title.png" />
     <Content Include="css\images\login_topbg.png" />
     <Content Include="css\images\logo.png" />
+    <Content Include="css\images\news_bg.gif" />
+    <Content Include="css\images\nzcms.07.gif" />
+    <Content Include="css\images\nzcms7.gif" />
+    <Content Include="css\images\nzcms_bg.jpg" />
     <Content Include="css\images\p1.jpg" />
     <Content Include="css\images\skin_icons.png" />
     <Content Include="css\images\sound.png" />
     <Content Include="css\images\subbotton.gif" />
     <Content Include="css\images\tag_blue.png" />
+    <Content Include="css\images\time.gif" />
+    <Content Include="css\images\timebg.gif" />
+    <Content Include="css\images\top_b.gif" />
+    <Content Include="css\images\top_bg.jpg" />
+    <Content Include="css\images\txt.png" />
+    <Content Include="css\nzcms_top.css" />
     <Content Include="css\style.css" />
-    <Content Include="dashboard.html" />
     <Content Include="DayLogEdit.aspx" />
     <Content Include="DayLogList.aspx" />
     <Content Include="DayLogList1.aspx" />
     <Content Include="FuncAccessEdit.aspx" />
     <Content Include="FunctionInfoEdit.aspx" />
     <Content Include="FunctionInfoList.aspx" />
-    <Content Include="index.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="index.html" />
     <Content Include="indexItemInfo.aspx" />
     <Content Include="indexKaoQin.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="indexPaiGong.aspx" />
+    <Content Include="indexworkinfo.aspx" />
+    <Content Include="indexXjsb.aspx" />
     <Content Include="js\DatePicker\calendar.js" />
     <Content Include="js\DatePicker\lang\en.js" />
     <Content Include="js\DatePicker\lang\zh-cn.js" />
@@ -124,7 +146,6 @@
     <Content Include="js\DatePicker\WdatePicker.js" />
     <Content Include="login.aspx" />
     <Content Include="main.aspx" />
-    <Content Include="main.html" />
     <Content Include="newsinfo.aspx" />
     <Content Include="NoticeInfoEdit.aspx" />
     <Content Include="NoticeInfoList.aspx" />
@@ -245,9 +266,6 @@
     <Content Include="Script\artDialog\skins\simple.css" />
     <Content Include="Script\artDialog\skins\twitter.css" />
     <Content Include="Script\base64.js" />
-    <Content Include="Script\globalization\globalize.culture.zh-Hans.js" />
-    <Content Include="Script\index.js" />
-    <Content Include="Script\JqueryForm.js" />
     <Content Include="Script\basejs.js" />
     <Content Include="Script\globalization\globalize.culture.cs-CZ.js" />
     <Content Include="Script\globalization\globalize.culture.de-DE.js" />
@@ -262,6 +280,7 @@
     <Content Include="Script\globalization\globalize.culture.lt.js" />
     <Content Include="Script\globalization\globalize.culture.ru-RU.js" />
     <Content Include="Script\globalization\globalize.culture.sa-IN.js" />
+    <Content Include="Script\globalization\globalize.culture.zh-Hans.js" />
     <Content Include="Script\globalization\globalize.js" />
     <Content Include="Script\globalization\ReadMe.txt" />
     <Content Include="Script\IEPercent.js" />
@@ -271,12 +290,13 @@
     <Content Include="Script\img\folderIcon.png" />
     <Content Include="Script\img\folderOpen.png" />
     <Content Include="Script\img\help.png" />
+    <Content Include="Script\index.js" />
     <Content Include="Script\jquery-1.10.2.min.js" />
+    <Content Include="Script\JqueryForm.js" />
     <Content Include="Script\jqx-all.js" />
     <Content Include="Script\jqxcore.js" />
     <Content Include="Script\jqxdateinput.js" />
     <Content Include="Script\main.js" />
-    <Content Include="Script\Skin.js" />
     <Content Include="Script\styles\images\backgroundTop.png" />
     <Content Include="Script\styles\images\backImage.png" />
     <Content Include="Script\styles\images\bg_black.png" />
@@ -808,6 +828,7 @@
     <Content Include="ShebeiInfoList.aspx" />
     <Content Include="SystemCodeList.aspx" />
     <Content Include="SystemCodeEdit.aspx" />
+    <Content Include="upload\201403\140304033535521599.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -821,6 +842,7 @@
     <Content Include="WorkInfoEdit.aspx" />
     <Content Include="WorkInfoList.aspx" />
     <Content Include="YuanGongKaoQinList.aspx" />
+    <Content Include="YuanGongKaoQinTongJi.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminIndex.aspx.cs">
@@ -1026,13 +1048,6 @@
     <Compile Include="handler\YuanGongKaoQinSaveHandler.ashx.cs">
       <DependentUpon>YuanGongKaoQinSaveHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
     <Compile Include="indexItemInfo.aspx.cs">
       <DependentUpon>indexItemInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1047,12 +1062,33 @@
     <Compile Include="indexKaoQin.aspx.designer.cs">
       <DependentUpon>indexKaoQin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="indexPaiGong.aspx.cs">
       <DependentUpon>indexPaiGong.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="indexPaiGong.aspx.designer.cs">
       <DependentUpon>indexPaiGong.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="indexworkinfo.aspx.cs">
+      <DependentUpon>indexworkinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="indexworkinfo.aspx.designer.cs">
+      <DependentUpon>indexworkinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="indexXjsb.aspx.cs">
+      <DependentUpon>indexXjsb.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="indexXjsb.aspx.designer.cs">
+      <DependentUpon>indexXjsb.aspx</DependentUpon>
     </Compile>
     <Compile Include="JsonConvert.cs" />
     <Compile Include="JsonToDataSet.cs" />
@@ -1191,6 +1227,13 @@
       <DependentUpon>SystemCodeEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserSet.cs" />
+    <Compile Include="Web.Master.cs">
+      <DependentUpon>Web.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web.Master.designer.cs">
+      <DependentUpon>Web.Master</DependentUpon>
+    </Compile>
     <Compile Include="WorkHandLogEdit.aspx.cs">
       <DependentUpon>WorkHandLogEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1218,6 +1261,13 @@
     </Compile>
     <Compile Include="YuanGongKaoQinList.aspx.designer.cs">
       <DependentUpon>YuanGongKaoQinList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YuanGongKaoQinTongJi.aspx.cs">
+      <DependentUpon>YuanGongKaoQinTongJi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YuanGongKaoQinTongJi.aspx.designer.cs">
+      <DependentUpon>YuanGongKaoQinTongJi.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -1271,6 +1321,18 @@
     <Content Include="handler\FuncAccessDeleteHandler.ashx" />
     <Content Include="handler\FuncAccessListHandler.ashx" />
     <Content Include="handler\FuncAccessSaveHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OAEntity\OAEntity.csproj">
+      <Project>{D7D380A8-5312-4763-916F-934142BC9DAE}</Project>
+      <Name>OAEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OAManager\OAManager.csproj">
+      <Project>{23A2450B-95F3-4992-95D1-3351AC5A406C}</Project>
+      <Name>OAManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />
@@ -1286,16 +1348,7 @@
     <None Include="Script\uploadify\.htaccess" />
     <None Include="Script\uploadify\check-exists.php" />
     <None Include="Script\uploadify\uploadify.php" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OAEntity\OAEntity.csproj">
-      <Project>{D7D380A8-5312-4763-916F-934142BC9DAE}</Project>
-      <Name>OAEntity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OAManager\OAManager.csproj">
-      <Project>{23A2450B-95F3-4992-95D1-3351AC5A406C}</Project>
-      <Name>OAManager</Name>
-    </ProjectReference>
+    <Content Include="Web.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -1303,7 +1356,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>18544</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

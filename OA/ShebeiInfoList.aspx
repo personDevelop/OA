@@ -127,13 +127,31 @@
                           
                         }
                         else {
-                            Msg.ShowError(base64decode(data.msg));
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: base64decode(data.msg),
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
                         }
                     }
                 }
                 );
-                } else {
-                    Msg.ShowError("请先选择要删除的节点，且只能选择一个！");
+            } else {
+                parent.art.dialog({
+                    title: '系统提示',
+                    content: "请先选择要删除的节点，且只能选择一个！",
+                    icon: 'succeed',
+                    lock: true,
+                    ok: function () {
+
+                    }
+                });
+                
+                   
 
                 }
             });

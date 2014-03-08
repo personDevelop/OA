@@ -115,7 +115,16 @@ function (event) {
                     formatData: function (data) {
                         var selection = $("#Role").jqxDataTable('getSelection');
                         if (!selection || selection.length == 0) {
-                            Msg.ShowError("请先选择一个角色");
+                            
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: "请先选择一个角色！",
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
                             return;
                         }
                         
@@ -201,7 +210,15 @@ function setIsView(ischecked, rowid) {
 
             var selection = $("#Role").jqxDataTable('getSelection');
             if (!selection || selection.length == 0) {
-                Msg.ShowError("请先选择一个角色");
+                parent.art.dialog({
+                    title: '系统提示',
+                    content: "请先选择一个角色！",
+                    icon: 'succeed',
+                    lock: true,
+                    ok: function () {
+
+                    }
+                });
                 return;
             }
             var roleID = selection[0].ID;
@@ -227,12 +244,28 @@ function setIsView(ischecked, rowid) {
 
                     }
                     else {
-                        Msg.ShowError(base64decode(data.msg));
+                        parent.art.dialog({
+                            title: '系统提示',
+                            content: base64decode(data.msg),
+                            icon: 'succeed',
+                            lock: true,
+                            ok: function () {
+
+                            }
+                        });
                     }
                 },
                 error: function (df) {
 
-                    Msg.ShowError('sd');
+                    parent.art.dialog({
+                        title: '系统提示',
+                        content: df,
+                        icon: 'succeed',
+                        lock: true,
+                        ok: function () {
+
+                        }
+                    });
                 
                 }
             }

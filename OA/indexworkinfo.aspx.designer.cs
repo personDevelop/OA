@@ -10,7 +10,7 @@
 namespace OA {
     
     
-    public partial class newsinfo {
+    public partial class indexworkinfo {
         
         /// <summary>
         /// news_title 控件。

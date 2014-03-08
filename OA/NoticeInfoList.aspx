@@ -95,20 +95,7 @@
 
         });
 
-        function AddChild() {
-            var url = "NoticeInfoEdit.aspx";
-
-            var selection = $("#treeGrid").jqxTreeGrid('getSelection');
-            if (selection.length == 1) {
-                var rowData = selection[0];
-                url += "?ParentId=" + rowData.ID + "&ParentName=" + rowData.Name;
-                location.href = url;
-            } else {
-                Msg.ShowError("请先选择父节点，且只能选择一个！");
-
-            }
-
-        }
+       
         function deleteNoticeInfo() {
             Msg.Query("确认要删除该条数据?", function () {
 
@@ -137,13 +124,30 @@
                             
                         }
                         else {
-                            Msg.ShowError(base64decode(data.msg));
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: base64decode(data.msg),
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
                         }
                     }
                 }
                 );
-                } else {
-                    Msg.ShowError("请先选择要删除的节点，且只能选择一个！");
+            } else {
+                parent.art.dialog({
+                    title: '系统提示',
+                    content: "请先选择要删除的节点，且只能选择一个！",
+                    icon: 'succeed',
+                    lock: true,
+                    ok: function () {
+
+                    }
+                });
+                   
 
                 }
             });

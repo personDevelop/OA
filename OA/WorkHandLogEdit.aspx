@@ -73,7 +73,16 @@
             {
 
                 if ($("#txtCurrentStaus").val() == "完成") {
-                    Msg.ShowError("任务已完成，不能再重复办理！");
+                    parent.art.dialog({
+                        title: '系统提示',
+                        content: "任务已完成，不能再重复办理！",
+                        icon: 'succeed',
+                        lock: true,
+                        ok: function () {
+
+                        }
+                    });
+                  
                     return false;
                 }
                 var issuccess = $('#form1').jqxValidator('validate');
@@ -97,7 +106,15 @@
                                 history.back(-1);
                             }
                             else {
-                                Msg.ShowError(base64decode(data.msg));
+                                parent.art.dialog({
+                                    title: '系统提示',
+                                    content: base64decode(data.msg),
+                                    icon: 'succeed',
+                                    lock: true,
+                                    ok: function () {
+
+                                    }
+                                });
                             }
                         }
                     };
@@ -180,7 +197,15 @@
                         //                        }
                     },
                     loadError: function (xhr, status, error) {
-                        Msg.ShowError(error);
+                        parent.art.dialog({
+                            title: '系统提示',
+                            content:error,
+                            icon: 'succeed',
+                            lock: true,
+                            ok: function () {
+
+                            }
+                        });
 
                     }
                 }
@@ -260,7 +285,16 @@
                 $(from).jqxDataTable('deleteRow', rowIndex);
 
             } else {
-                Msg.ShowError("请先选择要移动的人员，且只能选择一个！");
+                parent.art.dialog({
+                    title: '系统提示',
+                    content: "请先选择要移动的人员，且只能选择一个！",
+                    icon: 'succeed',
+                    lock: true,
+                    ok: function () {
+
+                    }
+                });
+               
 
             }
         }

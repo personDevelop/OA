@@ -1,234 +1,91 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="OA.index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Web.Master" AutoEventWireup="true"
+    CodeBehind="index.aspx.cs" Inherits="OA.index" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>首页</title>
-<link href="css/css.css" rel="stylesheet" type="text/css">
-<link href="css/css_2.css" rel="stylesheet" type="text/css">
-<script src="Script/jquery-1.10.2.min.js" type="text/javascript"></script>
-<script src="Script/index.js" type="text/javascript"></script>
-<SCRIPT language=javascript type=text/javascript src="css/images/helper.js"></SCRIPT>
-
- 
-</head>
-<BODY bgColor=#ffffff leftMargin=0 topMargin=0>
-<!--登录框 -->
-
-<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" background="css/images/top_bg.jpg" bgcolor="#FFFFFF">
-  <tr>
-    <td height="28" valign="middle">&nbsp;&nbsp;<img src="css/images/time.gif" width="12" height="12" />&nbsp;
-	
-	
-	今天是：<input name="Text" type="Text"  id="txtTime"  style="border:0px; width:160px; background:none; padding-top:0px; color:#000000">
-            <script   language="javascript">
-                function ShowTime() {
-                    now = new Date()
-                    tmonth = now.getMonth() + 1
-                    thour = ((now.getHours() < 10) ? "0" : "") + now.getHours()
-                    tminutes = ((now.getMinutes() < 10) ? "0" : "") + now.getMinutes()
-                    tseconds = ((now.getSeconds() < 10) ? "0" : "") + now.getSeconds()
-                    gweek = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
-                    hhp = gweek[now.getDay()]
-                    document.getElementById("txtTime").value = now.getFullYear() + "年" + tmonth + "月" + now.getDate() + "日" + " " + hhp
-                    setTimeout("ShowTime()", 100)
-                }
-                ShowTime();   
-              </script>
-</td>
-<form runat=server>
-<asp:HiddenField ID="hid" runat="server" />
-</form>
-      
-    <td align="right" valign="middle">
-      <table id='userPer' border="0" cellspacing="0" cellpadding="0" style='margin-top:-7px;'>
-       <FORM id=loginform  onsubmit="javascript:return check_login_info(this);" method=post name=loginform action=handler/VerifyUser.ashx>
-          <tr>
-            <td>用户名：
-              <input name="login_user" type="text" class="index_dr" id="login_user" size="5" datatype="Require" style="height:18px" msg="请填写正确的管理帐号！" />
-              &nbsp;密码：
-              <input name="login_pwd" type="password" class="index_dr" id="login_pwd" size="5" datatype="Require"  style="height:18px" msg="请填写正确的管理密码！" />
-              &nbsp;
-              验证码：
-              <input name="rand_rs" type="text" class="index_dr" id="rand_rs" value="" size="4" maxlength="4" datatype="Require"  msg="请不要非法提交！"  style="height:18px"/>
-              &nbsp;<IMG 
-                              style="POSITION: relative; TOP: 6px; MARGIN-RIGHT: 4px;cursor:pointer;" 
-                              id=login_captcha class=captchaimg 
-                              onclick="this.src='randomCode.aspx?secode=ecisp_seccode&amp;' + Math.random()" 
-                              border=0 
-                              src="randomCode.aspx">
-            <input name="Submit" type="submit" class="top-so"    value="登录" />
-            &nbsp;</td>
-          </tr>
-        </form>
-      </table>
-    </td>
-    <td width="60" align="center"><a  href="javascript:" onClick="jscript:window.external.AddFavorite(document.location.href,document.title);">收藏本站</a></td>
-  </tr>
-</table>
-
-<!--登录框 -->
-<!--下拉这里开始 -->
-<!--导航FLASH -->
-<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" background="flash/top/nzgov_06.jpg" bgcolor="#FFFFFF">
-  <tr>
-    <td align="center"><img src="css/images/image2.jpg" /></td>
-  </tr>
-</table>
-<!--导航FLASH -->
-<!--导航 -->
-<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" background="images/nzcms/nzcms_top01.gif" bgcolor="#093887" class="top" >
-  <tr>
-    <td width="1004" height="38" align="center" valign="middle">
-      <table border="0" cellpadding="0" cellspacing="0" id="sddm">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <table width="1004" border="0" align="center" cellpadding="0" cellspacing="5" bgcolor="#FFFFFF">
         <tr>
-          
-          <td align="left"><table width="100" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms.07.gif" >
-              <tr>
-                <td height="38" align="center">
-                  <a href="index.aspx" class="left" >
-                  首页</a>                </td>
-              </tr>
-          </table>
-          <!--导航 -->
-		  </td>
-          
-          <td align="left">
-		  <table width="100" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms.07.gif" >
-              <tr>
-                <td height="38" align="center"><a href="indexItemInfo.aspx" class="left" target=_blank>巡检设备</a></td>
-              </tr>
-          </table>
-		  </td>
-		  
-		  <td align="left">
-		  <table width="100" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms.07.gif" >
-              <tr>
-                <td height="38" align="center"><a href="indexKaoQin.aspx" class="left" target=_blank>考勤统计</a></td>
-              </tr>
-          </table>
-		  </td>
-
-          <td align="left">
-		  <table width="100" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms.07.gif" >
-              <tr>
-                <td height="38" align="center"><a href="indexPaiGong.aspx" class="left" target=_blank>派工统计</a></td>
-              </tr>
-          </table>
-		  </td>
-
-          <td align="left">
-		  <table width="100" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms.07.gif" >
-              <tr>
-                <td height="38" align="center"><a href="login.aspx" class="left" target=_blank>后台登录</a></td>
-              </tr>
-          </table>
-		  </td>
-
-          <td align="left">
-		  <table width="500" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms7.gif" >
-              <tr>
-                <td style='display:none;' height="38" align="center" style="color: #FFFFFF;text-decoration: none;font-size: 14px;font-weight: bold;">通知： <marquee scrollamount=5 width=400 onmouseover=stop() onmouseout=start()>
-		 最新放假通知信息！
-		 </marquee></td>
-              </tr>
-          </table>
-		  </td>
-          
-          
-          
+            <td align="center" valign="top" bgcolor="#FFFFFF" class="kk">
+                <table width="100%" height="6" border="0" cellpadding="0" cellspacing="1" background="images/nzcms/nzcms_left_bg.gif"
+                    bgcolor="#F9F9F9">
+                    <tr>
+                        <td width="65" height="20" align="center">
+                            工单状态
+                        </td>
+                        <td align="center">
+                            故障申报内容
+                        </td>
+                        <td width="100" align="center">
+                            受理人
+                        </td>
+                        <td width="140" align="center">
+                            处理结果
+                        </td>
+                        <td width="120" align="center">
+                            时间
+                        </td>
+                    </tr>
+                </table>
+                <div id="workinfo" runat="server">
+                </div>
+            </td>
+            <td width="250" align="center" valign="top" class="kk">
+                <!-- 这里开始通知通告栏-->
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF"
+                    class="right_kq">
+                    <tr>
+                        <td width="30" height="27" align="center" background="images/nzcms/left.gif">
+                            <img src="css/images/laba.gif" />
+                        </td>
+                        <td width="80" align="left" background="images/nzcms/left.gif" class="title12b">
+                            通知通告
+                        </td>
+                        <td align="right" class="p12">
+                            &nbsp;&nbsp;
+                        </td>
+                    </tr>
+                </table>
+                <marquee scrollamount="2" width="240" height="150" direction="up" onmouseover="stop()"
+                    onmouseout="start()">
+<div id="news_wrap" runat=server></div></marquee>
+                <!-- 这里结束通知通告栏-->
+            </td>
         </tr>
-        
-    </table></td>
-  </tr>
-</table>
-<!--滚动栏插件 -->
-
-<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td><iframe src="top_ggl.asp" name="sina_roll" width="1004" marginwidth="0" height="65" marginheight="0" scrolling="No" frameborder="NO" id="sina_roll" border="0"></iframe></td>
-  </tr>
-</table>
-
-<!--滚动栏插件 -->
-<!--导航-->
-<table width="1004" border="0" align="center" cellpadding="0" cellspacing="5" bgcolor="#FFFFFF"><tr>
-    <td  align="center" valign="top" bgcolor="#FFFFFF" class="kk">
-	  <table width="100%" height="6" border="0" cellpadding="0" cellspacing="1" background="images/nzcms/nzcms_left_bg.gif" bgcolor="#F9F9F9">
-        <tr>
-          <td width="65" height="20" align="center">工单状态</td>
-          <td align="center">故障申报内容</td>
-          <td width="100" align="center">受理人</td>
-          <td width="140" align="center">处理结果</td>
-          <td width="120" align="center">时间</td>
-        </tr>
-      </table>
-
-      <div id="workinfo" runat=server></div>
-     
-	     </td>
-    <td width="250" align="center" valign="top" class="kk">
-	<!-- 这里开始通知通告栏-->
-        <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" class="right_kq">
-          
-          <tr>
-            <td width="30" height="27" align="center" background="images/nzcms/left.gif"><img src="css/images/laba.gif" /></td>
-            <td width="80" align="left" background="images/nzcms/left.gif" class="title12b">通知通告</td>
-            <td align="right" class="p12">
-               &nbsp;&nbsp;</td>
-          </tr>
-        </table>
-		
-<marquee scrollamount="2" width="240"  height="150" direction="up" onMouseOver="stop()" onMouseOut="start()">
-<div id="news_wrap" runat=server></div>
-        
-      </marquee>		
-	
-        <table height="6" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-      
-<!-- 这里结束通知通告栏-->    </td>
-  </tr>
-</table>
-<!-- 这里开始签收文件栏-->
- 
- <table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="kk5">
-  <tbody><tr>
-    <td colspan="2" valign="top" class="kk" style='border-bottom:none;'><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" background="css/images/news_bg.gif">
-      <tbody><tr>
-        <td width="120" height="29" align="center" class="white14B">巡检设备</td>
-        <td align="right">&nbsp;&nbsp;</td>
-        <td width="60"><a href="indexItemInfo.aspx" target=_blank>更多 &gt;&gt; </a></td>
-      </tr>
-    </tbody></table>   </td>
-  </tr>
-  <tr>
-	<td valign="top" class="kk" width="40%" style='border-right:none;'>
-    <div id='sbinfo' runat=server></div>
-	     </td>
-	  <td valign="top" class="kk" width="40%">
-      <iframe id="sbiframe" frameborder=0 style='border:none;width: 100%;height:400px;'></iframe>
-      <!--调用窗口--></td>
-  </tr>
-</tbody></table>
-<!-- 这里结束签收文件栏-->	
-<table width="1004" border="0" align="center" cellpadding="15" cellspacing="0" background="images/nzcms/end_bg.gif" bgcolor="#FFFFFF"">
-  <tr>
-    <td align="center" valign="top" class="end">主办单位：长清公安分局&nbsp; &nbsp; 本站最佳浏览效果：1024*768分辨率/建议使用微软公司浏览器IE6.0以上&nbsp;&nbsp;
-<br />
-<script language="JavaScript" src="count.asp" type="text/javascript"></script>
-<br />
-<table border="0" cellpadding="3" cellspacing="0">
-  <tr>
-    <td align="center" bgcolor="#009900">&nbsp;&nbsp;&nbsp;<a href="http://www.ningzhi.net" target="_blank"><font color="#FFFFFF">本站由：致群智能工程有限公司搭建</font></a>&nbsp;&nbsp;&nbsp;</td>
-    <td align="center" bgcolor="#006600">&nbsp;&nbsp;&nbsp;<a href="nz0808" target="_blank"><font color="#FFFFFF">进入后台管理</font></a>&nbsp;&nbsp;&nbsp;</td>
-  </tr>
-</table></td>
-  </tr>
-</table>
-</BODY>
-</html>
+    </table>
+    <table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF"
+        class="kk5">
+        <tbody>
+            <tr>
+                <td colspan="2" valign="top" class="kk" style='border-bottom: none;'>
+                    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" background="css/images/news_bg.gif">
+                        <tbody>
+                            <tr>
+                                <td width="120" height="29" align="center" class="white14B">
+                                    巡检设备
+                                </td>
+                                <td align="right">
+                                    &nbsp;&nbsp;
+                                </td>
+                                <td width="60">
+                                    <a href="indexItemInfo.aspx" target="_blank">更多 &gt;&gt; </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" class="kk" width="40%" style='border-right: none;'>
+                    <div id='sbinfo' runat="server">
+                    </div>
+                </td>
+                <td valign="top" class="kk" width="40%">
+                    <iframe id="sbiframe" name="sbiframe" frameborder="0" style='border: none; width: 100%;
+                        height: 400px;'></iframe>
+                    <!--调用窗口-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</asp:Content>

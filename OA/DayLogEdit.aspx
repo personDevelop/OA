@@ -57,7 +57,15 @@
                                 });
                             }
                             else {
-                                Msg.ShowError(base64decode(data.msg));
+                                parent.art.dialog({
+                                    title: '系统提示',
+                                    content: base64decode(data.msg),
+                                    icon: 'succeed',
+                                    lock: true,
+                                    ok: function () {
+
+                                    }
+                                });
                             }
                         }
                     };
