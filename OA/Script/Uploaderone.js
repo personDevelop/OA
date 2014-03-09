@@ -30,7 +30,9 @@
             initData: function (data, fileValue) {
                 //加载数据
                 var fileques = this.file_queue;
-                for (var item in data) {
+                //for (var item in data) {
+                for (var item = 0; item < data.length; item++) {
+
                     fileques.append(
                             '<div id="' + data[item]["ID"] + '" class="uploadone">'
                             + '<img src="' + data[item]["FILEPATH"] + '" class="img_desk">'
