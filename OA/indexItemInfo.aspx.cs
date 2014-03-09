@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using OAEntity;
 using OAManager;
-using Sharp.Common;
-using Sharp.Data;
+using System.Data;
 
 namespace OA
 {
@@ -16,10 +13,7 @@ namespace OA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserName"] != null)
-            {
-                hid.Value = Session["UserName"].ToString();
-            }
+            
             string sbtmpl = @" 
 		    <tr>
                 <td height='30' align='center' bgcolor='#FFFFFF' class='zx'>{0}</td>
@@ -33,17 +27,8 @@ namespace OA
 
             if (!IsPostBack)
             {
-                NoticeInfoManager ntMgr = new NoticeInfoManager();
-                down.InnerText = "主办单位：长清公安分局";
-
-                NoticeInfo notice = ntMgr.GetTopText();
-                string s = "<a style='font-family:Microsoft YaHei;color:#FFFF00;font-size:24px;' href='newsinfo.aspx?id={0}'>{1}</a>";
-
-                if (notice!=null)
-                {
-                    hidTopTongZhid.Value = string.Format(s, notice.ID, notice.TITLE); 
-                }
-                string sresult = 
+               
+                string sresult =
                 @"<table width='100%' border='0' cellpadding='0' cellspacing='0' class='dx'>
                       <tbody><tr>
                         <td width='12%' height='25' align='center' bgcolor='#F8F8F8' class='zx'>编号</td>
@@ -55,14 +40,14 @@ namespace OA
                       </tr>";
                 ShebeiInfoManager sbMgr = new ShebeiInfoManager();
                 DataTable dt_sb = sbMgr.GetDataTable();
-                
+
                 int scount = 0;
                 foreach (DataRow row in dt_sb.Rows)
                 {
                     scount++;
                     if (scount > 100) return;
                     OAManager.FileInfoManager flMgr = new FileInfoManager();
-                    DataTable dtimg=flMgr.GetDataTable(row["ID"].ToString());
+                    DataTable dtimg = flMgr.GetDataTable(row["ID"].ToString());
                     string img_html = string.Empty;
                     if (dtimg.Rows.Count > 0)
                     {
@@ -72,7 +57,7 @@ namespace OA
                     else
                     {
                         img_html = "无缩略图";
- 
+
                     }
 
                     sresult += string.Format(sbtmpl, row["Code"].ToString(), row["State"].ToString(), "<a href='" + row["PATH"].ToString() + "' target='sbiframe'>" + row["Name"].ToString() + "</a>", img_html, row["GZTJ"].ToString(), row["GHTJ"].ToString());

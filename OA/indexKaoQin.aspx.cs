@@ -76,7 +76,7 @@ namespace OA
             </tr>";
             foreach (DataRow row in dt.Rows)
             {
-                header += string.Format(tmpl, row["KQRQ"].ToString(), row["USERNAME"].ToString(), row["NOTE"].ToString(), row["SWSTATUS"].ToString(), row["STATUS"].ToString());
+                header += string.Format(tmpl, ((DateTime)row["KQRQ"]).ToString("yyyy-MM-dd"), row["USERNAME"].ToString(), row["NOTE"].ToString(), row["SWSTATUS"].ToString(), row["STATUS"].ToString());
 
             }
             header += " </tbody></table>";

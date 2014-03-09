@@ -65,7 +65,7 @@ namespace OA
                 string result = "<table width='100%' border='0' align='center' cellpadding='0'  cellspacing='0'>";
 
                 int count = 0;
-                DataTable dt = ntMgr.GetDataTable(0, 5, "ISTOP", ref count, ref count);
+                DataTable dt = ntMgr.GetDataTable(0, 50, "ISTOP", ref count, ref count);
                 foreach (DataRow row in dt.Rows)
                 {
                     result += string.Format(tmpl, "newsinfo.aspx?id=" + row["ID"].ToString(), row["TITLE"]);

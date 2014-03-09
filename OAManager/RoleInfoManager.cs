@@ -216,6 +216,24 @@ namespace OAManager
         {
             return Dal.Delete<RolePerson>(guid);
         }
+
+        public int DelateRole(Guid guid)
+        {int i =0;
+            DbTransaction tr = Dal.BeginTransaction();
+
+            try
+            {
+                i = Dal.Delete<RoleInfo>(tr, guid);
+                i += Dal.Delete<RolePerson>(RolePerson._.RoleID == guid, tr);
+                Dal.CommitTransaction(tr);
+                return i;
+            }
+            catch (Exception)
+            {
+                Dal.RollbackTransaction(tr);
+                throw;
+            }
+        }
     }
 
 

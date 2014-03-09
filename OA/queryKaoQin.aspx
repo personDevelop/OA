@@ -26,7 +26,7 @@
                 dataFields: [
                 { name: 'ID', type: 'string' },
 { name: 'UserName', type: 'string' },
-{ name: 'KQRQ', type: 'string' },
+{ name: 'KQRQ', type: 'date', format: "d" },
 { name: 'Status', type: 'string' },
 { name: 'EndTime', type: 'string' },
 { name: 'Note', type: 'string' }
@@ -76,7 +76,7 @@
 
                 columns: [
 { text: '员工姓名', align: 'center', dataField: 'UserName', minWidth: 100, width: 150 },
-{ text: '考勤时间', align: 'center', dataField: 'KQRQ', minWidth: 100, width: 200 },
+{ text: '考勤时间', align: 'center', dataField: 'KQRQ', minWidth: 100, width: 200, cellsFormat: 'yyyy-MM-dd' },
 { text: '上午状态', align: 'center', dataField: 'Status', minWidth: 100, width: 200 },
 { text: '下午状态', align: 'center', dataField: 'EndTime', minWidth: 90, width: 90 },
 { text: '备注', align: 'center', dataField: 'Note', minWidth: 100, width: 150 }

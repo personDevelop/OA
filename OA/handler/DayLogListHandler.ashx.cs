@@ -27,15 +27,19 @@ namespace OA.handler
             int pageSize = int.Parse(rp["pagesize"]);
 
             int count = 0, recordCount = 0;
-            string workstatus = rp["Workstatus"];
+            string personID = rp["PersonID"];
             WhereClip where = null;
 
-
-            if (context.Session["UserID"] != null)
+            if (!string.IsNullOrEmpty(personID))
             {
-                where = DayLog._.UserID == new Guid(context.Session["UserID"].ToString());
- 
+                where = DayLog._.UserID == new Guid(personID);
             }
+            else
+                if (context.Session["UserID"] != null)
+                {
+                    where = DayLog._.UserID == new Guid(context.Session["UserID"].ToString());
+
+                }
             //if (!string.IsNullOrEmpty(context.Session["UserID"] as string))
             //{
             //    where = DayLog._.UserID == new Guid(context.Session["UserID"].ToString());
@@ -47,7 +51,7 @@ namespace OA.handler
             //    where = DayLog._.UserID == "";
 
             //}
-            
+
 
             DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, where, DayLog._.WordDate.Desc, ref count, ref recordCount);
             string result = JsonConvert.Convert2Json(dt);

@@ -174,9 +174,10 @@ namespace OAManager
             return Dal.Exists<NoticeInfo>(NoticeInfo._.ID != entity.ID && (NoticeInfo._.CODE == entity.CODE));
         }
 
-        public NoticeInfo GetTopText()
+        public NoticeInfo GetTopText(bool IsTop)
         {
-            return Dal.From<NoticeInfo>().Where(NoticeInfo._.ISUSED == true && NoticeInfo._.ISTOP == true)
+
+            return Dal.From<NoticeInfo>().Where(NoticeInfo._.ISUSED == true && NoticeInfo._.ISTOP == IsTop)
                 .OrderBy(NoticeInfo._.PUBDATE.Desc).ToFirst<NoticeInfo>()
                 ;
         }

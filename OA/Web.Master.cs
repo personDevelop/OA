@@ -23,13 +23,21 @@ namespace OA
                 NoticeInfoManager ntMgr = new NoticeInfoManager();
                 down.InnerText = "主办单位：长清公安分局";
 
-                NoticeInfo notice = ntMgr.GetTopText();
+                NoticeInfo notice = ntMgr.GetTopText(true);
                 string s = "<a style='font-family:Microsoft YaHei;color:#FFFF00;font-size:24px;' href='newsinfo.aspx?id={0}'>{1}</a>";
 
                 if (notice != null)
                 {
-                    hidTopTongZhid.Value = string.Format(s, notice.ID, notice.TITLE);
+                    hidZuiTopTongZhi.Value = string.Format(s, notice.ID, notice.TITLE);
+                  
                 }
+                notice = ntMgr.GetTopText(false);
+                if (notice != null)
+                {
+                    hidTopTongZhid.Value = string.Format(s, notice.ID, notice.TITLE);
+
+                }
+                
             }
         }
     }

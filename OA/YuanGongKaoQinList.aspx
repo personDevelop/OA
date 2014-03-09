@@ -18,15 +18,24 @@
     <script src="Script/globalization/globalize.culture.zh-Hans.js" type="text/javascript"></script>
     <script src="Script/JqueryForm.js" type="text/javascript"></script>
     <script type="text/javascript">
-        
+
         var dataAdapter;
         var kqdata = null;
         options = null;
+        function ViweDayLog(rowindex) {
+           
+            kqdata = $('#treeGrid').jqxGrid('getrowdata', rowindex);
+            kqdata.KQRQ = $("#txtKQRQ").jqxDateTimeInput('getText');
+            location.href = "DayLogList.aspx?id=" + kqdata.PersonID;
+           
+        }
+
+
         function saveList(rowindex) {
-            var selectedrowindex = $('#treeGrid').jqxGrid('selectedrowindex'); 
+            var selectedrowindex = $('#treeGrid').jqxGrid('selectedrowindex');
             if (!rowindex) {
                 if (selectedrowindex > -1) {
-//                    $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
+                    //                    $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
                 }
                 var rows = $('#treeGrid').jqxGrid('getrows');
                 options = {
@@ -38,7 +47,7 @@
                         if (data.success == "true") {
                             //$('#treeGrid').jqxGrid('refresh');
                             dataAdapter.dataBind();
-                          parent.art.dialog({
+                            parent.art.dialog({
                                 title: '系统提示',
                                 content: '保存成功！',
                                 icon: 'succeed',
@@ -46,7 +55,7 @@
                                 ok: function () {
 
                                 }
-                            }); 
+                            });
 
                         }
                         else {
@@ -67,7 +76,7 @@
                 if (selectedrowindex > -1) {
                     $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
                 }
-                var data = $('#treeGrid').jqxGrid('getrowdata', 1);
+                
                 kqdata = $('#treeGrid').jqxGrid('getrowdata', rowindex);
                 kqdata.KQRQ = $("#txtKQRQ").jqxDateTimeInput('getText');
                 options = {
@@ -87,7 +96,7 @@
                                 ok: function () {
 
                                 }
-                            }); 
+                            });
                         }
                         else {
                             parent.art.dialog({
@@ -163,7 +172,7 @@
                 id: 'ID',
                 url: 'handler/YuanGongKaoQinListHandler.ashx'
             };
-              dataAdapter = new $.jqx.dataAdapter(source,
+            dataAdapter = new $.jqx.dataAdapter(source,
                 {
                     formatData: function (data) {
 
@@ -223,12 +232,12 @@
                    {
                        text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
                        dataField: null, cellsRenderer: function (row, column, value, data) {
-                           return "<a href='#' onclick='return saveList(\"" + row + "\");' >保存</a> ";
+                           return "<a href='#' onclick='return ViweDayLog(\"" + row + "\");' >查看工作日志</a> ";
                        }
                    }
                 ]
             });
-            
+
 
         }); 
     </script>
@@ -247,9 +256,9 @@
     <div style="clear: both;">
     </div>
     <form id="form1" runat="server" style="margin-left: 10px;">
-    <div id='txtKQRQ' style=' margin-top: 10px;'>
+    <div id='txtKQRQ' style='margin-top: 10px;'>
     </div>
-    <div id="treeGrid"  style=' margin-top: 10px;'>
+    <div id="treeGrid" style='margin-top: 10px;'>
     </div>
     </form>
 </body>

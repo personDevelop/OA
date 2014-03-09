@@ -16,7 +16,9 @@
         $(function () {
             ShowTime();
             tick();
+            $("#zuitopTongZhi").html($("#ctl00_hidZuiTopTongZhi").val());
             $("#toptongzhi").html($("#ctl00_hidTopTongZhid").val());
+            
         });
         function ShowTime() {
             now = new Date()
@@ -177,11 +179,11 @@
                         <td align="left">
                             <table width="500" border="0" cellpadding="0" cellspacing="0" background="css/images/nzcms7.gif">
                                 <tr>
-                                    <td style='display: none;' height="38" align="center" style="color: #FFFFFF; text-decoration: none;
+                                    <td   height="38" align="center" style="color: #FFFFFF; text-decoration: none;
                                         font-size: 14px; font-weight: bold;">
                                         通知：
                                         <marquee scrollamount="5" width="400" onmouseover="stop()" onmouseout="start()">
-		 最新放假通知信息！
+		 <span id="zuitopTongZhi" >
 		 </marquee>
                                     </td>
                                 </tr>
@@ -211,6 +213,7 @@
     </table>
     <form id="form1" runat="server">
     <asp:HiddenField ID="hid" runat="server" />
+    <asp:HiddenField ID="hidZuiTopTongZhi" runat="server" />
     <asp:HiddenField ID="hidTopTongZhid" runat="server" />
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>

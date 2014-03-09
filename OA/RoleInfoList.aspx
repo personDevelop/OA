@@ -424,7 +424,7 @@
             if (persondatatable) {
 
                 personhassource.hierarchy = [];
-                persondatatable.jqxDataTable('updatebounddata');
+                $("#person").jqxGrid('updatebounddata');
                 //                persondatatable.jqxDataTable('refreshdata');
             }
             //获取数据
@@ -479,19 +479,15 @@
 
             //绑定树
 
-            persondatatable = $("#person").jqxDataTable
+                persondatatable = $("#person").jqxGrid
 (
             {
                 width: "90%",
                 height: "490px",
-                source: personhasdataAdapter,
-                serverProcessing: true,
+                source: personhasdataAdapter, 
                 autoRowHeight: false,
-                altRows: true,
-                pageable: true,
-                columnsResize: true,
-                pageSize: 20,
-                pagesizeoptions: ['20', '50', '100'],
+                altRows: true, 
+                columnsResize: true, 
                 columns: [
 
 { text: '用户名', align: 'center', dataField: 'UserName', minWidth: 50, width: 100 },
@@ -499,7 +495,7 @@
 
                    {
                        text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
-                       dataField: null, cellsRenderer: function (row, column, value, data) {
+                       dataField: null, cellsRenderer: function (row, column,d,dd, value, data) {
                            return "  <a onclick='return deleteRolePersonInfo(\"" + data.RolePersonID + "\");'   href='#'>删除</a>";
                        }
                    }

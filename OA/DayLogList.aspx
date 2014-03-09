@@ -17,6 +17,11 @@
 
         $(function () {
 
+            var userid = $("#hidUserId").val();
+            var url = 'handler/DayLogListHandler.ashx';
+            if (userid) {
+                url = 'handler/DayLogListHandler.ashx?PersonID='+userid;
+            }
 
             //获取数据
             var source =
@@ -25,16 +30,16 @@
                 dataFields: [
                 { name: 'ID', type: 'string' },
 { name: 'Content', type: 'string' },
-{ name: 'WordDate', type: 'string' },
+{ name: 'WordDate', type: 'date', format: "d" },
 { name: 'UserID', type: 'string' },
-{ name: 'CreateDate', type: 'string' },
+{ name: 'CreateDate', type: 'date', format: "d" },
 { name: 'UserName', type: 'string' },
 { name: 'GS', type: 'string' }
 
 
                 ],
                 id: 'ID',
-                url: 'handler/DayLogListHandler.ashx'
+                url: url
             };
             var dataAdapter = new $.jqx.dataAdapter(source,
                 {
@@ -74,14 +79,14 @@
                 pageSize: 20,
                 pagesizeoptions: ['20', '50', '100'],
                 columns: [
-                 { text: '工作日期', align: 'center', dataField: 'WordDate', minWidth: 100, width: 150 },
-{ text: '工作内容', align: 'center', dataField: 'Content', minWidth: 100, width: 350 },
-{ text: '工时', align: 'center', dataField: 'GS', minWidth: 100, width: 150 },
-{ text: '填报时间', align: 'center', dataField: 'CreateDate', minWidth: 100, width: 150 },
-{ text: '填报人', align: 'center', dataField: 'UserName', minWidth: 100, width: 150 },
+                 { text: '工作日期', cellsAlign: 'center', align: 'center', dataField: 'WordDate', minWidth: 50, width: 100, cellsFormat: 'yyyy-MM-dd' },
+{ text: '工作内容', align: 'center', dataField: 'Content', minWidth: 100, width: 450 },
+{ text: '工时', align: 'center', cellsAlign: 'center', dataField: 'GS', minWidth: 50, width: 80 },
+{ text: '填报时间', align: 'center', cellsAlign: 'center', dataField: 'CreateDate', minWidth: 50, width: 100, cellsFormat: 'yyyy-MM-dd' },
+{ text: '填报人', align: 'center', cellsAlign: 'center', dataField: 'UserName', minWidth: 50, width: 80 },
 
                    {
-                       text: '操作', align: 'center', width: 150, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
+                       text: '操作', align: 'center', cellsAlign: 'center', width: 150, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
                        dataField: null, cellsRenderer: function (row, column, value) {
                            return "<a href='DayLogEdit.aspx?ID=" + row + "'>修改</a> <a onclick='return deleteDayLog();'   href='#'>删除</a>";
                        }
@@ -91,28 +96,6 @@
 
         });
 
-        function AddChild() {
-            var url = "DayLogEdit.aspx";
-
-            var selection = $("#treeGrid").jqxDataTable('getSelection');
-            if (selection.length == 1) {
-                var rowData = selection[0];
-                url += "?ParentId=" + rowData.ID + "&ParentName=" + rowData.Name;
-                location.href = url;
-            } else {
-                parent.art.dialog({
-                    title: '系统提示',
-                    content: "请先选择父节点，且只能选择一个！",
-                    icon: 'succeed',
-                    lock: true,
-                    ok: function () {
-
-                    }
-                });
-
-            }
-
-        }
         function deleteDayLog() {
             Msg.Query("确认要删除该条数据?", function () {
 
@@ -183,6 +166,7 @@
     <div style="clear: both;">
     </div>
     <form id="form1" runat="server">
+    <asp:HiddenField ID="hidUserId" runat="server" />
     <div id="treeGrid">
     </div>
     </form>

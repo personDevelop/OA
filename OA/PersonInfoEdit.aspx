@@ -21,12 +21,18 @@
     <script type="text/javascript">
         $(function () {
             $("#txtBirthday").jqxDateTimeInput({ width: '250px', height: '25px', culture: 'zh-Hans', formatString: 'd' });
-            $("#txtBirthday").jqxDateTimeInput('setDate', $("#hidBirthday").val());
+            if (!$("#hidBirthday").val()) {
+                $("#txtBirthday").jqxDateTimeInput('setDate', null);
+            } else {
+
+                $("#txtBirthday").val($("#hidBirthday").val());
+            }
             $('#form1').jqxValidator({
                 rules: [
            { input: '#txtUserName', message: '用户名必填!', action: 'keyup, blur', rule: 'required' },
             { input: '#txtUserName', message: '用户名必须介于3-20个字符之间!', action: 'keyup, blur', rule: 'length=3,12' },
             { input: '#txtRealName', message: '真实姓名必填!', action: 'keyup, blur', rule: 'required' },
+             { input: '#txtTelphone', message: '手机号必填!', action: 'keyup, blur', rule: 'required' },
              { input: '#txtEmail', message: '邮箱必填!', action: 'keyup, blur', rule: 'required' },
              { input: '#txtEmail', message: '无效的邮箱格式!', action: 'keyup', rule: 'email' }
            ]
@@ -50,9 +56,9 @@
                                     ok: function () {
 
                                     }
-                                }); 
-                            
-                               
+                                });
+
+
                             }
                             else {
                                 parent.art.dialog({
@@ -95,10 +101,10 @@
                     </dd>
                 </dl>
                 <dl>
-                    <dt>邮箱</dt>
+                    <dt>手机号码</dt>
                     <dd>
-                        <input name="txtEmail" type="text" placeholder="someone@mail.com" id="txtEmail" runat="server"
-                            class="input small" datatype="n" sucmsg=" ">
+                        <input name="txtTelphone" type="text" id="txtTelphone" runat="server" class="input small"
+                            datatype="n" sucmsg=" ">
                     </dd>
                 </dl>
                 <dl>
@@ -106,6 +112,13 @@
                     <dd>
                         <input name="txtRealName" type="text" id="txtRealName" runat="server" class="input small"
                             datatype="n" sucmsg=" ">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>邮箱</dt>
+                    <dd>
+                        <input name="txtEmail" type="text" placeholder="someone@mail.com" id="txtEmail" runat="server"
+                            class="input small" datatype="n" sucmsg=" ">
                     </dd>
                 </dl>
                 <dl>
@@ -133,13 +146,6 @@
                     </dd>
                 </dl>
                 <dl>
-                    <dt>手机号码</dt>
-                    <dd>
-                        <input name="txtTelphone" type="text" id="txtTelphone" runat="server" class="input small"
-                            datatype="n" sucmsg=" ">
-                    </dd>
-                </dl>
-                <dl>
                     <dt>身份证号</dt>
                     <dd>
                         <input name="txtIDCardNumber" type="text" id="txtIDCardNumber" runat="server" class="input small"
@@ -151,7 +157,7 @@
                     <dd>
                         <div id="txtBirthday">
                         </div>
-                        <input type="hidden" name="hidBirthday" runat="server" id="hidBirthday"  />
+                        <input type="hidden" name="hidBirthday" runat="server" id="hidBirthday" />
                     </dd>
                 </dl>
                 <dl>

@@ -121,7 +121,6 @@
     <Content Include="css\style.css" />
     <Content Include="DayLogEdit.aspx" />
     <Content Include="DayLogList.aspx" />
-    <Content Include="DayLogList1.aspx" />
     <Content Include="FuncAccessEdit.aspx" />
     <Content Include="FunctionInfoEdit.aspx" />
     <Content Include="FunctionInfoList.aspx" />
@@ -979,11 +978,17 @@
     <Compile Include="handler\PersonInfoListHandler.ashx.cs">
       <DependentUpon>PersonInfoListHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\PersonInfoResetPwdHandler.ashx.cs">
+      <DependentUpon>PersonInfoResetPwdHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\PersonInfoSaveHandler.ashx.cs">
       <DependentUpon>PersonInfoSaveHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\resetPass.ashx.cs">
       <DependentUpon>resetPass.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\RoleInfoDeleteHandler.ashx.cs">
+      <DependentUpon>RoleInfoDeleteHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\RoleInfoListHandler.ashx.cs">
       <DependentUpon>RoleInfoListHandler.ashx</DependentUpon>
@@ -1333,6 +1338,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="handler\RoleInfoDeleteHandler.ashx" />
+    <Content Include="handler\PersonInfoResetPwdHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />

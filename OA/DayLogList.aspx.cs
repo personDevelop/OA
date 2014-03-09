@@ -11,7 +11,10 @@ namespace OA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                hidUserId.Value = Request.QueryString["id"];
+            }
         }
     }
 }

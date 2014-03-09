@@ -35,7 +35,7 @@ namespace OAManager
         }
 
 
-        public bool UpdatePwd(string username,string pwd)
+        public bool UpdatePwd(string username, string pwd)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace OAManager
                 PersonInfo pr = new PersonInfo();
                 pr.RecordStatus = StatusType.update;
                 pr.Pwd = pwd;
-               
+
                 Dal.Update(where, pr);//这里没成功 不知道是什么原因
                 return true;
             }
@@ -203,6 +203,13 @@ namespace OAManager
             return Dal.Exists<PersonInfo>(PersonInfo._.ID != entity.ID && PersonInfo._.UserName == entity.UserName);
         }
 
+
+        public int ResetPwd(Guid guid)
+        {
+
+            return Dal.FromCustomSql("update PersonInfo set Pwd=UserName where id=@id").AddInputParameter("id", guid).ExecuteNonQuery();
+
+        }
     }
 
 

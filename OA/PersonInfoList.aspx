@@ -74,7 +74,7 @@
 
                             }
                         });
-                        
+
 
                     }
                 }
@@ -96,9 +96,9 @@
                 pageSize: 20,
                 pagesizeoptions: ['20', '50', '100'],
                 columns: [
-
+                
 { text: '用户名', align: 'center', dataField: 'UserName', minWidth: 50, width: 100 },
-{ text: '邮箱', align: 'center', dataField: 'Email', minWidth:50, width: 100 },
+{ text: '邮箱', align: 'center', dataField: 'Email', minWidth: 50, width: 100 },
 { text: '真实姓名', align: 'center', dataField: 'RealName', minWidth: 50, width: 100 },
 { text: '所在地', align: 'center', dataField: 'Location', minWidth: 100, width: 150 },
 { text: '详细地址', align: 'center', dataField: 'DetailedAddress', minWidth: 100, width: 260 },
@@ -110,17 +110,17 @@
             break;
         case 0:
             sex = "女";
-            break;  
+            break;
     }
     return sex;
 }
-},
+}, 
 { text: '创建日期', align: 'center', cellsAlign: 'center', dataField: 'CreateDate', minWidth: 100, width: 150, cellsFormat: 'yyyy-MM-dd' },
 
                    {
-                       text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
+                       text: '操作', align: 'center', width: 150, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
                        dataField: null, cellsRenderer: function (row, column, value, data) {
-                           return "<a href='PersonInfoEdit.aspx?ID=" + data.ID + "'>修改</a> <a onclick='return deletePersonInfo();'   href='#'>删除</a>";
+                           return "<a href='PersonInfoEdit.aspx?ID=" + data.ID + "'>修改</a> <a onclick='return deletePersonInfo();'   href='#'>删除</a> <a href='#'  onclick='return SetPwd();'>重置密码</a>";
                        }
                    }
                 ]
@@ -128,7 +128,70 @@
 
         });
 
-    
+        function SetPwd() {
+            Msg.Query("确认要将该用户密码重置?重置后的密码和用户名相同", function () {
+
+                var url = "handler/PersonInfoResetPwdHandler.ashx?";
+
+                var selection = $("#treeGrid").jqxDataTable('getSelection');
+                if (selection.length == 1) {
+                    var rowData = selection[0];
+                    url += "ID=" + rowData.ID;
+                    $.ajax(
+                {
+                    url: url,
+                    dataType: 'json',
+                    success: function (data) {
+                        var rows = $("#treeGrid").jqxDataTable('getRows');
+                        var rowIndex = -1;
+                        for (var i = 0; i < rows.length; i++) {
+                            if (rows[i].ID == rowData.ID) {
+                                rowIndex = i;
+                                break;
+                            }
+
+                        }
+                        if (data.success == "true") {
+                            
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: '重置成功！',
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
+                        }
+                        else {
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: base64decode(data.msg),
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
+                        }
+                    }
+                }
+                );
+                } else {
+                    parent.art.dialog({
+                        title: '系统提示',
+                        content: "请先选择要重置密码的用户，且只能选择一个！",
+                        icon: 'succeed',
+                        lock: true,
+                        ok: function () {
+
+                        }
+                    });
+
+
+                }
+            });
+        }
         function deletePersonInfo() {
             Msg.Query("确认要删除该条数据?", function () {
 
@@ -150,7 +213,7 @@
                                 rowIndex = i;
                                 break;
                             }
-                          
+
                         }
                         if (data.success == "true") {
                             $("#treeGrid").jqxDataTable('deleteRow', rowIndex);
@@ -162,7 +225,7 @@
                                 ok: function () {
 
                                 }
-                            }); 
+                            });
                         }
                         else {
                             parent.art.dialog({
@@ -178,17 +241,17 @@
                     }
                 }
                 );
-            } else {
-                parent.art.dialog({
-                    title: '系统提示',
-                    content: "请先选择要删除的节点，且只能选择一个！",
-                    icon: 'succeed',
-                    lock: true,
-                    ok: function () {
+                } else {
+                    parent.art.dialog({
+                        title: '系统提示',
+                        content: "请先选择要删除的节点，且只能选择一个！",
+                        icon: 'succeed',
+                        lock: true,
+                        ok: function () {
 
-                    }
-                });
-                  
+                        }
+                    });
+
 
                 }
             });
@@ -202,7 +265,7 @@
         <a href="AdminIndex.aspx" class="home"><i></i><span>首页</span></a> <i class="arrow">
         </i><span>员工信息表</span>
     </div>
-    <div style='margin-left:10px;margin-top: 20px;'>
+    <div style='margin-left: 10px; margin-top: 20px;'>
         <ul class="icon-list">
             <li><a class="add" href="PersonInfoEdit.aspx"><i></i><span>新增</span></a></li>
             <li><a onclick="return deletePersonInfo();" id="btnDelete" class="del" href="#"><i></i>
@@ -211,7 +274,7 @@
     </div>
     <div style="clear: both;">
     </div>
-    <form id="form1" runat="server" style=" margin-left:10px;">
+    <form id="form1" runat="server" style="margin-left: 10px;">
     <div id="treeGrid" style='margin-top: 10px;'>
     </div>
     </form>
