@@ -176,8 +176,13 @@ namespace OAManager
 
         public NoticeInfo GetTopText(bool IsTop)
         {
+            WhereClip where = NoticeInfo._.ISUSED == true ;
+            if (IsTop)
+            {
+                where = where && NoticeInfo._.ISTOP == IsTop;
+            }
 
-            return Dal.From<NoticeInfo>().Where(NoticeInfo._.ISUSED == true && NoticeInfo._.ISTOP == IsTop)
+            return Dal.From<NoticeInfo>().Where(where)
                 .OrderBy(NoticeInfo._.PUBDATE.Desc).ToFirst<NoticeInfo>()
                 ;
         }

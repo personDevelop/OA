@@ -182,7 +182,7 @@
                                     <td   height="38" align="center" style="color: #FFFFFF; text-decoration: none;
                                         font-size: 14px; font-weight: bold;">
                                         通知：
-                                        <marquee scrollamount="5" width="400" onmouseover="stop()" onmouseout="start()">
+                                        <marquee scrollamount="5" width="300" onmouseover="stop()" onmouseout="start()">
 		 <span id="zuitopTongZhi" >
 		 </marquee>
                                     </td>
@@ -204,7 +204,7 @@
                             <span id="localtime"></span>
                         </td>
                         <td align="left" valign="top" background="css/images/timebg.gif">
-                            <marquee scrollamount="5" width="870" height="50" onmouseover="stop()" onmouseout="start()"><span id="toptongzhi" >  </span></marquee>
+                            <marquee scrollamount="5" width="470" height="50" onmouseover="stop()" onmouseout="start()"><span id="toptongzhi" >  </span></marquee>
                         </td>
                     </tr>
                 </table>

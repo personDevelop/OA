@@ -28,6 +28,7 @@ namespace OAEntity
         private string _FID;
         private string _State;
         private string _PATH;
+        private string _Address;
 
         #endregion
 
@@ -233,7 +234,7 @@ namespace OAEntity
             }
         }
         /// <summary>
-        /// 地址,
+        /// 路径,
         /// </summary>
 
 
@@ -250,6 +251,26 @@ namespace OAEntity
 
                 this.OnPropertyChanged("PATH", this._PATH, value);
                 this._PATH = value;
+            }
+        }
+        /// <summary>
+        /// 地址,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "Address", DbTypeString = "NVarChar", ColumnIsNull = true, IsUnique = false, ColumnLength = 500, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public string Address
+        {
+            get
+            {
+                return this._Address;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("Address", this._Address, value);
+                this._Address = value;
             }
         }
 
@@ -273,6 +294,7 @@ namespace OAEntity
                 FID = new PropertyItem("FID", tableName);
                 State = new PropertyItem("State", tableName);
                 PATH = new PropertyItem("PATH", tableName);
+                Address = new PropertyItem("Address", tableName);
 
             }
             /// <summary>
@@ -316,9 +338,13 @@ namespace OAEntity
             /// </summary> 
             public PropertyItem State = null;
             /// <summary>
-            /// 地址,
+            /// 路径,
             /// </summary> 
             public PropertyItem PATH = null;
+            /// <summary>
+            /// 地址,
+            /// </summary> 
+            public PropertyItem Address = null;
 
 
         }

@@ -47,14 +47,14 @@ namespace OA.handler
 
 
                 entity.IsEnable = rp["txtIsEnable"]== "on";
-
+                
 
                 entity.Note = rp["txtNote"];
 
                 entity.State = rp["txtState"];
 
                 entity.PATH = rp["txtPATH"];
-
+                entity.Address = rp["txtAddress"];
                 //if (!string.IsNullOrEmpty(rp["txtParentId"]))//父ID传值参考
                 //{
                 //    entity.ParentId = new Guid(rp["txtParentId"]);

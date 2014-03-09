@@ -46,7 +46,7 @@
                         </td>
                     </tr>
                 </table>
-                <marquee scrollamount="2" width="240" height="150" direction="up" onmouseover="stop()"
+                <marquee scrollamount="2" width="240" height="100" direction="up" onmouseover="stop()"
                     onmouseout="start()">
 <div id="news_wrap" runat=server></div></marquee>
                 <!-- 这里结束通知通告栏-->

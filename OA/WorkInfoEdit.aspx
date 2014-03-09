@@ -39,8 +39,8 @@
                                 ok: function () {
 
                                 }
-                            }); 
-                           
+                            });
+
                         }
                         else {
                             parent.art.dialog({
@@ -73,6 +73,7 @@
 { name: 'Code', type: 'string' },
 { name: 'Name', type: 'string' },
 { name: 'GuiGe', type: 'string' },
+{ name: 'Address', type: 'string' },
 { name: 'IsEnable', type: 'string' },
 { name: 'Note', type: 'string' }
 
@@ -128,6 +129,7 @@
         var selectCode = "";
         var selectName = "";
         var selectID = "";
+        var selectAddress = "";
         $(function () {
 
             $("#treeGrid").on('rowSelect', function (event) {
@@ -140,12 +142,15 @@
                 selectCode = args.row["CODE"];
                 selectName = args.row["Name"];
                 selectID = args.row["ID"];
-
+                selectAddress = args.row["Address"];
                 // row key
                 var rowKey = args.key;
 
                 event.stopPropagation();
-            });
+            }); $('#treeGrid').on('rowDoubleClick',
+function (event) {
+    $('#okButton').click( );
+});
             $('#window').jqxWindow({
                 showCollapseButton: true, maxHeight: 600, isModal: true, okButton: $('#okButton'),
                 cancelButton: $('#cancel'), maxWidth: 700, minHeight: 200, minWidth: 200, height: 500, width: 470,
@@ -155,7 +160,7 @@
             $('#okButton').jqxButton({ width: '65px' }).on("click", function () {
                 $("#txtSbName").val(selectName);
                 $("#txtSbID").val(selectID);
-
+                $("#txtAddress").val(selectAddress);
             });
         });
         function open1() {
@@ -177,13 +182,13 @@
     <div class="content-tab-wrap">
         <div class="tab-content" style="display: block;">
             <input name="txtID" type="hidden" id="txtID" runat="server" />
-             <input name="txtSbID" type="hidden" id="txtSbID" runat="server" />
+            <input name="txtSbID" type="hidden" id="txtSbID" runat="server" />
             <dl>
                 <dl>
                     <dt>设备</dt>
                     <dd>
-                        <input name="txtSbName" type="text" id="txtSbName" readonly="readonly" runat="server" class="input small"
-                            datatype="n" sucmsg=" ">
+                        <input name="txtSbName" type="text" id="txtSbName" readonly="readonly" runat="server"
+                            class="input small" datatype="n" sucmsg=" ">
                         <input name="selectshebei" type="button" id="selectshebei" onclick="open1();" style='font-size: 12px;
                             background: rgb(236, 236, 236);' value='选择设备' class="input small" datatype="n"
                             sucmsg=" ">
@@ -226,7 +231,6 @@
                     <dd>
                         <div id='txtPlanTime'>
                         </div>
-                       
                     </dd>
                 </dl>
                 <dl>

@@ -176,6 +176,13 @@
                         datatype="n" sucmsg=" ">
                 </dd>
             </dl>
+             <dl>
+                <dt>地址</dt>
+                <dd>
+                    <input name="txtAddress" type="text" id="txtAddress" style='width: 600px;' runat="server"
+                        class="input small" datatype="n" sucmsg=" ">
+                </dd>
+            </dl>
             <dl>
                 <dt>设备外链地址</dt>
                 <dd>

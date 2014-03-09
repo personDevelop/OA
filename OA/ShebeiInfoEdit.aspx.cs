@@ -38,6 +38,7 @@ namespace OA
             txtNote.Value = sb.Note ;
             txtPATH.Value = sb.PATH ;
             txtState.Value = sb.State ;
+            txtAddress.Value = sb.Address;
 
 
         }
