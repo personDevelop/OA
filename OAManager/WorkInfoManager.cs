@@ -82,15 +82,15 @@ namespace OAManager
             }
             if (WhereClip.IsNullOrEmpty(where))
             {
-                where.Append(@"   handsequence = (select max(handsequence)  from [WorkHandLog] b where  [WorkInfo].[ID] = b.[WorkID]) ");
+                where.Append(@"  (handsequence is null or   handsequence = (select max(handsequence)  from [WorkHandLog] b where  [WorkInfo].[ID] = b.[WorkID])) ");
 
             }
             else
             {
-                where.Append(@" and handsequence = (select max(handsequence)  from [WorkHandLog] b where  [WorkInfo].[ID] = b.[WorkID]) ");
+                where.Append(@" and (handsequence is null or  handsequence = (select max(handsequence)  from [WorkHandLog] b where  [WorkInfo].[ID] = b.[WorkID]) )");
             }
             return Dal.From<WorkInfo>().Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
-                .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID)
+                .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID, JoinType.leftJoin)
                 .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe)
                 .Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 

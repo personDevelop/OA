@@ -16,7 +16,7 @@
         $(function () {
             ShowTime();
             tick();
-            $("#toptongzhi").html($("#hidTopTongZhid").val());
+            $("#toptongzhi").html($("#ctl00_hidTopTongZhid").val());
         });
         function ShowTime() {
             now = new Date()
