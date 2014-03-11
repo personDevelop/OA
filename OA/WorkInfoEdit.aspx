@@ -116,11 +116,14 @@
                 pageable: true,
                 columnsResize: true,
                 serverProcessing: true,
+                filterable: true,
+                filterMode: 'simple',
                 pageSize: 20,
                 columns: [
-{ text: '设备编号', align: 'center', dataField: 'Code', minWidth: 100, width: 150 },
-{ text: '设备名称', align: 'center', dataField: 'Name', minWidth: 100, width: 150 },
-{ text: '规格型号', align: 'center', dataField: 'GuiGe', minWidth: 100, width: 150 }
+{ text: '设备编号', align: 'center', dataField: 'Code', minWidth: 40, width: 50 },
+{ text: '设备名称', align: 'center', dataField: 'Name', minWidth: 40, width: 100 },
+{ text: '地址', align: 'center', dataField: 'Address', minWidth: 100, width: 150 },
+{ text: '规格型号', align: 'center', dataField: 'GuiGe', minWidth: 40, width: 50 }
                 ]
             });
 

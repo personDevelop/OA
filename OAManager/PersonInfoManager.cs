@@ -83,11 +83,11 @@ namespace OAManager
         /// <param name="pageCount">总页数</param>
         /// <param name="recordCount">总记录数</param>
         /// <returns></returns>
-        public DataTable GetDataTable(int pageindex, int pagesize, OrderByClip orderby, ref int pageCount, ref int recordCount)
+        public DataTable GetDataTable(int pageindex, int pagesize,WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
         {
 
 
-            return Dal.From<PersonInfo>().OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
+            return Dal.From<PersonInfo>().Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
 

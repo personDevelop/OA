@@ -5,6 +5,7 @@ using System.Web;
 using OAManager;
 using System.Data;
 using OAEntity;
+using Sharp.Common;
 
 namespace OA.handler
 {
@@ -22,7 +23,15 @@ namespace OA.handler
             int currentPage = int.Parse(rp["pagenum"]);
             int pageSize = int.Parse(rp["pagesize"]);
             int count = 0, recordCount = 0;
-            DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, PersonInfo._.UserName.Asc, ref count, ref recordCount);
+            string filter = context.Request["filtervalue0"];
+            WhereClip where = null;
+            if (!string.IsNullOrEmpty(filter))
+            {
+                filter = filter.Trim();
+
+                where = (PersonInfo._.UserName.Contains(filter) || PersonInfo._.RealName.Contains(filter));
+            }
+            DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, where, PersonInfo._.UserName.Asc, ref count, ref recordCount);
             string result = JsonConvert.Convert2Json(dt);
             context.Response.Write("{ \"totalRecords\":\"" + recordCount + "\",\"rows\":" + result + "}");
             context.Response.End();

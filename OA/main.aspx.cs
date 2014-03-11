@@ -49,10 +49,20 @@ namespace OA
 
         private void GenarateNavigator()
         {
-          string userName=  Session["UserName"].ToString();
-           
+            string userName = Session["UserName"].ToString();
+
             string userID = Session["UserID"].ToString();
-            DataTable dt = new FuncAccessManager().GetAccess(userID, userName);
+            DataTable dt = null;
+            try
+            {
+                dt = new FuncAccessManager().GetAccess(userID, userName);
+            }
+            catch (Exception)
+            {
+
+                Response.Write("<script>alert('当前用户没有设置任何角色，请联系管理员设置系统角色！');</script>");
+                Response.End();
+            }
             List<FunctionInfo> list = dt.ToList<FunctionInfo>();
             IEnumerable<FunctionInfo> root = list.Where(p => !p.ParentID.HasValue);
             int i = 0;
@@ -60,7 +70,7 @@ namespace OA
             {
                 sb.Append("<ul style='display: block;'>");
                 string isclose = " close ";
-                if (i>0)
+                if (i > 0)
                 {
                     isclose = "close";
                 }
@@ -71,7 +81,7 @@ namespace OA
                         </div>
                         <div class='folder close'>
                         </div>
-                        <span>" + item.Name + "</span> </a>",isclose);
+                        <span>" + item.Name + "</span> </a>", isclose);
                 //查找当前功能组的子功能
                 int count = list.Count(p => p.ParentID == item.ID);
                 if (count > 0)
@@ -87,11 +97,11 @@ namespace OA
                                 </div>
                                 <div class=''>
                                 </div>
-                                <span class='subMenu'>{1}</span> </a></li>",child.Url,child.Name);
+                                <span class='subMenu'>{1}</span> </a></li>", child.Url, child.Name);
                     }
                     sb.Append("</ul>");
                 }
-               
+
                 sb.Append("</li>");
                 sb.Append("</ul>");
             }

@@ -217,6 +217,8 @@
                 height: "100%",
                 source: unselectdataAdapter,
                 serverProcessing: true,
+                filterable: true,
+                filterMode: 'simple',
                 autoRowHeight: false,
                 altRows: true,
                 pageable: true,

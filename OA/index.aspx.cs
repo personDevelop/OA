@@ -80,7 +80,7 @@ namespace OA
                 #region 格式化派工
                 string worinfohtml = "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0'> ";
                 WorkInfoManager wkMgr = new WorkInfoManager();
-                WhereClip where = WorkInfo._.Status != "完成";
+                WhereClip where = null;// WorkInfo._.Status != "完成";
                 OrderByClip order = WorkInfo._.CreateDate.Desc;
                 DataTable dtwk = wkMgr.GetDataTable(1, 10, where, order, ref count, ref count);
                 // DataTable dtwk = wkMgr.GetDataTable();
@@ -99,7 +99,7 @@ namespace OA
                     {
                         clyj = clyj.Substring(0, 10);
                     }
-                    worinfohtml += string.Format(wrtmpl, row["Status"].ToString(), row["CreaterName"].ToString(), gzxx, row["CurrentUser"].ToString(), clyj, row["CreateDate"].ToString(), row["ID"]);
+                    worinfohtml += string.Format(wrtmpl, row["Status"].ToString(), row["CreaterName"].ToString(), gzxx, row["CurrentUser"].ToString(), clyj, ((DateTime)row["CreateDate"]).ToString("yyyy-MM-dd"), row["ID"]);
 
                 }
                 worinfohtml += "</table>";

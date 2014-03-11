@@ -21,17 +21,24 @@ namespace OA.handler
             ShebeiInfoManager manager = new ShebeiInfoManager();
             int pageNum = int.Parse(context.Request.QueryString.Get("pagenum"));
             int pagesize = int.Parse(context.Request.QueryString.Get("pagesize"));
-            int recordCount=0;
-            WhereClip where = null;
+            int recordCount = 0;
+            WhereClip where = new WhereClip();
             if (!string.IsNullOrEmpty(context.Request["status"]))
             {
-                where= ShebeiInfo._.State!=context.Request["status"];
-               
+                where = ShebeiInfo._.State != context.Request["status"];
+
             }
-            DataTable dt = manager.GetDataTable(pageNum + 1, pagesize,where, " CODE ", ref pagesize, ref recordCount);
+            string filter = context.Request["filtervalue0"];
+            if (!string.IsNullOrEmpty(filter))
+            {
+                filter = filter.Trim();
+
+                where = where && (ShebeiInfo._.Code.Contains(filter) || ShebeiInfo._.Name.Contains(filter) || ShebeiInfo._.Address.Contains(filter));
+            }
+            DataTable dt = manager.GetDataTable(pageNum + 1, pagesize, where, " CODE ", ref pagesize, ref recordCount);
             //manager.GetDataTable();
             string result = JsonConvert.Convert2Json(dt);
-            context.Response.Write("{\"total\":\"" + recordCount.ToString() + "\",\"rows\":"+result+"}");
+            context.Response.Write("{\"total\":\"" + recordCount.ToString() + "\",\"rows\":" + result + "}");
             context.Response.End();
         }
 

@@ -1277,6 +1277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="chrome\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="handler\SystemCodeSaveHandler.ashx" />

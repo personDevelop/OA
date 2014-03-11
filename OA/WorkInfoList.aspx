@@ -436,6 +436,8 @@
                 autoRowHeight: false,
                 altRows: true,
                 pageable: true,
+                filterable: true,
+                filterMode: 'simple',
                 columnsResize: true,
                 pageSize: 20,
                 pagesizeoptions: ['20', '50', '100'],

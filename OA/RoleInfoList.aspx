@@ -162,7 +162,7 @@
                    {
                        text: '操作', align: 'center', width: 150, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
                        dataField: null, cellsRenderer: function (row, column, value, data) {
-                           return "<a href='RoleInfoEdit.aspx?ID=" + data.ID + "'>修改</a>&nbsp;&nbsp; <a onclick='return deleteRoleInfo();'   href='#'>删除</a>&nbsp;&nbsp;<a onclick='return SetPerson(\"" + data.ID + "\");'   href='#'>设置人员</a>";
+                           return "<a href='RoleInfoEdit.aspx?ID=" + data.ID + "'>修改</a>&nbsp;&nbsp; <a onclick='return deleteRoleInfo();'   href='#'>删除</a>&nbsp;&nbsp;<a onclick='return SetPerson(\"" + data.ID + "\");'   href='#'>添加人员</a>";
                        }
                    }
                 ]
@@ -214,7 +214,7 @@
                                 ok: function () {
 
                                 }
-                            }); 
+                            });
                         }
                         else {
                             parent.art.dialog({
@@ -231,15 +231,15 @@
                 }
                 );
                 } else {
-                parent.art.dialog({
-                    title: '系统提示',
-                    content: "请先选择要删除的节点，且只能选择一个！",
-                    icon: 'succeed',
-                    lock: true,
-                    ok: function () {
+                    parent.art.dialog({
+                        title: '系统提示',
+                        content: "请先选择要删除的节点，且只能选择一个！",
+                        icon: 'succeed',
+                        lock: true,
+                        ok: function () {
 
-                    }
-                });
+                        }
+                    });
 
                 }
             });
@@ -269,7 +269,7 @@
 
                         }
                     });
-                 
+
                 }
             }
             if (id == "basic") {
@@ -314,7 +314,8 @@
 
                         var selection = $("#treeGrid").jqxDataTable('getSelection');
                         var rowData = selection[0];
-
+                        
+                        
                         data.RoleID = rowData.ID;
                         return data;
                     },
@@ -341,6 +342,9 @@
                 sortable: true,
                 pageable: true,
                 columnsResize: true,
+                serverProcessing: true,
+                filterable: true,
+                filterMode: 'simple',
                 pageSize: 20,
                 pagesizeoptions: ['20', '50', '100'],
                 columns: [
@@ -390,8 +394,8 @@
                                      ok: function () {
 
                                      }
-                                 }); 
-                                 
+                                 });
+
 
                              }
                              else {
@@ -428,7 +432,7 @@
                 //                persondatatable.jqxDataTable('refreshdata');
             }
             //获取数据
-              personhassource =
+            personhassource =
             {
                 dataType: "json",
                 dataFields: [
@@ -438,7 +442,7 @@
 { name: 'RolePersonID', type: 'string' },
 { name: 'RoleID', type: 'string' }
                 ],
-                hierarchy:[],
+                hierarchy: [],
                 id: 'RolePersonID',
                 url: 'handler/GetRoleHasPersonHandler.ashx'
             };
@@ -479,15 +483,15 @@
 
             //绑定树
 
-                persondatatable = $("#person").jqxGrid
+            persondatatable = $("#person").jqxGrid
 (
             {
                 width: "90%",
                 height: "490px",
-                source: personhasdataAdapter, 
+                source: personhasdataAdapter,
                 autoRowHeight: false,
-                altRows: true, 
-                columnsResize: true, 
+                altRows: true,
+                columnsResize: true,
                 columns: [
 
 { text: '用户名', align: 'center', dataField: 'UserName', minWidth: 50, width: 100 },
@@ -495,7 +499,7 @@
 
                    {
                        text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
-                       dataField: null, cellsRenderer: function (row, column,d,dd, value, data) {
+                       dataField: null, cellsRenderer: function (row, column, d, dd, value, data) {
                            return "  <a onclick='return deleteRolePersonInfo(\"" + data.RolePersonID + "\");'   href='#'>删除</a>";
                        }
                    }
@@ -534,7 +538,7 @@
                                 ok: function () {
 
                                 }
-                            }); 
+                            });
                         }
                         else {
                             parent.art.dialog({

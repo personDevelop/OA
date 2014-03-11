@@ -109,7 +109,7 @@ namespace OAManager
         {
            
             return Dal.From<WorkInfo>().Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
-                .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID)
+                .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID,JoinType.leftJoin)
                 .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe)
                 .Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 

@@ -171,7 +171,7 @@ namespace OAManager
         /// <param name="pageCount">总页数</param>
         /// <param name="recordCount">总记录数</param>
         /// <returns></returns>
-        public DataTable GetPersonByRoleID(int pageindex, int pagesize, string roleID, bool has, ref int pageCount, ref int recordCount)
+        public DataTable GetPersonByRoleID(int pageindex, int pagesize, WhereClip wherefilrer, string roleID, bool has, ref int pageCount, ref int recordCount)
         {
             if (string.IsNullOrEmpty(roleID))
             {
@@ -189,7 +189,13 @@ namespace OAManager
             }
             else
             {
+                //过滤人员
+
                 where = RolePerson._.RoleID == roleID;
+                if (!WhereClip.IsNullOrEmpty(wherefilrer))
+                {
+                    where = where && wherefilrer;
+                }
                 return Dal.From<PersonInfo>().Join<RolePerson>(RolePerson._.PersonID == PersonInfo._.ID && RolePerson._.RoleID == roleID, JoinType.leftJoin)
                 .Where(RolePerson._.RoleID == null)
                 .Select(PersonInfo._.ID, PersonInfo._.UserName, PersonInfo._.RealName, RolePerson._.ID.Alias("RolePersonID"),
@@ -218,7 +224,8 @@ namespace OAManager
         }
 
         public int DelateRole(Guid guid)
-        {int i =0;
+        {
+            int i = 0;
             DbTransaction tr = Dal.BeginTransaction();
 
             try

@@ -203,12 +203,16 @@ namespace OAManager
             {
 
                 string[] rolelist = Dal.From<RolePerson>().Where(RolePerson._.PersonID == new Guid(userid)).Select(RolePerson._.RoleID).ToSinglePropertyArray();
-
+                if (rolelist==null || rolelist.Length==0)
+                {
+                    throw new Exception("当前用户还没有设置人员角色");
+                    
+                }
                 return Dal.From<FunctionInfo>().Join<FuncAccess>(FunctionInfo._.ID == FuncAccess._.FunctID
                       && FuncAccess._.RoleID.In(rolelist))
                       .OrderBy(FunctionInfo._.OrderNo)
                       .Where(FunctionInfo._.IsEnable == true && FuncAccess._.IsEnable == true && FuncAccess._.IsView == true)
-                      .Select(FunctionInfo._.ID.All)
+                      .Select(FunctionInfo._.ID.All).Distinct()
                       .ToDataTable();
             }
 
