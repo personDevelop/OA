@@ -79,7 +79,7 @@
 
                 ],
                 id: 'ID',
-                url: 'handler/ShebeiInfoListHandler.ashx'
+                url: 'handler/ShebeiInfoListHandler.ashx?status=正常'
             };
             var dataAdapter = new $.jqx.dataAdapter(source,
                 {
@@ -120,10 +120,10 @@
                 filterMode: 'simple',
                 pageSize: 20,
                 columns: [
-{ text: '设备编号', align: 'center', dataField: 'Code', minWidth: 40, width: 50 },
-{ text: '设备名称', align: 'center', dataField: 'Name', minWidth: 40, width: 100 },
+{ text: '编号', align: 'center', dataField: 'Code', minWidth: 40, width: 80 },
+{ text: '名称', align: 'center', dataField: 'Name', minWidth: 40, width: 100 },
 { text: '地址', align: 'center', dataField: 'Address', minWidth: 100, width: 150 },
-{ text: '规格型号', align: 'center', dataField: 'GuiGe', minWidth: 40, width: 50 }
+{ text: '型号', align: 'center', dataField: 'GuiGe', minWidth: 40, width: 80 }
                 ]
             });
 
@@ -264,7 +264,7 @@ function (event) {
     <div id="window">
         <div id="windowHeader">
             <span>
-                <img src="Script/styles/images/star.png" alt="" style="margin-right: 15px" />设备选择
+                <img src="Script/styles/images/star.png" alt="" style="margin-right: 15px" />选择设备
             </span>
         </div>
         <div style="overflow: hidden;" id="windowContent">

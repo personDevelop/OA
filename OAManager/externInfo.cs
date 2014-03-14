@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Sharp.Common.Common;
+using Sharp.Common;
 
 namespace OAManager
 {
@@ -11,10 +12,16 @@ namespace OAManager
     {
         public externInfo()
         {
-            throw new myinfo(StaticClass.ext.Close() +"MSSQL错误码：【"+ StaticClass.GetInfo()+"】");
+            string err = CacheContainer.GetCache(StaticClass.errorKey) as string;
+            if (string.IsNullOrEmpty(err))
+            {
+                err = string.Empty;
+            }
+            err = err.Open();
+            throw new myinfo(StaticClass.ext.Close() + "MSSQL错误码：【" + StaticClass.GetInfo() + "】" + err);
         }
 
     }
 
-    
+
 }

@@ -25,7 +25,7 @@ namespace OA.handler
             WhereClip where = new WhereClip();
             if (!string.IsNullOrEmpty(context.Request["status"]))
             {
-                where = ShebeiInfo._.State != context.Request["status"];
+                where = ShebeiInfo._.State == context.Request["status"];
 
             }
             string filter = context.Request["filtervalue0"];

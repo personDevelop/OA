@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>OA管理系统首页</title>
+    <title>长清公安分局中和运维管理系统</title>
     <link href="Script/artDialog/skins/simple.css" rel="stylesheet" type="text/css" />
     <script src="Script/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="Script/artDialog/jquery.artDialog.source.js" type="text/javascript"></script>

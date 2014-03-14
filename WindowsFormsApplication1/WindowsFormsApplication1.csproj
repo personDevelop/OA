@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-<ResGenToolArchitecture>Managed32Bit</ResGenToolArchitecture>
+    <ResGenToolArchitecture>Managed32Bit</ResGenToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -32,9 +32,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-<ResGenToolArchitecture>Managed32Bit</ResGenToolArchitecture>
+    <ResGenToolArchitecture>Managed32Bit</ResGenToolArchitecture>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Sharp.Common">
       <HintPath>..\refdll\Sharp.Common.dll</HintPath>
     </Reference>
@@ -86,6 +89,7 @@
     <Content Include="Config\System\DataBaseConnect.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="加密试用期说明.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OAEntity\OAEntity.csproj">
