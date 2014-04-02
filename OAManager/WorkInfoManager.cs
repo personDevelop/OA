@@ -108,6 +108,8 @@ namespace OAManager
         public DataTable GetDataTable(int pageindex, int pagesize, WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
         {
            
+
+
             return Dal.From<WorkInfo>().Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
                 .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID,JoinType.leftJoin)
                 .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe)

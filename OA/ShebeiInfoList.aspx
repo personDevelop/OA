@@ -70,7 +70,7 @@
                 pageable: true,
                 columnsResize: true,
                 serverProcessing: true,
-                pageSize: 2,
+                pageSize: 20,
 
                 columns: [
 { text: '设备编号', align: 'center', dataField: 'Code', minWidth: 100, width: 150 },

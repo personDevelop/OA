@@ -68,11 +68,11 @@
                         return data;
                     },
                     downloadComplete: function (data, status, xhr) {
-                        if (!source.totalRecords) {
-                            source.totalRecords = data.total;
+                         
+                            source.totalRecords = data.totalRecords;
                             source.value = data.rows;
 
-                        }
+                       
                     },
                     loadError: function (xhr, status, error) {
                         throw new Error("http://services.odata.org: " + error.toString());

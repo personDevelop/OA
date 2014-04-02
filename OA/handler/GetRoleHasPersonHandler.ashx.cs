@@ -19,7 +19,7 @@ namespace OA.handler
             context.Response.ContentType = "text/plain";
             RoleInfoManager manager = new RoleInfoManager();
             int currentPage = int.Parse(rp["pagenum"]);
-            int pageSize = int.Parse(rp["pagesize"]);
+            int pageSize = int.Parse(rp["pagesize"]) ;
             int count = 0, recordCount = 0;
             DataTable dt = manager.GetPersonByRoleID(currentPage + 1, pageSize,null, rp["RoleID"],true, ref count, ref recordCount);
             string result = JsonConvert.Convert2Json(dt);

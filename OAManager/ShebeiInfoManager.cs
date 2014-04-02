@@ -162,7 +162,42 @@ namespace OAManager
 
 
 
+        /// <summary>
+        /// 分页获取获取设备信息表datatable
+        /// </summary>
+        /// <param name="pageindex">当前页数</param>
+        /// <param name="pagesize">每页显示条数</param>
+        /// <param name="orderby">排序方式</param>
+        /// <param name="pageCount">总页数</param>
+        /// <param name="recordCount">总记录数</param>
+        /// <returns></returns>
+        public DataTable GetDataTableWithImg(int pageindex, int pagesize, WhereClip where, string orderby, ref int pageCount, ref int recordCount)
+        {
 
+            DataTable dt=   Dal.From<ShebeiInfo>().Where(where).OrderBy(new OrderByClip(orderby)).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
+            dt.Columns.Add("FilePath");
+
+            foreach (DataRow item in dt.Rows)
+            {
+                OAManager.FileInfoManager flMgr = new FileInfoManager();
+                DataTable dtimg = flMgr.GetDataTable(item["ID"].ToString());
+                string img_html = string.Empty;
+                if (dtimg.Rows.Count > 0)
+                {
+                    string src = dtimg.Rows[0]["FILEPATH"].ToString();
+                    img_html = "<a href='" + src + "'><img src='" + src + "' width='50' height='40' alt='图标'></a>";
+                }
+                else
+                {
+                    img_html = "无缩略图";
+
+                }
+                item["FilePath"] = img_html;
+            }
+
+
+            return dt;
+        }
 
 
 

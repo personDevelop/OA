@@ -24,7 +24,7 @@ namespace OA.handler
             HttpRequest rp = context.Request;
             DayLogManager manager = new DayLogManager();
             int currentPage = int.Parse(rp["pagenum"]);
-            int pageSize = int.Parse(rp["pagesize"]);
+            int pageSize = int.Parse(rp["pagesize"]) ;
 
             int count = 0, recordCount = 0;
             string personID = rp["PersonID"];

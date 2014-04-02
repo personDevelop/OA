@@ -24,21 +24,49 @@ namespace OA.handler
             int pageNum = int.Parse(context.Request.QueryString.Get("pagenum"));
             int pagesize = int.Parse(context.Request.QueryString.Get("pagesize"));
             int recordCount = 0;
-            WhereClip where = null;
+            WhereClip where = new WhereClip();
             if (!string.IsNullOrEmpty(context.Request["USER"]))
             {
-                where = YuanGongKaoQin._.UserName.Like("%" + context.Request["USER"] + "%");
+                where = YuanGongKaoQin._.UserName.Contains(context.Request["USER"]);
 
             }
-            else
+
+            if (!string.IsNullOrEmpty(context.Request["begindate"]))
             {
-                where = YuanGongKaoQin._.UserName.Like("%%");
- 
+
+                string begin = context.Request["begindate"];
+                if (!string.IsNullOrEmpty(begin))
+                {
+                    where = where && YuanGongKaoQin._.KQRQ >= begin;
+
+                }
             }
+            if (!string.IsNullOrEmpty(context.Request["enddate"]))
+            {
+
+                string enddate = context.Request["enddate"];
+                if (!string.IsNullOrEmpty(enddate))
+                {
+                    where = where && YuanGongKaoQin._.KQRQ <= enddate;
+
+                }
+            }
+            if (!string.IsNullOrEmpty(context.Request["swstatus"]))
+            {
+                where = YuanGongKaoQin._.SWStatus==context.Request["swstatus"] ;
+
+            }
+
+            if (!string.IsNullOrEmpty(context.Request["status"]))
+            {
+                where = YuanGongKaoQin._.Status == context.Request["status"];
+
+            }
+
 
             if (!string.IsNullOrEmpty(context.Request["KQRQ"]))
             {
-                string []datestr=context.Request["KQRQ"].ToString().Split('@');
+                string[] datestr = context.Request["KQRQ"].ToString().Split('@');
                 string begin = datestr[0];
                 if (!string.IsNullOrEmpty(begin))
                 {
@@ -50,7 +78,20 @@ namespace OA.handler
                     where.And(YuanGongKaoQin._.KQRQ <= end);
                 }
             }
-            DataTable dt = manager.GetDataTable(pageNum + 1, pagesize, where, "  ", ref pagesize, ref recordCount);
+            string or = "UserName";
+            if (!string.IsNullOrEmpty(context.Request["sortdatafield"]))
+            {
+                if (!string.IsNullOrEmpty(context.Request["sortorder"]) && context.Request["sortorder"] == "desc")
+                {
+                    or = context.Request["sortdatafield"] + " desc" ;
+                }
+                else
+                {
+                    or =  context.Request["sortdatafield"] ;
+                }
+
+            }
+            DataTable dt = manager.GetDataTable(pageNum + 1, pagesize, where, or, ref pagesize, ref recordCount);
             //manager.GetDataTable();
             string result = JsonConvert.Convert2Json(dt);
             context.Response.Write("{\"total\":\"" + recordCount.ToString() + "\",\"rows\":" + result + "}");

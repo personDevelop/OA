@@ -21,7 +21,7 @@ namespace OA.handler
             context.Response.ContentType = "text/plain";
             PersonInfoManager manager = new PersonInfoManager();
             int currentPage = int.Parse(rp["pagenum"]);
-            int pageSize = int.Parse(rp["pagesize"]);
+            int pageSize = int.Parse(rp["pagesize"]) ;
             int count = 0, recordCount = 0;
             string filter = context.Request["filtervalue0"];
             WhereClip where = null;

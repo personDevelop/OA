@@ -1053,6 +1053,12 @@
     <Compile Include="handler\YuanGongKaoQinSaveHandler.ashx.cs">
       <DependentUpon>YuanGongKaoQinSaveHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\indexWorkInfoQueryHandler.ashx.cs">
+      <DependentUpon>indexWorkInfoQueryHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\IndexShebeiInfoListHandler.ashx.cs">
+      <DependentUpon>IndexShebeiInfoListHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="indexItemInfo.aspx.cs">
       <DependentUpon>indexItemInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1341,6 +1347,8 @@
   <ItemGroup>
     <Content Include="handler\RoleInfoDeleteHandler.ashx" />
     <Content Include="handler\PersonInfoResetPwdHandler.ashx" />
+    <Content Include="handler\indexWorkInfoQueryHandler.ashx" />
+    <Content Include="handler\IndexShebeiInfoListHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />

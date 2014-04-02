@@ -21,7 +21,7 @@ namespace OA.handler
             context.Response.ContentType = "text/plain";
             RoleInfoManager manager = new RoleInfoManager();
             int currentPage = int.Parse(rp["pagenum"]);
-            int pageSize = int.Parse(rp["pagesize"]);
+            int pageSize = int.Parse(rp["pagesize"]) ;
             string fiter = rp["filtervalue0"];
             WhereClip where = null;
             if (!string.IsNullOrEmpty(fiter))

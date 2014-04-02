@@ -22,7 +22,7 @@ namespace OA.handler
             HttpRequest rp = context.Request;
             WorkInfoManager manager = new WorkInfoManager();
             int currentPage = int.Parse(rp["pagenum"]);
-            int pageSize = int.Parse(rp["pagesize"]);
+            int pageSize = int.Parse(rp["pagesize"]) ;
 
             int count = 0, recordCount = 0;
             string workstatus = rp["Workstatus"];
