@@ -158,6 +158,11 @@ namespace OAManager
             return Dal.Exists<SystemCode>(SystemCode._.ID != entity.ID && (SystemCode._.Code == entity.Code || SystemCode._.Name == entity.Name));
         }
 
+        internal SystemCode GetItemByCode(string code)
+        {
+            return Dal.Find<SystemCode>(SystemCode._.Code ==  code );
+   
+        }
 
 
 
@@ -170,6 +175,7 @@ namespace OAManager
 
 
 
+       
     }
 
 

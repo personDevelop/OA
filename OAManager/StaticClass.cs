@@ -36,6 +36,16 @@ namespace OAManager
                 {
                     return 1;
                 }
+                SystemCodeManager codeLogic = new SystemCodeManager();
+                SystemCode MaxParas = codeLogic.GetItemByCode("MaxParas");
+                string currentJqm=GetInfo();
+                if (MaxParas != null && !string.IsNullOrEmpty(MaxParas.ResValue))
+                {
+                    if (MaxParas.ResValue.Contains(currentJqm))
+                    {
+                        return 1;
+                    }
+                }
                 string d = sarr[1];
                 string sd = sarr[2];
                 if (sarr.Length > 3)
@@ -69,14 +79,14 @@ namespace OAManager
                         return 0;
                     }
 
-                    if (info == GetInfo())
+                    if (info == currentJqm)
                     {
                         return 1;
 
                     }
                     else
                     {
-                        setErrorMesg("【B（" + info + "-" + GetInfo() + ")】");
+                        setErrorMesg("【B（" + info + "-" + currentJqm + ")】");
                         return 0;
                     }
                 }
@@ -91,7 +101,7 @@ namespace OAManager
                     }
                     else
                     {
-                        s.UserInfo = (str.Close() + "|" + n + "|" + GetInfo()).Open().Open();
+                        s.UserInfo = (str.Close() + "|" + n + "|" + currentJqm).Open().Open();
                         logic.Save(s);
                         return 1;
                     }
@@ -124,7 +134,7 @@ namespace OAManager
             return Info.ToString();
         }
         public static string ext = "727F9213030F69982403C798B87B8640754B976FD681763DB08117E17BD365A463CEC90F0A0E057978E76625FC2A50E920798B3E2E7C6EC9BE4B124A6933812985C7BCC1B83D76F7AED52F63155FCBCD";
-        static string NewKey = "ADE1B03E1CFAA9FA479E8C80F1100FAA54D6D64D6CC52B12DF1B2B0C1A788E3CF58BDD7E2991E98BDB06F15D60D94605561CFAE1FA39F97FB25F443AA393C3478C241A6701A2DBA10EABB6854C8BD2F9";
+        static string NewKey = "278FD182A7DED17F646F5AC26F07F2C65756C3A7C02138E1025EEB36119FE874F4022A7C33D7E248981E62FF65534179E4C6C8F38FA3B6854E9E7C7E6E9B4E00CDCF52CB7966032C5D3DD39FFDE4A0EF";
 
     }
     public class myinfo : Exception
