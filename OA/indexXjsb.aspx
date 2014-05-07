@@ -71,7 +71,8 @@
                 },
 { text: '设备编号', align: 'center', dataField: 'Code', minWidth: 10, width: 70, cellsRenderer: function (row, column, value, rowData) {
 
-    return value;
+    var s = "<a href='javascript:void(0);' style='color:blue;' onclick='openurl(\"" + rowData.ID + "\");'>" + value + "</a>"
+    return s;
 //    if (!rowData.PATH) {
 //        return value;
 //    } else {
@@ -184,7 +185,8 @@
                 }
                 },
 { text: '设备编号', align: 'center', dataField: 'Code', minWidth: 10, width: 70, cellsRenderer: function (row, column, value, rowData) {
-    return value;
+    var s = "<a href='javascript:void(0);' style='color:blue;' onclick='openurl(\"" + rowData.ID + "\");'>" + value + "</a>"
+    return s;
 
     if (!rowData.PATH) {
         return value;

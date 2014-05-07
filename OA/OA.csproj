@@ -157,6 +157,7 @@
     <Content Include="resetPwd.aspx" />
     <Content Include="RoleInfoEdit.aspx" />
     <Content Include="RoleInfoList.aspx" />
+    <Content Include="sbinfo.aspx" />
     <Content Include="Script\artDialog\artDialog.js" />
     <Content Include="Script\artDialog\artDialog.source.js" />
     <Content Include="Script\artDialog\index.html" />
@@ -1201,6 +1202,13 @@
     </Compile>
     <Compile Include="RoleInfoList.aspx.designer.cs">
       <DependentUpon>RoleInfoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sbinfo.aspx.cs">
+      <DependentUpon>sbinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sbinfo.aspx.designer.cs">
+      <DependentUpon>sbinfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="selectSheBeiInfo.aspx.cs">
       <DependentUpon>selectSheBeiInfo.aspx</DependentUpon>

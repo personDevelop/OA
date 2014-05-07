@@ -71,7 +71,8 @@
                 },
 { text: '设备编号', align: 'center', dataField: 'Code', minWidth: 10, width: 70, cellsRenderer: function (row, column, value, rowData) {
 
-    return value;
+    var s = "<a href='javascript:void(0);' style='color:blue;' onclick='openurl(\"" + rowData.ID + "\");'>" + value + "</a>"
+    return s;
     //    if (!rowData.PATH) {
     //        return value;
     //    } else {
@@ -82,12 +83,12 @@
 }
 },
 { text: '设备名称', align: 'center', dataField: 'Name', minWidth: 10, cellsRenderer: function (row, column, value, rowData) {
+    
     return value;
     if (!rowData.PATH) {
         return value;
     } else {
         var s = "<a href='" + rowData.PATH + "' target='sbiframe'>" + value + "</a>"
-
         return s;
     }
 }
@@ -184,6 +185,8 @@
                 }
                 },
 { text: '设备编号', align: 'center', dataField: 'Code', minWidth: 10, width: 70, cellsRenderer: function (row, column, value, rowData) {
+    var s = "<a href='javascript:void(0);' style='color:blue;' onclick='openurl(\"" + rowData.ID + "\");'>" + value + "</a>"
+    return s;
     return value;
 
     if (!rowData.PATH) {
@@ -227,7 +230,9 @@
         function searchnb() {
             $("#gridnb").jqxDataTable('updateBoundData');
         }
-   
+
+
+     
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
