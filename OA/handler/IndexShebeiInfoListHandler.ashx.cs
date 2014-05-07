@@ -21,8 +21,21 @@ namespace OA.handler
             ShebeiInfoManager manager = new ShebeiInfoManager();
             int pageNum = int.Parse(context.Request.QueryString.Get("pagenum"));
             int pagesize = int.Parse(context.Request.QueryString.Get("pagesize"));
+
             int recordCount = 0;
             WhereClip where = new WhereClip();
+            if (!string.IsNullOrEmpty(context.Request.QueryString["nb"]))
+            {
+                if (context.Request.QueryString["nb"] == "1")
+                {
+                    where = where && ShebeiInfo._.IsNeiWai == true;
+                }
+                else if (context.Request.QueryString["nb"] == "0")
+                {
+                    where = where && ShebeiInfo._.IsNeiWai == false;
+                }
+
+            }
             if (!string.IsNullOrEmpty(context.Request["sbzt"]))
             {
                 where = where && ShebeiInfo._.State == context.Request["sbzt"];

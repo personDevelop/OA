@@ -35,7 +35,7 @@ namespace OA.handler
 
                 where = where && (ShebeiInfo._.Code.Contains(filter) || ShebeiInfo._.Name.Contains(filter) || ShebeiInfo._.Address.Contains(filter));
             }
-            DataTable dt = manager.GetDataTable(pageNum + 1, pagesize, where, " CODE ", ref pagesize, ref recordCount);
+            DataTable dt = manager.GetDataTable(pageNum + 1, pagesize, where,  ref pagesize, ref recordCount);
             //manager.GetDataTable();
             string result = JsonConvert.Convert2Json(dt);
             context.Response.Write("{\"total\":\"" + recordCount.ToString() + "\",\"rows\":" + result + "}");

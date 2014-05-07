@@ -16,7 +16,7 @@ namespace OA
         protected void Page_Load(object sender, EventArgs e)
         {
 
-             
+
             string tmpl =
             @"
             <tr>
@@ -59,13 +59,13 @@ namespace OA
 
             if (!IsPostBack)
             {
-               
+
                 #region 格式化新闻
                 NoticeInfoManager ntMgr = new NoticeInfoManager();
                 string result = "<table width='100%' border='0' align='center' cellpadding='0'  cellspacing='0'>";
 
                 int count = 0;
-                DataTable dt = ntMgr.GetDataTable(0,10, "ISTOP", ref count, ref count);
+                DataTable dt = ntMgr.GetDataTable(0, 10, "ISTOP", ref count, ref count);
                 foreach (DataRow row in dt.Rows)
                 {
                     result += string.Format(tmpl, "newsinfo.aspx?id=" + row["ID"].ToString(), row["TITLE"]);
@@ -106,45 +106,81 @@ namespace OA
                 workinfo.InnerHtml = worinfohtml;
                 #endregion
 
-                string sresult =
-                @"<table width='100%' border='0' cellpadding='0' cellspacing='0' class='dx'>
-                      <tbody><tr>
-                        <td width='12%' height='25' align='center' bgcolor='#F8F8F8' class='zx'>编号</td>
-                        <td width='14%' align='center' bgcolor='#F8F8F8' class='zx'>设备状态</td>
-                        <td width='22%' align='center' bgcolor='#F8F8F8' class='zx'>设备名称</td>
-                        <td width='16%' align='center' bgcolor='#F8F8F8' class='zx'>缩略图</td>
-                        <td width='18%' align='center' bgcolor='#F8F8F8' class='zx'>故障统计</td>
-                        <td width='18%' align='center' bgcolor='#F8F8F8' class='zx'>更换统计</td>
-                      </tr>";
-                ShebeiInfoManager sbMgr = new ShebeiInfoManager();
-                DataTable dt_sb = sbMgr.GetDataTable();
+//                string sresult =
+//                @"<table width='100%' border='0' cellpadding='0' cellspacing='0' class='dx'>
+//                      <tbody><tr>
+//                        <td width='12%' height='25' align='center' bgcolor='#F8F8F8' class='zx'>编号</td>
+//                        <td width='14%' align='center' bgcolor='#F8F8F8' class='zx'>设备状态</td>
+//                        <td width='22%' align='center' bgcolor='#F8F8F8' class='zx'>设备名称</td>
+//                       <td width='16%' align='center' bgcolor='#F8F8F8' class='zx'>缩略图</td>
+//                        <td width='18%' align='center' bgcolor='#F8F8F8' class='zx'>故障统计</td>
+//                        <td width='18%' align='center' bgcolor='#F8F8F8' class='zx'>更换统计</td>
+//                      </tr>";
+//                ShebeiInfoManager sbMgr = new ShebeiInfoManager();
+//                DataTable dt_sb = sbMgr.GetWaiBuDataTable();
 
-                int scount = 0;
-                foreach (DataRow row in dt_sb.Rows)
-                {
-                    scount++;
-                    if (scount > 10) return;
-                    OAManager.FileInfoManager flMgr = new FileInfoManager();
-                    DataTable dtimg = flMgr.GetDataTable(row["ID"].ToString());
-                    string img_html = string.Empty;
-                    if (dtimg.Rows.Count > 0)
-                    {
-                        string src = dtimg.Rows[0]["FILEPATH"].ToString();
-                        img_html = "<a href='" + src + "'><img src='" + src + "' width='50' height='40' alt='图标'></a>";
-                    }
-                    else
-                    {
-                        img_html = "无缩略图";
+//                int scount = 0;
+//                foreach (DataRow row in dt_sb.Rows)
+//                {
+//                    scount++;
+//                    if (scount > 10) break;
+//                    string img_html = string.Empty;
+//                    //OAManager.FileInfoManager flMgr = new FileInfoManager();
+//                    //DataTable dtimg = flMgr.GetDataTable(row["ID"].ToString());
+//                    //string img_html = string.Empty;
+//                    //if (dtimg.Rows.Count > 0)
+//                    //{
+//                    //    string src = dtimg.Rows[0]["FILEPATH"].ToString();
+//                    //    img_html = "<a href='" + src + "'><img src='" + src + "' width='50' height='40' alt='图标'></a>";
+//                    //}
+//                    //else
+//                    //{
+//                    //    img_html = "无缩略图";
 
-                    }
+//                    //}
 
-                    sresult += string.Format(sbtmpl, row["Code"].ToString(), row["State"].ToString(), "<a href='" + row["PATH"].ToString() + "' target='sbiframe'>" + row["Name"].ToString() + "</a>", img_html, row["GZTJ"].ToString(), row["GHTJ"].ToString());
+//                    sresult += string.Format(sbtmpl, row["Code"].ToString(), row["State"].ToString(), "<a href='" + row["PATH"].ToString() + "' target='sbiframe'>" + row["Name"].ToString() + "</a>", img_html, row["GZTJ"].ToString(), row["GHTJ"].ToString());
 
-                }
-                sresult += "</tbody></table>";
-                sbinfo.InnerHtml = sresult;
+//                }
+//                sresult += "</tbody></table>";
+//                //sbinfo.InnerHtml = sresult;
 
+//                  dt_sb = sbMgr.GetNeiBuDataTable();
+//                sresult =
+//           @"<table width='100%' border='0' cellpadding='0' cellspacing='0' class='dx'>
+//                      <tbody><tr>
+//                        <td width='12%' height='25' align='center' bgcolor='#F8F8F8' class='zx'>编号</td>
+//                        <td width='14%' align='center' bgcolor='#F8F8F8' class='zx'>设备状态</td>
+//                        <td width='22%' align='center' bgcolor='#F8F8F8' class='zx'>设备名称</td>
+//                       <td width='16%' align='center' bgcolor='#F8F8F8' class='zx'>缩略图</td>
+//                        <td width='18%' align='center' bgcolor='#F8F8F8' class='zx'>故障统计</td>
+//                        <td width='18%' align='center' bgcolor='#F8F8F8' class='zx'>更换统计</td>
+//                      </tr>";
+//                  scount = 0;
+//                foreach (DataRow row in dt_sb.Rows)
+//                {
+//                    scount++;
+//                    if (scount > 10) break;
+//                    string img_html = string.Empty;
+//                    //OAManager.FileInfoManager flMgr = new FileInfoManager();
+//                    //DataTable dtimg = flMgr.GetDataTable(row["ID"].ToString());
+//                    //string img_html = string.Empty;
+//                    //if (dtimg.Rows.Count > 0)
+//                    //{
+//                    //    string src = dtimg.Rows[0]["FILEPATH"].ToString();
+//                    //    img_html = "<a href='" + src + "'><img src='" + src + "' width='50' height='40' alt='图标'></a>";
+//                    //}
+//                    //else
+//                    //{
+//                    //    img_html = "无缩略图";
 
+//                    //}
+
+//                    sresult += string.Format(sbtmpl, row["Code"].ToString(), row["State"].ToString(), "<a href='" + row["PATH"].ToString() + "' target='sbiframe'>" + row["Name"].ToString() + "</a>", img_html, row["GZTJ"].ToString(), row["GHTJ"].ToString());
+
+//                }
+//                sresult += "</tbody></table>";
+//                //sbnbinfo.InnerHtml = sresult;
             }
 
         }

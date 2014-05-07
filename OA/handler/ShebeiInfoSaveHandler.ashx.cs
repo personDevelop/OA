@@ -46,9 +46,16 @@ namespace OA.handler
                 entity.GuiGe = rp["txtGuiGe"];
 
 
-                entity.IsEnable = rp["txtIsEnable"]== "on";
-                
-
+                entity.IsEnable = rp["txtIsEnable"] == "on";
+                entity.IsNeiWai = rp["txtIsNeiWai"] == "0";
+                if (string.IsNullOrEmpty(rp["txtDepartID"]))
+                {
+                    entity.SocrceDepart = null;
+                }
+                else
+                {
+                    entity.SocrceDepart = new Guid(rp["txtDepartID"]);
+                }
                 entity.Note = rp["txtNote"];
 
                 entity.State = rp["txtState"];

@@ -38,17 +38,17 @@ namespace OA
                          titlepix = "巡检设备";
                          break; 
                  }
-                ttt.Text = titlepix+"-长清公安分局中和运维管理系统";
-                NoticeInfo notice = ntMgr.GetTopText(true);
-                string s = "<a style='color:#FFFFFF; ' href='newsinfo.aspx?id={0}'>{1}</a>";
+                ttt.Text = titlepix+"-长清公安分局运维综合管理系统";
+                //NoticeInfo notice = ntMgr.GetTopText(true);
+                //string s = "<a style='color:#FFFFFF; ' href='newsinfo.aspx?id={0}'>{1}</a>";
 
-                if (notice != null)
-                {
-                    hidZuiTopTongZhi.Value = string.Format(s, notice.ID, notice.TITLE);
+                //if (notice != null)
+                //{
+                //    hidZuiTopTongZhi.Value = string.Format(s, notice.ID, notice.TITLE);
 
-                }
-                notice = ntMgr.GetTopText(false);
-                s = "<a style='font-family:Microsoft YaHei;color:#FFFF00;font-size:24px;' href='newsinfo.aspx?id={0}'>{1}</a>";
+                //}
+                NoticeInfo notice = ntMgr.GetTopText(false);
+                string s = "<a style='font-family:Microsoft YaHei;color:#FFFF00;font-size:24px;' href='newsinfo.aspx?id={0}'>{1}</a>";
                 if (notice != null)
                 {
                     hidTopTongZhid.Value = string.Format(s, notice.ID, notice.TITLE);

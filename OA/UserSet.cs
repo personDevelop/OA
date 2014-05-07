@@ -17,7 +17,7 @@ namespace OA
             {
                 sessionVal = (int)o;
             }
-
+            sessionVal = 1;
             switch (sessionVal)
             {
                 case 0:

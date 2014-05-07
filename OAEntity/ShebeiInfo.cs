@@ -29,7 +29,8 @@ namespace OAEntity
         private string _State;
         private string _PATH;
         private string _Address;
-
+        private bool _IsNeiWai;
+        private Guid? _SocrceDepart;
         #endregion
 
         #region 属性
@@ -133,6 +134,28 @@ namespace OAEntity
                 this._IsEnable = value;
             }
         }
+
+        /// <summary>
+        /// 是否启用,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "IsNeiWai", DbTypeString = "Bit", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public bool IsNeiWai
+        {
+            get
+            {
+                return this._IsNeiWai;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("IsNeiWai", this._IsNeiWai, value);
+                this._IsNeiWai = value;
+            }
+        }
+
         /// <summary>
         /// 备注,
         /// </summary>
@@ -273,8 +296,27 @@ namespace OAEntity
                 this._Address = value;
             }
         }
+        /// <summary>
+        /// 地址,
+        /// </summary>
 
 
+        [DbProperty(MapingColumnName = "SocrceDepart", DbTypeString = "UniqueIdentifier", ColumnIsNull = true, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public Guid? SocrceDepart
+        {
+            get
+            {
+                return this._SocrceDepart;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("SocrceDepart", this._SocrceDepart, value);
+                this._SocrceDepart = value;
+            }
+        }
+        
         #endregion
 
         #region 列定义
@@ -295,7 +337,9 @@ namespace OAEntity
                 State = new PropertyItem("State", tableName);
                 PATH = new PropertyItem("PATH", tableName);
                 Address = new PropertyItem("Address", tableName);
+                IsNeiWai = new PropertyItem("IsNeiWai", tableName);
 
+                SocrceDepart = new PropertyItem("SocrceDepart", tableName);
             }
             /// <summary>
             /// 主键,
@@ -346,6 +390,15 @@ namespace OAEntity
             /// </summary> 
             public PropertyItem Address = null;
 
+               /// <summary>
+            /// 地址,
+            /// </summary> 
+            public PropertyItem IsNeiWai = null;
+
+            /// 地址,
+            /// </summary> 
+            public PropertyItem SocrceDepart = null;
+              
 
         }
         #endregion

@@ -112,8 +112,143 @@
                 $("#pic").removeClass("selected");
             }
         }
-
+       
         
+    </script>
+    <script type="text/javascript">
+        var selectCode = "";
+        var selectName = "";
+        var selectID = "";
+        $(function () {
+
+
+            //获取数据
+            var source =
+            {
+                dataType: "json",
+                dataFields: [
+                { name: 'ID', type: 'string' },
+{ name: 'Code', type: 'string' },
+{ name: 'Name', type: 'string' },
+{ name: 'ParentID', type: 'string' },
+{ name: 'ZipCode', type: 'string' },
+{ name: 'Phone', type: 'string' },
+{ name: 'ClassCode', type: 'string' },
+{ name: 'Note', type: 'string' },
+{ name: 'ShortName', type: 'string' },
+
+                ],
+                hierarchy:
+                {
+                    keyDataField: { name: 'ID' },
+                    parentDataField: { name: 'ParentID' }
+                },
+                id: 'ID',
+                url: 'handler/AdministrativeRegionsListHandler.ashx'
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source,
+                {
+                    formatData: function (data) {
+                        if (source.totalRecords) {
+
+                            data.$skip = data.pagenum * data.pagesize;
+                            data.$top = data.pagesize;
+                        }
+                        return data;
+                    },
+                    downloadComplete: function (data, status, xhr) {
+                        if (!source.totalRecords) {
+                            source.totalRecords = data.totalRecords;
+                            data.value = data.rows;
+                        }
+                    },
+                    loadError: function (xhr, status, error) {
+                        throw new Error("http://services.odata.org: " + error.toString());
+                    }
+                }
+            );
+
+            //绑定树
+
+            $("#treeGrid").jqxTreeGrid
+(
+            {
+                width: "89%",
+                height: "490px",
+                source: dataAdapter,
+                serverProcessing: true,
+                autoRowHeight: false,
+                altRows: true,
+                pageable: true,
+                columnsResize: true,
+                pageSize: 20,
+                pagesizeoptions: ['20', '50', '100'],
+                columns: [
+
+{ text: '编码', align: 'center', dataField: 'Code', minWidth: 100, width: 150 },
+{ text: '名称', align: 'center', dataField: 'Name', minWidth: 100, width: 150 },
+ { text: '简称', align: 'center', dataField: 'ShortName', minWidth: 100, width: 150 },
+
+{ text: '所属电话号码段', align: 'center', dataField: 'Phone', minWidth: 100, width: 150 },
+{ text: '备注', align: 'center', dataField: 'Note', minWidth: 100, width: 150 }
+                ]
+            });
+
+
+
+            $("#treeGrid").on('rowSelect', function (event) {
+                // event arguments
+                var args = event.args;
+                // row index
+                var index = args.index;
+                // row data
+                var rowData = args.row;
+                selectCode = args.row["CODE"];
+                selectName = args.row["Name"];
+                selectID = args.row["ID"];
+
+                // row key
+                var rowKey = args.key;
+
+                event.stopPropagation();
+            });
+            $('#treeGrid').on('rowDoubleClick',
+                    function (event) {
+                        $('#okButton').click();
+                    });
+            $('#window').jqxWindow({
+                showCollapseButton: true, maxHeight: 600, isModal: true, okButton: $('#okButton'),
+                cancelButton: $('#cancel'), maxWidth: 700, minHeight: 200, minWidth: 200, height: 500, width: 470,
+                autoOpen: false
+            });
+            $('#cancel').jqxButton({ width: '65px' });
+            $('#okButton').jqxButton({ width: '65px' }).on("click", function () {
+                $("#txtSocrceDepart").val(selectName);
+                $("#txtDepartID").val(selectID);
+
+            });
+        });
+
+
+        function open1() {
+         
+            if ($("#txtIsNeiWai_0")[0].checked) {
+
+                parent.art.dialog({
+                    title: '系统提示',
+                    content: '外部设备不能选择所属部门！',
+                    icon: 'succeed',
+                    lock: true,
+                    ok: function () {
+                        return;
+                    }
+                });
+            } else {
+
+                $('#window').jqxWindow('open');
+            }
+        }
+    
     </script>
 </head>
 <body style='padding-left: 10px; padding-right: 10px; padding-top: 10px;'>
@@ -140,6 +275,7 @@
     </div>
     <div class="tab-content" id='basic_wrap' style="display: block;">
         <input name="txtID" type="hidden" id="txtID" runat="server" />
+        <input name="txtDepartID" type="hidden" id="txtDepartID" runat="server" />
         <dl>
             <dl>
                 <dt>设备编号</dt>
@@ -170,13 +306,32 @@
                 </dd>
             </dl>
             <dl>
-                <dt>设备状态</dt>
+                <dt>内部设备</dt>
                 <dd>
-                    <input name="txtState" type="text" id="txtState" readonly="readonly" runat="server" class="input small"
-                        datatype="n" sucmsg=" ">
+                    <asp:RadioButtonList ID="txtIsNeiWai" runat="server" RepeatDirection="Horizontal">
+                        <asp:ListItem Text="外部设备" Value="1" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="内部设备" Value="0"></asp:ListItem>
+                    </asp:RadioButtonList>
                 </dd>
             </dl>
-             <dl>
+            <dl>
+                <dt>内部设备所属部门</dt>
+                <dd>
+                    <input name="txtSocrceDepart" type="text" id="txtSocrceDepart" readonly="readonly"
+                        runat="server" class="input small" datatype="n" sucmsg=" ">
+                    <input name="selectDepart" type="button" id="selectDepart" onclick="open1();" style='font-size: 12px;
+                        background: rgb(236, 236, 236);' value='选择部门' class="input small" datatype="n"
+                        sucmsg=" ">
+                </dd>
+            </dl>
+            <dl>
+                <dt>设备状态</dt>
+                <dd>
+                    <input name="txtState" type="text" id="txtState" readonly="readonly" runat="server"
+                        class="input small" datatype="n" sucmsg=" ">
+                </dd>
+            </dl>
+            <dl>
                 <dt>地址</dt>
                 <dd>
                     <input name="txtAddress" type="text" id="txtAddress" style='width: 600px;' runat="server"
@@ -207,6 +362,20 @@
         <div class="clear">
         </div>
     </div>
+    <div id="window">
+        <div id="windowHeader">
+            <span>
+                <img src="Script/styles/images/star.png" alt="" style="margin-right: 15px" />选择部门
+            </span>
+        </div>
+        <div style="overflow: hidden;" id="windowContent">
+            <div id="treeGrid" style='margin-top: 20px;'>
+            </div>
+            <div style="float: right; margin-top: 5px;">
+                <input type="button" id="okButton" value="确定" style="margin-right: 10px" />
+                <input type="button" id="cancel" value="取消" />
+            </div>
+        </div>
     </div>
     </form>
 </body>

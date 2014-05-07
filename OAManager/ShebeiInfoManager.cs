@@ -39,7 +39,7 @@ namespace OAManager
         public List<ShebeiInfo> GetList()
         {
             List<ShebeiInfo> tem = new List<ShebeiInfo>();
-            tem = Dal.From<ShebeiInfo>().List<ShebeiInfo>();
+            tem = Dal.From<ShebeiInfo>().OrderBy(ShebeiInfo._.Code).List<ShebeiInfo>();
             return tem;
         }
 
@@ -49,9 +49,24 @@ namespace OAManager
         /// <returns></returns>
         public DataTable GetDataTable()
         {
-            return Dal.From<ShebeiInfo>().ToDataTable();
+            return Dal.From<ShebeiInfo>().OrderBy(ShebeiInfo._.Code).ToDataTable();
         }
-
+        /// <summary>
+        /// 获取设备信息表datatable
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetWaiBuDataTable()
+        {
+            return Dal.From<ShebeiInfo>().Where(ShebeiInfo._.IsNeiWai==false).OrderBy(ShebeiInfo._.Code). ToDataTable();
+        }
+        /// <summary>
+        /// 获取设备信息表datatable
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetNeiBuDataTable()
+        {
+            return Dal.From<ShebeiInfo>().Where(ShebeiInfo._.IsNeiWai == true).OrderBy(ShebeiInfo._.Code).ToDataTable();
+        }
         /// <summary>
         /// 分页获取获取设备信息表datatable
         /// </summary>
@@ -61,11 +76,11 @@ namespace OAManager
         /// <param name="pageCount">总页数</param>
         /// <param name="recordCount">总记录数</param>
         /// <returns></returns>
-        public DataTable GetDataTable(int pageindex, int pagesize,WhereClip where, string orderby, ref int pageCount, ref int recordCount)
+        public DataTable GetDataTable(int pageindex, int pagesize,WhereClip where,   ref int pageCount, ref int recordCount)
         {
 
 
-            return Dal.From<ShebeiInfo>().Where(where) .OrderBy(new OrderByClip(orderby)).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
+            return Dal.From<ShebeiInfo>().Where(where) .OrderBy(ShebeiInfo._.Code).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
 
@@ -175,24 +190,24 @@ namespace OAManager
         {
 
             DataTable dt=   Dal.From<ShebeiInfo>().Where(where).OrderBy(new OrderByClip(orderby)).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
-            dt.Columns.Add("FilePath");
+            //dt.Columns.Add("FilePath");
 
             foreach (DataRow item in dt.Rows)
             {
-                OAManager.FileInfoManager flMgr = new FileInfoManager();
-                DataTable dtimg = flMgr.GetDataTable(item["ID"].ToString());
+                //OAManager.FileInfoManager flMgr = new FileInfoManager();
+                //DataTable dtimg = flMgr.GetDataTable(item["ID"].ToString());
                 string img_html = string.Empty;
-                if (dtimg.Rows.Count > 0)
-                {
-                    string src = dtimg.Rows[0]["FILEPATH"].ToString();
-                    img_html = "<a href='" + src + "'><img src='" + src + "' width='50' height='40' alt='图标'></a>";
-                }
-                else
-                {
-                    img_html = "无缩略图";
+                //if (dtimg.Rows.Count > 0)
+                //{
+                //    string src = dtimg.Rows[0]["FILEPATH"].ToString();
+                //    img_html = "<a href='" + src + "'><img src='" + src + "' width='50' height='40' alt='图标'></a>";
+                //}
+                //else
+                //{
+                //    img_html = "无缩略图";
 
-                }
-                item["FilePath"] = img_html;
+                //}
+                //item["FilePath"] = img_html;
             }
 
 
