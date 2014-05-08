@@ -30,6 +30,7 @@
             $('#form1').jqxValidator({
                 rules: [
            { input: '#txtUserName', message: '用户名必填!', action: 'keyup, blur', rule: 'required' },
+           
             { input: '#txtUserName', message: '用户名必须介于3-20个字符之间!', action: 'keyup, blur', rule: 'length=3,12' },
             { input: '#txtRealName', message: '真实姓名必填!', action: 'keyup, blur', rule: 'required' },
              { input: '#txtTelphone', message: '手机号必填!', action: 'keyup, blur', rule: 'required' },
@@ -79,6 +80,127 @@
             });
         }); 
     </script>
+    <script type="text/javascript">
+          var selectCode = "";
+          var selectName = "";
+          var selectID = "";
+          $(function () {
+
+
+              //获取数据
+              var source =
+            {
+                dataType: "json",
+                dataFields: [
+                { name: 'ID', type: 'string' },
+{ name: 'Code', type: 'string' },
+{ name: 'Name', type: 'string' },
+{ name: 'ParentID', type: 'string' },
+{ name: 'ZipCode', type: 'string' },
+{ name: 'Phone', type: 'string' },
+{ name: 'ClassCode', type: 'string' },
+{ name: 'Note', type: 'string' },
+{ name: 'ShortName', type: 'string' },
+
+                ],
+                hierarchy:
+                {
+                    keyDataField: { name: 'ID' },
+                    parentDataField: { name: 'ParentID' }
+                },
+                id: 'ID',
+                url: 'handler/AdministrativeRegionsListHandler.ashx'
+            };
+              var dataAdapter = new $.jqx.dataAdapter(source,
+                {
+                    formatData: function (data) {
+                        if (source.totalRecords) {
+
+                            data.$skip = data.pagenum * data.pagesize;
+                            data.$top = data.pagesize;
+                        }
+                        return data;
+                    },
+                    downloadComplete: function (data, status, xhr) {
+                        if (!source.totalRecords) {
+                            source.totalRecords = data.totalRecords;
+                            data.value = data.rows;
+                        }
+                    },
+                    loadError: function (xhr, status, error) {
+                        throw new Error("http://services.odata.org: " + error.toString());
+                    }
+                }
+            );
+
+              //绑定树
+
+              $("#treeGrid").jqxTreeGrid
+(
+            {
+                width: "89%",
+                height: "490px",
+                source: dataAdapter,
+                serverProcessing: true,
+                autoRowHeight: false,
+                altRows: true,
+                pageable: true,
+                columnsResize: true,
+                pageSize: 20,
+                pagesizeoptions: ['20', '50', '100'],
+                columns: [
+
+{ text: '编码', align: 'center', dataField: 'Code', minWidth: 100, width: 150 },
+{ text: '名称', align: 'center', dataField: 'Name', minWidth: 100, width: 150 },
+ { text: '简称', align: 'center', dataField: 'ShortName', minWidth: 100, width: 150 },
+
+{ text: '所属电话号码段', align: 'center', dataField: 'Phone', minWidth: 100, width: 150 },
+{ text: '备注', align: 'center', dataField: 'Note', minWidth: 100, width: 150 }
+                ]
+            });
+
+
+
+              $("#treeGrid").on('rowSelect', function (event) {
+                  // event arguments
+                  var args = event.args;
+                  // row index
+                  var index = args.index;
+                  // row data
+                  var rowData = args.row;
+                  selectCode = args.row["CODE"];
+                  selectName = args.row["Name"];
+                  selectID = args.row["ID"];
+
+                  // row key
+                  var rowKey = args.key;
+
+                  event.stopPropagation();
+              });
+              $('#treeGrid').on('rowDoubleClick',
+                    function (event) {
+                        $('#okButton').click();
+                    });
+              $('#window').jqxWindow({
+                  showCollapseButton: true, maxHeight: 800, isModal: true, okButton: $('#okButton'),
+                  cancelButton: $('#cancel'), maxWidth: 800, minHeight: 600, minWidth: 200, height: 600, width: 570,
+                  autoOpen: false
+              });
+              $('#cancel').jqxButton({ width: '65px' });
+              $('#okButton').jqxButton({ width: '65px' }).on("click", function () {
+                  $("#txtSocrceDepart").val(selectName);
+                  $("#txtDepartID").val(selectID);
+
+              });
+          });
+
+
+          function open1() {
+
+              $('#window').jqxWindow('open');
+
+          }
+    </script>
 </head>
 <body style='padding-left: 10px; padding-right: 10px; padding-top: 10px;'>
     <form id="form1" runat="server">
@@ -92,12 +214,23 @@
     <div class="content-tab-wrap">
         <div class="tab-content" style="display: block;">
             <input name="txtID" type="hidden" id="txtID" runat="server" />
+            <input name="txtDepartID" type="hidden" id="txtDepartID" runat="server" />
             <dl>
                 <dl>
                     <dt>用户名</dt>
                     <dd>
                         <input name="txtUserName" type="text" id="txtUserName" runat="server" class="input small"
                             datatype="n" sucmsg=" ">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>所属默认部门</dt>
+                    <dd>
+                        <input name="txtSocrceDepart" type="text" id="txtSocrceDepart" readonly="readonly"
+                            runat="server" class="input small" datatype="n" sucmsg=" ">
+                        <input name="selectDepart" type="button" id="selectDepart" onclick="open1();" style='font-size: 12px;
+                            background: rgb(236, 236, 236);' value='选择部门' class="input small" datatype="n"
+                            sucmsg=" ">
                     </dd>
                 </dl>
                 <dl>
@@ -183,9 +316,24 @@
         <div class="page-footer">
             <div class="btn-list">
                 <asp:Button ID="Button1" runat="server" class="btn" Text="提交保存" />
-                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);" />
             </div>
             <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div id="window">
+        <div id="windowHeader">
+            <span>
+                <img src="Script/styles/images/star.png" alt="" style="margin-right: 15px" />选择部门
+            </span>
+        </div>
+        <div style="overflow: hidden;" id="windowContent">
+            <div id="treeGrid" style='margin-top: 20px;'>
+            </div>
+            <div style="float: right; margin-top: 5px;">
+                <input type="button" id="okButton" value="确定" style="margin-right: 10px" />
+                <input type="button" id="cancel" value="取消" />
             </div>
         </div>
     </div>

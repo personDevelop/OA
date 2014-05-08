@@ -28,7 +28,7 @@ namespace OA.handler
                 string login_user = rp["login_user"].ToString();
                 string login_pwd = rp["login_pwd"].ToString();
                 string rand_rs = rp["rand_rs"].ToString();
-                if (context.Session["Very_Code"]==null)
+                if (context.Session["Very_Code"] == null)
                 {
                     context.Response.Write("{\"result\":\"ERROR\",\"errmsg\":\"请刷新验证码！\"}");
                 }
@@ -51,13 +51,25 @@ namespace OA.handler
                         if (pr == null)
                         {
 
-                            context.Session["UserID"] ="root"; //缓存用户名
+                            context.Session["UserID"] = "root"; //缓存用户名
                             context.Session["RealName"] = "管理员";
+                            context.Session["DepartID"] = "root";
+                            context.Session["DepartName"] = "总部";
                         }
                         else
                         {
                             context.Session["UserID"] = pr.ID; //缓存用户名
                             context.Session["RealName"] = pr.RealName;
+                            //缓存部门
+                            AdministrativeRegions ar = prManger.GetDefaultDepartInfo(pr.ID);
+                            if (ar != null)
+                            {
+                                context.Session["DepartID"] = ar.ID;
+                                context.Session["DepartName"] = ar.Name;
+                            }
+                            //缓存所有部门
+                            List<AdministrativeRegions> list = prManger.GetAllDepart(pr.ID);
+                            context.Session["AllDepart"] = list;
                         }
                         context.Response.Write("{\"result\":\"OK\",\"forward\":\"main.aspx\"}");
 
@@ -71,10 +83,10 @@ namespace OA.handler
             }
             catch (Exception ex)
             {
-                context.Response.Write("{\"result\":\"ERROR\",\"errmsg\":\""+ex.Message+"\"}");
+                context.Response.Write("{\"result\":\"ERROR\",\"errmsg\":\"" + ex.Message + "\"}");
             }
 
-           
+
 
         }
 

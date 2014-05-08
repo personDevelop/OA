@@ -83,7 +83,7 @@ namespace OAManager
         /// <param name="pageCount">总页数</param>
         /// <param name="recordCount">总记录数</param>
         /// <returns></returns>
-        public DataTable GetDataTable(int pageindex, int pagesize,WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
+        public DataTable GetDataTable(int pageindex, int pagesize, WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
         {
 
 
@@ -208,6 +208,37 @@ namespace OAManager
         {
 
             return Dal.FromCustomSql("update PersonInfo set Pwd=UserName where id=@id").AddInputParameter("id", guid).ExecuteNonQuery();
+
+        }
+
+        public DepartAndPerson GetDefaultDepart(Guid userid)
+        {
+            return Dal.Find<DepartAndPerson>(DepartAndPerson._.UserID == userid && DepartAndPerson._.IsDefault == true);
+
+        }
+
+
+
+        public DepartAndPerson GetOldDepart(Guid userid, string departid)
+        {
+            return Dal.Find<DepartAndPerson>(DepartAndPerson._.UserID == userid && DepartAndPerson._.DepartID == new Guid(departid));
+        }
+
+        public List<AdministrativeRegions> GetAllDepart(Guid guid)
+        {
+            return Dal.From<AdministrativeRegions>().Join<DepartAndPerson>(
+                AdministrativeRegions._.ID == DepartAndPerson._.DepartID && DepartAndPerson._.UserID == guid)
+                .Select(AdministrativeRegions._.ID.All)
+                . List<AdministrativeRegions>();
+        }
+
+        public AdministrativeRegions GetDefaultDepartInfo(Guid guid)
+        {
+            return Dal.From<AdministrativeRegions>().Join<DepartAndPerson>(
+                AdministrativeRegions._.ID == DepartAndPerson._.DepartID && DepartAndPerson._.IsDefault == true).Where(DepartAndPerson._.UserID == guid)
+                .Select(AdministrativeRegions._.ID.All)
+
+                .ToFirst<AdministrativeRegions>();
 
         }
     }

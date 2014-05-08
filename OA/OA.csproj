@@ -925,6 +925,9 @@
     <Compile Include="handler\DayLogSaveHandler.ashx.cs">
       <DependentUpon>DayLogSaveHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\DepartPersonInfoDeleteHandler.ashx.cs">
+      <DependentUpon>DepartPersonInfoDeleteHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\FenPaiHandler.ashx.cs">
       <DependentUpon>FenPaiHandler.ashx</DependentUpon>
     </Compile>
@@ -951,6 +954,12 @@
     </Compile>
     <Compile Include="handler\FunctionInfoSaveHandler.ashx.cs">
       <DependentUpon>FunctionInfoSaveHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\GetDepartHasPersonHandler.ashx.cs">
+      <DependentUpon>GetDepartHasPersonHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\GetDepartPersonHandler.ashx.cs">
+      <DependentUpon>GetDepartPersonHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\GetRoleHasPersonHandler.ashx.cs">
       <DependentUpon>GetRoleHasPersonHandler.ashx</DependentUpon>
@@ -999,6 +1008,9 @@
     </Compile>
     <Compile Include="handler\RolePersonInfoDeleteHandler.ashx.cs">
       <DependentUpon>RolePersonInfoDeleteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\SetDepartPerson.ashx.cs">
+      <DependentUpon>SetDepartPerson.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\SetRolePerson.ashx.cs">
       <DependentUpon>SetRolePerson.ashx</DependentUpon>
@@ -1357,6 +1369,10 @@
     <Content Include="handler\PersonInfoResetPwdHandler.ashx" />
     <Content Include="handler\indexWorkInfoQueryHandler.ashx" />
     <Content Include="handler\IndexShebeiInfoListHandler.ashx" />
+    <Content Include="handler\GetDepartHasPersonHandler.ashx" />
+    <Content Include="handler\DepartPersonInfoDeleteHandler.ashx" />
+    <Content Include="handler\SetDepartPerson.ashx" />
+    <Content Include="handler\GetDepartPersonHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />

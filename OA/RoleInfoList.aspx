@@ -500,14 +500,14 @@
                    {
                        text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
                        dataField: null, cellsRenderer: function (row, column, d, dd, value, data) {
-                           return "  <a onclick='return deleteRolePersonInfo(\"" + data.RolePersonID + "\");'   href='#'>删除</a>";
+                           return "  <a onclick='return deleteRolePersonInfo(\"" + data.RolePersonID + "\"," + row + ");'   href='#'>删除</a>";
                        }
                    }
                 ]
             });
 
         }
-        function deleteRolePersonInfo(RolePersonID) {
+        function deleteRolePersonInfo(RolePersonID,rindex) {
             Msg.Query("确认要删除该条数据?", function () {
 
                 var url = "handler/RolePersonInfoDeleteHandler.ashx?ID=" + RolePersonID;
@@ -518,25 +518,16 @@
                     success: function (data) {
 
                         if (data.success == "true") {
-                            var selection = $("#person").jqxDataTable('getSelection');
-                            var rowData = selection[0];
-                            var rows = $("#person").jqxDataTable('getRows');
-                            var rowIndex = -1;
-                            for (var i = 0; i < rows.length; i++) {
-                                if (rows[i].ID == rowData.ID) {
-                                    rowIndex = i;
-                                    break;
-                                }
-
-                            }
-                            $("#person").jqxDataTable('deleteRow', rowIndex);
+                      
                             parent.art.dialog({
                                 title: '系统提示',
                                 content: '删除成功！',
                                 icon: 'succeed',
                                 lock: true,
                                 ok: function () {
-
+                                    BindPerson();
+                                    //                            $('#person').jqxGrid('refreshdata');
+                                    //                            $("#person").jqxGrid('deleteRow', rindex);
                                 }
                             });
                         }

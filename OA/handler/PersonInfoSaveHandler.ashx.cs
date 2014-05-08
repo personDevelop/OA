@@ -31,6 +31,53 @@ namespace OA.handler
                     entity.ID = new Guid(rp["txtID"]);
                     entity.RecordStatus = StatusType.update;
                 }
+                List<BaseEntity> list = new List<BaseEntity>();
+                PersonInfoManager manager = new PersonInfoManager();
+                if (!string.IsNullOrEmpty(rp["txtDepartID"]))
+                {
+                    if (entity.RecordStatus == StatusType.update)
+                    {
+                        //先获取其默认部门
+                        DepartAndPerson dp = manager.GetDefaultDepart(entity.ID);
+                        if (dp == null)
+                        {
+                            AddDefault(rp, list);
+                        }
+                        else
+
+                            if (dp.DepartID.ToString() != rp["txtDepartID"])
+                            {
+                                dp.IsDefault = false;
+                                list.Add(dp);
+                                //将单位单位设为默认ID
+                                DepartAndPerson dpold = manager.GetOldDepart(entity.ID, rp["txtDepartID"]);
+                                if (dpold == null)
+                                {
+                                    AddDefault(rp, list);
+                                }
+                                else
+                                {
+                                    dpold.IsDefault = true;
+                                    list.Add(dpold);
+
+                                }
+
+
+
+
+
+                            }
+                    }
+                    else
+                    {
+                        //新增默认部门
+                        AddDefault(rp, list);
+                    }
+
+
+                }
+
+
                 entity.UserName = rp["txtUserName"];
                 if (entity.RecordStatus == StatusType.add)
                 {
@@ -44,7 +91,7 @@ namespace OA.handler
 
                 entity.Location = rp["txtLocation"];
                 entity.DetailedAddress = rp["txtDetailedAddress"];
-                entity.Sex = int.Parse(rp["txtSex"]); 
+                entity.Sex = int.Parse(rp["txtSex"]);
                 entity.Telphone = rp["txtTelphone"];
                 entity.IDCardNumber = rp["txtIDCardNumber"];
 
@@ -52,10 +99,10 @@ namespace OA.handler
                 {
                     entity.Birthday = DateTime.Parse(rp["txtBirthday"]);
                 }
-                entity.MarryStatus = int.Parse(rp["txtMarryStatus"]); 
+                entity.MarryStatus = int.Parse(rp["txtMarryStatus"]);
                 entity.UpdateDATE = DateTime.Now;
                 entity.Note = rp["txtNote"];
-                PersonInfoManager manager = new PersonInfoManager();
+
                 bool IsExit = manager.ExitCodeAndName(entity);//重复校验参考
                 if (IsExit)
                 {
@@ -63,7 +110,7 @@ namespace OA.handler
                 }
                 else
                 {
-                    manager.Save(entity);
+                    manager.Save(list);
                     context.Response.Write("{\"success\":\"true\",\"ID\":\"" + entity.ID + "\"}");
                 }
             }
@@ -78,6 +125,17 @@ namespace OA.handler
                 context.Response.Write("{\"success\":\"false\",\"msg\":\"" + encode + "\"}");
             }
             context.Response.End();
+        }
+
+        private void AddDefault(HttpRequest rp, List<BaseEntity> list)
+        {
+
+            DepartAndPerson dp = new DepartAndPerson();
+            dp.ID = Guid.NewGuid();
+            dp.UserID = entity.ID;
+            dp.DepartID = new Guid(rp["txtDepartID"]);
+            dp.IsDefault = true;
+            list.Add(dp);
         }
 
         public bool IsReusable

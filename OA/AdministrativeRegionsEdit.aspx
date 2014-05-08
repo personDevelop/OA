@@ -6,7 +6,7 @@
 <head id="Head1" runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>行政区域</title>
+    <title>部门信息</title>
     <link href="base.css" rel="stylesheet">
     <link href="Script/styles/jqx.base.css" rel="stylesheet" type="text/css" />
     <script src="Script/jquery-1.10.2.min.js" type="text/javascript"></script>
@@ -81,7 +81,7 @@
             <input name="txtParentID" type="hidden" runat="server" id="txtParentID" />
             <dl>
               <dl>
-                    <dt>上级行政区域</dt>
+                    <dt>上级部门</dt>
                     <dd>
                       <input name="txtParentName" type="text" id="txtParentName" readonly="readonly" runat="server" />
                     </dd>
@@ -115,7 +115,7 @@
                     </dd>
                 </dl>
                 <dl>
-                    <dt>所属电话号码段</dt>
+                    <dt>电话号码</dt>
                     <dd>
                         <input name="txtPhone" type="text" id="txtPhone" runat="server" class="input small"
                             datatype="n" sucmsg=" ">

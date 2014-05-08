@@ -25,6 +25,7 @@
             $('#form1').jqxValidator({
                 rules: [
                        { input: '#txtCode', message: '编码必填!', action: 'keyup, blur', rule: 'required' },
+                        { input: '#txtSocrceDepart', message: '部门必填!', action: 'keyup, blur', rule: 'required' },
                        { input: '#txtName', message: '名称必填!', action: 'keyup, blur', rule: 'required'}]
             });
             var vsData = GetSbList();
@@ -217,8 +218,8 @@
                         $('#okButton').click();
                     });
             $('#window').jqxWindow({
-                showCollapseButton: true, maxHeight: 600, isModal: true, okButton: $('#okButton'),
-                cancelButton: $('#cancel'), maxWidth: 700, minHeight: 200, minWidth: 200, height: 500, width: 470,
+                showCollapseButton: true, maxHeight: 800, isModal: true, okButton: $('#okButton'),
+                cancelButton: $('#cancel'), maxWidth: 800, minHeight: 600, minWidth: 200, height: 600, width: 570,
                 autoOpen: false
             });
             $('#cancel').jqxButton({ width: '65px' });
@@ -231,22 +232,23 @@
 
 
         function open1() {
-         
-            if ($("#txtIsNeiWai_0")[0].checked) {
 
-                parent.art.dialog({
-                    title: '系统提示',
-                    content: '外部设备不能选择所属部门！',
-                    icon: 'succeed',
-                    lock: true,
-                    ok: function () {
-                        return;
-                    }
-                });
-            } else {
+            $('#window').jqxWindow('open');
+//            if ($("#txtIsNeiWai_0")[0].checked) {
 
-                $('#window').jqxWindow('open');
-            }
+//                parent.art.dialog({
+//                    title: '系统提示',
+//                    content: '外部设备不能选择所属部门！',
+//                    icon: 'succeed',
+//                    lock: true,
+//                    ok: function () {
+//                        return;
+//                    }
+//                });
+//            } else {
+
+//                $('#window').jqxWindow('open');
+//            }
         }
     
     </script>

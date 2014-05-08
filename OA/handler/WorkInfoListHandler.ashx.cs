@@ -28,19 +28,48 @@ namespace OA.handler
 
             int count = 0, recordCount = 0;
             string workstatus = rp["Workstatus"];
-           
+
             WhereClip where = null;
             if (!string.IsNullOrEmpty(workstatus))
             {
                 where = WorkInfo._.Status == workstatus;
             }
-            string UserId=string.Empty ;
+            string UserId = string.Empty;
             if (!string.IsNullOrEmpty(rp["IsDaiBan"]))
             {
-                
+
                 UserId = context.Session["UserID"].ToString();
-                
+
             }
+            else
+            {
+
+                if (context.Session["AllDepart"] != null)
+                {
+                    List<AdministrativeRegions> list = context.Session["AllDepart"] as List<AdministrativeRegions>;
+                    if (list != null && list.Count > 0)
+                    {
+                        string[] dparr = new string[list.Count];
+                        for (int i = 0; i < list.Count; i++)
+                        {
+                            dparr[i] = list[i].ID.ToString();
+                        }
+                        if (WhereClip.IsNullOrEmpty(where))
+                        {
+                            where = ShebeiInfo._.SocrceDepart.In(dparr);
+
+                        }
+                        else
+                        {
+                            where = where && ShebeiInfo._.SocrceDepart.In(dparr);
+                        }
+                    }
+                }
+
+            }
+
+
+
             DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, UserId, where, WorkInfo._.CreateDate.Desc, ref count, ref recordCount);
             string result = JsonConvert.Convert2Json(dt);
             context.Response.Write("{ \"totalRecords\":\"" + recordCount + "\",\"rows\":" + result + "}");

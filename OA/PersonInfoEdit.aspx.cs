@@ -34,9 +34,10 @@ namespace OA
 
         private void LoadData(string ID)
         {
-            PersonInfo code = new OAManager.PersonInfoManager().GetItemById(new Guid(ID));
+            PersonInfoManager manager = new PersonInfoManager();
+            PersonInfo code = manager.GetItemById(new Guid(ID));
             txtID.Value = code.ID.ToString();
-            txtUserName.Value = code.UserName; 
+            txtUserName.Value = code.UserName;
             txtEmail.Value = code.Email;
             txtRealName.Value = code.RealName;
             txtLocation.Value = code.Location;
@@ -45,8 +46,16 @@ namespace OA
             txtTelphone.Value = code.Telphone;
             txtIDCardNumber.Value = code.IDCardNumber;
             hidBirthday.Value = code.Birthday.HasValue ? code.Birthday.Value.ToString("yyyy/MM/dd") : "";
-            txtMarryStatus.SelectedValue = code.MarryStatus.HasValue ? code.MarryStatus.ToString() : ""; 
+            txtMarryStatus.SelectedValue = code.MarryStatus.HasValue ? code.MarryStatus.ToString() : "";
             txtNote.Value = code.Note;
+            //获取默认部门
+         DepartAndPerson dp=   manager.GetDefaultDepart(code.ID);
+         if (dp!=null)
+         {
+             AdministrativeRegions ar = new AdministrativeRegionsManager().GetItemById(dp.DepartID);
+             txtDepartID.Value = ar.ID.ToString();
+             txtSocrceDepart.Value = ar.Name;
+         }
 
         }
 

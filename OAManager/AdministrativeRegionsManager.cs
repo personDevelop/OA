@@ -123,15 +123,23 @@ namespace OAManager
         /// <param name="guid">地区表的主键ID</param>
         public int DelateById(Guid guid)
         {
+            int i = 0;
+            DbTransaction tr = Dal.BeginTransaction();
+
             try
             {
-                return Dal.Delete<AdministrativeRegions>(AdministrativeRegions._.ID == guid);
+                i = Dal.Delete<AdministrativeRegions>(tr, guid);
+                i += Dal.Delete<DepartAndPerson>(DepartAndPerson._.DepartID == guid, tr);
+                Dal.CommitTransaction(tr);
+                return i;
             }
             catch (Exception)
             {
-
+                Dal.RollbackTransaction(tr);
                 throw;
             }
+
+            
         }
 
         /// <summary>
@@ -171,6 +179,57 @@ namespace OAManager
 
 
 
+
+        /// <summary>
+        /// 分页获取获取待选的人员
+        /// </summary>
+        /// <param name="pageindex">当前页数</param>
+        /// <param name="pagesize">每页显示条数</param>
+        /// <param name="orderby">排序方式</param>
+        /// <param name="pageCount">总页数</param>
+        /// <param name="recordCount">总记录数</param>
+        /// <returns></returns> 
+
+        public DataTable GetPersonByDepartID(int pageindex, int pagesize, WhereClip wherefilrer, string departID, bool has, ref int pageCount, ref int recordCount)
+        {
+            if (string.IsNullOrEmpty(departID))
+            {
+                departID = Guid.NewGuid().ToString();
+            }
+            WhereClip where = null;
+            if (has)
+            {
+                where = DepartAndPerson._.DepartID == departID;
+                return Dal.From<PersonInfo>().Join<DepartAndPerson>(DepartAndPerson._.UserID == PersonInfo._.ID, JoinType.leftJoin)
+                .Where(where)
+                .Select(PersonInfo._.ID, PersonInfo._.UserName, PersonInfo._.RealName, DepartAndPerson._.ID.Alias("DepartPersonID"),
+                DepartAndPerson._.DepartID).OrderBy(PersonInfo._.RealName).ToDataTable(pagesize, pageindex, ref pageCount,
+                ref recordCount);
+            }
+            else
+            {
+                //过滤人员
+
+                where = DepartAndPerson._.DepartID == departID;
+                if (!WhereClip.IsNullOrEmpty(wherefilrer))
+                {
+                    where = where && wherefilrer;
+                }
+                return Dal.From<PersonInfo>().Join<DepartAndPerson>(DepartAndPerson._.UserID == PersonInfo._.ID && DepartAndPerson._.DepartID == departID, JoinType.leftJoin)
+                .Where(DepartAndPerson._.DepartID == null)
+                .Select(PersonInfo._.ID, PersonInfo._.UserName, PersonInfo._.RealName, DepartAndPerson._.ID.Alias("DepartPersonID"),
+                DepartAndPerson._.DepartID).OrderBy(PersonInfo._.RealName).ToDataTable(pagesize, pageindex, ref pageCount,
+                ref recordCount);
+            } 
+        }
+
+
+
+
+        public int DelateDepartPersonById(Guid guid)
+        {
+            return Dal.Delete<DepartAndPerson>(guid);
+        }
     }
 
 
