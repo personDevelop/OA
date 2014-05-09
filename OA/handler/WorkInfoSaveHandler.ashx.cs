@@ -73,6 +73,7 @@ namespace OA.handler
                 entity.Address = rp["txtAddress"]; 
                 entity.Tel = rp["txtTel"]; 
                 entity.CreateDate = DateTime.Now;
+                entity.Guzhang = rp["txtGuzhang"]; 
                 WorkInfoManager manager = new WorkInfoManager();
                 manager.Save(entity);
                 context.Response.Write("{\"success\":\"true\",\"ID\":\"" + entity.ID + "\"}");

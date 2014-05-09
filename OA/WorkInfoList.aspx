@@ -31,6 +31,7 @@
                       { name: 'GuiGe', type: 'string' }, 
                 { name: 'SbID', type: 'string' },
             { name: 'GuZhangXx', type: 'string' },
+             { name: 'Guzhang', type: 'string' },
                 { name: 'ChuLiYiJian', type: 'string' },
                 { name: 'PlanTime', type: 'date' },
                 { name: 'Status', type: 'string' },
@@ -169,6 +170,13 @@
                 },
                     { text: '设备', align: 'center', dataField: 'Name', minWidth: 100, width: 100 },
                     { text: '故障信息', align: 'center', dataField: 'GuZhangXx', minWidth: 100, width: 150 },
+                    { text: '故障类别', align: 'center', dataField: 'Guzhang', minWidth: 10,width: 150 ,cellsRenderer: function (rowindex, column, value,row) {
+                        if(value!=""){
+                            return guzlb[value];
+                        }else{
+                            return "";
+                        }
+                    }},
                     { text: '处理意见', align: 'center', dataField: 'ChuLiYiJian', minWidth: 100, width: 150 },
                     { text: '计划解决时间', align: 'center', cellsAlign: 'center', dataField: 'PlanTime', minWidth: 100, width: 100, cellsFormat: 'yyyy-MM-dd' },
                     { text: '状态', align: 'center', dataField: 'Status', minWidth: 10, width: 50 },
@@ -187,7 +195,12 @@
             });
 
         });
-       
+       var guzlb={
+            "0":"分供电故障",
+            "1":"光纤故障",
+            "2":"设备故障",
+            "3":"其他故障"
+       };
         function FPrenWu() { 
             var selection = $("#treeGrid").jqxDataTable('getSelection');
             if (selection.length == 1) {

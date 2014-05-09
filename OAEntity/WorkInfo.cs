@@ -34,7 +34,8 @@ namespace OAEntity
         private Guid _CreaterID;
         private string _CreaterName;
         private DateTime _CreateDate;
-
+        private string _Guzhang;
+        
         #endregion
 
         #region 属性
@@ -379,7 +380,21 @@ namespace OAEntity
             }
         }
 
+        [DbProperty(MapingColumnName = "Guzhang", DbTypeString = "Char", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
 
+        public string Guzhang
+        {
+            get
+            {
+                return this._Guzhang;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("Guzhang", this._Guzhang, value);
+                this._Guzhang = value;
+            }
+        }
         #endregion
 
         #region 列定义
@@ -475,7 +490,10 @@ namespace OAEntity
             /// 填报时间,
             /// </summary> 
             public PropertyItem CreateDate = null;
-
+            /// <summary>
+            /// 故障分类,
+            /// </summary> 
+            public PropertyItem Guzhang = null;
 
         }
         #endregion
