@@ -170,13 +170,7 @@
                 },
                     { text: '设备', align: 'center', dataField: 'Name', minWidth: 100, width: 100 },
                     { text: '故障信息', align: 'center', dataField: 'GuZhangXx', minWidth: 100, width: 150 },
-                    { text: '故障类别', align: 'center', dataField: 'Guzhang', minWidth: 10,width: 150 ,cellsRenderer: function (rowindex, column, value,row) {
-                        if(value!=""){
-                            return guzlb[value];
-                        }else{
-                            return "";
-                        }
-                    }},
+                    { text: '故障类别', align: 'center', dataField: 'Guzhang', minWidth: 10,width: 150 },
                     { text: '处理意见', align: 'center', dataField: 'ChuLiYiJian', minWidth: 100, width: 150 },
                     { text: '计划解决时间', align: 'center', cellsAlign: 'center', dataField: 'PlanTime', minWidth: 100, width: 100, cellsFormat: 'yyyy-MM-dd' },
                     { text: '状态', align: 'center', dataField: 'Status', minWidth: 10, width: 50 },

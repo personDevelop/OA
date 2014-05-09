@@ -380,7 +380,7 @@ namespace OAEntity
             }
         }
 
-        [DbProperty(MapingColumnName = "Guzhang", DbTypeString = "Char", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "Guzhang", DbTypeString = "NVarChar", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
 
         public string Guzhang
         {

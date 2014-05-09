@@ -240,10 +240,10 @@ function (event) {
                     <dt>故障分类</dt>
                     <dd>
                         <select name="txtGuzhang" id="txtGuzhang" runat="server" class="input small">
-                            <option value='0'>分供电故障</option>
-                            <option value='1'>光纤故障</option>
-                            <option value='2'>设备故障</option>
-                            <option value='3'>其他故障</option>
+                            <option value='分供电故障'>分供电故障</option>
+                            <option value='光纤故障'>光纤故障</option>
+                            <option value='设备故障'>设备故障</option>
+                            <option value='其他故障'>其他故障</option>
                         </select>
                        
                     </dd>
