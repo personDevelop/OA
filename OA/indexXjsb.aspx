@@ -64,8 +64,11 @@
                 pageSize: 50,
 
                 columns: [
-                { text: '状态', align: 'center', dataField: 'State', minWidth: 10, width: 70, cellsRenderer: function (row, column, value, rowData) {
+                { text: '状态', align: 'center', dataField: 'State', minWidth: 10, width: 100, cellsRenderer: function (row, column, value, rowData) {
                     var s = "&nbsp;<font class='book_kk'>" + value + "</font>";
+                    if (value != "正常") {
+                        s += "<img src='css/images/d.gif' class='style1'  alt='提示' />";
+                    }
                     return s;
                 }
                 },

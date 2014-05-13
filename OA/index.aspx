@@ -61,11 +61,16 @@
                 pageable: true,
                 columnsResize: true,
                 serverProcessing: true,
-                pageSize: 50,
+                pageSize: 20,
 
                 columns: [
-                { text: '状态', align: 'center', dataField: 'State', minWidth: 10, width: 70, cellsRenderer: function (row, column, value, rowData) {
+                { text: '状态', align: 'center', dataField: 'State', minWidth: 10, width: 100, cellsRenderer: function (row, column, value, rowData) {
+                   
+
                     var s = "&nbsp;<font class='book_kk'>" + value + "</font>";
+                    if (value != "正常") {
+                        s += "<img src='css/images/d.gif' class='style1'  alt='提示' />";
+                    } 
                     return s;
                 }
                 },
@@ -176,11 +181,14 @@
                 pageable: true,
                 columnsResize: true,
                 serverProcessing: true,
-                pageSize: 50,
+                pageSize: 20,
 
                 columns: [
-                { text: '状态', align: 'center', dataField: 'State', minWidth: 10, width: 70, cellsRenderer: function (row, column, value, rowData) {
+                { text: '状态', align: 'center', dataField: 'State', minWidth: 10, width: 100, cellsRenderer: function (row, column, value, rowData) {
                     var s = "&nbsp;<font class='book_kk'>" + value + "</font>";
+                    if (value != "正常") {
+                        s += "<img src='css/images/d.gif' class='style1'  alt='提示' />";
+                    }
                     return s;
                 }
                 },
@@ -234,6 +242,7 @@
 
      
     </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table width="1004" border="0" align="center" cellpadding="0" cellspacing="5" bgcolor="#FFFFFF">
@@ -310,7 +319,7 @@
             <tr>
                 <td valign="top" class="kk" width="40%" style='border-right: none;'>
                    <div id="grid" style='margin-top: 20px; width: 100%'>
-                    </div>
+                       </div>
                 </td>
                 <td valign="top" class="kk" width="40%">
                  <div id="gridnb" style='margin-top: 20px; width: 100%'>

@@ -110,6 +110,7 @@ namespace OA.handler
                 }
                 else
                 {
+                    list.Add(entity);
                     manager.Save(list);
                     context.Response.Write("{\"success\":\"true\",\"ID\":\"" + entity.ID + "\"}");
                 }

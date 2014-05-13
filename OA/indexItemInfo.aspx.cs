@@ -9,7 +9,7 @@ using System.Data;
 
 namespace OA
 {
-    public partial class indexItemInfo : System.Web.UI.Page
+    public partial class indexItemInfo : PriBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

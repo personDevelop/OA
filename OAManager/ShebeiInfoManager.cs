@@ -80,7 +80,8 @@ namespace OAManager
         {
 
 
-            return Dal.From<ShebeiInfo>().Where(where) .OrderBy(ShebeiInfo._.Code).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
+            return Dal.From<ShebeiInfo>().Join<AdministrativeRegions>(ShebeiInfo._.SocrceDepart==AdministrativeRegions._.ID, JoinType.leftJoin)
+                .Where(where).Select(ShebeiInfo._.ID.All, AdministrativeRegions._.Name.Alias("DepartName")).OrderBy(ShebeiInfo._.Code).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
 
@@ -192,11 +193,11 @@ namespace OAManager
             DataTable dt=   Dal.From<ShebeiInfo>().Where(where).OrderBy(new OrderByClip(orderby)).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
             //dt.Columns.Add("FilePath");
 
-            foreach (DataRow item in dt.Rows)
-            {
+            //foreach (DataRow item in dt.Rows)
+            //{
                 //OAManager.FileInfoManager flMgr = new FileInfoManager();
                 //DataTable dtimg = flMgr.GetDataTable(item["ID"].ToString());
-                string img_html = string.Empty;
+                //string img_html = string.Empty;
                 //if (dtimg.Rows.Count > 0)
                 //{
                 //    string src = dtimg.Rows[0]["FILEPATH"].ToString();
@@ -208,7 +209,7 @@ namespace OAManager
 
                 //}
                 //item["FilePath"] = img_html;
-            }
+            //}
 
 
             return dt;

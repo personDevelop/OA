@@ -11,7 +11,7 @@ using System.Data;
 
 namespace OA
 {
-    public partial class indexKaoQin : System.Web.UI.Page
+    public partial class indexKaoQin : PriBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

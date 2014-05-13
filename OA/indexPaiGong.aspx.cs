@@ -11,7 +11,7 @@ using System.Data;
 
 namespace OA
 {
-    public partial class indexPaiGong : System.Web.UI.Page
+    public partial class indexPaiGong : PriBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

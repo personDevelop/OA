@@ -11,7 +11,7 @@ using OAEntity;
 
 namespace OA
 {
-    public partial class index : System.Web.UI.Page
+    public partial class index : PriBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -65,7 +65,7 @@ namespace OA
                 string result = "<table width='100%' border='0' align='center' cellpadding='0'  cellspacing='0'>";
 
                 int count = 0;
-                DataTable dt = ntMgr.GetDataTable(0, 10, "ISTOP", ref count, ref count);
+                DataTable dt = ntMgr.GetDataTable(1, 5, "ISTOP", ref count, ref count);
                 foreach (DataRow row in dt.Rows)
                 {
                     result += string.Format(tmpl, "newsinfo.aspx?id=" + row["ID"].ToString(), row["TITLE"]);
@@ -82,13 +82,13 @@ namespace OA
                 WorkInfoManager wkMgr = new WorkInfoManager();
                 WhereClip where = null;// WorkInfo._.Status != "完成";
                 OrderByClip order = WorkInfo._.CreateDate.Desc;
-                DataTable dtwk = wkMgr.GetDataTable(1, 10, where, order, ref count, ref count);
+                DataTable dtwk = wkMgr.GetDataTable(1, 4, where, order, ref count, ref count);
                 // DataTable dtwk = wkMgr.GetDataTable();
                 int i = 0;
                 foreach (DataRow row in dtwk.Rows)
                 {
                     i++;
-                    if (i > 6) break;
+                    if (i > 4) break;
                     string gzxx = row["GuZhangXx"].ToString();
                     if (gzxx.Length > 10)
                     {

@@ -9,7 +9,7 @@ using OAManager;
 
 namespace OA
 {
-    public partial class newsinfo : System.Web.UI.Page
+    public partial class newsinfo : PriBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

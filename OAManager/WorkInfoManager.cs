@@ -107,11 +107,12 @@ namespace OAManager
         /// <returns></returns>
         public DataTable GetDataTable(int pageindex, int pagesize, WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
         {
-           
 
+            WhereClip appendwhere = new WhereClip();
+            appendwhere.Append("  (HandSequence is null or  HandSequence= (select max(HandSequence) from WorkHandLog where [WorkID]=[WorkInfo].[ID]))");
 
             return Dal.From<WorkInfo>().Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
-                .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID,JoinType.leftJoin)
+                .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID && appendwhere, JoinType.leftJoin)
                 .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe)
                 .Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
@@ -210,9 +211,12 @@ namespace OAManager
         /// <returns></returns>
         public DataTable GetDaiBanDataTable(int pageindex, int pagesize, WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
         {
-            return Dal.From<WorkHandLog>().Join<WorkInfo>(WorkInfo._.ID == WorkHandLog._.WorkID)
-                .Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
-                .Where(where && ShebeiInfo._.State!="正常").OrderBy(orderby)
+            WhereClip appendwhere = new WhereClip();
+            appendwhere.Append("  (  HandSequence= (select max(HandSequence) from WorkHandLog where [WorkID]=[WorkInfo].[ID]))");
+
+            return Dal.From<WorkHandLog>().Join<WorkInfo>(WorkInfo._.ID == WorkHandLog._.WorkID && appendwhere, JoinType.leftJoin)
+                .Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID, JoinType.leftJoin)
+                .Where(where && ShebeiInfo._.State != "正常").OrderBy(orderby)
                 .Select(WorkHandLog._.ID.All,
                 WorkInfo._.SbID, WorkInfo._.Address, WorkInfo._.ChuLiYiJian
                 , WorkInfo._.CreaterName, WorkInfo._.CurrentUser, WorkInfo._.GuZhangXx
@@ -234,8 +238,11 @@ namespace OAManager
         /// <returns></returns>
         public DataTable GetMyPaiGongDataTable(int pageindex, int pagesize, WhereClip where, OrderByClip orderby, ref int pageCount, ref int recordCount)
         {
-            return Dal.From<WorkHandLog>().Join<WorkInfo>(WorkInfo._.ID == WorkHandLog._.WorkID)
-                .Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
+            WhereClip appendwhere = new WhereClip();
+            appendwhere.Append("  (  HandSequence= (select max(HandSequence) from WorkHandLog where [WorkID]=[WorkInfo].[ID]))");
+
+            return Dal.From<WorkHandLog>().Join<WorkInfo>(WorkInfo._.ID == WorkHandLog._.WorkID && appendwhere, JoinType.leftJoin)
+                .Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID, JoinType.leftJoin)
                 .Where(where).OrderBy(orderby)
                 .Select(WorkHandLog._.ID.All,
                 WorkInfo._.SbID, WorkInfo._.Address, WorkInfo._.ChuLiYiJian

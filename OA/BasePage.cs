@@ -13,7 +13,7 @@ namespace OA
             if (Session["UserName"] == null)
             {
                 string path = this.Request.FilePath.ToLower();
-                if (path.EndsWith("login.aspx") || path.EndsWith("randomcode.aspx") || path.EndsWith("index.aspx"))
+                if (path.EndsWith("login.aspx") || path.EndsWith("randomcode.aspx"))
                 {
 
 

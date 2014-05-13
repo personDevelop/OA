@@ -80,13 +80,13 @@
     <Content Include="css\images\chart_bar.png" />
     <Content Include="css\images\class_bg.jpg" />
     <Content Include="css\images\column-header-bg.png" />
+    <Content Include="css\images\d.gif" />
     <Content Include="css\images\end.gif" />
     <Content Include="css\images\helper.js" />
     <Content Include="css\images\hourglass_go.png" />
     <Content Include="css\images\icon.png" />
     <Content Include="css\images\icon01.gif" />
     <Content Include="css\images\icon_24.gif" />
-    <Content Include="css\images\image1.jpg" />
     <Content Include="css\images\image2.jpg" />
     <Content Include="css\images\jquery.min.js" />
     <Content Include="css\images\laba.gif" />
@@ -1164,6 +1164,9 @@
     </Compile>
     <Compile Include="PersonInfoList.aspx.designer.cs">
       <DependentUpon>PersonInfoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PriBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="queryDayLog.aspx.cs">

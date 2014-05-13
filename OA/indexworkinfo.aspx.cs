@@ -11,7 +11,7 @@ using OAEntity;
 
 namespace OA
 {
-    public partial class indexworkinfo : System.Web.UI.Page
+    public partial class indexworkinfo : PriBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

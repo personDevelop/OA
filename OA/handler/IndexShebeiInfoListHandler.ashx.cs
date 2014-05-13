@@ -51,7 +51,7 @@ namespace OA.handler
                 where = where && ShebeiInfo._.Name.Contains(context.Request["sbname"]);
 
             }
-            string or = " CODE ";
+            string or = " state, CODE ";
             if (!string.IsNullOrEmpty(context.Request["sortdatafield"]))
             {
                 if (!string.IsNullOrEmpty(context.Request["sortorder"]) && context.Request["sortorder"] == "desc")
@@ -64,6 +64,7 @@ namespace OA.handler
                 }
 
             }
+             
             DataTable dt = manager.GetDataTableWithImg(pageNum + 1, pagesize, where, or, ref pagesize, ref recordCount);
             //manager.GetDataTable();
             string result = JsonConvert.Convert2Json(dt);

@@ -71,7 +71,18 @@ namespace OA.handler
                             List<AdministrativeRegions> list = prManger.GetAllDepart(pr.ID);
                             context.Session["AllDepart"] = list;
                         }
-                        context.Response.Write("{\"result\":\"OK\",\"forward\":\"main.aspx\"}");
+                        string url = "main.aspx";
+                        if (context.Request.UrlReferrer != null && !string.IsNullOrEmpty(context.Request.UrlReferrer.Query))
+                        {
+                            string refurl = context.Request.UrlReferrer.Query;
+                            if (refurl.StartsWith("?ref=/"))
+                            {
+                                url = refurl.Substring(refurl.LastIndexOf('/')+1);
+
+                            }
+
+                        }
+                        context.Response.Write("{\"result\":\"OK\",\"forward\":\"" + url + "\"}");
 
                     }
                     else
@@ -83,7 +94,7 @@ namespace OA.handler
             }
             catch (Exception ex)
             {
-                context.Response.Write("{\"result\":\"ERROR\",\"errmsg\":\"" + ex.Message + "\"}");
+                context.Response.Write("{\"result\":\"ERROR\",\"errmsg\":\"" + ex.Message +ex.Source+ex.StackTrace+ "\"}");
             }
 
 

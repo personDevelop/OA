@@ -15,7 +15,11 @@ body {  /*  ±≥æ∞*/
 	background-position: center top;
 
 }
-
+ .style1
+        {
+            width: 29px;
+            height: 26px;
+        }
 .nzcms_left_bg {/*  ∑÷¿‡µº∫Ω*/
 	background-image: url(images/list_bg.gif);}
 

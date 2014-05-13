@@ -29,7 +29,8 @@
 { name: 'GuiGe', type: 'string' },
 { name: 'IsEnable', type: 'string' },
 { name: 'Address', type: 'string' },
-{ name: 'State', type: 'string' }, 
+{ name: 'State', type: 'string' },
+{ name: 'DepartName', type: 'string' }, 
 { name: 'Note', type: 'string' }
 
                 ],
@@ -76,7 +77,8 @@
                 columns: [
 { text: '设备编号', align: 'center', dataField: 'Code', minWidth: 100, width: 150 },
 { text: '设备名称', align: 'center', dataField: 'Name', minWidth: 100, width: 200 },
-{ text: '规格型号', align: 'center', dataField: 'GuiGe', minWidth:80, width: 100 },
+{ text: '规格型号', align: 'center', dataField: 'GuiGe', minWidth: 80, width: 100 },
+{ text: '部门', align: 'center', dataField: 'DepartName', minWidth: 80, width: 100 }, 
 { text: '地址', align: 'center', dataField: 'Address', minWidth: 50, width: 150 },
 { text: '状态', align: 'center', dataField: 'State', minWidth: 20, width: 50 },
 { text: '启用', align: 'center', dataField: 'IsEnable', minWidth: 20, width:50 },
