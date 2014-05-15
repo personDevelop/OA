@@ -20,7 +20,12 @@
     <script type="text/javascript">
         $(function () {
             $("#txtWordDate").jqxDateTimeInput({ width: '250px', height: '25px', culture: 'zh-Hans', formatString: 'd' });
-           
+            if (!$("#hidWordDate").val()) {
+
+            } else {
+              
+                $('#txtWordDate ').jqxDateTimeInput('val', $("#hidWordDate").val());
+            }
             $('#form1').jqxValidator({
                 rules: [
                                    { input: '#txtWordDate', message: '工作日期必填!', action: 'keyup, blur', rule: function (input, commit) {
@@ -89,6 +94,10 @@
     <div class="content-tab-wrap">
         <div class="tab-content" style="display: block;">
             <input name="txtID" type="hidden" id="txtID" runat="server" />
+             <input name="txtUserID" type="hidden" id="txtUserID" runat="server" />
+              <input name="txtUserName" type="hidden" id="txtUserName" runat="server" />
+              <input name="txtCreateDate" type="hidden" id="txtCreateDate" runat="server" />
+               <input name="hidWordDate" type="hidden" id="hidWordDate" runat="server" />
             <dl>
                 <dl>
                     <dt>工作日期</dt>

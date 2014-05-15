@@ -406,6 +406,7 @@ namespace OAEntity
                 ID = new PropertyItem("ID", tableName);
                 SbID = new PropertyItem("SbID", tableName);
                 GuZhangXx = new PropertyItem("GuZhangXx", tableName);
+                Guzhang = new PropertyItem("Guzhang", tableName);
                 ChuLiYiJian = new PropertyItem("ChuLiYiJian", tableName);
                 PlanTime = new PropertyItem("PlanTime", tableName);
                 Status = new PropertyItem("Status", tableName);

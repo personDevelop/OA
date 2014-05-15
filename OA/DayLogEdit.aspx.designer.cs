@@ -40,6 +40,42 @@ namespace OA {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtID;
         
         /// <summary>
+        /// txtUserID 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtUserID;
+        
+        /// <summary>
+        /// txtUserName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtUserName;
+        
+        /// <summary>
+        /// txtCreateDate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtCreateDate;
+        
+        /// <summary>
+        /// hidWordDate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidWordDate;
+        
+        /// <summary>
         /// txtGS 控件。
         /// </summary>
         /// <remarks>

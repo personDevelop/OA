@@ -20,42 +20,50 @@
     <script type="text/javascript">
         $(function () {
             $("#txtPlanTime").jqxDateTimeInput({ width: '250px', height: '25px', culture: 'zh-Hans', formatString: 'd' });
+            $('#form1').jqxValidator({
+                rules: [
 
+                       { input: '#txtSbName', message: '设备必填!', action: 'keyup, blur', rule: 'required' },
+                        { input: '#txtAddress', message: '详细地址必填!', action: 'keyup, blur', rule: 'required' },
+                       { input: '#txtGuzhang', message: '故障分类必填!', action: 'keyup, blur', rule: 'required'}]
+            });
             $('#form1').submit(function ()//提交表单 
             {
+                var issuccess = $('#form1').jqxValidator('validate');
+                if (issuccess) {
+                    var options = {
+                        url: 'handler/WorkInfoSaveHandler.ashx', //提交给哪个执行 
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.success == "true") {
+                                $("#txtID").val(data.ID);
+                                parent.art.dialog({
+                                    title: '系统提示',
+                                    content: '保存成功！',
+                                    icon: 'succeed',
+                                    lock: true,
+                                    ok: function () {
 
-                var options = {
-                    url: 'handler/WorkInfoSaveHandler.ashx', //提交给哪个执行 
-                    type: 'POST',
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.success == "true") {
-                            $("#txtID").val(data.ID);
-                            parent.art.dialog({
-                                title: '系统提示',
-                                content: '保存成功！',
-                                icon: 'succeed',
-                                lock: true,
-                                ok: function () {
+                                    }
+                                });
 
-                                }
-                            });
+                            }
+                            else {
+                                parent.art.dialog({
+                                    title: '系统提示',
+                                    content: base64decode(data.msg),
+                                    icon: 'succeed',
+                                    lock: true,
+                                    ok: function () {
 
+                                    }
+                                });
+                            }
                         }
-                        else {
-                            parent.art.dialog({
-                                title: '系统提示',
-                                content: base64decode(data.msg),
-                                icon: 'succeed',
-                                lock: true,
-                                ok: function () {
-
-                                }
-                            });
-                        }
-                    }
-                };
-                $('#form1').ajaxSubmit(options);
+                    };
+                    $('#form1').ajaxSubmit(options);
+                }
                 return false; //为了不刷新页面,返回false  
 
             });
@@ -188,7 +196,7 @@ function (event) {
             <input name="txtSbID" type="hidden" id="txtSbID" runat="server" />
             <dl>
                 <dl>
-                    <dt>设备</dt>
+                    <dt>设备*</dt>
                     <dd>
                         <input name="txtSbName" type="text" id="txtSbName" readonly="readonly" runat="server"
                             class="input small" datatype="n" sucmsg=" ">
@@ -209,14 +217,14 @@ function (event) {
                     </dd>
                 </dl>--%>
                 <dl>
-                    <dt>详细地址</dt>
+                    <dt>详细地址*</dt>
                     <dd>
                         <input name="txtAddress" type="text" id="txtAddress" runat="server" class="input small"
                             style="width: 450px;" datatype="n" sucmsg=" ">
                     </dd>
                 </dl>
                  <dl>
-                    <dt>故障分类</dt>
+                    <dt>故障分类*/dt>
                     <dd>
                         <select name="txtGuzhang" id="txtGuzhang" runat="server" class="input small">
                             <option value='供电故障'>供电故障</option>

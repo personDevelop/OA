@@ -28,7 +28,7 @@
         $(function () {
             ShowTime();
             tick();
-            $("#zuitopTongZhi").html($("#ctl00_hidZuiTopTongZhi").val());
+////            $("#zuitopTongZhi").html($("#ctl00_hidZuiTopTongZhi").val());
             $("#toptongzhi").html($("#ctl00_hidTopTongZhid").val());
 
         });

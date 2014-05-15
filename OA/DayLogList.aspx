@@ -87,8 +87,8 @@
 
                    {
                        text: '操作', align: 'center', cellsAlign: 'center', width: 150, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
-                       dataField: null, cellsRenderer: function (row, column, value) {
-                           return "<a href='DayLogEdit.aspx?ID=" + row + "'>修改</a> <a onclick='return deleteDayLog();'   href='#'>删除</a>";
+                       dataField: null, cellsRenderer: function (row, column, value,d) {
+                           return "<a href='DayLogEdit.aspx?ID=" + d.ID + "'>修改</a> <a onclick='return deleteDayLog();'   href='#'>删除</a>";
                        }
                    }
                 ]

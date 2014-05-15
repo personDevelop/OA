@@ -68,7 +68,7 @@ namespace OA.handler
                 else
                 {
                     //多条记录保存
-                    int rows = ((rp.Count - 1) / 14)  ;
+                    int rows = ((rp.Count - 1) / 15)  ;
                     for (int i = 0; i < rows; i++)
                     {
                         string rowpix = string.Format("row[{0}]", i);
