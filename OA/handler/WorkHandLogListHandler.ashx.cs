@@ -6,13 +6,14 @@ using OAManager;
 using System.Data;
 using Sharp.Common;
 using OAEntity;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// WorkHandLogListHandler 的摘要说明
     /// </summary>
-    public class WorkHandLogListHandler : IHttpHandler
+    public class WorkHandLogListHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

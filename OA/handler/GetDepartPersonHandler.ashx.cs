@@ -6,13 +6,14 @@ using Sharp.Common;
 using OAManager;
 using OAEntity;
 using System.Data;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// GetDepartPersonHandler 的摘要说明
     /// </summary>
-    public class GetDepartPersonHandler : IHttpHandler
+    public class GetDepartPersonHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

@@ -6,13 +6,14 @@ using OAManager;
 using System.Data;
 using Sharp.Common;
 using OAEntity;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// ShebeiInfoListHandler 的摘要说明
     /// </summary>
-    public class IndexShebeiInfoListHandler : IHttpHandler
+    public class IndexShebeiInfoListHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
@@ -50,6 +51,27 @@ namespace OA.handler
             {
                 where = where && ShebeiInfo._.Name.Contains(context.Request["sbname"]);
 
+            }
+            if (context.Session["AllDepart"] != null)
+            {
+                List<AdministrativeRegions> list = context.Session["AllDepart"] as List<AdministrativeRegions>;
+                if (list != null && list.Count > 0)
+                {
+                    string[] dparr = new string[list.Count];
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        dparr[i] = list[i].ID.ToString();
+                    }
+                    if (WhereClip.IsNullOrEmpty(where))
+                    {
+                        where = ShebeiInfo._.SocrceDepart.In(dparr);
+
+                    }
+                    else
+                    {
+                        where = where && ShebeiInfo._.SocrceDepart.In(dparr);
+                    }
+                }
             }
             string or = " state, CODE ";
             if (!string.IsNullOrEmpty(context.Request["sortdatafield"]))

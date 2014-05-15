@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using OAManager;
 using System.Data;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// YuanGongKaoQinListHandler 的摘要说明
     /// </summary>
-    public class YuanGongKaoQinListHandler : IHttpHandler
+    public class YuanGongKaoQinListHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

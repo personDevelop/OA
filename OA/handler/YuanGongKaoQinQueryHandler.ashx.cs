@@ -7,13 +7,14 @@ using OAEntity;
 using OAManager;
 using Sharp.Common;
 using Sharp.Data;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// Summary description for YuanGongKaoQinQueryHandler
     /// </summary>
-    public class YuanGongKaoQinQueryHandler : IHttpHandler
+    public class YuanGongKaoQinQueryHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

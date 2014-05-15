@@ -7,12 +7,13 @@ using System.Data;
 using System.Text;
 using OAEntity;
 using Sharp.Common;
+using System.Web.SessionState;
 namespace OA.handler
 {
     /// <summary>
     /// Summary description for WorkInfoQueryHandler
     /// </summary>
-    public class indexWorkInfoQueryHandler : IHttpHandler
+    public class indexWorkInfoQueryHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
@@ -27,7 +28,27 @@ namespace OA.handler
             int count = 0, recordCount = 0;
             string workstatus = rp["Workstatus"];
             WhereClip where = new WhereClip();
+            if (context.Session["AllDepart"] != null)
+            {
+                List<AdministrativeRegions> list = context.Session["AllDepart"] as List<AdministrativeRegions>;
+                if (list != null && list.Count > 0)
+                {
+                    string[] dparr = new string[list.Count];
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        dparr[i] = list[i].ID.ToString();
+                    }
+                    if (WhereClip.IsNullOrEmpty(where))
+                    {
+                        where = ShebeiInfo._.SocrceDepart.In(dparr);
 
+                    }
+                    else
+                    {
+                        where = where && ShebeiInfo._.SocrceDepart.In(dparr);
+                    }
+                }
+            }
             if (!string.IsNullOrEmpty(workstatus))
             {
                 where.And(WorkInfo._.Status == workstatus);

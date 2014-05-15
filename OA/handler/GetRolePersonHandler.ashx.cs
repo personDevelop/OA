@@ -6,13 +6,14 @@ using OAManager;
 using System.Data;
 using OAEntity;
 using Sharp.Common;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// GetRolePersonHandler 的摘要说明
     /// </summary>
-    public class GetRolePersonHandler : IHttpHandler
+    public class GetRolePersonHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

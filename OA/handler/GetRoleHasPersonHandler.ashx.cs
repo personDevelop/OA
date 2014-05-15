@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using OAManager;
 using System.Data;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// GetRoleHasPersonHandler 的摘要说明
     /// </summary>
-    public class GetRoleHasPersonHandler : IHttpHandler
+    public class GetRoleHasPersonHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

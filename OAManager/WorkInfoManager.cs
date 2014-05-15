@@ -34,25 +34,9 @@ namespace OAManager
             return tem;
         }
 
-        /// <summary>
-        /// 获取工作信息表集合
-        /// </summary>
-        /// <returns></returns> 
-        public List<WorkInfo> GetList()
-        {
-            List<WorkInfo> tem = new List<WorkInfo>();
-            tem = Dal.From<WorkInfo>().List<WorkInfo>();
-            return tem;
-        }
+       
 
-        /// <summary>
-        /// 获取工作信息表datatable
-        /// </summary>
-        /// <returns></returns>
-        public DataTable GetDataTable()
-        {
-            return Dal.From<WorkInfo>().ToDataTable();
-        }
+        
 
         /// <summary>
         /// 分页获取获取工作信息表datatable

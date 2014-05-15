@@ -7,12 +7,13 @@ using System.Data;
 using System.Text;
 using OAEntity;
 using Sharp.Common;
+using System.Web.SessionState;
 namespace OA.handler
 {
     /// <summary>
     /// Summary description for WorkInfoQueryHandler
     /// </summary>
-    public class WorkInfoQueryHandler : IHttpHandler
+    public class WorkInfoQueryHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
@@ -64,6 +65,27 @@ namespace OA.handler
             if (!string.IsNullOrEmpty(context.Request["GZXX"]))
             {
                 where.And(WorkInfo._.GuZhangXx.Like("%"+context.Request["GZXX"].ToString()+"%"));
+            }
+            if (context.Session["AllDepart"] != null)
+            {
+                List<AdministrativeRegions> list = context.Session["AllDepart"] as List<AdministrativeRegions>;
+                if (list != null && list.Count > 0)
+                {
+                    string[] dparr = new string[list.Count];
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        dparr[i] = list[i].ID.ToString();
+                    }
+                    if (WhereClip.IsNullOrEmpty(where))
+                    {
+                        where = ShebeiInfo._.SocrceDepart.In(dparr);
+
+                    }
+                    else
+                    {
+                        where = where && ShebeiInfo._.SocrceDepart.In(dparr);
+                    }
+                }
             }
             DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, where, WorkInfo._.CreateDate.Desc, ref count, ref recordCount);
             string result = JsonConvert.Convert2Json(dt);

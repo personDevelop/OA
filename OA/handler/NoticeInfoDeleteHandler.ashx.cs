@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Text;
 using OAManager;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// NoticeInfoDeleteHandler 的摘要说明
     /// </summary>
-    public class NoticeInfoDeleteHandler : IHttpHandler
+    public class NoticeInfoDeleteHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

@@ -6,13 +6,14 @@ using OAEntity;
 using OAManager;
 using Sharp.Common;
 using System.Text;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// 保存 系统参数表
     /// </summary>
-    public class AdministrativeRegionsSaveHandler : IHttpHandler
+    public class AdministrativeRegionsSaveHandler : IHttpHandler, IRequiresSessionState
     {
         AdministrativeRegions entity = new AdministrativeRegions();
         public void ProcessRequest(HttpContext context)

@@ -5,13 +5,14 @@ using System.Web;
 using OAManager;
 using OAEntity;
 using System.Data;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// Summary description for getShebeiImgListHandler
     /// </summary>
-    public class getShebeiImgListHandler : IHttpHandler
+    public class getShebeiImgListHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

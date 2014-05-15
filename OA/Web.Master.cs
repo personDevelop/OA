@@ -60,6 +60,27 @@ namespace OA
                 WhereClip where = WorkInfo._.Status == "制单";
                 OrderByClip order = WorkInfo._.CreateDate.Desc;
                 int count = 0;
+                if ( Session["AllDepart"] != null)
+                {
+                    List<AdministrativeRegions> list =  Session["AllDepart"] as List<AdministrativeRegions>;
+                    if (list != null && list.Count > 0)
+                    {
+                        string[] dparr = new string[list.Count];
+                        for (int i = 0; i < list.Count; i++)
+                        {
+                            dparr[i] = list[i].ID.ToString();
+                        }
+                        if (WhereClip.IsNullOrEmpty(where))
+                        {
+                            where = ShebeiInfo._.SocrceDepart.In(dparr);
+
+                        }
+                        else
+                        {
+                            where = where && ShebeiInfo._.SocrceDepart.In(dparr);
+                        }
+                    }
+                }
                 DataTable dtwk = wkMgr.GetGzDataTable(1, 4, where, order, ref count, ref count);
                 string s = "<a style='font-family:Microsoft YaHei;color:#FFFF00;font-size:24px;'  >{0}</a>";
                 string msg = string.Empty;

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Text;
+using System.Web.SessionState;
 
 namespace OA.handler
 {
     /// <summary>
     /// AdministrativeRegionsDeleteHandler 的摘要说明
     /// </summary>
-    public class AdministrativeRegionsDeleteHandler : IHttpHandler
+    public class AdministrativeRegionsDeleteHandler : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

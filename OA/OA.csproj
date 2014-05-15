@@ -125,6 +125,7 @@
     <Content Include="FunctionInfoEdit.aspx" />
     <Content Include="FunctionInfoList.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="image1.jpg" />
     <Content Include="indexItemInfo.aspx" />
     <Content Include="indexKaoQin.aspx" />
     <Content Include="index.aspx" />
