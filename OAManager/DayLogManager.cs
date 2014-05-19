@@ -153,6 +153,18 @@ namespace OAManager
         {
             return Dal.Exists<DayLog>(DayLog._.ID != entity.ID && DayLog._.UserID == entity.UserID && DayLog._.WordDate == entity.WordDate);
         }
+
+        public DataTable GetDataTable(WhereClip where)
+        {
+            return Dal.From<DayLog>().Where(where).OrderBy(DayLog._.CreateDate.Desc)
+                .Select(
+                 DayLog._.UserName.Alias("填报人"),
+                DayLog._.WordDate.Alias("日志日期"),
+                DayLog._.Content.Alias("工作内容"),
+                DayLog._.GS.Alias("工时"),
+                DayLog._.CreateDate.Alias("填报日期"))
+                .ToDataTable();
+        }
     }
 
 

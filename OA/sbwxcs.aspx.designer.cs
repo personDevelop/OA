@@ -10,7 +10,7 @@
 namespace OA {
     
     
-    public partial class DayLogList {
+    public partial class sbwxcs {
         
         /// <summary>
         /// Head1 控件。
@@ -22,24 +22,6 @@ namespace OA {
         protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
-        /// txtTime1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTime1;
-        
-        /// <summary>
-        /// txtTime2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTime2;
-        
-        /// <summary>
         /// form1 控件。
         /// </summary>
         /// <remarks>
@@ -49,12 +31,21 @@ namespace OA {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// hidUserId 控件。
+        /// txtSbName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidUserId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtSbName;
+        
+        /// <summary>
+        /// txtID 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtID;
     }
 }

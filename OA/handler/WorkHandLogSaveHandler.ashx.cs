@@ -33,7 +33,7 @@ namespace OA.handler
                 work.RecordStatus = StatusType.update;
                 work.Status = zt;
                 ShebeiInfo s = new ShebeiInfo();
-                s = new ShebeiInfoManager().GetItemById(work.SbID); 
+                s = new ShebeiInfoManager().GetItemById(work.SbID);
 
                 if (zt == "处理中")
                 {
@@ -42,10 +42,11 @@ namespace OA.handler
                     work.CurrentUser = rp["txtZprName"];
                     for (int i = 0; i < zprid.Length; i++)
                     {
-                        WorkHandLog tem = SetValue(rp,context);
+                        WorkHandLog tem = SetValue(rp, context);
                         tem.DownEr = new Guid(zprid[i]);
                         tem.DownName = zprName[i];
                         tem.HandSequence = maxsequenc;
+
                         entityList.Add(tem);
                     }
                     s.State = zt;
@@ -53,9 +54,12 @@ namespace OA.handler
                 else
                 {
                     work.RealTime = DateTime.Now;
-                    work.CurrentUser = "";
+                    work.CurrentUser = manager.GetLastUserName(work.ID) ;
                     WorkHandLog tem = SetValue(rp, context);
                     tem.HandSequence = maxsequenc;
+                    int handType = 0;
+                    int.TryParse(rp["txtHandType"], out handType);
+                    tem.HandType = handType;
                     entityList.Add(tem);
                     s.State = "正常";
 
@@ -74,6 +78,7 @@ namespace OA.handler
                     }
 
                 }
+
                 entityList.Add(work);
                 entityList.Add(s);
                 manager.Save(entityList);

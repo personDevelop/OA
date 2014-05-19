@@ -24,7 +24,7 @@ namespace OA.handler
             HttpRequest rp = context.Request;
             DayLogManager manager = new DayLogManager();
             int currentPage = int.Parse(rp["pagenum"]);
-            int pageSize = int.Parse(rp["pagesize"]) ;
+            int pageSize = int.Parse(rp["pagesize"]);
 
             int count = 0, recordCount = 0;
             string personID = rp["PersonID"];
@@ -40,6 +40,19 @@ namespace OA.handler
                     where = DayLog._.UserID == new Guid(context.Session["UserID"].ToString());
 
                 }
+
+            if (!string.IsNullOrEmpty(context.Request["RQ1"]))
+            {
+
+                where.And(DayLog._.CreateDate >= DateTime.Parse(context.Request["RQ1"]));
+
+            }
+            if (!string.IsNullOrEmpty(context.Request["RQ2"]))
+            {
+
+                where.And(DayLog._.CreateDate <  DateTime.Parse(context.Request["RQ2"]).AddDays(1));
+
+            }
             //if (!string.IsNullOrEmpty(context.Session["UserID"] as string))
             //{
             //    where = DayLog._.UserID == new Guid(context.Session["UserID"].ToString());

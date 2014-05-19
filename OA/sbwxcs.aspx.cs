@@ -7,15 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace OA
 {
-    public partial class DayLogList : BasePage
+    public partial class sbwxcs : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!string.IsNullOrEmpty(Request.QueryString["ID"]))
             {
-                hidUserId.Value = Request.QueryString["id"];
-                txtTime1.Value = DateTime.Now.ToString("yyyy-MM-01");
-                txtTime2.Value = DateTime.Now.ToString("yyyy-MM-dd");
+                //修改\
+                txtID.Value = Request.QueryString["ID"].ToString();
             }
         }
     }

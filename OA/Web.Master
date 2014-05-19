@@ -92,6 +92,33 @@
                 content: html
             });
         }
+        function openwxcount(id) {
+            var url = "sbwxcs.aspx?id=" + id;
+
+            var html = "<iframe src='" + url + "' style='height:430px;width:650px;border:0;' frameborder=0></iframe>";
+            art.dialog({
+                id: "vendorbj",
+                lock: true,
+                opacity: "0.3",
+                fixed: true,
+                title: "设备维修统计",
+                content: html
+            });
+        }
+
+        function openghcount(id) {
+            var url = "sbghcs.aspx?id=" + id;
+
+            var html = "<iframe src='" + url + "' style='height:430px;width:850px;border:0;' frameborder=0></iframe>";
+            art.dialog({
+                id: "vendorbj",
+                lock: true,
+                opacity: "0.3",
+                fixed: true,
+                title: "设备更换统计",
+                content: html  
+            });
+        }
     </script>
     <style type="text/css">
         body

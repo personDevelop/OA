@@ -23,7 +23,7 @@ namespace OA.handler
             HttpRequest rp = context.Request;
             WorkInfoManager manager = new WorkInfoManager();
             int currentPage = int.Parse(rp["pagenum"]);
-            int pageSize = int.Parse(rp["pagesize"]) ;
+            int pageSize = int.Parse(rp["pagesize"]);
 
             int count = 0, recordCount = 0;
             string workstatus = rp["Workstatus"];
@@ -31,10 +31,10 @@ namespace OA.handler
             where = WorkInfo._.CreateDate.Like("%%");
             if (!string.IsNullOrEmpty(workstatus))
             {
-                where.And( WorkInfo._.Status == workstatus);
+                where.And(WorkInfo._.Status == workstatus);
             }
 
-       
+
             if (!string.IsNullOrEmpty(context.Request["RQ"]))
             {
                 string[] datestr = context.Request["RQ"].ToString().Split('@');
@@ -64,7 +64,7 @@ namespace OA.handler
             }
             if (!string.IsNullOrEmpty(context.Request["GZXX"]))
             {
-                where.And(WorkInfo._.GuZhangXx.Like("%"+context.Request["GZXX"].ToString()+"%"));
+                where.And(WorkInfo._.GuZhangXx.Like("%" + context.Request["GZXX"].ToString() + "%"));
             }
             if (context.Session["AllDepart"] != null)
             {
@@ -87,7 +87,25 @@ namespace OA.handler
                     }
                 }
             }
-            DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, where, WorkInfo._.CreateDate.Desc, ref count, ref recordCount);
+            OrderByClip or = WorkInfo._.CreateDate.Desc;
+            if (!string.IsNullOrEmpty(context.Request["sortdatafield"]))
+            {
+                if (!string.IsNullOrEmpty(context.Request["sortorder"]) && context.Request["sortorder"] == "desc")
+                {
+
+                    or = new OrderByClip(context.Request["sortdatafield"] + " desc");
+                }
+                else
+                {
+                    or = new OrderByClip(context.Request["sortdatafield"]);
+                }
+
+            }
+            if (!string.IsNullOrEmpty(context.Request["index"]))
+            {
+                pageSize = 4;
+            }
+            DataTable dt = manager.GetDataTable(currentPage + 1, pageSize, where, or, ref count, ref recordCount);
             string result = JsonConvert.Convert2Json(dt);
             context.Response.Write("{ \"totalRecords\":\"" + recordCount + "\",\"rows\":" + result + "}");
             context.Response.End();

@@ -68,7 +68,8 @@ namespace OA.handler
                 else
                 {
                     //多条记录保存
-                    int rows = ((rp.Count - 1) / 15)  ;
+                    int rows = 0;
+                    int.TryParse(rp["count"], out rows);
                     for (int i = 0; i < rows; i++)
                     {
                         string rowpix = string.Format("row[{0}]", i);
@@ -80,7 +81,7 @@ namespace OA.handler
                             if (!string.IsNullOrEmpty(context.Session["UserName"] as string))
                             {
                                 entity.CreaterID = new Guid(context.Session["UserID"].ToString());
-                               
+
                             }
                             else
                             {

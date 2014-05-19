@@ -174,7 +174,7 @@
                             <img src="css/images/chart_bar.png" alt="" width="20" height="20">我的派工记录
                         </div>
                         <div id="SeriesType" title="更多" style="float: right; padding-right: 10px; cursor: pointer;">
-                            <a href="WorkInfoList.aspx?DaiBan=1">更多</a></div>
+                            <a href="WorkInfoList.aspx?DaiBan=2">更多</a></div>
                     </div>
                     <table width="100%" style='border-left: none; border-right: none; border-top: none;'
                         border="0" cellspacing="0" cellpadding="0" class="ltable">

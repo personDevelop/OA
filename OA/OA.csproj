@@ -34,6 +34,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NPOI">
+      <HintPath>..\..\..\03-work2\ICallCenterSystem - 副本\ICallCenterSystem - 新项目\npoi\dotnet4\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\..\..\03-work2\ICallCenterSystem - 副本\ICallCenterSystem - 新项目\npoi\dotnet4\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\..\..\03-work2\ICallCenterSystem - 副本\ICallCenterSystem - 新项目\npoi\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\..\..\03-work2\ICallCenterSystem - 副本\ICallCenterSystem - 新项目\npoi\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="Sharp.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\refdll\Sharp.Common.dll</HintPath>
@@ -844,6 +856,8 @@
     <Content Include="WorkInfoList.aspx" />
     <Content Include="YuanGongKaoQinList.aspx" />
     <Content Include="YuanGongKaoQinTongJi.aspx" />
+    <Content Include="sbwxcs.aspx" />
+    <Content Include="sbghcs.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminIndex.aspx.cs">
@@ -928,6 +942,13 @@
     </Compile>
     <Compile Include="handler\DepartPersonInfoDeleteHandler.ashx.cs">
       <DependentUpon>DepartPersonInfoDeleteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\ExcelOperator.cs" />
+    <Compile Include="handler\ExpaortDayExcle.ashx.cs">
+      <DependentUpon>ExpaortDayExcle.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\ExpaortExcle.ashx.cs">
+      <DependentUpon>ExpaortExcle.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\FenPaiHandler.ashx.cs">
       <DependentUpon>FenPaiHandler.ashx</DependentUpon>
@@ -1039,6 +1060,9 @@
     </Compile>
     <Compile Include="handler\VerifyUser.ashx.cs">
       <DependentUpon>VerifyUser.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\WorkHandler.ashx.cs">
+      <DependentUpon>WorkHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="handler\WorkHandLogListHandler.ashx.cs">
       <DependentUpon>WorkHandLogListHandler.ashx</DependentUpon>
@@ -1304,6 +1328,20 @@
     <Compile Include="YuanGongKaoQinTongJi.aspx.designer.cs">
       <DependentUpon>YuanGongKaoQinTongJi.aspx</DependentUpon>
     </Compile>
+    <Compile Include="sbwxcs.aspx.cs">
+      <DependentUpon>sbwxcs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sbwxcs.aspx.designer.cs">
+      <DependentUpon>sbwxcs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sbghcs.aspx.cs">
+      <DependentUpon>sbghcs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sbghcs.aspx.designer.cs">
+      <DependentUpon>sbghcs.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1377,6 +1415,9 @@
     <Content Include="handler\DepartPersonInfoDeleteHandler.ashx" />
     <Content Include="handler\SetDepartPerson.ashx" />
     <Content Include="handler\GetDepartPersonHandler.ashx" />
+    <Content Include="handler\ExpaortExcle.ashx" />
+    <Content Include="handler\WorkHandler.ashx" />
+    <Content Include="handler\ExpaortDayExcle.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />

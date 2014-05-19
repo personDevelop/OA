@@ -18,21 +18,21 @@
     <script src="Script/globalization/globalize.culture.zh-Hans.js" type="text/javascript"></script>
     <script src="Script/JqueryForm.js" type="text/javascript"></script>
     <script type="text/javascript">
-        
+
         var dataAdapter;
         var kqdata = null;
         options = null;
         function saveList(rowindex) {
-            var selectedrowindex = $('#treeGrid').jqxGrid('selectedrowindex'); 
+            var selectedrowindex = $('#treeGrid').jqxGrid('selectedrowindex');
             if (!rowindex) {
                 if (selectedrowindex > -1) {
-//                    $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
+                    //                    $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
                 }
                 var rows = $('#treeGrid').jqxGrid('getrows');
                 options = {
                     url: 'handler/YuanGongKaoQinSaveHandler.ashx', //提交给哪个执行 
                     type: 'POST',
-                    data: { row: rows, KQRQ: $("#txtKQRQ").jqxDateTimeInput('getText') },
+                    data: { row: rows, count: rows.length, KQRQ: $("#txtKQRQ").jqxDateTimeInput('getText') },
                     dataType: 'json',
                     success: function (data) {
                         if (data.success == "true") {
@@ -131,7 +131,7 @@
                 id: 'ID',
                 url: 'handler/YuanGongKaoQinListHandler.ashx'
             };
-              dataAdapter = new $.jqx.dataAdapter(source,
+            dataAdapter = new $.jqx.dataAdapter(source,
                 {
                     formatData: function (data) {
 
@@ -188,7 +188,7 @@
                    }
                 ]
             });
-            
+
 
         }); 
     </script>
@@ -207,9 +207,9 @@
     <div style="clear: both;">
     </div>
     <form id="form1" runat="server" style="margin-left: 10px;">
-    <div id='txtKQRQ' style=' margin-top: 10px;'>
+    <div id='txtKQRQ' style='margin-top: 10px;'>
     </div>
-    <div id="treeGrid"  style=' margin-top: 10px;'>
+    <div id="treeGrid" style='margin-top: 10px;'>
     </div>
     </form>
 </body>

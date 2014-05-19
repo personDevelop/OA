@@ -233,6 +233,15 @@
                             sucmsg=" ">
                     </dd>
                 </dl>
+                  <dl>
+                    <dt>内部员工（参与考勤）</dt>
+                    <dd>
+                        <asp:RadioButtonList ID="txtMarryStatus" runat="server" RepeatDirection="Horizontal">
+                         <asp:ListItem Text="内部员工" Value="3" Selected="True"></asp:ListItem>
+                            <asp:ListItem Text="外部员工" Value="0"  ></asp:ListItem> 
+                        </asp:RadioButtonList>
+                    </dd>
+                </dl>
                 <dl>
                     <dt>手机号码</dt>
                     <dd>
@@ -293,17 +302,7 @@
                         <input type="hidden" name="hidBirthday" runat="server" id="hidBirthday" />
                     </dd>
                 </dl>
-                <dl>
-                    <dt>婚姻状况</dt>
-                    <dd>
-                        <asp:RadioButtonList ID="txtMarryStatus" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Text="未婚" Value="0" Selected="True"></asp:ListItem>
-                            <asp:ListItem Text="已婚" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="离异" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="保密" Value="3" Selected="True"></asp:ListItem>
-                        </asp:RadioButtonList>
-                    </dd>
-                </dl>
+              
                 <dl>
                     <dt>备注</dt>
                     <dd>

@@ -52,7 +52,7 @@ namespace OAManager
             return Dal.From<PersonInfo>().Join<YuanGongKaoQin>(PersonInfo._.ID == YuanGongKaoQin._.UserID && YuanGongKaoQin._.KQRQ == kaoqindate
                 , JoinType.leftJoin)
                 .Select(PersonInfo._.RealName, PersonInfo._.ID.Alias("PersonID"), YuanGongKaoQin._.ID.All)
-
+                .Where(PersonInfo._.MarryStatus==3)
                 .OrderBy(PersonInfo._.RealName)
                 .ToDataTable();
         }
@@ -83,7 +83,7 @@ namespace OAManager
         /// <param name="pageCount">总页数</param>
         /// <param name="recordCount">总记录数</param>
         /// <returns></returns>
-        public DataTable GetDataTable(int pageindex, int pagesize,WhereClip where, string orderby, ref int pageCount, ref int recordCount)
+        public DataTable GetDataTable(int pageindex, int pagesize, WhereClip where, string orderby, ref int pageCount, ref int recordCount)
         {
 
 

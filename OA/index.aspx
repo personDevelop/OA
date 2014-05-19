@@ -2,13 +2,13 @@
     CodeBehind="index.aspx.cs" Inherits="OA.index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $(function () {
+        $(function () {
 
 
-        //获取数据
-        var source =
+            //获取数据
+            var source =
             {
                 dataType: "json",
                 dataFields: [
@@ -23,7 +23,7 @@
                 id: 'ID',
                 url: 'handler/IndexShebeiInfoListHandler.ashx?nb=0'
             };
-        var dataAdapter = new $.jqx.dataAdapter(source,
+            var dataAdapter = new $.jqx.dataAdapter(source,
                 {
                     formatData: function (data) {
                         if (source.totalRecords) {
@@ -50,9 +50,9 @@
                     }
                 }
             );
-        //绑定树
+            //绑定树
 
-        $("#grid").jqxDataTable(
+            $("#grid").jqxDataTable(
             {
                 width: "100%",
                 //                height: "410px",
@@ -65,12 +65,12 @@
 
                 columns: [
                 { text: '状态', align: 'center', dataField: 'State', minWidth: 10, width: 100, cellsRenderer: function (row, column, value, rowData) {
-                   
+
 
                     var s = "&nbsp;<font class='book_kk'>" + value + "</font>";
                     if (value != "正常") {
                         s += "<img src='css/images/d.gif' class='style1'  alt='提示' />";
-                    } 
+                    }
                     return s;
                 }
                 },
@@ -88,7 +88,7 @@
 }
 },
 { text: '设备名称', align: 'center', dataField: 'Name', minWidth: 10, cellsRenderer: function (row, column, value, rowData) {
-    
+
     return value;
     if (!rowData.PATH) {
         return value;
@@ -100,26 +100,113 @@
 },
                 //{ text: '缩略图', align: 'center', dataField: 'FilePath', minWidth: 10 },
 {text: '故障统计', align: 'center', dataField: 'GZTJ', minWidth: 10, width: 78, cellsRenderer: function (row, column, value, rowData) {
-    var s = "共<span class='title12b'>" + value + "</span>次故障";
+    var s = "";
+    if (value > 0) {
+        s = "<a href='#'  onclick='openwxcount(\"" + rowData.ID + "\");'>共<span class='title12b'>" + value + "</span>次故障</a>";
+    } else {
+        s = "共<span class='title12b'>0</span>次故障";
+    }
 
     return s;
 }
 },
 { text: '更换统计', align: 'center', dataField: 'GHTJ', minWidth: 10, width: 78, cellsRenderer: function (row, column, value, rowData) {
-    var s = "共<span class='title12b'>" + value + "</span>次更换";
-
+    var s = "";
+    if (value > 0) {
+        s = "<a href='#'  onclick='openghcount(\"" + rowData.ID + "\");'>共<span class='title12b'>" + value + "</span>次更换</a>";
+    } else {
+        s = "共<span class='title12b'>0</span>次更换";
+    }
     return s;
 }
 }
                 ]
             });
 
-    });
+        });
 
-    function search1() {
-        $("#grid").jqxDataTable('updateBoundData');
-    }
+        function search1() {
+            $("#grid").jqxDataTable('updateBoundData');
+        }
    
+    </script>
+    <script type="text/javascript">
+
+        $(function () {
+
+
+            //获取数据
+            var source =
+            {
+                dataType: "json",
+                dataFields: [
+                { name: 'ID', type: 'string' },
+{ name: 'Status', type: 'string' },
+{ name: 'CreaterName', type: 'string' },
+{ name: 'CurrentUser', type: 'string' },
+{ name: 'GuZhangXx', type: 'string' },
+{ name: 'ChuLiYiJian', type: 'string' },
+{ name: 'CreateDate', type: 'string' }
+                ],
+                id: 'ID',
+                url: 'handler/WorkInfoQueryHandler.ashx?index=1'
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source,
+                {
+                    formatData: function (data) {
+                        //                        if (source.totalRecords) {
+                        //                            // update the $skip and $top params of the OData service.
+                        //                            // data.pagenum - page number starting from 0.
+                        //                            // data.pagesize - page size
+                        //                            data.$skip = data.pagenum * data.pagesize;
+                        //                            data.$top = data.pagesize;
+                        //                            data.sbzt = $("#sbzt").val();
+                        //                            data.sbcode = $("#sbcode").val();
+                        //                            data.sbname = $("#sbname").val();
+                        //                        }
+                        return data;
+                    },
+                    downloadComplete: function (data, status, xhr) {
+
+                        //                        source.totalRecords = data.totalRecords;
+                        //                        source.value = data.rows;
+
+
+                    },
+                    loadError: function (xhr, status, error) {
+                        throw new Error("http://services.odata.org: " + error.toString());
+                    }
+                }
+            );
+            //绑定树
+
+            $("#gridbaogong").jqxDataTable(
+            {
+                width: "100%",
+                //                height: "410px",
+                source: dataAdapter,
+                sortable: true,
+                columnsResize: true,
+                serverProcessing: true,
+                columns: [
+                { text: '状态', align: 'center', dataField: 'Status', minWidth: 10, width: 100, cellsRenderer: function (row, column, value, rowData) {
+                    var s = "<div class='book_kk' style='width:55px;'>√" + value + "</div>";
+                    return s;
+                }
+                },
+{ text: '上报人', align: 'center', dataField: 'CreaterName', minWidth: 10, width: 70 },
+{ text: '故障申报内容', align: 'center', dataField: 'GuZhangXx', minWidth: 10 },
+ { text: '受理人', align: 'center', dataField: 'CurrentUser', minWidth: 10 },
+  { text: '处理结果', align: 'center', dataField: 'ChuLiYiJian', minWidth: 10 },
+   { text: '上报时间', align: 'center', dataField: 'CreateDate', minWidth: 10 }
+  ]
+            });
+
+        });
+
+         
+
+     
     </script>
     <script type="text/javascript">
 
@@ -219,14 +306,24 @@
 },
                 //{ text: '缩略图', align: 'center', dataField: 'FilePath', minWidth: 10 },
 {text: '故障统计', align: 'center', dataField: 'GZTJ', minWidth: 10, width: 78, cellsRenderer: function (row, column, value, rowData) {
-    var s = "共<span class='title12b'>" + value + "</span>次故障";
+
+    var s = "";
+    if (value > 0) {
+        s = "<a href='#'  onclick='openwxcount(\"" + rowData.ID + "\");'>共<span class='title12b'>" + value + "</span>次故障</a>";
+    } else {
+        s = "共<span class='title12b'>0</span>次故障";
+    }
 
     return s;
 }
 },
 { text: '更换统计', align: 'center', dataField: 'GHTJ', minWidth: 10, width: 78, cellsRenderer: function (row, column, value, rowData) {
-    var s = "共<span class='title12b'>" + value + "</span>次更换";
-
+    var s = "";
+    if (value > 0) {
+        s = "<a href='#'  onclick='openghcount(\"" + rowData.ID + "\");'>共<span class='title12b'>" + value + "</span>次更换</a>";
+    } else {
+        s = "共<span class='title12b'>0</span>次更换";
+    }
     return s;
 }
 }
@@ -242,13 +339,14 @@
 
      
     </script>
-    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table width="1004" border="0" align="center" cellpadding="0" cellspacing="5" bgcolor="#FFFFFF">
         <tr>
             <td align="center" valign="top" bgcolor="#FFFFFF" class="kk">
-                <table width="100%" height="6" border="0" cellpadding="0" cellspacing="1" background="images/nzcms/nzcms_left_bg.gif"
+                <div id="gridbaogong" style='margin-top: 20px; width: 100%'>
+                </div>
+                <%--   <table width="100%" height="6" border="0" cellpadding="0" cellspacing="1" background="images/nzcms/nzcms_left_bg.gif"
                     bgcolor="#F9F9F9">
                     <tr>
                         <td width="65" height="20" align="center">
@@ -267,9 +365,9 @@
                             时间
                         </td>
                     </tr>
-                </table>
-                <div id="workinfo" runat="server">
-                </div>
+                </table>--%>
+                <%--<div id="workinfo" runat="server">
+                </div>--%>
             </td>
             <td width="250" align="center" valign="top" class="kk">
                 <!-- 这里开始通知通告栏-->
@@ -318,11 +416,11 @@
             </tr>
             <tr>
                 <td valign="top" class="kk" width="40%" style='border-right: none;'>
-                   <div id="grid" style='margin-top: 20px; width: 100%'>
-                       </div>
+                    <div id="grid" style='margin-top: 20px; width: 100%'>
+                    </div>
                 </td>
                 <td valign="top" class="kk" width="40%">
-                 <div id="gridnb" style='margin-top: 20px; width: 100%'>
+                    <div id="gridnb" style='margin-top: 20px; width: 100%'>
                 </td>
             </tr>
         </tbody>

@@ -38,7 +38,7 @@ namespace OA.handler
             if (!string.IsNullOrEmpty(rp["IsDaiBan"]))
             {
 
-                UserId = context.Session["UserID"].ToString();
+                UserId = context.Session["UserID"].ToString() + ";" + rp["IsDaiBan"];
 
             }
             else

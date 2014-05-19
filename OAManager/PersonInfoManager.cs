@@ -87,7 +87,11 @@ namespace OAManager
         {
 
 
-            return Dal.From<PersonInfo>().Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
+            return Dal.From<PersonInfo>().Join<DepartAndPerson>(PersonInfo._.ID == DepartAndPerson._.UserID, JoinType.leftJoin)
+                .Join<AdministrativeRegions>(DepartAndPerson._.DepartID == AdministrativeRegions._.ID && DepartAndPerson._.IsDefault == true, JoinType.leftJoin)
+                .Select(PersonInfo._.ID.All, AdministrativeRegions._.Name.Alias("DepartName"), new ExpressionClip("case MarryStatus when 0 then '外部' else '内部' end	NWName")) 
+
+                .Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
 
@@ -229,7 +233,7 @@ namespace OAManager
             return Dal.From<AdministrativeRegions>().Join<DepartAndPerson>(
                 AdministrativeRegions._.ID == DepartAndPerson._.DepartID && DepartAndPerson._.UserID == guid)
                 .Select(AdministrativeRegions._.ID.All)
-                . List<AdministrativeRegions>();
+                .List<AdministrativeRegions>();
         }
 
         public AdministrativeRegions GetDefaultDepartInfo(Guid guid)

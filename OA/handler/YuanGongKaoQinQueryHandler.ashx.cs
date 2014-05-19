@@ -21,6 +21,20 @@ namespace OA.handler
         {
             context.Response.ContentType = "text/plain";
 
+            if (context.Session["UserID"] != null)
+            {
+                string userid = context.Session["UserID"].ToString();
+                PersonInfo p = new PersonInfoManager().GetItemById(new Guid(userid));
+                if (!p.MarryStatus.HasValue || p.MarryStatus.Value != 3)
+                {
+                    context.Response.Write("{\"total\":\"0\",\"rows\": 没有考勤数据}");
+                    context.Response.End();
+                    return;
+                }
+            }
+
+
+
             YuanGongKaoQinManager manager = new YuanGongKaoQinManager();
             int pageNum = int.Parse(context.Request.QueryString.Get("pagenum"));
             int pagesize = int.Parse(context.Request.QueryString.Get("pagesize"));
@@ -54,7 +68,7 @@ namespace OA.handler
             }
             if (!string.IsNullOrEmpty(context.Request["swstatus"]))
             {
-                where = YuanGongKaoQin._.SWStatus==context.Request["swstatus"] ;
+                where = YuanGongKaoQin._.SWStatus == context.Request["swstatus"];
 
             }
 
@@ -84,11 +98,11 @@ namespace OA.handler
             {
                 if (!string.IsNullOrEmpty(context.Request["sortorder"]) && context.Request["sortorder"] == "desc")
                 {
-                    or = context.Request["sortdatafield"] + " desc" ;
+                    or = context.Request["sortdatafield"] + " desc";
                 }
                 else
                 {
-                    or =  context.Request["sortdatafield"] ;
+                    or = context.Request["sortdatafield"];
                 }
 
             }

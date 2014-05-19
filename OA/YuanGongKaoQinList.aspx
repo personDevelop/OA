@@ -19,109 +19,6 @@
     <script src="Script/JqueryForm.js" type="text/javascript"></script>
     <script type="text/javascript">
 
-        var dataAdapter;
-        var kqdata = null;
-        options = null;
-        function ViweDayLog(rowindex) {
-           
-            kqdata = $('#treeGrid').jqxGrid('getrowdata', rowindex);
-            kqdata.KQRQ = $("#txtKQRQ").jqxDateTimeInput('getText');
-            location.href = "DayLogList.aspx?id=" + kqdata.PersonID;
-           
-        }
-
-
-        function saveList(rowindex) {
-            var selectedrowindex = $('#treeGrid').jqxGrid('selectedrowindex');
-            if (!rowindex) {
-                if (selectedrowindex > -1) {
-                    //                    $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
-                }
-                var rows = $('#treeGrid').jqxGrid('getrows');
-                options = {
-                    url: 'handler/YuanGongKaoQinSaveHandler.ashx', //提交给哪个执行 
-                    type: 'POST',
-                    data: { row: rows, KQRQ: $("#txtKQRQ").jqxDateTimeInput('getText') },
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.success == "true") {
-                            //$('#treeGrid').jqxGrid('refresh');
-                            dataAdapter.dataBind();
-                            parent.art.dialog({
-                                title: '系统提示',
-                                content: '保存成功！',
-                                icon: 'succeed',
-                                lock: true,
-                                ok: function () {
-
-                                }
-                            });
-
-                        }
-                        else {
-                            parent.art.dialog({
-                                title: '系统提示',
-                                content: base64decode(data.msg),
-                                icon: 'succeed',
-                                lock: true,
-                                ok: function () {
-
-                                }
-                            });
-                        }
-                    }
-                }
-            }
-            else {
-                if (selectedrowindex > -1) {
-                    $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
-                }
-                
-                kqdata = $('#treeGrid').jqxGrid('getrowdata', rowindex);
-                kqdata.KQRQ = $("#txtKQRQ").jqxDateTimeInput('getText');
-                options = {
-                    url: 'handler/YuanGongKaoQinSaveHandler.ashx', //提交给哪个执行 
-                    type: 'POST',
-                    data: kqdata,
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.success == "true") {
-                            //$('#treeGrid').jqxGrid('refresh');
-                            dataAdapter.dataBind();
-                            parent.art.dialog({
-                                title: '系统提示',
-                                content: '保存成功！',
-                                icon: 'succeed',
-                                lock: true,
-                                ok: function () {
-
-                                }
-                            });
-                        }
-                        else {
-                            parent.art.dialog({
-                                title: '系统提示',
-                                content: base64decode(data.msg),
-                                icon: 'succeed',
-                                lock: true,
-                                ok: function () {
-
-                                }
-                            });
-                        }
-                    }
-                };
-            }
-
-
-            $(this).ajaxSubmit(options);
-            return false;
-        }
-        
-   
-    </script>
-    <script type="text/javascript">
-
         $(function () {
 
             $("#txtKQRQ").jqxDateTimeInput({ width: '250px', height: '25px', culture: 'zh-Hans', formatString: 'd' })
@@ -202,8 +99,7 @@
 
             //绑定树
 
-            $("#treeGrid").jqxGrid
-(
+            $("#treeGrid").jqxGrid(
             {
                 editable: true,
                 editmode: 'click',
@@ -231,8 +127,8 @@
 
                    {
                        text: '操作', align: 'center', width: 100, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
-                       dataField: null, cellsRenderer: function (row, column, value, data) {
-                           return "<a href='#' onclick='return ViweDayLog(\"" + row + "\");' >查看工作日志</a> ";
+                       dataField: null, cellsRenderer: function (row, column,ds,ds, value, data) {
+                           return "<a href='#' onclick='return ViweDayLog(\"" + data.PersonID + "\");' >查看工作日志</a> ";
                        }
                    }
                 ]
@@ -240,6 +136,109 @@
 
 
         }); 
+    </script>
+    <script type="text/javascript">
+
+        var dataAdapter;
+        var kqdata = null;
+        options = null;
+        function ViweDayLog(rowindex) {
+
+         
+             
+            location.href = "DayLogList.aspx?id=" + rowindex;
+
+        }
+
+
+        function saveList(rowindex) {
+            var selectedrowindex = $('#treeGrid').jqxGrid('selectedrowindex');
+            if (!rowindex) {
+                if (selectedrowindex > -1) {
+                    //                    $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
+                }
+                var rows = $('#treeGrid').jqxGrid('getrows');
+                options = {
+                    url: 'handler/YuanGongKaoQinSaveHandler.ashx', //提交给哪个执行 
+                    type: 'POST',
+                    data: { row: rows, count: rows.length, KQRQ: $("#txtKQRQ").jqxDateTimeInput('getText') },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.success == "true") {
+                            //$('#treeGrid').jqxGrid('refresh');
+                            dataAdapter.dataBind();
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: '保存成功！',
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
+
+                        }
+                        else {
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: base64decode(data.msg),
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+            else {
+                if (selectedrowindex > -1) {
+                    $("#treeGrid").jqxGrid('endrowedit', selectedrowindex, false);
+                }
+
+                kqdata = $('#treeGrid').jqxGrid('getrowdata', rowindex);
+                kqdata.KQRQ = $("#txtKQRQ").jqxDateTimeInput('getText');
+                options = {
+                    url: 'handler/YuanGongKaoQinSaveHandler.ashx', //提交给哪个执行 
+                    type: 'POST',
+                    data: kqdata,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.success == "true") {
+                            //$('#treeGrid').jqxGrid('refresh');
+                            dataAdapter.dataBind();
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: '保存成功！',
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
+                        }
+                        else {
+                            parent.art.dialog({
+                                title: '系统提示',
+                                content: base64decode(data.msg),
+                                icon: 'succeed',
+                                lock: true,
+                                ok: function () {
+
+                                }
+                            });
+                        }
+                    }
+                };
+            }
+
+
+            $(this).ajaxSubmit(options);
+            return false;
+        }
+        
+   
     </script>
 </head>
 <body style='padding-left: 10px; padding-right: 10px; padding-top: 10px;'>

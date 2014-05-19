@@ -28,6 +28,7 @@ namespace OAEntity
         private int _HandSequence;
         private string _UpName;
         private string _DownName;
+        private int _HandType;
 
         #endregion
 
@@ -252,6 +253,26 @@ namespace OAEntity
                 this._DownName = value;
             }
         }
+        /// <summary>
+        /// 处理类型,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "HandType", DbTypeString = "Int", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+
+        public int HandType
+        {
+            get
+            {
+                return this._HandType;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("HandType", this._HandType, value);
+                this._HandType = value;
+            }
+        }
 
 
         #endregion
@@ -273,6 +294,7 @@ namespace OAEntity
                 HandSequence = new PropertyItem("HandSequence", tableName);
                 UpName = new PropertyItem("UpName", tableName);
                 DownName = new PropertyItem("DownName", tableName);
+                HandType = new PropertyItem("HandType", tableName);
 
             }
             /// <summary>
@@ -319,6 +341,10 @@ namespace OAEntity
             /// 下步指派人姓名,
             /// </summary> 
             public PropertyItem DownName = null;
+            /// <summary>
+            /// 处理类型,
+            /// </summary> 
+            public PropertyItem HandType = null;
 
 
         }

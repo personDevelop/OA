@@ -13,6 +13,7 @@
     <script src="Script/jqx-all.js" type="text/javascript"></script>
     <script src="Script/basejs.js" type="text/javascript"></script>
     <script src="Script/base64.js" type="text/javascript"></script>
+    <script src="js/DatePicker/WdatePicker.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(function () {
@@ -20,7 +21,7 @@
             var userid = $("#hidUserId").val();
             var url = 'handler/DayLogListHandler.ashx';
             if (userid) {
-                url = 'handler/DayLogListHandler.ashx?PersonID='+userid;
+                url = 'handler/DayLogListHandler.ashx?PersonID=' + userid;
             }
 
             //获取数据
@@ -49,13 +50,15 @@
                             data.$skip = data.pagenum * data.pagesize;
                             data.$top = data.pagesize;
                         }
+                        data.RQ1 = $("#txtTime1").val();
+                        data.RQ2 = $("#txtTime2").val();
                         return data;
                     },
                     downloadComplete: function (data, status, xhr) {
-                        if (!source.totalRecords) {
+                        
                             source.totalRecords = data.totalRecords;
                             data.value = data.rows;
-                        }
+                       
                     },
                     loadError: function (xhr, status, error) {
                         throw new Error("http://services.odata.org: " + error.toString());
@@ -87,7 +90,7 @@
 
                    {
                        text: '操作', align: 'center', cellsAlign: 'center', width: 150, cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false,
-                       dataField: null, cellsRenderer: function (row, column, value,d) {
+                       dataField: null, cellsRenderer: function (row, column, value, d) {
                            return "<a href='DayLogEdit.aspx?ID=" + d.ID + "'>修改</a> <a onclick='return deleteDayLog();'   href='#'>删除</a>";
                        }
                    }
@@ -120,7 +123,7 @@
                                 ok: function () {
 
                                 }
-                            }); 
+                            });
                         }
                         else {
                             parent.art.dialog({
@@ -137,18 +140,45 @@
                 }
                 );
                 } else {
-                parent.art.dialog({
-                    title: '系统提示',
-                    content: "请先选择要删除的节点，且只能选择一个！",
-                    icon: 'succeed',
-                    lock: true,
-                    ok: function () {
+                    parent.art.dialog({
+                        title: '系统提示',
+                        content: "请先选择要删除的节点，且只能选择一个！",
+                        icon: 'succeed',
+                        lock: true,
+                        ok: function () {
 
-                    }
-                });
+                        }
+                    });
 
                 }
             });
+
+        }
+        function search1() {
+
+            $("#treeGrid").jqxDataTable('updateBoundData');
+        }
+        function exprot() {
+
+            $.get("handler/ExpaortDayExcle.ashx", { personid: $("#hidUserId").val(), rq1: $("#txtTime1").val(), rq2: $("#txtTime2").val() }, function (data) {
+              
+                if (data.success == "true") {
+                    window.location = "upload/exportxml/" + data.msg;
+
+                }
+                else {
+
+                    parent.art.dialog({
+                        title: '系统提示',
+                        content: base64decode(data.msg),
+                        icon: 'succeed',
+                        lock: true,
+                        ok: function () {
+
+                        }
+                    });
+                }
+            }, "json");
 
         }
     </script>
@@ -164,6 +194,42 @@
         </ul>
     </div>
     <div style="clear: both;">
+    </div>
+    <div style='margin-top: 11px; margin-bottom: 10px'>
+        <div style="clear: both;">
+            <table style="width: 100%;">
+                <tr>
+                    <td style='width: 80px;'>
+                        开始日期
+                    </td>
+                    <td style='width: 190px;'>
+                        <div class="input-date">
+                            <input runat="server" name="txtTime1" type="text" id="txtTime1" class="input date" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+                                datatype="/^\s*$|^\d{4}\-\d{1,2}\-\d{1,2}\s{1}(\d{1,2}:){2}\d{1,2}$/" errormsg="请选择正确的日期"
+                                sucmsg=" ">
+                            <i></i>
+                        </div>
+                    </td>
+                    <td style='width: 80px;'>
+                        结束日期
+                    </td>
+                    <td style='width: 190px;'>
+                        <div class="input-date">
+                            <input runat="server" name="txtTime2" type="text" id="txtTime2" class="input date" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+                                datatype="/^\s*$|^\d{4}\-\d{1,2}\-\d{1,2}\s{1}(\d{1,2}:){2}\d{1,2}$/" errormsg="请选择正确的日期"
+                                sucmsg=" ">
+                            <i></i>
+                        </div>
+                    </td>
+                    <td>
+                        <ul class="icon-list">
+                            <li><a class="search" onclick="search1();" href="#"><i></i><span>查询</span></a></li>
+                            <li><a class="search" onclick="exprot();" href="#"><i></i><span>导出</span></a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
     <form id="form1" runat="server">
     <asp:HiddenField ID="hidUserId" runat="server" />

@@ -15,7 +15,7 @@
                 { name: 'ID', type: 'string' },
 { name: 'Code', type: 'string' },
 { name: 'Name', type: 'string' },
-{ name: 'State', type: 'string' }, 
+{ name: 'State', type: 'string' },
 { name: 'PATH', type: 'string' },
 { name: 'GHTJ', type: 'string' },
 { name: 'GZTJ', type: 'string' }
@@ -76,13 +76,13 @@
 
     var s = "<a href='javascript:void(0);' style='color:blue;' onclick='openurl(\"" + rowData.ID + "\");'>" + value + "</a>"
     return s;
-//    if (!rowData.PATH) {
-//        return value;
-//    } else {
-//        var s = "<a href='" + rowData.PATH + "' target='sbiframe'>" + value + "</a>"
+    //    if (!rowData.PATH) {
+    //        return value;
+    //    } else {
+    //        var s = "<a href='" + rowData.PATH + "' target='sbiframe'>" + value + "</a>"
 
-//        return s;
-//    }
+    //        return s;
+    //    }
 }
 },
 { text: '设备名称', align: 'center', dataField: 'Name', minWidth: 10, cellsRenderer: function (row, column, value, rowData) {
@@ -96,16 +96,25 @@
     }
 }
 },
-//{ text: '缩略图', align: 'center', dataField: 'FilePath', minWidth: 10 },
-{ text: '故障统计', align: 'center', dataField: 'GZTJ', minWidth: 10, width: 78, cellsRenderer: function (row, column, value, rowData) {
-    var s = "共<span class='title12b'>" + value + "</span>次故障";
+                //{ text: '缩略图', align: 'center', dataField: 'FilePath', minWidth: 10 },
+{text: '故障统计', align: 'center', dataField: 'GZTJ', minWidth: 10, width: 78, cellsRenderer: function (row, column, value, rowData) {
+    var s = "";
+    if (value > 0) {
+        s = "<a href='#'  onclick='openwxcount(\"" + rowData.ID + "\");'>共<span class='title12b'>" + value + "</span>次故障</a>";
+    } else {
+        s = "共<span class='title12b'>0</span>次故障";
+    }
 
     return s;
 }
 },
 { text: '更换统计', align: 'center', dataField: 'GHTJ', minWidth: 10, width: 78, cellsRenderer: function (row, column, value, rowData) {
-    var s = "共<span class='title12b'>" + value + "</span>次更换";
-
+    var s = "";
+    if (value > 0) {
+        s = "<a href='#'  onclick='openghcount(\"" + rowData.ID + "\");'>共<span class='title12b'>" + value + "</span>次更换</a>";
+    } else {
+        s = "共<span class='title12b'>0</span>次更换";
+    }
     return s;
 }
 }
@@ -133,7 +142,7 @@
 { name: 'Code', type: 'string' },
 { name: 'Name', type: 'string' },
 { name: 'State', type: 'string' },
- 
+
 { name: 'PATH', type: 'string' },
 { name: 'GHTJ', type: 'string' },
 { name: 'GZTJ', type: 'string' }
@@ -211,16 +220,27 @@
     }
 }
 },
-//{ text: '缩略图', align: 'center', dataField: 'FilePath', minWidth: 10 },
-{ text: '故障统计', align: 'center', dataField: 'GZTJ', minWidth: 10, width: 78, cellsRenderer: function (row, column, value, rowData) {
-    var s = "共<span class='title12b'>" + value + "</span>次故障";
+                //{ text: '缩略图', align: 'center', dataField: 'FilePath', minWidth: 10 },
+{text: '故障统计', align: 'center', dataField: 'GZTJ', minWidth: 10, width: 78, cellsRenderer: function (row, column, value, rowData) {
+    var s = "";
+    if (value > 0) {
+        s = "<a href='#'  onclick='openwxcount(\"" + rowData.ID + "\");'>共<span class='title12b'>" + value + "</span>次故障</a>";
+    } else {
+        s = "共<span class='title12b'>0</span>次故障";
+    }
+
 
     return s;
 }
 },
 { text: '更换统计', align: 'center', dataField: 'GHTJ', minWidth: 10, width: 78, cellsRenderer: function (row, column, value, rowData) {
-    var s = "共<span class='title12b'>" + value + "</span>次更换";
-
+    var s = "";
+    if (value > 0) {
+        s = "<a href='#'  onclick='openghcount(\"" + rowData.ID + "\");'>共<span class='title12b'>" + value + "</span>次更换</a>";
+    
+    } else {
+        s = "共<span class='title12b'>0</span>次更换";
+    }
     return s;
 }
 }

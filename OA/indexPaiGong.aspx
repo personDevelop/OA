@@ -17,6 +17,9 @@
 { name: 'Code', type: 'string' },
 { name: 'Name', type: 'string' },
 { name: 'CreateDate', type: 'string' },
+{ name: 'CreaterName', type: 'string' },
+{ name: 'GuZhangXx', type: 'string' },
+{ name: 'ChuLiYiJian', type: 'string' },
 { name: 'RealTime', type: 'string' },
 { name: 'CurrentUser', type: 'string' }
                 ],
@@ -66,11 +69,15 @@
                 pageSize: 50,
 
                 columns: [
-{ text: '设备编号', align: 'center', dataField: 'Code', minWidth: 100, width: 150 },
-{ text: '设备名称', align: 'center', dataField: 'Name', minWidth: 100},
+{ text: '设备编号', align: 'center', dataField: 'Code', minWidth: 30, width: 70 },
+{ text: '设备名称', align: 'center', dataField: 'Name', minWidth: 100 },
+{ text: '上报人', align: 'center', dataField: 'CreaterName', minWidth: 30, width: 70 },
+{ text: '故障信息', align: 'center', dataField: 'GuZhangXx', minWidth: 100 },
+{ text: '处理信息', align: 'center', dataField: 'ChuLiYiJian', minWidth: 100, width: 150 },
+ 
 { text: '报工时间', align: 'center', dataField: 'CreateDate', minWidth: 80, width: 150 },
 { text: '修复时间', align: 'center', dataField: 'RealTime', minWidth: 50, width: 150 },
-{ text: '受理人员', align: 'center', dataField: 'CurrentUser', minWidth: 20, width: 100 }
+{ text: '受理人员', align: 'center', dataField: 'CurrentUser', minWidth: 20, width:70 }
                 ]
             });
 

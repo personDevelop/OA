@@ -31,6 +31,8 @@
 { name: 'Pwd', type: 'string' },
 { name: 'Email', type: 'string' },
 { name: 'RealName', type: 'string' },
+{ name: 'DepartName', type: 'string' },
+{ name: 'NWName', type: 'string' },
 { name: 'Location', type: 'string' },
 { name: 'DetailedAddress', type: 'string' },
 { name: 'Sex', type: 'string' },
@@ -96,12 +98,13 @@
                 pageSize: 20,
                 pagesizeoptions: ['20', '50', '100'],
                 columns: [
-                
+
 { text: '用户名', align: 'center', dataField: 'UserName', minWidth: 50, width: 100 },
-{ text: '邮箱', align: 'center', dataField: 'Email', minWidth: 50, width: 100 },
 { text: '真实姓名', align: 'center', dataField: 'RealName', minWidth: 50, width: 100 },
-{ text: '所在地', align: 'center', dataField: 'Location', minWidth: 100, width: 150 },
-{ text: '详细地址', align: 'center', dataField: 'DetailedAddress', minWidth: 100, width: 260 },
+{ text: '所属部门', align: 'center', dataField: 'DepartName', minWidth: 50, width: 100 },
+{ text: '内外员工', align: 'center', dataField: 'NWName', minWidth: 50, width: 100 },
+{ text: '邮箱', align: 'center', dataField: 'Email', minWidth: 50, width: 100 }, 
+{ text: '所在地', align: 'center', dataField: 'Location', minWidth: 100, width: 150 }, 
 { text: '性别', align: 'center', cellsAlign: 'center', dataField: 'Sex', minWidth: 50, width: 50, cellsRenderer: function (row, column, value, rowData) {
     var sex = "保密";
     switch (value) {

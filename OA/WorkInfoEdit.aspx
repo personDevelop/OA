@@ -25,7 +25,15 @@
 
                        { input: '#txtSbName', message: '设备必填!', action: 'keyup, blur', rule: 'required' },
                         { input: '#txtAddress', message: '详细地址必填!', action: 'keyup, blur', rule: 'required' },
-                       { input: '#txtGuzhang', message: '故障分类必填!', action: 'keyup, blur', rule: 'required'}]
+                       { input: '#txtGuzhang', message: '故障分类必填!', action: 'keyup, blur', rule: function (input, commit) {
+                           var date = $('#txtGuzhang').val();
+                           if (!date) {
+                               return false;
+                           } else {
+                               return true;
+                           }
+                       }
+                       }]
             });
             $('#form1').submit(function ()//提交表单 
             {
@@ -160,7 +168,7 @@
                 event.stopPropagation();
             }); $('#treeGrid').on('rowDoubleClick',
 function (event) {
-    $('#okButton').click( );
+    $('#okButton').click();
 });
             $('#window').jqxWindow({
                 showCollapseButton: true, maxHeight: 600, isModal: true, okButton: $('#okButton'),
@@ -223,8 +231,8 @@ function (event) {
                             style="width: 450px;" datatype="n" sucmsg=" ">
                     </dd>
                 </dl>
-                 <dl>
-                    <dt>故障分类*/dt>
+                <dl>
+                    <dt>故障分类*</dt>
                     <dd>
                         <select name="txtGuzhang" id="txtGuzhang" runat="server" class="input small">
                             <option value='供电故障'>供电故障</option>
@@ -232,7 +240,6 @@ function (event) {
                             <option value='设备故障'>设备故障</option>
                             <option value='其他故障'>其他故障</option>
                         </select>
-                       
                     </dd>
                 </dl>
                 <dl>
@@ -256,7 +263,6 @@ function (event) {
                         </div>
                     </dd>
                 </dl>
-                
                 <dl>
                     <dt>填报人联系电话</dt>
                     <dd>

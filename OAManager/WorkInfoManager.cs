@@ -34,9 +34,9 @@ namespace OAManager
             return tem;
         }
 
-       
 
-        
+
+
 
         /// <summary>
         /// 分页获取获取工作信息表datatable
@@ -52,7 +52,16 @@ namespace OAManager
             WhereClip wherenew = new WhereClip();
             if (!string.IsNullOrEmpty(UserId))
             {
-                wherenew = wherenew && WorkHandLog._.DownEr == new Guid(UserId);
+                string[] s = UserId.Split(';');
+                if (s[1] == "2")
+                {
+
+                    wherenew = wherenew && WorkHandLog._.Uper == new Guid(s[0]);
+                }
+                else
+                {
+                    wherenew = wherenew && WorkHandLog._.DownEr == new Guid(s[0]);
+                }
             }
 
             if (WhereClip.IsNullOrEmpty(where))
@@ -97,7 +106,7 @@ namespace OAManager
 
             return Dal.From<WorkInfo>().Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
                 .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID && appendwhere, JoinType.leftJoin)
-                .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe)
+                .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe )
                 .Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
@@ -301,6 +310,26 @@ namespace OAManager
                 .OrderBy(WorkHandLog._.HandSequence).ToFirst<WorkHandLog>();
             return tem;
 
+        }
+
+        public DataTable GetWorkHandType(string sbid, string type)
+        {
+            return Dal.From<WorkHandLog>().Join<WorkInfo>(WorkHandLog._.WorkID == WorkInfo._.ID)
+                .Join<ShebeiInfo>(WorkInfo._.SbID == ShebeiInfo._.ID) 
+                .Select(WorkHandLog._.ID,ShebeiInfo._.Code.Alias("设备编号"), ShebeiInfo._.Name.Alias("设备名称"),
+              WorkHandLog._.HandDate.Alias("处理日期"), WorkHandLog._.UpName.Alias("处理人")
+              , WorkInfo._.CreateDate.Alias("上报时间"), WorkInfo._.CreaterName.Alias("上报人")
+             , WorkInfo._.GuZhangXx.Alias("故障信息"), WorkHandLog._.ChuliYj.Alias("处理信息")
+              ) 
+              .Where(ShebeiInfo._.ID == sbid && WorkHandLog._.HandType == int.Parse(type))
+              .OrderBy(WorkHandLog._.HandDate.Desc)
+              .ToDataTable();
+
+        }
+
+        public string GetLastUserName(Guid workID)
+        {
+            return Dal.From<WorkHandLog>().Where(WorkHandLog._.WorkID == workID).OrderBy(WorkHandLog._.HandSequence.Desc).ToFirst<WorkHandLog>().DownName;
         }
     }
 

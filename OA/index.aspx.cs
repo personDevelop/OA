@@ -77,55 +77,55 @@ namespace OA
                 news_wrap.InnerHtml = result;
                 #endregion
               
-                #region 格式化派工http://www.ycfarm.com/sbbx/images/top_b.gif
-                string worinfohtml = "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0'> ";
-                WorkInfoManager wkMgr = new WorkInfoManager();
-                WhereClip where = null;// WorkInfo._.Status != "完成";
-                if ( Session["AllDepart"] != null)
-                {
-                    List<AdministrativeRegions> list =  Session["AllDepart"] as List<AdministrativeRegions>;
-                    if (list != null && list.Count > 0)
-                    {
-                        string[] dparr = new string[list.Count];
-                        for (int j = 0; j < list.Count; j++)
-                        {
-                            dparr[j] = list[j].ID.ToString();
-                        }
-                        if (WhereClip.IsNullOrEmpty(where))
-                        {
-                            where = ShebeiInfo._.SocrceDepart.In(dparr);
+               // #region 格式化派工http://www.ycfarm.com/sbbx/images/top_b.gif
+               // string worinfohtml = "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0'> ";
+               // WorkInfoManager wkMgr = new WorkInfoManager();
+               // WhereClip where = null;// WorkInfo._.Status != "完成";
+               // if ( Session["AllDepart"] != null)
+               // {
+               //     List<AdministrativeRegions> list =  Session["AllDepart"] as List<AdministrativeRegions>;
+               //     if (list != null && list.Count > 0)
+               //     {
+               //         string[] dparr = new string[list.Count];
+               //         for (int j = 0; j < list.Count; j++)
+               //         {
+               //             dparr[j] = list[j].ID.ToString();
+               //         }
+               //         if (WhereClip.IsNullOrEmpty(where))
+               //         {
+               //             where = ShebeiInfo._.SocrceDepart.In(dparr);
 
-                        }
-                        else
-                        {
-                            where = where && ShebeiInfo._.SocrceDepart.In(dparr);
-                        }
-                    }
-                }
-                OrderByClip order = WorkInfo._.CreateDate.Desc;
-                DataTable dtwk = wkMgr.GetDataTable(1, 4, where, order, ref count, ref count);
-                // DataTable dtwk = wkMgr.GetDataTable();
-               int i = 0;
-                foreach (DataRow row in dtwk.Rows)
-                {
-                    i++;
-                    if (i > 4) break;
-                    string gzxx = row["GuZhangXx"].ToString();
-                    if (gzxx.Length > 10)
-                    {
-                        gzxx = gzxx.Substring(0, 10);
-                    }
-                    string clyj = row["ChuLiYijian"].ToString();
-                    if (clyj.Length > 10)
-                    {
-                        clyj = clyj.Substring(0, 10);
-                    }
-                    worinfohtml += string.Format(wrtmpl, row["Status"].ToString(), row["CreaterName"].ToString(), gzxx, row["CurrentUser"].ToString(), clyj, ((DateTime)row["CreateDate"]).ToString("yyyy-MM-dd"), row["ID"]);
+               //         }
+               //         else
+               //         {
+               //             where = where && ShebeiInfo._.SocrceDepart.In(dparr);
+               //         }
+               //     }
+               // }
+               // OrderByClip order = WorkInfo._.CreateDate.Desc;
+               // DataTable dtwk = wkMgr.GetDataTable(1, 4, where, order, ref count, ref count);
+               // // DataTable dtwk = wkMgr.GetDataTable();
+               //int i = 0;
+               // foreach (DataRow row in dtwk.Rows)
+               // {
+               //     i++;
+               //     if (i > 4) break;
+               //     string gzxx = row["GuZhangXx"].ToString();
+               //     if (gzxx.Length > 10)
+               //     {
+               //         gzxx = gzxx.Substring(0, 10);
+               //     }
+               //     string clyj = row["ChuLiYijian"].ToString();
+               //     if (clyj.Length > 10)
+               //     {
+               //         clyj = clyj.Substring(0, 10);
+               //     }
+               //     worinfohtml += string.Format(wrtmpl, row["Status"].ToString(), row["CreaterName"].ToString(), gzxx, row["CurrentUser"].ToString(), clyj, ((DateTime)row["CreateDate"]).ToString("yyyy-MM-dd"), row["ID"]);
 
-                }
-                worinfohtml += "</table>";
-                workinfo.InnerHtml = worinfohtml;
-                #endregion
+               // }
+               // worinfohtml += "</table>";
+               // workinfo.InnerHtml = worinfohtml;
+               // #endregion
 
 //                string sresult =
 //                @"<table width='100%' border='0' cellpadding='0' cellspacing='0' class='dx'>
