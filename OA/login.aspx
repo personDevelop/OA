@@ -32,6 +32,13 @@
 		</style>
 		<![endif]-->
 <META name=GENERATOR content="MSHTML 8.00.6001.23532"></HEAD>
+<style>
+    body{background:#004B97;}
+    .login-form{border:2px solid rgb(193, 193, 194);background:white;}
+    .loigntitle{display:none;}
+    .loign-line{display:none;}
+    #loginform{margin-left:152px;margin-top:20px;margin-bottom:20px;}
+</style>
 <BODY>
 <SCRIPT language=javascript type=text/javascript> 
 <!--
@@ -86,13 +93,11 @@ width="100%">
     <TD style="WIDTH: 564px" vAlign=center align=middle>
     
       <DIV class=login-form>
-      <img src='image1.jpg' style='height: 121px;margin-bottom: -20px;'></img>
+      <img src='image1.jpg' style='height: 124px;'></img>
       <TABLE style="BORDER-COLLAPSE: collapse" border=0 cellPadding=0 
         width=564><TBODY>
-        <TR>
-          <TD class=login-top></TD></TR>
-        <TR>
-          <TD class=login-bg>
+        
+          <TD class=login-bg style="background:none;">
             <TABLE style="WIDTH: 100%">
               <TBODY>
               <TR>
@@ -102,15 +107,7 @@ width="100%">
                   <TABLE style="WIDTH: 100%">
                     <TBODY>
                     <TR>
-                      <TD class=login-title>
-                        <TABLE style="WIDTH: 100%">
-                          <TBODY>
-                          <TR>
-                            <TD><IMG title=admin 
-                              src="css/images/login_title.png"></TD></TR>
-                          <TR>
-                            <TD 
-                              class=loigntitle>OA系统.方便您的管理,提高工作效率！</TD></TR></TBODY></TABLE></TD>
+                       
                       <TD class=loign-line><IMG alt=line 
                         src="css/images/login_line.png"></TD>
                       <TD class=login-form-center><!--from-->
@@ -139,7 +136,7 @@ width="100%">
                             <TD class=logintd2><INPUT style="WIDTH: 175px" 
                               id=login_pwd class=infoInput type=password 
                               name=login_pwd></TD></TR>
-                          <TR>
+                          <TR style='display:none;'>
                             <TD class=logintd>安全问题</TD>
                             <TD class=logintd2 style="POSITION: relative;"><IMG 
                               style="POSITION: relative; TOP: 6px; MARGIN-RIGHT: 4px;cursor:pointer;" 
@@ -153,8 +150,7 @@ width="100%">
                             <TD class=logintd></TD>
                             <TD class=logintd2><INPUT class=buttonface value=登陆管理平台 type=submit name=button></TD></TR></TBODY></TABLE></FORM><!--form_end--></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
         <TR>
-          <TD 
-class=login-down></TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></DIV>
+          </TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></DIV>
 <SCRIPT language=javascript type=text/javascript> 
 <!--
     function check_login_info(thisForm) {
@@ -168,11 +164,11 @@ class=login-down></TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></DIV
             thisForm.elements["login_pwd"].focus();
             return false;
         }
-        if (/^\s*$/.test(thisForm.elements["rand_rs"].value)) {
-            alert("请输入答案！");
-            thisForm.elements["rand_rs"].focus();
-            return false;
-        }
+//        if (/^\s*$/.test(thisForm.elements["rand_rs"].value)) {
+//            alert("请输入答案！");
+//            thisForm.elements["rand_rs"].focus();
+//            return false;
+//        }
         $("#loginform_stat").css({ "display": "block" });
         $("#loginform_stat").html("正在检查用户......");
         _ajax_submit(thisForm, on_success, on_failure);

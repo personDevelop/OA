@@ -28,18 +28,18 @@ namespace OA.handler
                 string login_user = rp["login_user"].ToString();
                 string login_pwd = rp["login_pwd"].ToString();
                 string rand_rs = rp["rand_rs"].ToString();
-                if (context.Session["Very_Code"] == null)
-                {
-                    context.Response.Write("{\"result\":\"ERROR\",\"errmsg\":\"请刷新验证码！\"}");
-                }
-                else
-                {
-                    if (rand_rs != context.Session["Very_Code"].ToString())
-                    {
-                        context.Response.Write("{\"result\":\"ERROR\",\"errmsg\":\"验证码错误！\"}");
-                        return;
+                //if (context.Session["Very_Code"] == null)
+                //{
+                //    context.Response.Write("{\"result\":\"ERROR\",\"errmsg\":\"请刷新验证码！\"}");
+                //}
+                //else
+                //{
+                    //if (rand_rs != context.Session["Very_Code"].ToString())
+                    //{
+                    //    context.Response.Write("{\"result\":\"ERROR\",\"errmsg\":\"验证码错误！\"}");
+                    //    return;
 
-                    }
+                    //}
                     PersonInfo pr = new PersonInfo();
                     PersonInfoManager prManger = new PersonInfoManager();
                     if (prManger.checkUserIndentity(login_pwd, login_user))
@@ -89,7 +89,7 @@ namespace OA.handler
                     {
                         context.Response.Write("{\"result\":\"ERROR\",\"errmsg\":\"用户名或密码错误！\"}");
                     }
-                }
+                //}
 
             }
             catch (Exception ex)

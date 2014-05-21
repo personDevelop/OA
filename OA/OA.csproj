@@ -35,16 +35,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NPOI">
-      <HintPath>..\..\..\03-work2\ICallCenterSystem - 副本\ICallCenterSystem - 新项目\npoi\dotnet4\NPOI.dll</HintPath>
+      <HintPath>..\refdll\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OOXML">
-      <HintPath>..\..\..\03-work2\ICallCenterSystem - 副本\ICallCenterSystem - 新项目\npoi\dotnet4\NPOI.OOXML.dll</HintPath>
+      <HintPath>..\refdll\NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\..\..\03-work2\ICallCenterSystem - 副本\ICallCenterSystem - 新项目\npoi\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\refdll\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\..\..\03-work2\ICallCenterSystem - 副本\ICallCenterSystem - 新项目\npoi\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\refdll\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="Sharp.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
