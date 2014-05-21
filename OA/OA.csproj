@@ -73,6 +73,10 @@
     <Content Include="AdministrativeRegionsEdit.aspx" />
     <Content Include="AdministrativeRegionsList.aspx" />
     <Content Include="base.css" />
+    <Content Include="bg.jpg" />
+    <Content Include="bg2.jpg" />
+    <Content Include="bg3.jpg" />
+    <Content Include="bg4.jpg" />
     <Content Include="Config\System\DataBaseConnect.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -85,6 +89,7 @@
     <Content Include="css\images\20140228013502.jpg" />
     <Content Include="css\images\all.css" />
     <Content Include="css\images\bar1.jpg" />
+    <Content Include="css\images\bg.jpg" />
     <Content Include="css\images\bg.png" />
     <Content Include="css\images\biao.gif" />
     <Content Include="css\images\bj_line.gif" />
@@ -934,6 +939,9 @@
     <Compile Include="handler\clearState.ashx.cs">
       <DependentUpon>clearState.ashx</DependentUpon>
     </Compile>
+    <Compile Include="handler\DayLogDeleteHandler.ashx.cs">
+      <DependentUpon>DayLogDeleteHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="handler\DayLogListHandler.ashx.cs">
       <DependentUpon>DayLogListHandler.ashx</DependentUpon>
     </Compile>
@@ -1418,6 +1426,7 @@
     <Content Include="handler\ExpaortExcle.ashx" />
     <Content Include="handler\WorkHandler.ashx" />
     <Content Include="handler\ExpaortDayExcle.ashx" />
+    <Content Include="handler\DayLogDeleteHandler.ashx" />
     <None Include="Script\ueditor\php\config.php" />
     <None Include="Script\ueditor\php\fileUp.php" />
     <None Include="Script\ueditor\php\getContent.php" />

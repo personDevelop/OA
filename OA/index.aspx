@@ -17,7 +17,7 @@
 { name: 'Name', type: 'string' },
 { name: 'State', type: 'string' },
 { name: 'PATH', type: 'string' },
-{ name: 'GHTJ', type: 'string' },
+{ name: 'GHTJ', type: 'string' }, 
 { name: 'GZTJ', type: 'string' }
                 ],
                 id: 'ID',
@@ -145,7 +145,8 @@
 { name: 'CreaterName', type: 'string' },
 { name: 'CurrentUser', type: 'string' },
 { name: 'GuZhangXx', type: 'string' },
-{ name: 'ChuLiYiJian', type: 'string' },
+{ name: 'ChuliYj', type: 'string' },
+{ name: 'HandDate', type: 'string' },
 { name: 'CreateDate', type: 'string' }
                 ],
                 id: 'ID',
@@ -197,7 +198,9 @@
 { text: '上报人', align: 'center', dataField: 'CreaterName', minWidth: 10, width: 70 },
 { text: '故障申报内容', align: 'center', dataField: 'GuZhangXx', minWidth: 10 },
  { text: '受理人', align: 'center', dataField: 'CurrentUser', minWidth: 10 },
-  { text: '处理结果', align: 'center', dataField: 'ChuLiYiJian', minWidth: 10 },
+  { text: '处理结果', align: 'center', dataField: 'ChuliYj', minWidth: 10 },
+    { text: '处理时间', align: 'center', dataField: 'HandDate', minWidth: 10 },
+  
    { text: '上报时间', align: 'center', dataField: 'CreateDate', minWidth: 10 }
   ]
             });

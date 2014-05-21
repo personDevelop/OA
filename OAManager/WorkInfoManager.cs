@@ -106,7 +106,7 @@ namespace OAManager
 
             return Dal.From<WorkInfo>().Join<ShebeiInfo>(ShebeiInfo._.ID == WorkInfo._.SbID)
                 .Join<WorkHandLog>(WorkInfo._.ID == WorkHandLog._.WorkID && appendwhere, JoinType.leftJoin)
-                .Select(WorkInfo._.ID.All, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe )
+                .Select(WorkInfo._.ID.All, WorkHandLog._.HandResult,WorkHandLog._.HandDate, ShebeiInfo._.Code, ShebeiInfo._.Name, ShebeiInfo._.GuiGe, WorkHandLog._.ChuliYj)
                 .Where(where).OrderBy(orderby).ToDataTable(pagesize, pageindex, ref pageCount, ref recordCount);
 
         }
@@ -314,14 +314,18 @@ namespace OAManager
 
         public DataTable GetWorkHandType(string sbid, string type)
         {
+            WhereClip appendwhere = new WhereClip();
+            appendwhere.Append("  (  HandSequence= (select max(HandSequence) from WorkHandLog where [WorkID]=[WorkInfo].[ID]))");
+
             return Dal.From<WorkHandLog>().Join<WorkInfo>(WorkHandLog._.WorkID == WorkInfo._.ID)
                 .Join<ShebeiInfo>(WorkInfo._.SbID == ShebeiInfo._.ID) 
                 .Select(WorkHandLog._.ID,ShebeiInfo._.Code.Alias("设备编号"), ShebeiInfo._.Name.Alias("设备名称"),
               WorkHandLog._.HandDate.Alias("处理日期"), WorkHandLog._.UpName.Alias("处理人")
               , WorkInfo._.CreateDate.Alias("上报时间"), WorkInfo._.CreaterName.Alias("上报人")
              , WorkInfo._.GuZhangXx.Alias("故障信息"), WorkHandLog._.ChuliYj.Alias("处理信息")
-              ) 
-              .Where(ShebeiInfo._.ID == sbid && WorkHandLog._.HandType == int.Parse(type))
+
+              )
+              .Where(ShebeiInfo._.ID == sbid && WorkHandLog._.HandType == int.Parse(type) && appendwhere)
               .OrderBy(WorkHandLog._.HandDate.Desc)
               .ToDataTable();
 
